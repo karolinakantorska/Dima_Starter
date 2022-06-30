@@ -6,7 +6,7 @@ import Layout from '../../layouts';
 import useSettings from '../../hooks/useSettings';
 // components
 import Page from '../../components/Page';
-
+import Link from 'next/link';
 // ----------------------------------------------------------------------
 
 PageOne.getLayout = function getLayout(page: ReactElement) {
@@ -21,9 +21,12 @@ export default function PageOne() {
   return (
     <Page title="Page One">
       <Container maxWidth={themeStretch ? false : 'xl'}>
-        <Typography variant="h3" component="h1" paragraph>
-          Page One
-        </Typography>
+        <Link href="/404">
+          <Typography variant="h3" component="h1" paragraph>
+            Page One
+          </Typography>
+        </Link>
+
         <Typography gutterBottom>
           Curabitur turpis. Vestibulum facilisis, purus nec pulvinar iaculis, ligula mi congue nunc,
           vitae euismod ligula urna in dolor. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit
