@@ -1,11 +1,15 @@
 // scroll bar
 import 'simplebar/src/simplebar.css';
-
+// slick-carousel
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 // lazy image
 import 'react-lazy-load-image-component/src/effects/blur.css';
 import 'react-lazy-load-image-component/src/effects/opacity.css';
 import 'react-lazy-load-image-component/src/effects/black-and-white.css';
 
+//Auth
+import { AuthProvider } from '../contexts/FirebaseContext';
 import cookie from 'cookie';
 import { ReactElement, ReactNode } from 'react';
 // next
@@ -46,19 +50,21 @@ export default function MyApp(props: MyAppProps) {
       <Head>
         <meta name="viewport" content="initial-scale=1, width=device-width" />
       </Head>
+      <AuthProvider>
+        <CollapseDrawerProvider>
+          <SettingsProvider defaultSettings={settings}>
+            <MotionLazyContainer>
+              <ThemeProvider>
+                <ThemeSettings>
+                  <ProgressBar />
+                  {getLayout(<Component {...pageProps} />)}
+                </ThemeSettings>
+              </ThemeProvider>
+            </MotionLazyContainer>
+          </SettingsProvider>
+        </CollapseDrawerProvider>
+      </AuthProvider>
 
-      <CollapseDrawerProvider>
-        <SettingsProvider defaultSettings={settings}>
-          <MotionLazyContainer>
-            <ThemeProvider>
-              <ThemeSettings>
-                <ProgressBar />
-                {getLayout(<Component {...pageProps} />)}
-              </ThemeSettings>
-            </ThemeProvider>
-          </MotionLazyContainer>
-        </SettingsProvider>
-      </CollapseDrawerProvider>
     </>
   );
 }

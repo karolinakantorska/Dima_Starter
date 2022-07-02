@@ -1,6 +1,6 @@
 import { ReactElement } from 'react';
 // layouts
-import Layout from '../../layouts';
+import Layout from 'src/layouts';
 // components
 import Page from '../components/Page';
 

@@ -27,7 +27,7 @@ const ContentStyle = styled('div')(({ theme }) => ({
 // ----------------------------------------------------------------------
 
 Page404.getLayout = function getLayout(page: React.ReactElement) {
-  return <Layout variant="logoOnly">{page}</Layout>;
+  return <Layout >{page}</Layout>;
 };
 
 // ----------------------------------------------------------------------
