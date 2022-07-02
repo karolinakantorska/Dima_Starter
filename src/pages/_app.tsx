@@ -64,7 +64,6 @@ export default function MyApp(props: MyAppProps) {
           </SettingsProvider>
         </CollapseDrawerProvider>
       </AuthProvider>
-
     </>
   );
 }
