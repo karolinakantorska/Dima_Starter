@@ -4,6 +4,7 @@ import { alpha, styled } from '@mui/material/styles';
 import { Box } from '@mui/material';
 //
 import Logo from './Logo';
+import DimaLetterCom from './DimaLetterCom';
 
 // ----------------------------------------------------------------------
 
@@ -37,7 +38,8 @@ export default function LoadingScreen() {
           repeat: Infinity,
         }}
       >
-        <Logo disabledLink sx={{ width: 64, height: 64 }} />
+        {false && <Logo disabledLink sx={{ width: 64, height: 64 }} />}
+        <DimaLetterCom x={64} y={64} />
       </m.div>
 
       <Box
