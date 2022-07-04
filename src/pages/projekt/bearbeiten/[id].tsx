@@ -9,8 +9,14 @@ import Layout from "src/layouts"
 import { getCollectionId, getCollectionDocument } from "src/utils/apis/apis";
 import AuthGuard from "src/guards/AuthGuard";
 // components
+// ----------------------------------------------------------------------
 
-export default function NeuesProjekt({ data }: any) {
+ProjektBearbeiten.getLayout = function getLayout(page: React.ReactElement) {
+  return <Layout >{page}</Layout>;
+};
+
+// ----------------------------------------------------------------------
+export default function ProjektBearbeiten({ data }: any) {
   const isEdit = true;
   const router = useRouter();
   const { id } = router.query;
@@ -18,13 +24,9 @@ export default function NeuesProjekt({ data }: any) {
   console.log('data:', data);
   return (
     <AuthGuard>
-      <Layout>
-        <Page title={`${isEdit ? 'Edit' : 'Neues'} Projekt | Dima & Partner`}>
-
-          <ProjectNewEditForm isEdit={isEdit} currentProject={data} />
-
-        </Page>
-      </Layout>
+      <Page title={`${isEdit ? 'Edit' : 'Neues'} Projekt | Dima & Partner`}>
+        <ProjectNewEditForm isEdit={isEdit} currentProject={data} />
+      </Page>
     </AuthGuard>
 
   );
@@ -34,13 +36,13 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const paths = data.map((item) => ({
     params: { id: item.id },
   }));
-  console.log(paths);
+  //console.log(paths);
   return { paths, fallback: false };
 };
 export const getStaticProps: GetStaticProps = async ({ params }: any) => {
   const { id } = params;
   const data = await getCollectionDocument("projects", id);
-  console.log('data:', data);
+  //console.log('data:', data);
   return {
     props: { data },
     revalidate: 10,

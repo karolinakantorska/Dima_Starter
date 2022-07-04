@@ -10,7 +10,13 @@ import { OneProjectCom } from '../../components/_Projekte/OneProjectCom';
 import Layout from '../../layouts';
 import { getCollectionId, getCollectionDocument } from "src/utils/apis/apis";
 
+// ----------------------------------------------------------------------
 
+Referenz.getLayout = function getLayout(page: React.ReactElement) {
+  return <Layout >{page}</Layout>;
+};
+
+// ----------------------------------------------------------------------
 
 
 export default function Referenz({ data }: any) {
@@ -20,12 +26,9 @@ export default function Referenz({ data }: any) {
   //const project = _mockProjekts.filter((project) => project.id === id);
   //console.log('project', project);
   return (
-    <Layout>
-      <Page title={`Dima & Partner`}>
-        <OneProjectCom project={data} />
-      </Page>
-    </Layout>
-
+    <Page title={`Dima & Partner`}>
+      <OneProjectCom project={data} />
+    </Page>
   );
 }
 export const getStaticPaths: GetStaticPaths = async () => {
