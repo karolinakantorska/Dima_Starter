@@ -28,7 +28,19 @@ const ContainerStyle = styled(Container)(({ theme }) => ({
 export default function MainLayout({ children }: Props) {
 
   return (
-    <Container sx={{
+
+    <Stack sx={{ minHeight: 1, }}>
+      <MainHeader />
+      <ContainerStyle   >
+        {children}
+      </ContainerStyle>
+      <Box sx={{ flexGrow: 1 }} />
+    </Stack>
+
+  )
+}
+/*
+<Container sx={{
       position: 'absolute', marginLeft: 'auto', marginRight: 'auto', left: 0,
       right: 0,
     }}>
@@ -40,5 +52,4 @@ export default function MainLayout({ children }: Props) {
         <Box sx={{ flexGrow: 1 }} />
       </Stack>
     </Container>
-  )
-}
+    */
