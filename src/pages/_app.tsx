@@ -12,6 +12,7 @@ import 'react-lazy-load-image-component/src/effects/black-and-white.css';
 import { AuthProvider } from '../contexts/FirebaseContext';
 import cookie from 'cookie';
 import { ReactElement, ReactNode } from 'react';
+import { AnimatePresence } from 'framer-motion';
 // next
 import { NextPage } from 'next';
 import Head from 'next/head';
@@ -61,14 +62,19 @@ export default function MyApp(props: MyAppProps) {
                 <ThemeProvider>
                   <ThemeSettings>
                     <ProgressBar />
-                    {getLayout(<Component {...pageProps} />)}
+                    <AnimatePresence
+                      exitBeforeEnter={false}
+
+                    >
+                      {getLayout(<Component {...pageProps} />)}
+                    </AnimatePresence>
+
                   </ThemeSettings>
                 </ThemeProvider>
               </MotionLazyContainer>
             </SettingsProvider>
           </CollapseDrawerProvider>
         </LocalizationProvider>
-
       </AuthProvider>
     </>
   );
