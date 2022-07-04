@@ -78,8 +78,8 @@ export function OneProjectCom({ project }: { project: ProjectType }) {
     const photosCarusel = [project.photo, ...project.photos]
     return (
       <Stack
-        //component={m.div}
-        //{...variant}
+        component={m.div}
+        {...variant}
         spacing={isDesktop ? 20 : isSmall ? 5 : 8}
       >
         <CarouselBasic3 photos={photosCarusel} />

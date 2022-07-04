@@ -16,6 +16,9 @@ import { ReactElement, ReactNode } from 'react';
 import { NextPage } from 'next';
 import Head from 'next/head';
 import App, { AppProps, AppContext } from 'next/app';
+// @mui
+import AdapterDateFns from '@mui/lab/AdapterDateFns';
+import LocalizationProvider from '@mui/lab/LocalizationProvider';
 // utils
 import { getSettings } from '../utils/getSettings';
 // contexts
@@ -51,18 +54,21 @@ export default function MyApp(props: MyAppProps) {
         <meta name="viewport" content="initial-scale=1, width=device-width" />
       </Head>
       <AuthProvider>
-        <CollapseDrawerProvider>
-          <SettingsProvider defaultSettings={settings}>
-            <MotionLazyContainer>
-              <ThemeProvider>
-                <ThemeSettings>
-                  <ProgressBar />
-                  {getLayout(<Component {...pageProps} />)}
-                </ThemeSettings>
-              </ThemeProvider>
-            </MotionLazyContainer>
-          </SettingsProvider>
-        </CollapseDrawerProvider>
+        <LocalizationProvider dateAdapter={AdapterDateFns}>
+          <CollapseDrawerProvider>
+            <SettingsProvider defaultSettings={settings}>
+              <MotionLazyContainer>
+                <ThemeProvider>
+                  <ThemeSettings>
+                    <ProgressBar />
+                    {getLayout(<Component {...pageProps} />)}
+                  </ThemeSettings>
+                </ThemeProvider>
+              </MotionLazyContainer>
+            </SettingsProvider>
+          </CollapseDrawerProvider>
+        </LocalizationProvider>
+
       </AuthProvider>
     </>
   );
