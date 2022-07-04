@@ -1,19 +1,19 @@
 import { ReactNode } from 'react';
 // components
 
-import LogoOnlyLayout from './LogoOnlyLayout';
+import FullScreenLayout from './FullScreenLayout';
 import MainLayout from './MainLayout';
 
 // ----------------------------------------------------------------------
 
 type Props = {
   children: ReactNode;
-  variant?: 'main' | 'wholeScreen';
+  variant?: 'main' | 'fullScreen';
 };
 
 export default function Layout({ variant = 'main', children }: Props) {
-  if (variant === 'wholeScreen') {
-    return <LogoOnlyLayout> {children} </LogoOnlyLayout>;
+  if (variant === 'fullScreen') {
+    return <FullScreenLayout> {children} </FullScreenLayout>;
   }
 
   return <MainLayout> {children} </MainLayout>;
