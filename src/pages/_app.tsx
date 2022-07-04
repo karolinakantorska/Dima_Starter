@@ -45,7 +45,7 @@ interface MyAppProps extends AppProps {
 }
 
 export default function MyApp(props: MyAppProps) {
-  const { Component, pageProps, settings } = props;
+  const { Component, pageProps, settings, router } = props;
 
   const getLayout = Component.getLayout ?? ((page) => page);
 
@@ -64,9 +64,8 @@ export default function MyApp(props: MyAppProps) {
                     <ProgressBar />
                     <AnimatePresence
                       exitBeforeEnter={false}
-
                     >
-                      {getLayout(<Component {...pageProps} />)}
+                      {getLayout(<Component {...pageProps} key={router.route} />)}
                     </AnimatePresence>
 
                   </ThemeSettings>
