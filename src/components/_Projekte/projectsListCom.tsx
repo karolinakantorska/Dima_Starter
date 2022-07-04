@@ -41,6 +41,8 @@ export function ProjectsListCom(
 
   return (
     <Box
+      component={m.div}
+      {...variant}
       display="grid"
       gridTemplateColumns={gtc}
       columnGap="12px"
