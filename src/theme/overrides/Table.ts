@@ -19,7 +19,7 @@ export default function Table(theme: Theme) {
     MuiTableCell: {
       styleOverrides: {
         root: {
-          borderBottom: 'none',
+          borderBottom: `1px solid ${theme.palette.dima}` ,
         },
         head: {
           color: theme.palette.text.secondary,
@@ -43,10 +43,10 @@ export default function Table(theme: Theme) {
         },
         body: {
           '&:first-of-type': {
-            paddingLeft: theme.spacing(3),
+            paddingLeft: theme.spacing(1),
           },
           '&:last-of-type': {
-            paddingRight: theme.spacing(3),
+            paddingRight: theme.spacing(5),
           },
         },
       },

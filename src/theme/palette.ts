@@ -27,6 +27,7 @@ interface ChartPaletteOptions {
 declare module '@mui/material/styles/createPalette' {
   interface TypeBackground {
     neutral: string;
+    opacity: string;
   }
   interface SimplePaletteColorOptions {
     lighter: string;
@@ -39,6 +40,8 @@ declare module '@mui/material/styles/createPalette' {
   interface Palette {
     gradients: GradientsPaletteOptions;
     chart: ChartPaletteOptions;
+    dima:PaletteColor
+    dimaGrey:PaletteColor
   }
   interface PaletteOptions {
     gradients: GradientsPaletteOptions;
@@ -62,67 +65,71 @@ declare module '@mui/material' {
 
 // SETUP COLORS
 const PRIMARY = {
-  lighter: '#C8FACD',
-  light: '#5BE584',
-  main: '#00AB55',
-  dark: '#007B55',
-  darker: '#005249',
+  lighter: '#f6cebc',
+  light: '#eb9166',
+  main: 'rgb(232, 123, 69)',// #e87b45
+  dark: '#e56825',
+  darker: '#bf551b',
 };
 const SECONDARY = {
-  lighter: '#D6E4FF',
-  light: '#84A9FF',
-  main: '#3366FF',
-  dark: '#1939B7',
-  darker: '#091A7A',
+  lighter: '#b5e3f7',
+  light: '#5ebfec',
+  main: '#2d84c1',
+  dark: '#2973ad',
+  darker: '#1c548c',
 };
 const INFO = {
-  lighter: '#D0F2FF',
-  light: '#74CAFF',
-  main: '#1890FF',
-  dark: '#0C53B7',
-  darker: '#04297A',
+  lighter: '#b5e3f7',
+  light: '#5ebfec',
+  main: '#2d84c1',
+  dark: '#2973ad',
+  darker: '#1c548c',
 };
 const SUCCESS = {
-  lighter: '#E9FCD4',
-  light: '#AAF27F',
-  main: '#54D62C',
-  dark: '#229A16',
-  darker: '#08660D',
+  lighter: '#e4f7c0',
+  light: '#bfed6a',
+  main: '#9cd102',
+  dark: '#81a300',
+  darker: '#6d7c00',
 };
 const WARNING = {
-  lighter: '#FFF7CD',
-  light: '#FFE16A',
-  main: '#FFC107',
-  dark: '#B78103',
-  darker: '#7A4F01',
+  lighter: '#f8f5c5',
+  light: '#efe77c',
+  main: '#e8cd45',
+  dark: '#e1a034',
+  darker: '#da7b25',
 };
 const ERROR = {
-  lighter: '#FFE7D9',
-  light: '#FFA48D',
-  main: '#FF4842',
-  dark: '#B72136',
-  darker: '#7A0C2E',
+  lighter: '#f9bfcd',
+  light: '#f1708e',
+  main: '#e84560',
+  dark: '#c13a59',
+  darker: '#872d4d',
 };
 
 const GREY = {
-  0: '#FFFFFF',
-  100: '#F9FAFB',
-  200: '#F4F6F8',
-  300: '#DFE3E8',
-  400: '#C4CDD5',
-  500: '#919EAB',
-  600: '#637381',
-  700: '#454F5B',
-  800: '#212B36',
-  900: '#161C24',
-  500_8: alpha('#919EAB', 0.08),
-  500_12: alpha('#919EAB', 0.12),
-  500_16: alpha('#919EAB', 0.16),
-  500_24: alpha('#919EAB', 0.24),
-  500_32: alpha('#919EAB', 0.32),
-  500_48: alpha('#919EAB', 0.48),
-  500_56: alpha('#919EAB', 0.56),
-  500_80: alpha('#919EAB', 0.8),
+  0: '#fffaf2',
+  0o6: alpha('#fff', 0.32),
+  0o7: alpha('#fff', 0.08),
+  100: '#fdf5ed',
+  200: '#f8f0e8',
+  300: '#eee5dd',//'#eee5dd''#DADADA'
+  400: '#cbc3bb',
+  500: '#ada59d',// shadows from this color
+  600: '#837b74',
+  700: 'rgb(110, 103, 96)',// dima 	6E6760
+  800: '#4e4841',
+  850: '#39322B',
+  900: '#2c2620',
+  900_12: alpha('#2c2620', 0.12),
+  500_8: alpha('#ada59d', 0.08),
+  500_12: alpha('#ada59d', 0.12),
+  500_16: alpha('#ada59d', 0.16),
+  500_24: alpha('#ada59d', 0.24),
+  500_32: alpha('#ada59d', 0.32),
+  500_48: alpha('#ada59d', 0.48),
+  500_56: alpha('#ada59d', 0.56),
+  500_80: alpha('#ada59d', 0.8),
 };
 
 const GRADIENTS = {
@@ -165,20 +172,29 @@ const COMMON = {
 };
 
 const palette = {
-  light: {
+   light: {
     ...COMMON,
-    mode: 'light',
-    text: { primary: GREY[800], secondary: GREY[600], disabled: GREY[500] },
+    mode: 'light', 
     background: { paper: '#fff', default: '#fff', neutral: GREY[200] },
     action: { active: GREY[600], ...COMMON.action },
+    dima:PRIMARY.main 
   },
-  dark: {
-    ...COMMON,
+    dark: {
+    ...COMMON, 
     mode: 'dark',
-    text: { primary: '#fff', secondary: GREY[500], disabled: GREY[600] },
-    background: { paper: GREY[800], default: GREY[900], neutral: GREY[500_16] },
+    text: { 
+      white:'#fff' ,
+      primary: GREY[0], 
+      secondary: GREY[300], 
+      disabled: GREY[600],
+      opacity:GREY[0o6]
+    },
+    background: { paper: GREY[800], default: GREY[900],between: GREY[850],neutral: GREY[500_16], opacity: GREY[0o6],},
     action: { active: GREY[500], ...COMMON.action },
-  },
+    dima:PRIMARY.main ,
+    dimaGrey:GREY[700] ,
+    
+  },//
 } as const;
 
 export default palette;

@@ -1,10 +1,17 @@
 import { Theme } from '@mui/material/styles';
+//import { BG_Regular } from '../typography';
 
 // ----------------------------------------------------------------------
 
 export default function CssBaseline(theme: Theme) {
+ 
   return {
     MuiCssBaseline: {
+      /*
+ '@global': {
+        '@font-face': [ BG_Regular],
+      },
+      */
       styleOverrides: {
         '*': {
           margin: 0,
@@ -24,6 +31,7 @@ export default function CssBaseline(theme: Theme) {
           width: '100%',
           height: '100%',
         },
+
         input: {
           '&[type=number]': {
             MozAppearance: 'textfield',
@@ -41,6 +49,9 @@ export default function CssBaseline(theme: Theme) {
           display: 'block',
           maxWidth: '100%',
         },
+        a:{
+          color: theme.palette.text.disabled
+        }
       },
     },
   };

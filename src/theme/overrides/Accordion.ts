@@ -7,6 +7,7 @@ export default function Accordion(theme: Theme) {
     MuiAccordion: {
       styleOverrides: {
         root: {
+           position :'static',
           '&.Mui-expanded': {
             boxShadow: theme.customShadows.z8,
             borderRadius: theme.shape.borderRadius
@@ -25,7 +26,7 @@ export default function Accordion(theme: Theme) {
           '&.Mui-disabled': {
             opacity: 1,
             color: theme.palette.action.disabled,
-            '& .MuiTypography-root': {
+            '&.MuiTypography-root': {
               color: 'inherit'
             }
           }

@@ -42,6 +42,8 @@ import Autocomplete from './Autocomplete';
 import ToggleButton from './ToggleButton';
 import ControlLabel from './ControlLabel';
 import LoadingButton from './LoadingButton';
+import Container from './Container';
+
 
 // ----------------------------------------------------------------------
 
@@ -88,6 +90,8 @@ export default function ComponentsOverrides(theme: Theme) {
     Autocomplete(theme),
     ControlLabel(theme),
     ToggleButton(theme),
-    LoadingButton(theme)
+    LoadingButton(theme),
+    Container(theme),
+
   );
 }
