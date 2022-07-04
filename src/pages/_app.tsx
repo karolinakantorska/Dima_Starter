@@ -67,7 +67,6 @@ export default function MyApp(props: MyAppProps) {
                     >
                       {getLayout(<Component {...pageProps} key={router.route} />)}
                     </AnimatePresence>
-
                   </ThemeSettings>
                 </ThemeProvider>
               </MotionLazyContainer>
