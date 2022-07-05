@@ -189,7 +189,12 @@ const palette = {
       disabled: GREY[600],
       opacity:GREY[0o6]
     },
-    background: { paper: GREY[800], default: GREY[900],between: GREY[850],neutral: GREY[500_16], opacity: GREY[0o6],},
+    background: { 
+      paper: GREY[800], 
+      default: GREY[900],
+      between: GREY[850],
+      neutral: GREY[500_16], 
+      opacity: GREY[0o6],},
     action: { active: GREY[500], ...COMMON.action },
     dima:PRIMARY.main ,
     dimaGrey:GREY[700] ,

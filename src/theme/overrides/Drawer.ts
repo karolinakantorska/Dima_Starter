@@ -8,6 +8,10 @@ export default function Drawer(theme: Theme) {
   return {
     MuiDrawer: {
       styleOverrides: {
+        paper: {
+          backgroundColor: theme.palette.grey[500_24],
+  
+        },
         modal: {
           '&[role="presentation"]': {
             '& .MuiDrawer-paperAnchorLeft': {

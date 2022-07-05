@@ -60,28 +60,28 @@ export function ProjektCardCom({
       component={m.div}
       whileHover="hover"
     >
-      {/*<Link href={`${PATH_PROJEKTE.projekt}/${id}`} >*/}
-      <Card
-        component={m.div}
-        variants={varHover(1.05)}
-        transition={varTranHover()}
-        sx={{ ...cardProps }}
-      >
-        <CardActionArea
-          disableRipple
+      <Link href={`${PATH_PROJEKTE.projekt}/${id}`} >
+        <Card
+          component={m.div}
+          variants={varHover(1.05)}
+          transition={varTranHover()}
+          sx={{ ...cardProps }}
         >
-          <Image src={photo.url} alt={photo.alt} ratio="16/9" />
-          {photoAuthor &&
-            <Typography
-              variant="body2"
-              display="span"
-              sx={{ ...propsPhotoAuthor }}
-            >
-              {photoAuthor}
-            </Typography>}
-        </CardActionArea>
-      </Card>
-      {/*</Link>*/}
+          <CardActionArea
+            disableRipple
+          >
+            <Image src={photo.url} alt={photo.alt} ratio="16/9" />
+            {photoAuthor &&
+              <Typography
+                variant="body2"
+                display="span"
+                sx={{ ...propsPhotoAuthor }}
+              >
+                {photoAuthor}
+              </Typography>}
+          </CardActionArea>
+        </Card>
+      </Link>
       <TextCardCom project={project} big={isBig} rewerseBig={rewerseBig} />
     </Box >
   );
