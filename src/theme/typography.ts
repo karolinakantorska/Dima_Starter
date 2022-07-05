@@ -36,32 +36,32 @@ const typography = {
   h2: {
     fontWeight: 400,
     lineHeight: 52 / 44,
-    fontSize: pxToRem(38),
-    ...responsiveFontSizes({ sm: 40, md: 40, lg: 44 }),
+    fontSize: pxToRem(34),
+    ...responsiveFontSizes({ sm: 38, md: 40, lg: 44 }),
   },
   h3: {
     fontWeight: 400,
     lineHeight: 54 / 37,
-    fontSize: pxToRem(30),
-    ...responsiveFontSizes({ sm: 33, md: 33, lg: 37 }),
+    fontSize: pxToRem(24),
+    ...responsiveFontSizes({ sm: 30, md: 34, lg: 37 }),
   },
   h4: {
     fontWeight: 400,
     lineHeight: 52 / 35,
-    fontSize: pxToRem(31),
-    ...responsiveFontSizes({ sm: 33, md: 33, lg: 35 }),
+    fontSize: pxToRem(26),
+    ...responsiveFontSizes({ sm: 28, md: 30, lg: 35 }),
   },
   h5: {
     fontWeight: 400,
     lineHeight: 32 / 27,
-    fontSize: pxToRem(20),
-    ...responsiveFontSizes({ sm: 22, md: 22, lg: 27 }),
+    fontSize: pxToRem(21),
+    ...responsiveFontSizes({ sm: 23, md: 25, lg: 27 }),
   },
   h6: {
     fontWeight: 400,
     lineHeight: 30 / 25,
-    fontSize: pxToRem(20),
-    ...responsiveFontSizes({ sm: 22, md: 22, lg: 25 }),
+    fontSize: pxToRem(19),
+    ...responsiveFontSizes({ sm: 21, md: 23, lg: 25 }),
   },
   subtitle1: {
     fontWeight: 400,
@@ -74,21 +74,20 @@ const typography = {
     fontSize: pxToRem(14),
   },
   body1: {
-    fontWeight: 400,
-    
+    fontWeight: 400,  
     lineHeight: 28 / 24,
-    fontSize: pxToRem(20),
-    ...responsiveFontSizes({ sm: 22, md: 22, lg: 24 }),
+    fontSize: pxToRem(19),
+    ...responsiveFontSizes({ sm: 21, md: 22, lg: 24 }),
   },
   body2: {
     fontWeight: 400,
     lineHeight: 23 / 20,
     fontSize: pxToRem(16),
-    ...responsiveFontSizes({ sm: 18, md: 18, lg: 20 }),
+    ...responsiveFontSizes({ sm: 17, md: 18, lg: 20 }),
   },
   caption: {
     lineHeight: 28 / 24,
-    fontSize: pxToRem(20),
+    fontSize: pxToRem(18),
     ...responsiveFontSizes({ sm: 20, md: 22, lg: 24 }),
   },
   overline: {
@@ -100,9 +99,9 @@ const typography = {
   button: {
     fontWeight: 400,
     lineHeight: 28 / 24,
-    fontSize: pxToRem(20),
+    fontSize: pxToRem(22),
     textTransform: 'capitalize',
-    ...responsiveFontSizes({ sm: 22, md: 24, lg: 28 }),
+    ...responsiveFontSizes({ sm: 24, md: 26, lg: 28 }),
 
   },
 } as const;

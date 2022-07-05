@@ -6,7 +6,7 @@ import NextLink from 'next/link';
 import { PATH_DIMA, PATH_PROJEKTE } from 'src/routes/paths';
 const ButtonStyle = styled(Button)(({ theme }) => ({
 
-    //backgroundColor: theme.palette.background.opacity,
+    backgroundColor: theme.palette.background.opacity,
     border: '1px solid grey',
     [theme.breakpoints.up('md')]: {
         //height: HEADER.MAIN_DESKTOP_HEIGHT,

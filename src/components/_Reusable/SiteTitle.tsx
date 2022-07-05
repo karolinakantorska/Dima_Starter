@@ -17,7 +17,7 @@ export const SiteTitle = ({ text }: LayoutHeader) => {
                 <Typography variant="h3" component="h2" sx={{ color: 'text.primary' }}>
                     {title.toUpperCase()}
                 </Typography>
-                <Typography variant="h4" component="h2" sx={{ color: 'dima', mt: -1.5 }}>
+                <Typography variant="h4" component="h3" sx={{ color: 'dima', mt: -1.5 }}>
                     {untertitle}
                 </Typography>
             </Box>
@@ -26,7 +26,11 @@ export const SiteTitle = ({ text }: LayoutHeader) => {
                 columnGap="12px"
             >
                 <Box sx={{ backgroundColor: 'dima' }} />
-                <Typography variant="body2" component="h2" align='justify' sx={{ color: 'text.primary' }} >
+                <Typography
+                    variant="body2"
+                    component="h2"
+                    //align='justify' 
+                    sx={{ color: 'text.primary' }} >
                     {description}
                 </Typography>
             </Box>
