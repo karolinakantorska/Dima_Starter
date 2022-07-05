@@ -47,7 +47,7 @@ export default function CarouselArrows({
 
     '&:hover': {
 
-      //backgroundColor: 'transparent',
+      backgroundColor: 'transparent',
       color: 'text.white',
     },
   }

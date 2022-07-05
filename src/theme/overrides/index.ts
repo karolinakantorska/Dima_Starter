@@ -43,7 +43,7 @@ import ToggleButton from './ToggleButton';
 import ControlLabel from './ControlLabel';
 import LoadingButton from './LoadingButton';
 import Container from './Container';
-
+import CardActionArea from './CardActionArea';
 
 // ----------------------------------------------------------------------
 
@@ -92,6 +92,6 @@ export default function ComponentsOverrides(theme: Theme) {
     ToggleButton(theme),
     LoadingButton(theme),
     Container(theme),
-
+CardActionArea(theme),
   );
 }

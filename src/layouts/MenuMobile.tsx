@@ -2,6 +2,8 @@ import { useState, useEffect, ReactNode } from 'react';
 // next
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
+// Hamburger
+import { Squash as Hamburger } from 'hamburger-react'
 // @mui
 import { alpha, styled } from '@mui/material/styles';
 import {
@@ -21,7 +23,6 @@ import { NAVBAR } from 'src/config';
 // components
 import Iconify from 'src/components/Iconify';
 import Scrollbar from 'src/components/Scrollbar';
-import { IconButtonAnimate } from 'src/components/animate';
 import { NavSectionVertical } from 'src/components/nav-section';
 import MenuIcon from '@mui/icons-material/Menu';
 //
@@ -76,7 +77,7 @@ export default function MenuMobile({ navConfig }: MenuProps) {
   }, [pathname]);
 
   const handleOpen = () => {
-    setOpen(!open);
+    setDrawerOpen((open) => !open);
   };
 
   const handleDrawerOpen = () => {
@@ -89,9 +90,19 @@ export default function MenuMobile({ navConfig }: MenuProps) {
 
   return (
     <>
-      <IconStyle
-        onClick={handleDrawerOpen}
-      />
+      <Box
+        onClick={handleOpen} sx={{
+          position: 'relative',
+          zIndex: 2000,
+        }}
+      >
+        <Hamburger
+          easing="ease-in"
+          size={40}
+          toggled={drawerOpen}
+          label={drawerOpen ? "hamburger menu opened" : "hamburger menu closed"}
+        />
+      </Box>
 
       <Drawer
         open={drawerOpen}
@@ -102,7 +113,7 @@ export default function MenuMobile({ navConfig }: MenuProps) {
       >
         <Scrollbar>
           <Stack height="100px" direction="row" alignItems="center" justifyContent="flex-end">
-            <p>close icon</p>
+
           </Stack>
 
           <List disablePadding>
