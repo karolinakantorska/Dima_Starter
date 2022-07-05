@@ -24,11 +24,10 @@ import { NAVBAR } from 'src/config';
 import Iconify from 'src/components/Iconify';
 import Scrollbar from 'src/components/Scrollbar';
 import { NavSectionVertical } from 'src/components/nav-section';
-import MenuIcon from '@mui/icons-material/Menu';
+import { HEADER } from 'src/config';
 //
 import { MenuProps, MenuItemProps } from './type';
 import useAuth from 'src/utils/firebaseAuth/useAuth';
-import { PATH_DIMA } from 'src/routes/paths';
 import { PATH_LOGIN } from 'src/routes/paths';
 
 // ----------------------------------------------------------------------
@@ -39,33 +38,34 @@ interface ListItemStyleProps extends StyleProps {
   component?: ReactNode;
 }
 
-const IconStyle = styled(MenuIcon)(({ theme }) => ({
-  cursor: 'pointer',
-  fontSize: 35,
-  pr: 0,
 
+const BoxStyle = styled(Box)(({ theme }) => ({
+  paddingTop: HEADER.MIDDLE_HEIGHT,
+  //position: 'absolute',
+  backgroundColor: 'transparent',
   [theme.breakpoints.up('lm')]: {
-    fontSize: 44,
+    paddingTop: HEADER.MAIN_DESKTOP_HEIGHT,
+    //marginTop: '5px'
   },
   [theme.breakpoints.down('sm')]: {
-    fontSize: 25,
+    paddingTop: HEADER.MOBILE_HEIGHT,
   },
 }));
 
 const ListItemStyle = styled(ListItemButton)<ListItemStyleProps>(({ theme }) => ({
-  ...theme.typography.body2,
-
+  ...theme.typography.h5,
   marginTop: 0,
   height: NAVBAR.DASHBOARD_ITEM_ROOT_HEIGHT,
-  textTransform: 'capitalize',
+  textTransform: 'uppercase',
   color: theme.palette.text.secondary,
+
 }));
 
 // ----------------------------------------------------------------------
 
 export default function MenuMobile({ navConfig }: MenuProps) {
   const { pathname } = useRouter();
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   const { logout, isAuthenticated } = useAuth();
@@ -77,11 +77,11 @@ export default function MenuMobile({ navConfig }: MenuProps) {
   }, [pathname]);
 
   const handleOpen = () => {
-    setDrawerOpen((open) => !open);
+    setOpen((open) => !open);
   };
 
   const handleDrawerOpen = () => {
-    setDrawerOpen(true);
+    setDrawerOpen((openDrawer) => !openDrawer);
   };
 
   const handleDrawerClose = () => {
@@ -91,9 +91,9 @@ export default function MenuMobile({ navConfig }: MenuProps) {
   return (
     <>
       <Box
-        onClick={handleOpen} sx={{
+        onClick={handleDrawerOpen} sx={{
           position: 'relative',
-          zIndex: 2000,
+          zIndex: 2202,
         }}
       >
         <Hamburger
@@ -105,6 +105,7 @@ export default function MenuMobile({ navConfig }: MenuProps) {
       </Box>
 
       <Drawer
+        variant="persistent"
         open={drawerOpen}
         anchor='right'
         onClose={handleDrawerClose}
@@ -112,31 +113,44 @@ export default function MenuMobile({ navConfig }: MenuProps) {
         PaperProps={{ sx: { pb: 5, width: 260 } }}
       >
         <Scrollbar>
-          <Stack height="100px" direction="row" alignItems="center" justifyContent="flex-end">
+          <BoxStyle>
+            <List
+              //disablePadding
+              className='List'
+              sx={{
+                //float: 'right',
+                //justifyContent: 'end'
+              }}
+            >
+              {navConfig.map((link) => (
+                <MenuMobileItem key={link.title} item={link} isOpen={open} onOpen={handleOpen} />
+              ))}
+            </List>
+            {!isAuthenticated &&
+              <MenuMobileItem
+                item={{ title: 'Anmelden', path: PATH_LOGIN.login }}
+                isOpen={open}
+                onOpen={handleOpen}
+              />
+            }
+            {isAuthenticated &&
+              <ListItemStyle onClick={() => logout()} >
+                <ListItemText
+                  primaryTypographyProps={{
+                    color: 'dima',
+                    variant: 'h5',
+                  }}
+                  primary={'Ausnmelden'.toUpperCase()}
+                />
+              </ListItemStyle>}
+          </BoxStyle>
 
-          </Stack>
-
-          <List disablePadding>
-            {navConfig.map((link) => (
-              <MenuMobileItem key={link.title} item={link} isOpen={open} onOpen={handleOpen} />
-            ))}
-          </List>
-          {!isAuthenticated &&
-            <MenuMobileItem
-              item={{ title: 'Anmelden', path: PATH_LOGIN.login }}
-              isOpen={open}
-              onOpen={handleOpen}
-            />
-          }
-          {isAuthenticated &&
-            <ListItemStyle onClick={() => logout()} dense>
-              <ListItemText disableTypography primary={'Ausnmelden'} />
-            </ListItemStyle>}
         </Scrollbar>
       </Drawer>
     </>
   );
 }
+
 
 // ----------------------------------------------------------------------
 
@@ -148,14 +162,23 @@ type MenuMobileItemProps = {
 
 function MenuMobileItem({ item, isOpen, onOpen }: MenuMobileItemProps) {
   const { pathname } = useRouter();
-  const { title, path, icon, children } = item;
+  const { title, path, children } = item;
   const isActive = pathname === path;
   if (children) {
     return (
       <>
-        <ListItemStyle onClick={onOpen} dense>
-          <ListItemIcon>{icon}</ListItemIcon>
-          <ListItemText disableTypography primary={title} />
+        <ListItemStyle onClick={onOpen} >
+          {/*<ListItemIcon>{icon}</ListItemIcon>*/}
+          <ListItemText
+            //disableTypography 
+
+            primaryTypographyProps={{
+              color: 'dima',
+              variant: 'h5',
+
+            }}
+            primary={title.toUpperCase()}
+          />
           <Iconify
             icon={isOpen ? 'eva:arrow-ios-downward-fill' : 'eva:arrow-ios-forward-fill'}
             sx={{ width: 16, height: 16, ml: 1 }}
@@ -174,7 +197,6 @@ function MenuMobileItem({ item, isOpen, onOpen }: MenuMobileItemProps) {
                   backgroundPosition: 'center',
                   //bgcolor: 'background.default',
                   backgroundRepeat: 'no-repeat',
-
                 },
               }}
             />
@@ -183,8 +205,6 @@ function MenuMobileItem({ item, isOpen, onOpen }: MenuMobileItemProps) {
       </>
     );
   }
-
-
   return (
     <NextLink href={path} passHref>
       <ListItemStyle
@@ -197,8 +217,14 @@ function MenuMobileItem({ item, isOpen, onOpen }: MenuMobileItemProps) {
           }),
         }}
       >
-        <ListItemIcon>{icon}</ListItemIcon>
-        <ListItemText disableTypography primary={title} />
+        {/*<ListItemIcon>{icon}</ListItemIcon>*/}
+        <ListItemText
+          primaryTypographyProps={{
+            color: 'dima',
+            variant: 'h5',
+          }}
+          primary={title.toUpperCase()}
+        />
       </ListItemStyle>
     </NextLink>
   );

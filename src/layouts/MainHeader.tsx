@@ -12,7 +12,7 @@ import { HEADER } from 'src/config';
 // components
 
 import MenuMobile from './MenuMobile';
-import { menuConfigSecond, menuConfigAdmin } from './MenuConfig';
+import { menuConfigUser, menuConfigAdmin } from './MenuConfig';
 import PhoneNrCom from './PhoneNrCom';
 
 import DimaLogoCom from 'src/components/DimaLogoCom';
@@ -57,7 +57,7 @@ export default function MainHeader({ logo = true }: { logo?: boolean }) {
   const { isAuthenticated } = useAuth();
   const gtc = isDesktop ? 'repeat(3, 1fr)' : isSmall ? '1fr' : 'repeat(2, 1fr)';
   const gc = isDesktop ? '3/4' : '2/3';
-  const menuItems = isAuthenticated ? [...menuConfigSecond, ...menuConfigAdmin] : [...menuConfigSecond]
+  const menuItems = isAuthenticated ? [...menuConfigAdmin] : [...menuConfigUser]
   console.log('isOffset: ', isOffset)
   return (
     <AppBar sx={{
@@ -76,7 +76,6 @@ export default function MainHeader({ logo = true }: { logo?: boolean }) {
         }}
       >
         <Container
-          className='Hallo'
           sx={{
             alignItems: 'center',
             display: "grid",
