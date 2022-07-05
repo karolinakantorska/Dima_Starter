@@ -93,7 +93,7 @@ export default function MenuMobile({ navConfig }: MenuProps) {
       <Box
         onClick={handleOpen} sx={{
           position: 'relative',
-          zIndex: 2000,
+          zIndex: 1202,
         }}
       >
         <Hamburger
@@ -105,6 +105,7 @@ export default function MenuMobile({ navConfig }: MenuProps) {
       </Box>
 
       <Drawer
+        variant="persistent"
         open={drawerOpen}
         anchor='right'
         onClose={handleDrawerClose}

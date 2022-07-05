@@ -9,7 +9,7 @@ export default function Drawer(theme: Theme) {
     MuiDrawer: {
       styleOverrides: {
         paper: {
-          backgroundColor: theme.palette.grey[500_24],
+          backgroundColor: theme.palette.grey[500_56],
   
         },
         modal: {
