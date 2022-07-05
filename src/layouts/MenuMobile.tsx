@@ -94,6 +94,7 @@ export default function MenuMobile({ navConfig }: MenuProps) {
         onClick={handleOpen} sx={{
           position: 'relative',
           zIndex: 1202,
+          //justyfySelf: 'end'
         }}
       >
         <Hamburger
@@ -102,39 +103,40 @@ export default function MenuMobile({ navConfig }: MenuProps) {
           toggled={drawerOpen}
           label={drawerOpen ? "hamburger menu opened" : "hamburger menu closed"}
         />
+        <Drawer
+          variant="persistent"
+          open={drawerOpen}
+          anchor='right'
+          onClose={handleDrawerClose}
+          ModalProps={{ keepMounted: true }}
+          PaperProps={{ sx: { pb: 5, width: 260 } }}
+        >
+          <Scrollbar>
+            <Stack height="100px" direction="row" alignItems="center" justifyContent="flex-end">
+
+            </Stack>
+
+            <List disablePadding>
+              {navConfig.map((link) => (
+                <MenuMobileItem key={link.title} item={link} isOpen={open} onOpen={handleOpen} />
+              ))}
+            </List>
+            {!isAuthenticated &&
+              <MenuMobileItem
+                item={{ title: 'Anmelden', path: PATH_LOGIN.login }}
+                isOpen={open}
+                onOpen={handleOpen}
+              />
+            }
+            {isAuthenticated &&
+              <ListItemStyle onClick={() => logout()} dense>
+                <ListItemText disableTypography primary={'Ausnmelden'} />
+              </ListItemStyle>}
+          </Scrollbar>
+        </Drawer>
       </Box>
 
-      <Drawer
-        variant="persistent"
-        open={drawerOpen}
-        anchor='right'
-        onClose={handleDrawerClose}
-        ModalProps={{ keepMounted: true }}
-        PaperProps={{ sx: { pb: 5, width: 260 } }}
-      >
-        <Scrollbar>
-          <Stack height="100px" direction="row" alignItems="center" justifyContent="flex-end">
 
-          </Stack>
-
-          <List disablePadding>
-            {navConfig.map((link) => (
-              <MenuMobileItem key={link.title} item={link} isOpen={open} onOpen={handleOpen} />
-            ))}
-          </List>
-          {!isAuthenticated &&
-            <MenuMobileItem
-              item={{ title: 'Anmelden', path: PATH_LOGIN.login }}
-              isOpen={open}
-              onOpen={handleOpen}
-            />
-          }
-          {isAuthenticated &&
-            <ListItemStyle onClick={() => logout()} dense>
-              <ListItemText disableTypography primary={'Ausnmelden'} />
-            </ListItemStyle>}
-        </Scrollbar>
-      </Drawer>
     </>
   );
 }

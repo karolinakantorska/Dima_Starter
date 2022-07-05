@@ -67,7 +67,7 @@ export default function MainHeader({ logo = true }: { logo?: boolean }) {
 
     }}>
       <ToolbarStyle
-        //disableGutters
+        disableGutters
         sx={{
           ...(isOffset && {
             //...cssStyles(theme).bgBlur(),
@@ -76,7 +76,6 @@ export default function MainHeader({ logo = true }: { logo?: boolean }) {
         }}
       >
         <Container
-          className='Hallo'
           sx={{
             alignItems: 'center',
             display: "grid",
@@ -93,7 +92,6 @@ export default function MainHeader({ logo = true }: { logo?: boolean }) {
               y={isDesktop ? 64 : isSmall ? 52 : 58}
             />}
           <Box sx={{
-            grid: 'item',
             display: "grid",
             gridColumn: gc,
             gridAutoFlow: 'column',
