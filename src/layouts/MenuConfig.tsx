@@ -9,6 +9,7 @@ import { PATH_DIMA, PATH_JOBS, PATH_KONTAKT, PATH_NEWS, PATH_PROJEKTE, PATH_WEBC
 export const menuConfigUser = [
   {
     title: 'Dima',
+    path: '/',
     children: [
       {
         subheader: '',
@@ -31,6 +32,7 @@ export const menuConfigUser = [
   },
   {
     title: 'Referenzen',
+    path: '/',
     children: [
       {
         subheader: '',
@@ -68,6 +70,7 @@ export const menuConfigUser = [
 export const menuConfigAdmin = [
   {
     title: 'Dima',
+    path: '/',
     children: [
       {
         subheader: '',
@@ -94,6 +97,7 @@ export const menuConfigAdmin = [
   },
   {
     title: 'Referenzen',
+    path: '/',
     children: [
       {
         subheader: '',

@@ -10,6 +10,7 @@ export default function List(theme: Theme) {
           color: 'inherit',
           minWidth: 'auto',
           marginRight: theme.spacing(2),
+          
         },
       },
     },
@@ -26,11 +27,15 @@ export default function List(theme: Theme) {
         root: {
           marginTop: 0,
           marginBottom: 0,
+          
         },
         multiline: {
           marginTop: 0,
           marginBottom: 0,
         },
+        'span':{
+float: 'right'
+        }
       },
     },
   };
