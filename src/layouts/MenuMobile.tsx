@@ -169,6 +169,10 @@ function MenuMobileItem({ item, isOpen, onOpen }: MenuMobileItemProps) {
       <>
         <ListItemStyle onClick={onOpen} >
           {/*<ListItemIcon>{icon}</ListItemIcon>*/}
+          <Iconify
+            icon={isOpen ? 'eva:arrow-ios-downward-fill' : 'eva:arrow-ios-forward-fill'}
+            sx={{ width: 16, height: 16, ml: 1 }}
+          />
           <ListItemText
             //disableTypography 
 
@@ -179,10 +183,7 @@ function MenuMobileItem({ item, isOpen, onOpen }: MenuMobileItemProps) {
             }}
             primary={title.toUpperCase()}
           />
-          <Iconify
-            icon={isOpen ? 'eva:arrow-ios-downward-fill' : 'eva:arrow-ios-forward-fill'}
-            sx={{ width: 16, height: 16, ml: 1 }}
-          />
+
         </ListItemStyle>
 
         <Collapse in={isOpen} timeout="auto" unmountOnExit>

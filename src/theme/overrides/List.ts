@@ -27,15 +27,15 @@ export default function List(theme: Theme) {
         root: {
           marginTop: 0,
           marginBottom: 0,
-          
+          'span':{
+float: 'right'
+        }
         },
         multiline: {
           marginTop: 0,
           marginBottom: 0,
         },
-        'span':{
-float: 'right'
-        }
+        
       },
     },
   };
