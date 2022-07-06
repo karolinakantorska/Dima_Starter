@@ -29,7 +29,13 @@ export default function List(theme: Theme) {
           marginBottom: 0,
           'span':{
 float: 'right'
-        }
+        },
+        /*
+MuiListItemButton:{
+  paddingTop:2,
+  paddingBottom:2,
+}
+*/
         },
         multiline: {
           marginTop: 0,

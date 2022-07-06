@@ -175,11 +175,9 @@ function MenuMobileItem({ item, isOpen, onOpen }: MenuMobileItemProps) {
           />
           <ListItemText
             //disableTypography 
-
             primaryTypographyProps={{
               color: 'dima',
               variant: 'h5',
-
             }}
             primary={title.toUpperCase()}
           />
