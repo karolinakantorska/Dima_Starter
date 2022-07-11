@@ -16,7 +16,8 @@ export type MenuItemProps = {
 };
 
 export type MenuProps = {
- // isOffset: boolean;
- // isHome: boolean;
+  //isOffset: boolean;
+  //isHome: boolean;
   navConfig: MenuItemProps[];
+  size:number
 };

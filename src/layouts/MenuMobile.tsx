@@ -13,15 +13,12 @@ import {
   Collapse,
   LinkProps,
   ListItemText,
-  ListItemIcon,
   ListItemButton,
   ListItemButtonProps,
-  Stack
 } from '@mui/material';
 // config
 import { NAVBAR } from 'src/config';
 // components
-import Iconify from 'src/components/Iconify';
 import Scrollbar from 'src/components/Scrollbar';
 import { NavSectionVertical } from 'src/components/nav-section';
 import { HEADER } from 'src/config';
@@ -29,6 +26,7 @@ import { HEADER } from 'src/config';
 import { MenuProps, MenuItemProps } from './type';
 import useAuth from 'src/utils/firebaseAuth/useAuth';
 import { PATH_LOGIN } from 'src/routes/paths';
+import Link from 'next/link';
 
 // ----------------------------------------------------------------------
 
@@ -53,7 +51,8 @@ const BoxStyle = styled(Box)(({ theme }) => ({
 }));
 
 const ListItemStyle = styled(ListItemButton)<ListItemStyleProps>(({ theme }) => ({
-  ...theme.typography.h5,
+  //...theme.typography.h5,
+  //pt: 8,
   marginTop: 0,
   height: NAVBAR.DASHBOARD_ITEM_ROOT_HEIGHT,
   textTransform: 'uppercase',
@@ -63,11 +62,11 @@ const ListItemStyle = styled(ListItemButton)<ListItemStyleProps>(({ theme }) => 
 
 // ----------------------------------------------------------------------
 
-export default function MenuMobile({ navConfig }: MenuProps) {
+export default function MenuMobile({ navConfig, size }: MenuProps) {
   const { pathname } = useRouter();
-  const [open, setOpen] = useState(false);
-  const [drawerOpen, setDrawerOpen] = useState(false);
 
+  //const [open, setOpen] = useState(false);
+  const [drawerOpen, setDrawerOpen] = useState(true);
   const { logout, isAuthenticated } = useAuth();
   useEffect(() => {
     if (drawerOpen) {
@@ -76,14 +75,9 @@ export default function MenuMobile({ navConfig }: MenuProps) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pathname]);
 
-  const handleOpen = () => {
-    setOpen((open) => !open);
-  };
-
   const handleDrawerOpen = () => {
     setDrawerOpen((openDrawer) => !openDrawer);
   };
-
   const handleDrawerClose = () => {
     setDrawerOpen(false);
   };
@@ -91,107 +85,126 @@ export default function MenuMobile({ navConfig }: MenuProps) {
   return (
     <>
       <Box
-        onClick={handleDrawerOpen} sx={{
+        onClick={handleDrawerOpen}
+        sx={{
           position: 'relative',
           zIndex: 2202,
+          mr: -.5
         }}
       >
         <Hamburger
           easing="ease-in"
-          size={40}
           toggled={drawerOpen}
           label={drawerOpen ? "hamburger menu opened" : "hamburger menu closed"}
+          size={size}
         />
+        <Drawer
+          elevation={0}
+          variant="persistent"
+          open={drawerOpen}
+          anchor='right'
+          onClose={handleDrawerClose}
+          ModalProps={{ keepMounted: false }}
+          PaperProps={{
+            sx: {
+              pb: 5,
+              minWidth: 300
+            }
+          }}
+        >
+          <Scrollbar>
+            <BoxStyle>
+              <List>
+                {navConfig.map((link) => (
+                  <MenuMobileItem
+                    key={link.title}
+                    item={link}
+                  />
+                ))}
+              </List>
+              {!isAuthenticated &&
+                <Link href={PATH_LOGIN.login} passHref>
+                  <ListItemStyle onClick={() => logout()} >
+                    <ListItemText
+                      primaryTypographyProps={{
+                        color: 'text.disabled',
+                        variant: 'h5',
+                      }}
+                      primary={'Anmelden'.toUpperCase()}
+                    />
+                  </ListItemStyle>
+                </Link>
+              }
+              {isAuthenticated &&
+                <ListItemStyle onClick={() => logout()} >
+                  <ListItemText
+                    primaryTypographyProps={{
+                      color: 'text.disabled',
+                      variant: 'h5',
+                    }}
+                    primary={'Ausnmelden'.toUpperCase()}
+                  />
+                </ListItemStyle>}
+            </BoxStyle>
+          </Scrollbar>
+        </Drawer>
       </Box>
 
-      <Drawer
-        variant="persistent"
-        open={drawerOpen}
-        anchor='right'
-        onClose={handleDrawerClose}
-        ModalProps={{ keepMounted: true }}
-        PaperProps={{ sx: { pb: 5, width: 260 } }}
-      >
-        <Scrollbar>
-          <BoxStyle>
-            <List
-              //disablePadding
-              className='List'
-              sx={{
-                //float: 'right',
-                //justifyContent: 'end'
-              }}
-            >
-              {navConfig.map((link) => (
-                <MenuMobileItem key={link.title} item={link} isOpen={open} onOpen={handleOpen} />
-              ))}
-            </List>
-            {!isAuthenticated &&
-              <MenuMobileItem
-                item={{ title: 'Anmelden', path: PATH_LOGIN.login }}
-                isOpen={open}
-                onOpen={handleOpen}
-              />
-            }
-            {isAuthenticated &&
-              <ListItemStyle onClick={() => logout()} >
-                <ListItemText
-                  primaryTypographyProps={{
-                    color: 'dima',
-                    variant: 'h5',
-                  }}
-                  primary={'Ausnmelden'.toUpperCase()}
-                />
-              </ListItemStyle>}
-          </BoxStyle>
 
-        </Scrollbar>
-      </Drawer>
     </>
   );
 }
-
 
 // ----------------------------------------------------------------------
 
 type MenuMobileItemProps = {
   item: MenuItemProps;
-  isOpen: boolean;
-  onOpen: VoidFunction;
 };
 
-function MenuMobileItem({ item, isOpen, onOpen }: MenuMobileItemProps) {
+function MenuMobileItem({ item, }: MenuMobileItemProps) {
+  const [open, setOpen] = useState(false);
   const { pathname } = useRouter();
   const { title, path, children } = item;
   const isActive = pathname === path;
+  const handleOpen = () => {
+    setOpen(true);
+  };
+  const handleClose = () => {
+    setOpen(false);
+  };
   if (children) {
     return (
       <>
-        <ListItemStyle onClick={onOpen} >
-          {/*<ListItemIcon>{icon}</ListItemIcon>*/}
-          <Iconify
-            icon={isOpen ? 'eva:arrow-ios-downward-fill' : 'eva:arrow-ios-forward-fill'}
-            sx={{ width: 16, height: 16, ml: 1 }}
-          />
+        <ListItemStyle
+
+
+        >
           <ListItemText
             //disableTypography 
+            onMouseEnter={handleOpen}
+            onMouseLeave={handleClose}
             primaryTypographyProps={{
               color: 'dima',
               variant: 'h5',
             }}
             primary={title.toUpperCase()}
           />
-
         </ListItemStyle>
 
-        <Collapse in={isOpen} timeout="auto" unmountOnExit>
+        <Collapse
+          in={open}
+          onMouseEnter={handleOpen}
+          onMouseLeave={handleClose}
+          //timeout="auto"
+          unmountOnExit
+        >
           <Box sx={{ display: 'flex', flexDirection: 'column-reverse', mt: '0' }}>
             <NavSectionVertical
               navConfig={children}
               sx={{
                 '& .MuiList-root:last-of-type .MuiListItemButton-root': {
                   height: 40,
-                  paddingLeft: 5,
+                  //paddingLeft: 5,
                   backgroundSize: 'cover',
                   backgroundPosition: 'center',
                   //bgcolor: 'background.default',

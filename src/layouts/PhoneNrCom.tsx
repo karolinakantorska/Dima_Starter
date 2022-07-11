@@ -9,14 +9,13 @@ const Adress = ({ text }: any) => {
 
     const isMiddle = useResponsive('down', 'md');
     const textProps = {
-        pt: .87,
-        pl: isMiddle ? 2 : 3,
+        //pt: .87,
+        //pl: isMiddle ? 2 : 3,
     }
     return (
         <Grid
             container direction='row'
             justifyContent="space-between"
-
         >
             <Typography
                 variant="body2"
@@ -24,7 +23,7 @@ const Adress = ({ text }: any) => {
                 color=" text.secondary"
                 sx={{ ...textProps }}
             >
-                {`${town} ${phone}`}
+                {`${town}: ${phone}`}
             </Typography>
         </Grid>)
 }

@@ -69,6 +69,7 @@ export function ProjektCardCom({
         >
           <CardActionArea
             disableRipple
+            aria-label={project.title}
           >
             <Image src={photo.url} alt={photo.alt} ratio="16/9" />
             {photoAuthor &&

@@ -1,7 +1,7 @@
 import { description } from '../_mock/referenzen/description';
 export const dimaContact = {
     glarus: {
-        phone: ' + 41 55 646 80 00',
+        phone: ' +41 55 646 80 00',
         town: 'Glarus',
         kanton: 'Glarus',
         street: 'gewerbezentrum holenstein',
@@ -10,7 +10,7 @@ export const dimaContact = {
         email: 'info(at)dima-partner.ch'
     },
     zurich: {
-        phone: ' + 41 44 461 89 89',
+        phone: ' +41 44 461 89 89',
         town: 'Zürich',
         kanton: 'Zürich',
         street: 'Grubenstrasse',

@@ -57,17 +57,20 @@ export default function MainHeader({ logo = true }: { logo?: boolean }) {
   const { isAuthenticated } = useAuth();
   const gtc = isDesktop ? 'repeat(3, 1fr)' : isSmall ? '1fr' : 'repeat(2, 1fr)';
   const gc = isDesktop ? '3/4' : '2/3';
-  const menuItems = isAuthenticated ? [...menuConfigAdmin] : [...menuConfigUser]
+
   console.log('isOffset: ', isOffset)
   return (
-    <AppBar sx={{
-      boxShadow: 0,
-      bgcolor: isHome ? 'transparent' : 'background.default',
-      borderBottom: isOffset ? '1px solid #e87b45' : '0px solid background.default',
+    <AppBar
 
-    }}>
+      sx={{
+        boxShadow: 0,
+        bgcolor: isHome ? 'transparent' : 'background.default',
+        borderBottom: isOffset ? '1px solid #e87b45' : '0px solid background.default',
+
+      }}>
       <ToolbarStyle
-        //disableGutters
+        disableGutters
+
         sx={{
           ...(isOffset && {
             //...cssStyles(theme).bgBlur(),
@@ -76,6 +79,7 @@ export default function MainHeader({ logo = true }: { logo?: boolean }) {
         }}
       >
         <Container
+          maxWidth='lm'
           sx={{
             alignItems: 'center',
             display: "grid",
@@ -86,11 +90,10 @@ export default function MainHeader({ logo = true }: { logo?: boolean }) {
           }}
         >
 
-          {logo &&
-            <DimaLogoCom
-              x={isDesktop ? 263 : isSmall ? 211 : 237}
-              y={isDesktop ? 64 : isSmall ? 52 : 58}
-            />}
+          <DimaLogoCom
+            x={isDesktop ? 263 : isSmall ? 146 : 200}
+            y={isDesktop ? 64 : isSmall ? 36 : 50}
+          />
           <Box sx={{
             grid: 'item',
             display: "grid",
@@ -101,7 +104,9 @@ export default function MainHeader({ logo = true }: { logo?: boolean }) {
           }}>
 
             {!isSmall && <PhoneNrCom />}
-            <MenuMobile navConfig={menuItems} />
+            <MenuMobile
+              navConfig={isAuthenticated ? [...menuConfigAdmin] : [...menuConfigUser]} size={isDesktop ? 40 : isSmall ? 30 : 34}
+            />
           </Box>
         </Container>
       </ToolbarStyle>

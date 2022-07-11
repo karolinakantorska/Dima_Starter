@@ -18,6 +18,7 @@ export default function DimaLogoCom({ x, y }: { x: number, y: number }) {
                     width: x,
                     height: y,
                     cursor: 'pointer',
+                    //ml: -1.8
                 }}>
 
                 <svg
@@ -25,7 +26,7 @@ export default function DimaLogoCom({ x, y }: { x: number, y: number }) {
 
                     width="100%"
                     height="100%"
-                    viewBox="0 0 375.17 103.01"
+                    viewBox="35 0 375.17 103.01"
 
                 >
                     {/*<style type="text/css">

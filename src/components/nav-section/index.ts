@@ -8,7 +8,7 @@ export function isExternalLink(path: string) {
 }
 
 export function getActive(path: string, pathname: string, asPath: string) {
-  console.log('path', path)
+
   const checkPath = path.startsWith('#');
 
   return (!checkPath && pathname.includes(path)) || (!checkPath && asPath.includes(path));

@@ -22,7 +22,7 @@ export interface ListItemStyleProps extends IProps {
   subItem?: boolean;
   roles?: string[];
 }
-
+// Tutaj
 export const ListItemStyle = styled(ListItemButton, {
   shouldForwardProp: (prop) => prop !== 'activeRoot' && prop !== 'activeSub' && prop !== 'subItem',
 })<ListItemStyleProps>(({ activeRoot, activeSub, subItem, theme }) => ({

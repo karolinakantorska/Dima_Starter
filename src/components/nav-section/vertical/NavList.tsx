@@ -17,17 +17,15 @@ type NavListRootProps = {
 
 export function NavListRoot({ list, isCollapse }: NavListRootProps) {
   const { pathname, asPath } = useRouter();
-
   const active = getActive(list.path, pathname, asPath);
-
   const [open, setOpen] = useState(active);
-
   const hasChildren = list.children;
 
   if (hasChildren) {
     return (
       <>
         <NavItemRoot
+
           item={list}
           isCollapse={isCollapse}
           active={active}

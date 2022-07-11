@@ -136,12 +136,9 @@ export const menuConfigAdmin = [
   },
 ];
 /*
-  {
-    title: '+ Projekt',
-    path: PATH_PROJEKTE.addProject,
-  },
-  {
-    title: '+ Mitarbeiter',
-    path: PATH_DIMA.neueMitarbeiter
-  },
+| {
+    title: string;
+    path: string;
+    children?: undefined;
+})[]
   */

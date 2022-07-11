@@ -14,6 +14,7 @@ type Props = {
 
 };
 const ContainerStyle = styled(Container)(({ theme }) => ({
+
   paddingTop: HEADER.MIDDLE_HEIGHT,
   //position: 'absolute',
   backgroundColor: 'transparent',
@@ -31,7 +32,7 @@ export default function MainLayout({ children }: Props) {
 
     <Stack sx={{ minHeight: 1, }}>
       <MainHeader />
-      <ContainerStyle   >
+      <ContainerStyle maxWidth='lm'>
         {children}
       </ContainerStyle>
       <Box sx={{ flexGrow: 1 }} />

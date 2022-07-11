@@ -82,13 +82,13 @@ export function TextCardCom({ project, big, rewerseBig, }: {
       <CardContent
         sx={{ ...cardPadding }}
       >
-        <Typography variant="body2" component="h2" sx={{ color: 'text.secondary' }}        >
+        <Typography variant="body2" component="p" sx={{ color: 'text.secondary' }}        >
           {objektAlter.toUpperCase()}
         </Typography>
-        <Typography variant="body2" component="h2" sx={{ color: 'text.secondary' }}        >
+        <Typography variant="body2" component="p" sx={{ color: 'text.secondary' }}        >
           {title.toUpperCase()}
         </Typography>
-        <Typography variant="body2" component="h6" sx={{ mb: 2, pt: '9px', color: 'text.secondary' }}>
+        <Typography variant="body2" component="p" sx={{ mb: 2, pt: '9px', color: 'text.secondary' }}>
           {firstLettersBig(location)}
         </Typography>
       </CardContent>

@@ -129,7 +129,7 @@ const GREY = {
   500_32: alpha('#ada59d', 0.32),
   500_48: alpha('#ada59d', 0.48),
   500_56: alpha('#ada59d', 0.56),
-  500_80: alpha('#ada59d', 0.8),
+  500_80: alpha('#4e4841', 0.8),
 };
 
 const GRADIENTS = {

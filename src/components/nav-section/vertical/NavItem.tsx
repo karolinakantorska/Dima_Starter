@@ -13,39 +13,25 @@ import { isExternalLink } from '..';
 
 export function NavItemRoot({ item, isCollapse, open = false, active, onOpen }: NavItemProps) {
   const { title, path, icon, info, children, disabled, caption, roles } = item;
-
+  //  second nav
   const renderContent = (
-    <>
-      {icon && <ListItemIconStyle>{icon}</ListItemIconStyle>}
-      <ListItemTextStyle
-        disableTypography
-        primary={title}
-        secondary={
-          <Tooltip title={caption || ''} arrow>
-            <Typography
-              noWrap
-              variant="caption"
-              component="div"
-              sx={{ textTransform: 'initial', color: 'text.secondary' }}
-            >
-              {caption}
-            </Typography>
-          </Tooltip>
-        }
-        isCollapse={isCollapse}
-      />
-      {!isCollapse && (
-        <>
-          {info && info}
-          {children && <ArrowIcon open={open} />}
-        </>
-      )}
-    </>
+    <ListItemTextStyle
+      className="Nav-List-Item"
+      //disableTypography
+      primary={title}
+      primaryTypographyProps={{
+        color: 'dima',
+        variant: 'h5',
+        alignItems: "end"
+      }}
+    />
+
+
   );
 
   if (children) {
     return (
-      <ListItem onClick={onOpen} activeRoot={active} disabled={disabled} roles={roles}>
+      <ListItem onClick={onOpen} activeRoot={active} disabled={disabled} roles={roles} className="Nav-Item-Root">
         {renderContent}
       </ListItem>
     );
@@ -53,6 +39,7 @@ export function NavItemRoot({ item, isCollapse, open = false, active, onOpen }: 
 
   return isExternalLink(path) ? (
     <ListItem
+      className="Nav-Item-Root"
       component={Link}
       href={path}
       target="_blank"
@@ -63,8 +50,14 @@ export function NavItemRoot({ item, isCollapse, open = false, active, onOpen }: 
       {renderContent}
     </ListItem>
   ) : (
-    <NextLink href={path} passHref>
-      <ListItem activeRoot={active} disabled={disabled} roles={roles}>
+    <NextLink href={path} passHref >
+      <ListItem
+        className="Nav-Item-Root"
+        activeRoot={active}
+        disabled={disabled}
+        roles={roles}
+        sx={{ mb: 0 }}
+      >
         {renderContent}
       </ListItem>
     </NextLink>
@@ -80,25 +73,16 @@ export function NavItemSub({ item, open = false, active = false, onOpen }: NavIt
 
   const renderContent = (
     <>
-      <DotIcon active={active} />
+      {false && <DotIcon active={active} />}
       <ListItemText
-        disableTypography
+        className="List-Item-Text"
+        //disableTypography
+        primaryTypographyProps={{
+          color: 'red',
+          variant: 'h5',
+        }}
         primary={title}
-        secondary={
-          <Tooltip title={caption || ''} arrow>
-            <Typography
-              noWrap
-              variant="caption"
-              component="div"
-              sx={{ textTransform: 'initial', color: 'text.secondary' }}
-            >
-              {caption}
-            </Typography>
-          </Tooltip>
-        }
       />
-      {info && info}
-      {children && <ArrowIcon open={open} />}
     </>
   );
 
@@ -123,8 +107,12 @@ export function NavItemSub({ item, open = false, active = false, onOpen }: NavIt
       {renderContent}
     </ListItem>
   ) : (
-    <NextLink href={path} passHref>
-      <ListItem activeSub={active} subItem disabled={disabled} roles={roles}>
+    <NextLink href={path} passHref >
+      <ListItem
+        activeSub={active}
+        subItem
+        disabled={disabled}
+        roles={roles} >
         {renderContent}
       </ListItem>
     </NextLink>

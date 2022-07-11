@@ -83,7 +83,7 @@ const typography = {
     fontWeight: 400,
     lineHeight: 23 / 20,
     fontSize: pxToRem(16),
-    ...responsiveFontSizes({ sm: 17, md: 18, lg: 20 }),
+    ...responsiveFontSizes({ sm: 16, md: 18, lg: 20 }),
   },
   caption: {
     lineHeight: 28 / 24,
