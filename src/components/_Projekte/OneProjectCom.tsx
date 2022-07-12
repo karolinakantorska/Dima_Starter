@@ -83,6 +83,7 @@ export function OneProjectCom({ project }: { project: ProjectType }) {
         spacing={isDesktop ? 20 : isSmall ? 5 : 8}
       >
         <CarouselBasic3 photos={photosCarusel} />
+
         <Box
           sx={{
             display: 'grid',
@@ -91,7 +92,7 @@ export function OneProjectCom({ project }: { project: ProjectType }) {
           }}
         >
           <Box sx={isSmall ? { pl: 0 } : { pl: 5 }}>
-            <Table >
+            <Table id="Project_Table">
               <TableBody>
                 {isMobile && row2().map((row) => (<TableRowMobile key={row.name} row={row} />))}
                 {!isMobile && row2().map((row) => (<TableRowDesktop key={row.name} row={row} />))}

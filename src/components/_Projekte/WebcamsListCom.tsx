@@ -16,8 +16,7 @@ import { WebcamsCardCom } from './WebcamsCardCom';
 export function WebcamsListCom() {
   //const initialInputs = { param: "Alle" }
 
-  const isDesktop = useResponsive('up', 'lm');
-
+  const isDesktop = useResponsive('up', 'lg');
   const isSmall = useResponsive('down', 'sm');
   const gtc = isDesktop ? 'repeat(3, 1fr)' : isSmall ? '1fr' : 'repeat(2, 1fr)';
   //const { query } = useRouter();
@@ -27,7 +26,7 @@ export function WebcamsListCom() {
       <SiteTitle text={layoutHeader.webcam} />
       <Box
         display="grid"
-        gridTemplateColumns='repeat(3, 1fr)'
+        gridTemplateColumns={gtc}
         columnGap="12px"
         rowGap="12px"
         sx={{ mt: 6 }}

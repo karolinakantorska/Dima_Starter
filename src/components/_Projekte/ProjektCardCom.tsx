@@ -10,7 +10,7 @@ import Image from '../Image';
 import useResponsive from '../../hooks/useResponsive';
 import Link from 'next/link';
 import { ProjectType } from 'src/utils/TS/interface';
-import { TextCardCom } from './textCardCom';
+import { TextCardCom } from './TextCardCom';
 import { CardActionArea } from '@mui/material';
 import { PATH_PROJEKTE } from 'src/routes/paths';
 import Typography from '@mui/material/Typography';

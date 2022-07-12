@@ -2,11 +2,12 @@ import { ReactNode } from 'react';
 import { IconifyIcon } from '@iconify/react';
 // @mui
 import { useTheme, } from '@mui/material/styles';
-import { Box, BoxProps, Stack, StackProps, Button, } from '@mui/material';
+import { Box, BoxProps, StackProps, Button, } from '@mui/material';
 //
 
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
+
 // ----------------------------------------------------------------------
 
 
@@ -61,68 +62,69 @@ export default function CarouselArrows({
       fontSize: 40,
     },
   }
-  if (children) {
-    return (
-      <Box {...other} className="arrow box">
-        <Box sx={{ ...style, }}>
-          <Button
-            className='carousel button'
-            aria-label="previous photo"
-            size="large"
-            onClick={onPrevious}
-            sx={{
-              justifyContent: 'left',
-              ...buttonStyle
-            }}
-          >
-            <ArrowBackIosNewIcon sx={{ ...arrowStyle }} />
-          </Button>
-        </Box>
-
-        {children}
-
-        <Box sx={{ ...style, right: 0 }}>
-          <Button
-            aria-label="previous photo"
-            size="large"
-            onClick={onNext}
-            sx={{
-              justifyContent: 'right',
-              ...buttonStyle
-            }}
-          >
-            <ArrowForwardIosIcon sx={{ ...arrowStyle }} />
-          </Button>
-        </Box>
-      </Box>
-    );
-  }
-
+  //if (children) {
   return (
-    <Stack direction="row" spacing={1} {...other}>
-      <Button
-        aria-label="previous photo"
-        size="large"
-        sx={{
-          justifyContent: 'left',
-          ...buttonStyle
-        }}
-      >
-        <ArrowBackIosNewIcon sx={{ ...arrowStyle }} />
-      </Button>
-      <p>no photos</p>
-      <Button
-        aria-label="previous photo"
-        size="large"
-        sx={{
-          justifyContent: 'right',
-          ...buttonStyle
-        }}
-      >
-        <ArrowForwardIosIcon sx={{ ...arrowStyle }} />
-      </Button>
-    </Stack>
+    <Box {...other} className="arrow box">
+      <Box sx={{ ...style, }}>
+        <Button
+          className='carousel button'
+          aria-label="previous photo"
+          size="large"
+          onClick={onPrevious}
+          sx={{
+            justifyContent: 'left',
+            ...buttonStyle
+          }}
+        >
+          <ArrowBackIosNewIcon sx={{ ...arrowStyle }} />
+        </Button>
+      </Box>
+
+      {children}
+
+      <Box sx={{ ...style, right: 0 }}>
+        <Button
+          aria-label="previous photo"
+          size="large"
+          onClick={onNext}
+          sx={{
+            justifyContent: 'right',
+            ...buttonStyle
+          }}
+        >
+          <ArrowForwardIosIcon sx={{ ...arrowStyle }} />
+        </Button>
+      </Box>
+    </Box>
   );
+  // }
+  /*
+    return (
+      <Stack direction="row" spacing={1} {...other}>
+        <Button
+          aria-label="previous photo"
+          size="large"
+          sx={{
+            justifyContent: 'left',
+            ...buttonStyle
+          }}
+        >
+          <ArrowBackIosNewIcon sx={{ ...arrowStyle }} />
+        </Button>
+        <p>no photos</p>
+        <Button
+          aria-label="previous photo"
+          size="large"
+          sx={{
+            justifyContent: 'right',
+            ...buttonStyle
+          }}
+        >
+          <ArrowForwardIosIcon sx={{ ...arrowStyle }} />
+        </Button>
+      </Stack>
+    );
+    */
 }
 
 

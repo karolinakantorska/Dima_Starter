@@ -1,17 +1,19 @@
 import Slider from "react-slick";
 import { useRef } from 'react';
 // @mui
-import { useTheme, styled } from '@mui/material/styles';
-import { Box } from '@mui/material';
+import { styled } from '@mui/material/styles';
+import { Box, Link } from '@mui/material';
 // _mock_
 import { _carouselsExample } from 'src/_mock';
 // components
-import Image from 'src/components/Image';
+//import Image from 'src/components/Image';
 import { CarouselDots, CarouselArrows } from 'src/components/carousel';
 import { ImagesType } from '../../utils/TS/interface';
 import { DimaName } from "src/utils/dima";
 import * as logo from "/public/assets/bg_gradient.jpeg"
-
+import Image from "next/image";
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import { useTheme, } from '@mui/material/styles';
 // ----------------------------------------------------------------------
 
 const RootStyle = styled(Box)(({ theme }) => ({
@@ -46,12 +48,57 @@ export default function CarouselBasic3({ photos }: { photos: ImagesType }) {
   const handleNext = () => {
     carouselRef.current?.slickNext();
   };
+  const theme = useTheme();
+  const propsArrowSlider = {
+    position: 'absolute',
+    bottom: 45,
+    left: ' 50%',
+    ml: '-30px',
+    color: 'dima',
+    fontSize: 60,
+
+    [theme.breakpoints.down('mobile')]: {
+      fontSize: 20,
+      ml: '-10px',
+    },
+    [theme.breakpoints.between('mobile', 'lg')]: {
+      fontSize: 70,
+      ml: '-35px',
+    },
+  }
+  const propsArrow = {
+    position: 'relative',
+    //bottom: 0,
+    left: '50%',
+    ml: '-40px',
+    mt: '-10px',
+    color: 'dima',
+    fontSize: 80,
+    [theme.breakpoints.down('mobile')]: {
+      fontSize: 20,
+      ml: '-10px',
+    },
+    [theme.breakpoints.between('mobile', 'lg')]: {
+      fontSize: 70,
+      ml: '-35px',
+    },
+  }
   if (photos.length === 1) {
     const photo = {
       url: photos[0].url ? photos[0].url : logo.default.src,
       alt: photos[0].alt ? photos[0].alt : DimaName.whole
     }
-    return <CarouselItem key={photo.alt} item={{ image: photo.url, title: photo.alt, description: photo.alt }} />
+    return (
+      <>
+        <Box>
+          <CarouselItem key={photo.alt} item={{ image: photo.url, title: photo.alt, description: photo.alt }} />
+          <Link href="#Project_Table" underline="none">
+            < KeyboardArrowDownIcon sx={{ ...propsArrow }} />
+          </Link>
+        </Box>
+      </>
+
+    )
   }
   else {
     return (
@@ -66,7 +113,14 @@ export default function CarouselBasic3({ photos }: { photos: ImagesType }) {
             ))
             }
           </Slider>
+
+          <Link href="#Project_Table" underline="none">
+            < KeyboardArrowDownIcon sx={{ ...propsArrowSlider }} />
+          </Link>
+
+
         </CarouselArrows>
+
       </RootStyle>
     );
   }
@@ -83,5 +137,10 @@ type CarouselItemProps = {
 function CarouselItem({ item }: { item: CarouselItemProps }) {
   const { image, title } = item;
 
-  return <Image alt={title} src={image} ratio="16/9" />;
+  return (
+    <Image src={image} height={675} width={1200} alt={title} />
+  );
 }
+/*
+<Image alt={title} src={image} ratio="16/9" alt={title}  />
+*/

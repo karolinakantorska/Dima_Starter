@@ -1,3 +1,4 @@
+// Title max 30 signs
 export const webcams = [
     {
         id: '1',
@@ -8,14 +9,14 @@ export const webcams = [
     },
     {
         id: '2',
-        title: 'Wohn- & Pflegezentrum, Richterswil',
+        title: 'Wohn-Pflege Richterswil',
         end: '2022',
         url: 'https://www.bau-cam.ch/dima/cam2/livebild.php',
         url2: 'https://www.bau-cam.ch/dima/cam2/auswahl_tagesfilm.php'
     },
     {
         id: '3',
-        title: 'Neubau Überbauung Maseltrangen',
+        title: 'Neubau Maseltrangen',
         end: '2022',
         url: 'https://www.bau-cam.ch/dima/cam3/livebild.php',
         url2: 'https://www.bau-cam.ch/dima/cam3/auswahl_tagesfilm.php'
@@ -29,14 +30,14 @@ export const webcams = [
     },
     {
         id: '5',
-        title: 'Neubau MFH Hofwiesenstrasse, Zürich',
+        title: 'Neubau MFH Hofwiesenstr. ZH',
         end: '2022',
         url: 'https://www.bau-cam.ch/dima/cam5/livebild.php',
         url2: 'https://www.bau-cam.ch/dima/cam5/auswahl_tagesfilm.php'
     },
     {
         id: '6',
-        title: 'Neubau MFH Arabienstrasse, Basel',
+        title: 'Neubau MFH Arabienstr., Basel',
         end: '2022',
         url: 'https://www.bau-cam.ch/dima/cam6/livebild.php',
         url2: 'https://www.bau-cam.ch/dima/cam6/auswahl_tagesfilm.php'

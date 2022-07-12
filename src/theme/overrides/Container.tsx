@@ -9,6 +9,10 @@ export default function Container(theme: Theme) {
     MuiContainer: {
       styleOverrides: {
         root: {
+          '@media (min-width: 1499px)': {
+            paddingLeft: 0,
+            paddingRight: 0,
+          },
           '@media (max-width: 1500px)': {
             paddingLeft: theme.spacing(19),
             paddingRight: theme.spacing(19),
