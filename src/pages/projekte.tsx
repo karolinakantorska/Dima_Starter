@@ -4,7 +4,7 @@ import Layout from '../layouts';
 // components
 import Page from '../components/Page';
 
-import { ProjectsListCom } from '../components/_Projekte/ProjectsListCom';
+import { ProjectsListCom } from '../components/_Projekte/projectsListCom';
 import { getOrderedCollection } from "src/utils/apis/apis";
 
 // ----------------------------------------------------------------------
