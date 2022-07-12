@@ -17,17 +17,17 @@ export const SiteTitle = ({ text }: LayoutHeader) => {
                 <Typography variant="h3" component="h2" sx={{ color: 'text.primary' }}>
                     {title.toUpperCase()}
                 </Typography>
-                <Typography variant="h4" component="h3" sx={{ color: 'dima', mt: -1.5 }}>
+                <Typography variant="h4" component="h3" sx={{ color: 'dima', mt: 0 }}>
                     {untertitle}
                 </Typography>
             </Box>
             <Box display="grid"
-                gridTemplateColumns='5px auto'
-                columnGap="12px"
+                gridTemplateColumns='6px 490px'
+                columnGap="24px"
             >
                 <Box sx={{ backgroundColor: 'dima' }} />
                 <Typography
-                    variant="body2"
+                    variant="body1"
                     component="h2"
                     //align='justify' 
                     sx={{ color: 'text.primary' }} >

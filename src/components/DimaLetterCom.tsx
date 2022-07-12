@@ -8,8 +8,8 @@ import { Box, BoxProps } from '@mui/material';
 
 export default function DimaLetterCom({ x, y }: { x: number, y: number }) {
 
-    const PARTNER = 'rgb(232, 123, 69)';
-    const DIMA = '#eee5dd';
+    const PARTNER = '#EF7B10';
+    const DIMA = '#DADADA';
 
     return (
         <NextLink href="/">

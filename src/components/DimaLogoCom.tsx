@@ -8,8 +8,8 @@ import { Box, BoxProps } from '@mui/material';
 
 export default function DimaLogoCom({ x, y }: { x: number, y: number }) {
 
-    const PARTNER = 'rgb(232, 123, 69)';
-    const DIMA = '#eee5dd';
+    const PARTNER = '#EF7B10';
+    const DIMA = '#DADADA';
 
     return (
         <NextLink href="/">
@@ -30,7 +30,7 @@ export default function DimaLogoCom({ x, y }: { x: number, y: number }) {
 
                 >
                     {/*<style type="text/css">
-          .st0{fill:#69614E;}
+          .st0{fill:#DADADA;}
           .st1{fill:#EF7B10;}
   </style>*/}
                     <g>

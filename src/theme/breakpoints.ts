@@ -7,11 +7,11 @@ const breakpoints = {
     sm: 600,
     md: 900,
     lm: 1200,
-    lg: 1500,
-    xl: 1800,
+    lg: 1524,
+    xl: 1900,
   },
 };
- 
+  
 export default breakpoints;
 
 declare module '@mui/material/styles' {

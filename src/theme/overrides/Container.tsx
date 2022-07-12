@@ -9,9 +9,17 @@ export default function Container(theme: Theme) {
     MuiContainer: {
       styleOverrides: {
         root: {
-          '@media (min-width: 1499px)': {
+
+          '@media (min-width: 1917px)': {
             paddingLeft: 0,
             paddingRight: 0,
+
+          },
+
+          '@media (max-width: 1916px)': {
+            paddingLeft: theme.spacing(26),
+            paddingRight: theme.spacing(26),
+            maxWidth: 'none',
           },
           '@media (max-width: 1500px)': {
             paddingLeft: theme.spacing(19),
@@ -33,6 +41,11 @@ export default function Container(theme: Theme) {
             paddingLeft: theme.spacing(4),
             paddingRight: theme.spacing(4),
           },
+          /*
+          '@media(min-width: 1524px)': {
+            maxWidth: 'none',
+          }
+*/
         },
       },
     }

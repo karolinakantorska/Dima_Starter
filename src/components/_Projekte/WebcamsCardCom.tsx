@@ -26,7 +26,7 @@ export function WebcamsCardCom({ wcam }: { wcam: any }) {
 
 
   return (
-    <Card>
+    <Card sx={{ height: '350px' }}>
       <Box
         component='iframe'
         overflow='hidden'
@@ -37,7 +37,7 @@ export function WebcamsCardCom({ wcam }: { wcam: any }) {
         seamless
         sx={{
           pointerEvents: 'none',
-          height: '280px',
+          height: '366px',
           width: isMiddle ? isSmall ? '110%' : '140%' : '110%',
           borderColor: 'dima',
           border: 'none ',
@@ -49,16 +49,16 @@ export function WebcamsCardCom({ wcam }: { wcam: any }) {
         <p>Ihr Browser unterstützt keine iframes.</p>
       </Box>
 
-      <Box sx={{ height: 70, pl: 2, pt: 1.65 }}>
+      <Box sx={{ height: 70, pl: 2.25, pt: 1.60, pb: 1.1 }}>
         <Typography
-          variant="body2"
+          variant="body1"
           component="p"
           sx={{ color: 'dima', }}
         >
           {`${title.toUpperCase()}`}
         </Typography>
         <Typography
-          variant="body2"
+          variant="body1"
           component="p"
           sx={{ color: 'text.secondary', }}
         >
@@ -75,12 +75,13 @@ export function WebcamsCardCom({ wcam }: { wcam: any }) {
         <Box
           sx={{
             position: 'absolute',
-            backgroundColor: 'text.primary',
+            backgroundColor: 'text.white',
             width: '100%',
             height: '100%',
             bottom: 0,
             cursor: 'pointer',
             opacity: 0,
+            ariaLabel: `Link zum ${title} Baucam`,
             '&:hover': {
               opacity: 0.1,
             }

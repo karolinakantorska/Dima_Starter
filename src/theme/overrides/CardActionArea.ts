@@ -12,7 +12,7 @@ export default function CardActionArea(theme: Theme) {
 '.MuiTouchRipple-child': {
 
         },
-        },
+        }, 
 
       },
     },

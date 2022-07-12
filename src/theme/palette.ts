@@ -65,11 +65,11 @@ declare module '@mui/material' {
 
 // SETUP COLORS
 const PRIMARY = {
-  lighter: '#f6cebc',
-  light: '#eb9166',
-  main: 'rgb(232, 123, 69)',// #e87b45
-  dark: '#e56825',
-  darker: '#bf551b',
+  lighter: '#fef3e1',
+  light: '#faa62e',
+  main: '#EF7B10',//#EF7B10
+  dark: '#e96c0e',
+  darker: '#df530c',
 };
 const SECONDARY = {
   lighter: '#b5e3f7',
@@ -108,28 +108,28 @@ const ERROR = {
 };
 
 const GREY = {
-  0: '#fffaf2',
-  0o6: alpha('#fff', 0.32),
-  0o7: alpha('#fff', 0.08),
-  100: '#fdf5ed',
-  200: '#f8f0e8',
-  300: '#eee5dd',//'#eee5dd''#DADADA'
-  400: '#cbc3bb',
-  500: '#ada59d',// shadows from this color
-  600: '#837b74',
-  700: 'rgb(110, 103, 96)',// dima 	6E6760
-  800: '#4e4841',
-  850: '#39322B',
-  900: '#2c2620',
-  900_12: alpha('#2c2620', 0.12),
-  500_8: alpha('#ada59d', 0.08),
-  500_12: alpha('#ada59d', 0.12),
-  500_16: alpha('#ada59d', 0.16),
-  500_24: alpha('#ada59d', 0.24),
-  500_32: alpha('#ada59d', 0.32),
-  500_48: alpha('#ada59d', 0.48),
-  500_56: alpha('#ada59d', 0.56),
-  500_80: alpha('#4e4841', 0.8),
+  0: '#f9f9f9',
+  0o6: alpha('#f9f9f9', 0.32),
+  0o7: alpha('#f9f9f9', 0.08),
+  100: '#f2f2f2',
+  200: '#eaeaea',
+  300: '#DADADA',//'#DADADA'
+  400: '#b6b6b6',
+  500: '#979797',
+  600: '#6e6e6e',
+  700: '#5b5b5b',
+  800: '#3c3c3c',
+  850: '#2F2F2F',
+  900: '#2B251F', //#2f2f2f
+  900_12: alpha('#2B251F', 0.12),
+  500_8: alpha('#979797', 0.08),
+  500_12: alpha('#979797', 0.12),
+  500_16: alpha('#979797', 0.16),
+  500_24: alpha('#979797', 0.24),
+  500_32: alpha('#979797', 0.32),
+  500_48: alpha('#979797', 0.48),
+  500_56: alpha('#979797', 0.56),
+  500_80: alpha('#3c3c3c', 0.8),
 };
 
 const GRADIENTS = {
@@ -183,7 +183,7 @@ const palette = {
     ...COMMON, 
     mode: 'dark',
     text: { 
-      white:'#fff' ,
+      white:PRIMARY.lighter ,
       primary: GREY[0], 
       secondary: GREY[300], 
       disabled: GREY[600],

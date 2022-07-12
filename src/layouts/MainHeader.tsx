@@ -79,7 +79,8 @@ export default function MainHeader({ logo = true }: { logo?: boolean }) {
         }}
       >
         <Container
-          maxWidth='lm'
+          disableGutters
+          maxWidth='lg'
           sx={{
             alignItems: 'center',
             display: "grid",

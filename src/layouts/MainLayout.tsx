@@ -32,7 +32,7 @@ export default function MainLayout({ children }: Props) {
 
     <Stack sx={{ minHeight: 1, }}>
       <MainHeader />
-      <ContainerStyle maxWidth='lm'>
+      <ContainerStyle maxWidth='lg'>
         {children}
       </ContainerStyle>
       <Box sx={{ flexGrow: 1 }} />
