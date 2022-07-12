@@ -63,7 +63,7 @@ export function CardPersonCom({ person }: { person: Person }) {
                         justifyContent="space-between"
                         alignItems="flex-end"
                     >
-                        {job.map((job) => <Typography key={job} variant="body2" component="p" >{job}</Typography>)}
+                        {job.map((job) => <Typography key={job} variant="body2" component="p" sx={{ mr: '15px' }}>{job}</Typography>)}
                         <Mail email={email} />
 
                     </Stack>

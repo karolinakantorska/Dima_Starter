@@ -52,15 +52,24 @@ styleOverrides: {
           'span':{
           float: 'right'
         },
-
-                  '@media (min-width: 1200px)': {
-            paddingLeft: theme.spacing(13),
-            paddingRight: theme.spacing(13),
+'@media (min-width: 1917px)': {
+            //paddingLeft: 0,
+            //paddingRight: 0,
           },
-          '@media (max-width: 1199px)': {
+          '@media (max-width: 1916px)': {
+            paddingLeft: theme.spacing(26),
+            paddingRight: theme.spacing(26),
+            maxWidth: 'none',
+          },
+          '@media (max-width: 1500px)': {
+            paddingLeft: theme.spacing(19),
+            paddingRight: theme.spacing(19),
+          },
+          '@media (max-width: 1200px)': {
             paddingLeft: theme.spacing(9),
             paddingRight: theme.spacing(9),
           },
+
           '@media (max-width: 900px)': {
             paddingLeft: theme.spacing(7),
             paddingRight: theme.spacing(7),
@@ -70,8 +79,8 @@ styleOverrides: {
             paddingRight: theme.spacing(5),
           },
           '@media (max-width: 450px)': {
-            paddingLeft: theme.spacing(3),
-            paddingRight: theme.spacing(3),
+            paddingLeft: theme.spacing(4),
+            paddingRight: theme.spacing(4),
           },
         },
         multiline: {

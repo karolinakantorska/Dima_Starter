@@ -15,6 +15,7 @@ import {
   ListItemText,
   ListItemButton,
   ListItemButtonProps,
+  Stack,
 } from '@mui/material';
 // config
 import { NAVBAR } from 'src/config';
@@ -37,13 +38,14 @@ interface ListItemStyleProps extends StyleProps {
 }
 
 
+
 const BoxStyle = styled(Box)(({ theme }) => ({
   paddingTop: HEADER.MIDDLE_HEIGHT,
   //position: 'absolute',
   backgroundColor: 'transparent',
   [theme.breakpoints.up('lm')]: {
     paddingTop: HEADER.MAIN_DESKTOP_HEIGHT,
-    //marginTop: '5px'
+    marginTop: '5px'
   },
   [theme.breakpoints.down('sm')]: {
     paddingTop: HEADER.MOBILE_HEIGHT,
@@ -115,12 +117,14 @@ export default function MenuMobile({ navConfig, size }: MenuProps) {
           <Scrollbar>
             <BoxStyle>
               <List>
-                {navConfig.map((link) => (
-                  <MenuMobileItem
-                    key={link.title}
-                    item={link}
-                  />
-                ))}
+                <Stack direction='column'>
+                  {navConfig.map((link) => (
+                    <MenuMobileItem
+                      key={link.title}
+                      item={link}
+                    />
+                  ))}
+                </Stack>
               </List>
               {!isAuthenticated &&
                 <Link href={PATH_LOGIN.login} passHref>
