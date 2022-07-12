@@ -16,9 +16,9 @@ import { CardPersonCom } from './CardPersonCom';
 export function TeamListCom() {
   //const initialInputs = { param: "Alle" }
 
-  const isDesktop = useResponsive('up', 'lm');
-  const isMiddle = useResponsive('up', 'md');
-  const isSmall = useResponsive('up', 'sm');
+  const isDesktop = useResponsive('up', 'lg');
+  const isMiddle = useResponsive('up', 'lm');
+  const isSmall = useResponsive('up', 'md');
   const gtc = isDesktop ? 'repeat(4, 1fr)' : isMiddle ? 'repeat(3, 1fr)' : isSmall ? 'repeat(2, 1fr)' : 'repeat(1, 1fr)'
 
 
@@ -33,7 +33,7 @@ export function TeamListCom() {
         //justifyItems='stretch'
         //gridAutoFlow="dense"
         columnGap="11px"
-        rowGap="23px"
+        rowGap="20px"
         sx={{ mt: 6 }}
       >
         {team.map((person) => <CardPersonCom key={person.id} person={person} />)}

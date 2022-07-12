@@ -22,13 +22,14 @@ export const SiteTitle = ({ text }: LayoutHeader) => {
                 </Typography>
             </Box>
             <Box display="grid"
-                gridTemplateColumns='6px 490px'
+                gridTemplateColumns='6px 1fr'
                 columnGap="24px"
             >
                 <Box sx={{ backgroundColor: 'dima' }} />
                 <Typography
                     variant="body1"
                     component="h2"
+                    maxHeight='490px'
                     //align='justify' 
                     sx={{ color: 'text.primary' }} >
                     {description}

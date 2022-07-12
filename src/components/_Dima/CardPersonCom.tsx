@@ -25,7 +25,7 @@ export function CardPersonCom({ person }: { person: Person }) {
     }
 
     const open = Boolean(anchorEl);
-    const isDesktop = useResponsive('up', 'lm');
+    const isDesktop = useResponsive('up', 'lg');
     const isSmall = useResponsive('down', 'sm');
     const { photo, name, surname, title, job, email } = person;
 
@@ -36,21 +36,20 @@ export function CardPersonCom({ person }: { person: Person }) {
         <Card >
             <CardMedia
                 component="img"
+                height={isDesktop ? 545 : 'auto'}
                 image={photo}
                 alt={`${name} ${surname} ${job}`}
-
             />
-
             <Grid
                 container
                 direction="column"
                 justifyContent="space-between"
                 alignItems="flex-start"
-                sx={{ p: 3.25, pb: 4, height: '195px' }}
+                sx={isSmall ? { p: 1.75, height: '130px' } : { px: 3.25, pt: 4.15, pb: 4, height: '195px' }}
             >
                 <Grid item>
                     <Typography
-                        variant="h5"
+                        variant="body2"
                         component="h2"
                         sx={{ color: 'dima' }}
                     >
