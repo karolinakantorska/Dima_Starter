@@ -23,12 +23,7 @@ export function WebcamsCardCom({ wcam }: { wcam: any }) {
   const router = useRouter()
   //const gtc = isDesktop ? 'repeat(3, 1fr)' : isSmall ? '1fr' : 'repeat(2, 1fr)';
   //const { query } = useRouter();
-  const handleClick = (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    e.stopImmediatePropagation();
-    router.push(url);
-  }
+
 
   return (
     <Card>
@@ -94,6 +89,3 @@ export function WebcamsCardCom({ wcam }: { wcam: any }) {
     </Card >
   )
 }
-/*
- <a target="_self" href={url} rel="noopener" >
-          */

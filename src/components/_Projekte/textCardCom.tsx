@@ -21,7 +21,7 @@ export function TextCardCom({ project, big, rewerseBig, }: {
   ,
 }) {
 
-  const { push } = useRouter();
+
   const [open, setOpen] = useState(false);
   const [error, setError] = useState<null | { code: string, message: string }>(null);
   const { title, location, id, objektAlter, } = project;

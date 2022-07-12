@@ -10,10 +10,11 @@ import Image from '../Image';
 import useResponsive from '../../hooks/useResponsive';
 import Link from 'next/link';
 import { ProjectType } from 'src/utils/TS/interface';
-import { TextCardCom } from './TextCardCom';
+
 import { CardActionArea } from '@mui/material';
 import { PATH_PROJEKTE } from 'src/routes/paths';
 import Typography from '@mui/material/Typography';
+import { TextCardCom } from './textCardCom';
 
 export function ProjektCardCom({
   project,
@@ -83,6 +84,7 @@ export function ProjektCardCom({
           </CardActionArea>
         </Card>
       </Link>
+
       <TextCardCom project={project} big={isBig} rewerseBig={rewerseBig} />
     </Box >
   );
