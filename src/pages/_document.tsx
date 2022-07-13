@@ -22,13 +22,12 @@ export default class MyDocument extends Document {
           <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
           <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png" />
           <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png" />
-
-          <link rel="manifest" href="/manifest.json" />
-          <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#e87b45" />
-          <meta name="msapplication-TileColor" content="#6e6760" />
-          <meta name="theme-color" content="#39322b" />
-
-
+          {/*</link>
+          <link rel="manifest" href="/manifest.json" />*/}
+          <link rel="manifest" href="/site.webmanifest" />
+          <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#EF7B10" />
+          <meta name="msapplication-TileColor" content="#2b251f" />
+          <meta name="theme-color" content="#ffffff" />
 
 
           <link rel="preconnect" href="https://fonts.gstatic.com" />

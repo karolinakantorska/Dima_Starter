@@ -18,7 +18,6 @@ export function JobsListCom() {
   //const initialInputs = { param: "Alle" }
 
   const isDesktop = useResponsive('up', 'lm');
-
   const isSmall = useResponsive('down', 'sm');
 
   //const { query } = useRouter();
@@ -31,7 +30,7 @@ export function JobsListCom() {
         gridTemplateColumns='repeat(3, 1fr)'
         columnGap="12px"
         rowGap="12px"
-        sx={{ mt: 6 }}
+        sx={{ mt: 7.5 }}
       >
 
         {jobs.map((job, i) => (

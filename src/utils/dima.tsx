@@ -42,6 +42,11 @@ export const layoutHeader = {
         untertitle: 'Wir bieten Ihnen einen modernen Arbeitsplatz.',
         description: 'Wir bieten Ihnen einen modernen Arbeitsplatz in einem jungen Team sowie spannende Projekte und die besten Möglichkeiten, sich weiter zu entwickeln.'
     },
+    contact: {
+        title: 'kontakt',
+        untertitle: 'Wo Sie uns finden könen.',
+        description: 'Neue text brauchen wir, und die besten Möglichkeiten, sich weiter zu entwickeln.'
+    },
     news: {
         title: 'news',
         untertitle: 'Aktuelles über uns.',

@@ -9,7 +9,7 @@ import { NewsListCom } from 'src/components/_Dima/NewsListCom';
 // ----------------------------------------------------------------------
 
 News.getLayout = function getLayout(page: ReactElement) {
-  return <Layout variant="fullScreen">{page}</Layout>;
+  return <Layout variant="main">{page}</Layout>;
 };
 
 // ----------------------------------------------------------------------
@@ -17,14 +17,9 @@ News.getLayout = function getLayout(page: ReactElement) {
 
 export default function News() {
   return (
-
     <Page title="News | Dima & Partner">
-
       <NewsListCom />
-
     </Page>
-
-
   );
 }
 

@@ -33,7 +33,7 @@ export default function LandingButtonsCom() {
             <Stack >
 
                 <ButtonGroup variant="text" >
-                    <NextLink href={PATH_DIMA.teams} >
+                    <NextLink href={PATH_DIMA.philosophie} >
 
                         <ButtonBase
                             sx={{

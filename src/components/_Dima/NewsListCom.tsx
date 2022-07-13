@@ -16,7 +16,6 @@ export function NewsListCom() {
   //const initialInputs = { param: "Alle" }
   //const [dark, setDark] = useState(false);
   const isDesktop = useResponsive('up', 'lm');
-
   const isSmall = useResponsive('down', 'sm');
   let dark = true;
   //const { query } = useRouter();
@@ -29,9 +28,9 @@ export function NewsListCom() {
         gridTemplateColumns='repeat(2, 1fr)'
         gridTemplateRows='1fr'
         //justifyItems='stretch'
-        columnGap="12px"
-        rowGap="12px"
-        sx={{ mt: 6 }}
+        columnGap="13px"
+        rowGap="20px"
+        sx={{ mt: 7.5 }}
       >
         {news.map((news, i) => {
           if ((i + 1) % 2 == 0) {

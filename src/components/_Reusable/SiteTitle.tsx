@@ -14,10 +14,10 @@ export const SiteTitle = ({ text }: LayoutHeader) => {
             gridTemplateColumns={gtc}
         >
             <Box>
-                <Typography variant="h3" component="h2" sx={{ color: 'text.primary' }}>
+                <Typography variant="h3" component="h2" sx={{ color: 'dima' }}>
                     {title.toUpperCase()}
                 </Typography>
-                <Typography variant="h4" component="h3" sx={{ color: 'dima', mt: 0 }}>
+                <Typography variant="h4" component="h3" sx={{ color: 'text.primary', mt: 0 }}>
                     {untertitle}
                 </Typography>
             </Box>
