@@ -1,16 +1,16 @@
 import { useState, useEffect, ReactNode } from 'react';
 // next
-import NextLink from 'next/link';
+
 import { useRouter } from 'next/router';
 // Hamburger
 import { Squash as Hamburger } from 'hamburger-react'
 // @mui
-import { alpha, styled } from '@mui/material/styles';
+import { styled } from '@mui/material/styles';
 import {
   Box,
   List,
   Drawer,
-  Collapse,
+
   LinkProps,
   ListItemText,
   ListItemButton,
@@ -21,13 +21,14 @@ import {
 import { NAVBAR } from 'src/config';
 // components
 import Scrollbar from 'src/components/Scrollbar';
-import { NavSectionVertical } from 'src/components/nav-section';
+
 import { HEADER } from 'src/config';
 //
-import { MenuProps, MenuItemProps } from './type';
+import { MenuProps, } from './type';
 import useAuth from 'src/utils/firebaseAuth/useAuth';
 import { PATH_LOGIN } from 'src/routes/paths';
 import Link from 'next/link';
+import { MenuMobileItem } from './MenuMobileItem';
 
 // ----------------------------------------------------------------------
 
@@ -36,8 +37,6 @@ type StyleProps = LinkProps & ListItemButtonProps;
 interface ListItemStyleProps extends StyleProps {
   component?: ReactNode;
 }
-
-
 
 const BoxStyle = styled(Box)(({ theme }) => ({
   paddingTop: HEADER.MIDDLE_HEIGHT,
@@ -165,92 +164,3 @@ export default function MenuMobile({ navConfig, size }: MenuProps) {
 
 // ----------------------------------------------------------------------
 
-type MenuMobileItemProps = {
-  item: MenuItemProps;
-};
-
-function MenuMobileItem({ item, }: MenuMobileItemProps) {
-  const [open, setOpen] = useState(false);
-  const { pathname } = useRouter();
-  const { title, path, children } = item;
-  const isActive = pathname === path;
-  const handleOpen = (e) => {
-    e.stopPropagation();
-    console.log('open');
-    setOpen(true);
-  };
-  const handleClose = (e) => {
-    console.log('close');
-    setOpen(false);
-  };
-  if (children) {
-    return (
-      <>
-        <ListItemStyle
-
-
-        >
-          <ListItemText
-            //disableTypography 
-            onMouseEnter={handleOpen}
-            onMouseLeave={handleClose}
-            onTouchStart={handleOpen}
-            primaryTypographyProps={{
-              color: 'dima',
-              variant: 'h5',
-            }}
-            primary={title.toUpperCase()}
-          />
-        </ListItemStyle>
-
-        <Collapse
-          in={open}
-          onMouseEnter={handleOpen}
-          onMouseLeave={handleClose}
-          onTouchStart={handleOpen}
-          timeout="auto"
-          unmountOnExit
-        >
-          <Box sx={{ display: 'flex', flexDirection: 'column-reverse', mt: '0' }}>
-            <NavSectionVertical
-              navConfig={children}
-              sx={{
-                '& .MuiList-root:last-of-type .MuiListItemButton-root': {
-                  height: 40,
-                  //paddingLeft: 5,
-                  backgroundSize: 'cover',
-                  backgroundPosition: 'center',
-                  //bgcolor: 'background.default',
-                  backgroundRepeat: 'no-repeat',
-                },
-              }}
-            />
-          </Box>
-        </Collapse>
-      </>
-    );
-  }
-  return (
-    <NextLink href={path} passHref>
-      <ListItemStyle
-        sx={{
-          ...(isActive && {
-            color: 'primary.main',
-            fontWeight: 'fontWeightMedium',
-            bgcolor: (theme) =>
-              alpha(theme.palette.primary.main, theme.palette.action.selectedOpacity),
-          }),
-        }}
-      >
-        {/*<ListItemIcon>{icon}</ListItemIcon>*/}
-        <ListItemText
-          primaryTypographyProps={{
-            color: 'dima',
-            variant: 'h5',
-          }}
-          primary={title.toUpperCase()}
-        />
-      </ListItemStyle>
-    </NextLink>
-  );
-}
