@@ -13,9 +13,7 @@ export default function Container(theme: Theme) {
           '@media (min-width: 1917px)': {
             paddingLeft: 0,
             paddingRight: 0,
-
           },
-
           '@media (max-width: 1916px)': {
             paddingLeft: theme.spacing(26),
             paddingRight: theme.spacing(26),

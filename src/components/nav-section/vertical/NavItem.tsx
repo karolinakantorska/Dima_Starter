@@ -56,7 +56,7 @@ export function NavItemRoot({ item, isCollapse, open = false, active, onOpen }: 
         activeRoot={active}
         disabled={disabled}
         roles={roles}
-        sx={{ mb: 0 }}
+        sx={{ mb: 0, pr: 0 }}
       >
         {renderContent}
       </ListItem>

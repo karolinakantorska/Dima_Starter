@@ -1,6 +1,6 @@
 // @mui
 import { styled } from '@mui/material/styles';
-import { List, Box, } from '@mui/material';
+import { List, Box, Stack, } from '@mui/material';
 // type
 import { NavSectionProps } from '../type';
 //
@@ -17,12 +17,16 @@ export default function NavSectionVertical({
   ...other
 }: NavSectionProps) {
   return (
+
     <Box {...other} className="Nav-Section-Box" sx={{ pb: 5, mt: -1.25 }}>
       {navConfig.map((group) => (
         <List key={group.subheader} disablePadding className="Nav-Section-List">
-          {group.items.map((list) => (
-            <NavListRoot key={list.title + list.path} list={list} isCollapse={isCollapse} />
-          ))}
+          <Stack direction={"column"}>
+            {group.items.map((list) => (
+              <NavListRoot key={list.title + list.path} list={list} isCollapse={isCollapse} />
+            ))}
+          </Stack>
+
         </List>
       ))}
     </Box>

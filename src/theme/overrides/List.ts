@@ -53,8 +53,8 @@ styleOverrides: {
           float: 'right'
         },
 '@media (min-width: 1917px)': {
-            //paddingLeft: 0,
-            //paddingRight: 0,
+            paddingLeft: theme.spacing(4),
+            paddingRight: theme.spacing(4),
           },
           '@media (max-width: 1916px)': {
             paddingLeft: theme.spacing(26),

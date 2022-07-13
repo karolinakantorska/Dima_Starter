@@ -25,7 +25,6 @@ export function NavListRoot({ list, isCollapse }: NavListRootProps) {
     return (
       <>
         <NavItemRoot
-
           item={list}
           isCollapse={isCollapse}
           active={active}

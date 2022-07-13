@@ -1,5 +1,6 @@
 import { Theme } from '@mui/material/styles';
 //import { BG_Regular } from '../typography';
+import zIndex from '@mui/material/styles/zIndex';
 
 // ----------------------------------------------------------------------
 
@@ -52,6 +53,9 @@ export default function CssBaseline(theme: Theme) {
         },
         a:{
           color: theme.palette.text.disabled
+        },
+        '&.hamburger-react':{
+          zIndex:2002,
         }
       },
     },

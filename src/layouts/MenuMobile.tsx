@@ -70,6 +70,8 @@ export default function MenuMobile({ navConfig, size }: MenuProps) {
   //const [open, setOpen] = useState(false);
   const [drawerOpen, setDrawerOpen] = useState(true);
   const { logout, isAuthenticated } = useAuth();
+
+  // TODO not closing in PC view
   useEffect(() => {
     if (drawerOpen) {
       handleDrawerClose();
@@ -87,19 +89,21 @@ export default function MenuMobile({ navConfig, size }: MenuProps) {
   return (
     <>
       <Box
-        onClick={handleDrawerOpen}
         sx={{
           position: 'relative',
-          zIndex: 2202,
           mr: -.5
         }}
       >
-        <Hamburger
-          easing="ease-in"
-          toggled={drawerOpen}
-          label={drawerOpen ? "hamburger menu opened" : "hamburger menu closed"}
-          size={size}
-        />
+        <Box onClick={handleDrawerOpen} >
+          <Hamburger
+            //id='HmburgerMenu'
+            easing="ease-in"
+            toggled={drawerOpen}
+            label={drawerOpen ? "hamburger menu opened" : "hamburger menu closed"}
+            size={size}
+          />
+        </Box>
+
         <Drawer
           elevation={0}
           variant="persistent"
@@ -170,10 +174,13 @@ function MenuMobileItem({ item, }: MenuMobileItemProps) {
   const { pathname } = useRouter();
   const { title, path, children } = item;
   const isActive = pathname === path;
-  const handleOpen = () => {
+  const handleOpen = (e) => {
+    e.stopPropagation();
+    console.log('open');
     setOpen(true);
   };
-  const handleClose = () => {
+  const handleClose = (e) => {
+    console.log('close');
     setOpen(false);
   };
   if (children) {
@@ -187,6 +194,7 @@ function MenuMobileItem({ item, }: MenuMobileItemProps) {
             //disableTypography 
             onMouseEnter={handleOpen}
             onMouseLeave={handleClose}
+            onTouchStart={handleOpen}
             primaryTypographyProps={{
               color: 'dima',
               variant: 'h5',
@@ -199,7 +207,8 @@ function MenuMobileItem({ item, }: MenuMobileItemProps) {
           in={open}
           onMouseEnter={handleOpen}
           onMouseLeave={handleClose}
-          //timeout="auto"
+          onTouchStart={handleOpen}
+          timeout="auto"
           unmountOnExit
         >
           <Box sx={{ display: 'flex', flexDirection: 'column-reverse', mt: '0' }}>
