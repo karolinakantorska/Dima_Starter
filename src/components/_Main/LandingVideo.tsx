@@ -5,7 +5,6 @@ export default function LandingVideo() {
 
     return (
         <video
-
             style={{
                 width: "100vw",
                 height: "100vh",
@@ -16,6 +15,7 @@ export default function LandingVideo() {
             autoPlay
             muted
             loop
+            playsInline
             src={'https://res.cloudinary.com/karolinauploads/video/upload/v1658137765/Dima/DIMA_IntroMovie.mp4'}
             poster={'/video/DIMA_IntroMovie_000.jpg'}
         >

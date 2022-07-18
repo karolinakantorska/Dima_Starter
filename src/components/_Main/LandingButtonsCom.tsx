@@ -7,7 +7,6 @@ import { PATH_DIMA, PATH_PROJEKTE } from 'src/routes/paths';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
 export default function LandingButtonsCom() {
-    const isDesktop = useResponsive('up', 'lm');
     const isSmall = useResponsive('down', 'sm');
 
     const containerProps = {
@@ -40,11 +39,16 @@ export default function LandingButtonsCom() {
                             sx={{
                                 ...buttonProps,
                                 backgroundColor: 'dima',
+                                transition: '0.5s',
                                 '&:hover': {
                                     opacity: 1,
-                                    backgroundColor: '#e96c0e',
-                                    color: 'background.default'
-                                }
+                                    boxShadow: 'inset 0px -100px #df530c',
+                                },
+                                '&:focus': {
+                                    opacity: 1,
+                                    boxShadow: 'inset 0px -100px #df530c',
+                                },
+
                             }}
                         >
                             <Typography
@@ -75,7 +79,6 @@ export default function LandingButtonsCom() {
                                     color: "inherit",
                                 }} >
                                 {isSmall ? `Projekte` : `Unsere Projekte`}
-
                             </Typography>
                             <ArrowForwardIosIcon sx={{ ml: '16px', color: "inherit", }} />
                         </ButtonBase>

@@ -39,7 +39,6 @@ export function ProjektCardCom({
     position: 'absolute',
     bottom: 0
   }
-
   const boxProps = {
     minWidth: '20px',
     display: 'grid',
@@ -49,12 +48,18 @@ export function ProjektCardCom({
     gridColumn: isBigAndDisplaysDesktop ? 'span 3' : 'span 1',
     gridTemplateColumns: isBigAndDisplaysDesktop ? '1fr 12px 1fr 12px 1fr' : '1fr',
     columnGap: '0px',
+
   }
   const cardProps = {
     gridRow: isBigAndDisplaysDesktop ? 'span 2' : gridRow,
     gridColumn: isBigAndDisplaysDesktop ? rewerseBig ? '3/span 3' : '1/span 3' : 'span 1',
-  }
 
+  }
+  /*
+      '&:hover': {
+        backgroundColor: 'red'
+      }
+      */
   return (
     <Box
       sx={{ ...boxProps }}
@@ -72,6 +77,18 @@ export function ProjektCardCom({
             disableRipple
             aria-label={project.title}
           >
+            <Box className="hallo" sx={{
+              height: '100%',
+              width: '100%',
+              position: 'absolute',
+              background: 'transparent',
+              zIndex: 2000,
+              transition: '1s',
+              '&:active': {
+                background: 'linear-gradient(50deg, rgba(255,255,255,0.8) 1%, rgba(255,255,255,0.1) 40%)',
+                transform: 'scale(6) translate(35%, 0);  ',
+              }
+            }} />
             <Image src={photo.url} alt={photo.alt} ratio="16/9" />
             {photoAuthor &&
               <Typography
@@ -81,10 +98,10 @@ export function ProjektCardCom({
               >
                 {photoAuthor}
               </Typography>}
+
           </CardActionArea>
         </Card>
       </Link>
-
       <TextCardCom project={project} big={isBig} rewerseBig={rewerseBig} />
     </Box >
   );
