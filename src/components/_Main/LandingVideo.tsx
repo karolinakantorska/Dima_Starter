@@ -1,5 +1,5 @@
 import React from 'react';
-
+const src = '/video/DIMA_IntroMovie.mp4';
 export default function LandingVideo() {
     //console.log('DIMA_IntroMovie', DIMA_IntroMovie)
 
@@ -16,7 +16,7 @@ export default function LandingVideo() {
             autoPlay
             muted
             loop
-            src={'/video/DIMA_IntroMovie.mp4'}
+            src={'https://res.cloudinary.com/karolinauploads/video/upload/v1658137765/Dima/DIMA_IntroMovie.mp4'}
             poster={'/video/DIMA_IntroMovie_000.jpg'}
         >
             <source src={'/video/DIMA_IntroMovie.mp4'} type="video/mp4" />
