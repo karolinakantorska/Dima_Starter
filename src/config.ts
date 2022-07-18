@@ -7,7 +7,7 @@ import { SettingsValueProps } from './components/settings/type';
 // ----------------------------------------------------------------------
 
 export const HEADER = {
-  MOBILE_HEIGHT: 64,
+  MOBILE_HEIGHT: 80,
   MIDDLE_HEIGHT: 120,
   MAIN_DESKTOP_HEIGHT: 167,
   DASHBOARD_DESKTOP_HEIGHT: 92,

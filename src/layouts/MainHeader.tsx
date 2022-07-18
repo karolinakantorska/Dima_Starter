@@ -54,14 +54,14 @@ export default function MainHeader({ logo = true }: { logo?: boolean }) {
   const isHome = pathname === '/';
   const isDesktop = useResponsive('up', 'lm');
   const isSmall = useResponsive('down', 'sm');
+  const isMiddle = useResponsive('down', 'md');
   const { isAuthenticated } = useAuth();
-  const gtc = isDesktop ? 'repeat(3, 1fr)' : isSmall ? '1fr' : 'repeat(2, 1fr)';
+  const gtc = isDesktop ? 'repeat(3, 1fr)' : isMiddle ? '1fr' : 'repeat(2, 1fr)';
   const gc = isDesktop ? '3/4' : '2/3';
 
   console.log('isOffset: ', isOffset)
   return (
     <AppBar
-
       sx={{
         boxShadow: 0,
         bgcolor: isHome ? 'transparent' : 'background.default',
@@ -70,7 +70,6 @@ export default function MainHeader({ logo = true }: { logo?: boolean }) {
       }}>
       <ToolbarStyle
         disableGutters
-
         sx={{
           ...(isOffset && {
             //...cssStyles(theme).bgBlur(),
@@ -92,8 +91,8 @@ export default function MainHeader({ logo = true }: { logo?: boolean }) {
         >
 
           <DimaLogoCom
-            x={isDesktop ? 263 : isSmall ? 146 : 200}
-            y={isDesktop ? 64 : isSmall ? 36 : 50}
+            x={isDesktop ? 263 : isSmall ? 160 : 200}
+            y={isDesktop ? 64 : isSmall ? 40 : 50}
           />
           <Box sx={{
             grid: 'item',
@@ -104,7 +103,7 @@ export default function MainHeader({ logo = true }: { logo?: boolean }) {
             alignItems: 'center',
           }}>
 
-            {!isSmall && <PhoneNrCom />}
+            {!isMiddle && <PhoneNrCom />}
             <MenuMobile
               navConfig={isAuthenticated ? [...menuConfigAdmin] : [...menuConfigUser]} size={isDesktop ? 40 : isSmall ? 30 : 34}
             />

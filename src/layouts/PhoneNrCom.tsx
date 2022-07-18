@@ -7,7 +7,7 @@ import useResponsive from 'src/hooks/useResponsive';
 const Adress = ({ text }: any) => {
     const { town, phone } = text;
 
-    const isMiddle = useResponsive('down', 'md');
+
     const textProps = {
         //pt: .87,
         //pl: isMiddle ? 2 : 3,

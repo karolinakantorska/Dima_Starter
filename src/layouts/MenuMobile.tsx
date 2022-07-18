@@ -112,46 +112,48 @@ export default function MenuMobile({ navConfig, size }: MenuProps) {
           ModalProps={{ keepMounted: false }}
           PaperProps={{
             sx: {
-              pb: 5,
-              minWidth: 300
+              //pb: 5,
+              //minWidth: 400
             }
           }}
         >
           <Scrollbar>
             <BoxStyle>
               <List>
-                <Stack direction='column'>
+                <Stack direction='column' spacing={2.5}>
                   {navConfig.map((link) => (
                     <MenuMobileItem
                       key={link.title}
                       item={link}
                     />
+
                   ))}
+                  {!isAuthenticated &&
+                    <Link href={PATH_LOGIN.login} passHref>
+                      <ListItemStyle onClick={() => logout()} >
+                        <ListItemText
+                          primaryTypographyProps={{
+                            color: 'text.disabled',
+                            variant: 'h5',
+                          }}
+                          primary={'Anmelden'.toUpperCase()}
+                        />
+                      </ListItemStyle>
+                    </Link>
+                  }
+                  {isAuthenticated &&
+                    <ListItemStyle onClick={() => logout()} >
+                      <ListItemText
+                        primaryTypographyProps={{
+                          color: 'text.disabled',
+                          variant: 'h5',
+                        }}
+                        primary={'Ausnmelden'.toUpperCase()}
+                      />
+                    </ListItemStyle>}
                 </Stack>
               </List>
-              {!isAuthenticated &&
-                <Link href={PATH_LOGIN.login} passHref>
-                  <ListItemStyle onClick={() => logout()} >
-                    <ListItemText
-                      primaryTypographyProps={{
-                        color: 'text.disabled',
-                        variant: 'h5',
-                      }}
-                      primary={'Anmelden'.toUpperCase()}
-                    />
-                  </ListItemStyle>
-                </Link>
-              }
-              {isAuthenticated &&
-                <ListItemStyle onClick={() => logout()} >
-                  <ListItemText
-                    primaryTypographyProps={{
-                      color: 'text.disabled',
-                      variant: 'h5',
-                    }}
-                    primary={'Ausnmelden'.toUpperCase()}
-                  />
-                </ListItemStyle>}
+
             </BoxStyle>
           </Scrollbar>
         </Drawer>

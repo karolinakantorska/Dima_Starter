@@ -6,6 +6,7 @@ interface LayoutHeader { text: { title: string, untertitle: string, description:
 export const SiteTitle = ({ text }: LayoutHeader) => {
 
     const isSmall = useResponsive('down', 'sm');
+    const isMiddle = useResponsive('down', 'lm');
     const { title, untertitle, description } = text;
     const gtc = isSmall ? '1fr' : '56fr 43fr'
     return (
@@ -14,14 +15,14 @@ export const SiteTitle = ({ text }: LayoutHeader) => {
             gridTemplateColumns={gtc}
         >
             <Box>
-                <Typography variant="h3" component="h2" sx={{ color: 'dima' }}>
+                {!isSmall && <Typography variant="h3" component="h2" sx={{ color: 'dima' }}>
                     {title.toUpperCase()}
-                </Typography>
+                </Typography>}
                 <Typography variant="h4" component="h3" sx={{ color: 'text.primary', mt: 0 }}>
                     {untertitle}
                 </Typography>
             </Box>
-            <Box display="grid"
+            {!isMiddle && <Box display="grid"
                 gridTemplateColumns='6px 1fr'
                 columnGap="24px"
             >
@@ -34,7 +35,7 @@ export const SiteTitle = ({ text }: LayoutHeader) => {
                     sx={{ color: 'text.primary' }} >
                     {description}
                 </Typography>
-            </Box>
+            </Box>}
         </Box >
     )
 

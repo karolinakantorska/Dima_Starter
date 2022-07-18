@@ -30,11 +30,12 @@ export function TextCardCom({ project, big, rewerseBig, }: {
   const isMiddle = useResponsive('down', 'md');
   const { isAuthenticated } = useAuth();
   const isBigAndDisplaysDesktop = isDesktop && big;
-  const cardPadding = {
-    pl: isMiddle ? 2 : 3,
-    pr: isMiddle ? 2 : 3,
-    pt: isMiddle ? 3 : 4.6,
-  }
+
+
+  const pl = isMiddle ? 2 : 3.15;
+  const pr = isMiddle ? 2 : 3.15;
+  const pt = isMiddle ? 3 : 4.75;
+
   const cardPropsBig = {
     gridColumn: rewerseBig ? '1 / span 2' : '4 / span 2',
     gridRow: 'span 2',
@@ -80,15 +81,35 @@ export function TextCardCom({ project, big, rewerseBig, }: {
       sx={big ? { backgroundColor: 'background.paper', minHeight: '300px' } : { height: '100%' }}
     >
       <CardContent
-        sx={{ ...cardPadding }}
+        className="Card Content"
+        sx={{ pl: pl, pt: pt, pr: pr }}
       >
-        <Typography variant="body2" component="p" sx={{ color: 'text.secondary' }}        >
+        <Typography
+          variant="body2"
+          component="p"
+          sx={{
+            color: 'dima',
+
+          }}        >
           {objektAlter.toUpperCase()}
         </Typography>
-        <Typography variant="body2" component="p" sx={{ color: 'text.secondary' }}        >
-          {title.toUpperCase()}
+        <Typography
+          variant="body2"
+          component="p"
+          sx={{
+            color: 'text.secondary',
+            pt: 1,
+          }}        >
+          {title}
         </Typography>
-        <Typography variant="body2" component="p" sx={{ mb: 2, pt: '9px', color: 'text.secondary' }}>
+        <Typography
+          variant="body2"
+          component="p"
+          sx={{
+            mb: 2,
+            pt: 1,
+            color: 'text.secondary'
+          }}>
           {firstLettersBig(location)}
         </Typography>
       </CardContent>

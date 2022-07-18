@@ -17,7 +17,6 @@ const Page = forwardRef<HTMLDivElement, Props>(({ children, title = '', meta, ..
       <title>{`${title} | Minimal-UI`}</title>
       {meta}
     </Head>
-
     <Box ref={ref} {...other}>
       {children}
     </Box>

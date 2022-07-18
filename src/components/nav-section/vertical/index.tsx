@@ -18,10 +18,10 @@ export default function NavSectionVertical({
 }: NavSectionProps) {
   return (
 
-    <Box {...other} className="Nav-Section-Box" sx={{ pb: 5, mt: -1.25 }}>
+    <Box {...other} className="Nav-Section-Box" sx={{ pb: 5.5, mt: -1.25 }}>
       {navConfig.map((group) => (
         <List key={group.subheader} disablePadding className="Nav-Section-List">
-          <Stack direction={"column"}>
+          <Stack direction={"column"} >
             {group.items.map((list) => (
               <NavListRoot key={list.title + list.path} list={list} isCollapse={isCollapse} />
             ))}

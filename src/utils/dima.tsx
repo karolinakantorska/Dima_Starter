@@ -28,7 +28,7 @@ export const DimaName = {
 
 export const layoutHeader = {
     teams: {
-        title: 'teams',
+        title: 'team',
         untertitle: 'Die Menschen hinter der Umsetzung.',
         description: 'Menschen stehen im Mittelpunkt unserer Dienstleistung. Ihre Kompetenz, Kreativität, Intuition und Engagement zeichnen unser Team aus.'
     },

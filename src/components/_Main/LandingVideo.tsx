@@ -5,11 +5,12 @@ export default function LandingVideo() {
 
     return (
         <video
+
             style={{
                 width: "100vw",
                 height: "100vh",
                 objectFit: "cover",
-
+                overflow: "hidden",
             }}
             controls={false}
             autoPlay

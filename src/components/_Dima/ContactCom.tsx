@@ -54,7 +54,7 @@ export function ContactCom() {
   return (
     <>
       <SiteTitle text={layoutHeader.contact} />
-      <Stack spacing={8} sx={{ mt: 8 }}>
+      <Stack spacing={8} sx={{ mt: 8, pb: 5 }}>
         <Stack
           direction={isSmall ? 'column-reverse' : 'row'}
         >
@@ -79,6 +79,5 @@ export function ContactCom() {
         </Stack>
       </Stack>
     </>
-
   )
 }

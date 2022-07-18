@@ -10,7 +10,12 @@ export default function Drawer(theme: Theme) {
       styleOverrides: {
         paper: {
           backgroundColor: theme.palette.grey[500_80],
-          border:"none"
+          border:"none",
+          pb: 5,
+          minWidth: 400,
+          '@media (min-width: 1917px)': {
+            minWidth: `calc((100vw - 1024px)*.5)`,
+          },
         },
         /*
         modal: {
