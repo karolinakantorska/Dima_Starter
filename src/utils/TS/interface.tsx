@@ -26,7 +26,7 @@ export interface ProjectType {
   location: string;
   video?: string;
   finished: boolean;
-  constructionStart: number;
+  //constructionStart: number;
 }
 export type ProjectsListType = ProjectType[];
 
