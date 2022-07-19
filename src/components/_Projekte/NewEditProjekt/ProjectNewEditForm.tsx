@@ -46,6 +46,8 @@ export interface FormValuesProps extends Partial<ProjectType> {
   description1: string;
   description2: string;
   description3: string;
+  description4: string;
+  description5: string;
 }
 
 type Props = {
@@ -84,6 +86,8 @@ export default function ProjectNewEditForm({ isEdit, currentProject }: Props) {
       description1: currentProject?.description[0] || '',
       description2: currentProject?.description[1] || '',
       description3: currentProject?.description[2] || '',
+      description4: currentProject?.description[3] || '',
+      description5: currentProject?.description[4] || '',
       year_form: currentProject && currentProject.year && new Date(`"${currentProject.year}-01-01"`) || new Date(),
       objektAlter: currentProject?.objektAlter || 'Newbau',
       //objektType: currentProject?.objektType || [],

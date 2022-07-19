@@ -10,7 +10,7 @@ export function createProject(data: FormValuesProps): ProjectType {
     };
     const year = { year: data.year_form.getTime() };
     const photo = { photo: data.photo ? { url: data.photo.url, alt: data.photo.alt + ' Dima & Partner' } : { url: '', alt: '' } };
-    const description = { description: [data.description1, data.description2, data.description3] }
+    const description = { description: [data.description1, data.description2, data.description3, data.description4, data.description5] }
     const newProject: any = { ...data }
     delete newProject.year_form;
     delete newProject.cooperation_company;
@@ -19,5 +19,7 @@ export function createProject(data: FormValuesProps): ProjectType {
     delete newProject.description1;
     delete newProject.description2;
     delete newProject.description3;
+    delete newProject.description4;
+    delete newProject.description5;
     return { ...newProject, ...cooperation, ...year, ...photo, ...description }
 }

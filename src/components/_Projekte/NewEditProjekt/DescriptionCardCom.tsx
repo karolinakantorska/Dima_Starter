@@ -18,7 +18,7 @@ export function DescriptionCardCom() {
         formState: { errors },
     } = useFormContext();
     const values = watch();
-
+    const fields = [1, 2, 3, 4, 5]
     return (
         <Stack spacing={3}>
             <Typography
@@ -30,24 +30,15 @@ export function DescriptionCardCom() {
             >
                 Bezeichnung:
             </Typography>
-            <RHFTextField
-                variant="filled"
-                multiline minRows={3}
-                maxRows={12}
-                name="description1"
-            />
-            <RHFTextField
-                variant="filled"
-                multiline minRows={3}
-                maxRows={12}
-                name="description2"
-            />
-            <RHFTextField
-                variant="filled"
-                multiline minRows={3}
-                maxRows={12}
-                name="description3"
-            />
+            {fields.map((f) => (
+                <RHFTextField
+                    key={f}
+                    variant="filled"
+                    multiline minRows={3}
+                    maxRows={12}
+                    name={"description" + f}
+                />
+            ))}
         </Stack>
 
 

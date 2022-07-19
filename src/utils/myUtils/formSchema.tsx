@@ -13,6 +13,10 @@ export const NewProjectSchema = Yup.object().shape({
         .max(4000, 'Projecttitle muss kurzer als 8000 Buchstaben sein'),
     description3: Yup.string()
         .max(4000, 'Projecttitle muss kurzer als 8000 Buchstaben sein'),
+    description4: Yup.string()
+        .max(4000, 'Projecttitle muss kurzer als 8000 Buchstaben sein'),
+    description5: Yup.string()
+        .max(4000, 'Projecttitle muss kurzer als 8000 Buchstaben sein'),
     year_form: Yup.date().required('Bauyahr ist erforderlich'),
     client: Yup.string()
         .max(80, 'Projecttitle muss kurzer als 80 Buchstaben sein'),
