@@ -1,15 +1,3 @@
-import {
-  ProjectsListType,
-  dima,
-  Cadosch,
-  Kgp_Immobilien,
-  privat,
-  Hanimann_Naef,
-  BSS_M,
-} from '../../utils/TS/interface';
-
-import { description } from './description';
-
 export const _mockProjekts: any = [
   //
   // 4 mehrfamilienhäuser ettersbüe
@@ -23,7 +11,7 @@ export const _mockProjekts: any = [
     photoAuthor: '',
     id: '1',
     title: `4 mehrfamilienhäuser ettersbüe`,
-    description: description,
+    description: ['', []],
     //year: 2016,
     objektAlter: 'Newbau',
     //objektType: ['MFH'],
@@ -31,10 +19,10 @@ export const _mockProjekts: any = [
     //timeStamp: 1,
     region: 'Zürich',
     phase: ['Realisierung'],
-    client: Kgp_Immobilien,
+    client: '',
     size: 9999,
     architect: `ZFP Architektur AG, Bülach`,
-    generalConstr: dima,
+    generalConstr: '',
     cooperation: {
       service: '',
       company: '',
