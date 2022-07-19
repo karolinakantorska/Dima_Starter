@@ -2,7 +2,6 @@
 import { useFormContext, Controller } from 'react-hook-form';
 // @mui
 import { FormHelperText } from '@mui/material';
-import { ImageType } from '../../utils/TS/interface';
 // type
 import {
   UploadMultiFile,

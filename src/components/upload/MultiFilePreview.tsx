@@ -2,9 +2,6 @@ import { m, AnimatePresence } from 'framer-motion';
 // @mui
 import { alpha } from '@mui/material/styles';
 import { List, IconButton, ListItemText, ListItem } from '@mui/material';
-// utils
-import { fData } from 'src/utils/formatNumber';
-import getFileData from 'src/utils/getFileData';
 // type
 import { UploadMultiFileProps } from './type';
 //

@@ -55,13 +55,13 @@ export function YearVolumenCardCom() {
             <RHFTextField
                 variant="filled"
                 name="size"
-                label="Projectgrosse"
-                placeholder="999"
+                label="volumen"
+                //placeholder="2"
                 value={getValues('size') === 0 ? '' : getValues('size')}
                 onChange={(event) => setValue('size', Number(event.target.value))}
                 InputLabelProps={{ shrink: true }}
                 InputProps={{
-                    endAdornment: <InputAdornment position="start">m3</InputAdornment>,
+                    endAdornment: <InputAdornment position="start">Mio. CHF</InputAdornment>,
                     type: 'number',
                 }}
             />

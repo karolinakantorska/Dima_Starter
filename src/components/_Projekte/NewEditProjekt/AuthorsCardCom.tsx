@@ -34,7 +34,7 @@ export function AuthorsCardCom() {
                 }}        >
                 Betailigte Unternehmern:
             </Typography>
-            <RHFTextField variant="filled" name="client" label="Klient" />
+            <RHFTextField variant="filled" name="bauherr" label="Klient" />
             <RHFTextField variant="filled" name="architect" label="Architekt" />
             <Typography
                 variant="body2"

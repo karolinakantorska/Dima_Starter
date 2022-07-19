@@ -7,7 +7,6 @@ import { ProjectType } from '../../utils/TS/interface';
 import { firstLettersBig, } from '../../utils/Text/textUtils';
 import CarouselBasic3 from '../carousel/CarouselBasic3';
 
-
 export function OneProjectCom({ project }: { project: ProjectType }) {
   const isDesktop = useResponsive('up', 'lm');
   const isSmall = useResponsive('down', 'sm');
@@ -78,7 +77,6 @@ export function OneProjectCom({ project }: { project: ProjectType }) {
         spacing={isDesktop ? 20 : isSmall ? 5 : 8}
       >
         <CarouselBasic3 photos={photosCarusel} />
-
         <Box
           sx={{
             display: 'grid',
@@ -103,15 +101,16 @@ export function OneProjectCom({ project }: { project: ProjectType }) {
                 {desc}
               </Typography>
             ))}
-
           </Box>
         </Box>
       </Stack>
     )
 
   } else {
-    return (<Typography variant="h6" component="div" paragraph color="text.primary">
-      Es gibt am moment kein Projekt in DB.
-    </Typography>)
+    return (
+      <Typography variant="h6" component="div" paragraph color="text.primary">
+        Loading...
+      </Typography>
+    )
   }
 }

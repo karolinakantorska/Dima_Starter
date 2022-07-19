@@ -1,10 +1,9 @@
 import Slider from "react-slick";
 import { useRef } from 'react';
 // @mui
-import { styled } from '@mui/material/styles';
+import { styled, useTheme } from '@mui/material/styles';
 import { Box, Link } from '@mui/material';
-// _mock_
-import { _carouselsExample } from 'src/_mock';
+
 // components
 //import Image from 'src/components/Image';
 import { CarouselDots, CarouselArrows } from 'src/components/carousel';
@@ -13,7 +12,7 @@ import { DimaName } from "src/utils/dima";
 import * as logo from "/public/assets/bg_gradient.jpeg"
 import Image from "next/image";
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
-import { useTheme, } from '@mui/material/styles';
+
 // ----------------------------------------------------------------------
 
 const RootStyle = styled(Box)(({ theme }) => ({

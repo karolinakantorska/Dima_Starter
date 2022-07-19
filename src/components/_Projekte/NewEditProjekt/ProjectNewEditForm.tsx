@@ -80,6 +80,7 @@ export default function ProjectNewEditForm({ isEdit, currentProject }: Props) {
       photos: currentProject?.photos || [],
       photoAuthor: currentProject?.photoAuthor || '',
       title: currentProject?.title || '',
+      //description: currentProject?.description || [],
       description1: currentProject?.description[0] || '',
       description2: currentProject?.description[1] || '',
       description3: currentProject?.description[2] || '',

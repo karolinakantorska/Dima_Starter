@@ -1,5 +1,4 @@
 // @mui
-import { styled } from '@mui/material/styles';
 import { List, Box, Stack, } from '@mui/material';
 // type
 import { NavSectionProps } from '../type';

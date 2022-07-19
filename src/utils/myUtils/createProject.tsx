@@ -10,7 +10,7 @@ export function createProject(data: FormValuesProps): ProjectType {
     };
     const year = { year: data.year_form.getTime() };
     const photo = { photo: data.photo ? { url: data.photo.url, alt: data.photo.alt + ' Dima & Partner' } : { url: '', alt: '' } };
-    const description = [data.description1, data.description2, data.description3]
+    const description = { description: [data.description1, data.description2, data.description3] }
     const newProject: any = { ...data }
     delete newProject.year_form;
     delete newProject.cooperation_company;

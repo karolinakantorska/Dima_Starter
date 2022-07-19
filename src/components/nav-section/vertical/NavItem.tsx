@@ -1,7 +1,7 @@
 // next
 import NextLink from 'next/link';
 // @mui
-import { Box, Link, ListItemText, Typography, Tooltip } from '@mui/material';
+import { Box, Link, ListItemText } from '@mui/material';
 // type
 import { NavItemProps } from '../type';
 //
@@ -12,7 +12,7 @@ import { isExternalLink } from '..';
 // ----------------------------------------------------------------------
 
 export function NavItemRoot({ item, isCollapse, open = false, active, onOpen }: NavItemProps) {
-  const { title, path, icon, info, children, disabled, caption, roles } = item;
+  const { title, path, children, disabled, roles } = item;
   //  second nav
   const renderContent = (
     <ListItemTextStyle
