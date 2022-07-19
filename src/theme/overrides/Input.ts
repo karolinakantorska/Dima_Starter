@@ -7,6 +7,7 @@ export default function Input(theme: Theme) {
     MuiInputBase: {
       styleOverrides: {
         root: {
+          
           '&.Mui-disabled': {
             '& svg': { color: theme.palette.text.disabled },
           },
@@ -31,21 +32,25 @@ export default function Input(theme: Theme) {
     MuiFilledInput: {
       styleOverrides: {
         root: {
-          backgroundColor: theme.palette.grey[500_12],
+          backgroundColor: theme.palette.text.primary,
+          color: theme.palette.background.default,
           '&:hover': {
-            backgroundColor: theme.palette.grey[500_16],
+            backgroundColor: 'white',
+
           },
           '&.Mui-focused': {
-            backgroundColor: theme.palette.action.focus,
+            backgroundColor: 'white',
           },
           '&.Mui-disabled': {
-            backgroundColor: theme.palette.action.disabledBackground,
+            backgroundColor: theme.palette.text.secondary,
           },
         },
         underline: {
+          /*
           '&:before': {
             borderBottomColor: theme.palette.grey[500_56],
           },
+          */
         },
       },
     },

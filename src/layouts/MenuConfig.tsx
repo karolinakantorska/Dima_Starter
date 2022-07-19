@@ -88,8 +88,8 @@ export const menuConfigAdmin = [
             path: PATH_DIMA.teams
           },
           {
-            title: '+ Projekt',
-            path: PATH_PROJEKTE.addProject,
+            title: '+ Mitarbeiter',
+            path: PATH_DIMA.neueMitarbeiter
           }
         ],
       },
@@ -115,8 +115,9 @@ export const menuConfigAdmin = [
             path: PATH_WEBCAMS.webcams
           },
           {
-            title: '+ Mitarbeiter',
-            path: PATH_DIMA.neueMitarbeiter
+
+            title: '+ Projekt',
+            path: PATH_PROJEKTE.addProject,
           }
         ],
       },

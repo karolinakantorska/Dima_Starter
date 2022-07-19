@@ -1,6 +1,5 @@
-import { FormValuesProps } from "src/components/_Projekte/ProjectNewEditForm";
+import { FormValuesProps } from "src/components/_Projekte/NewEditProjekt/ProjectNewEditForm";
 import { ProjectType } from "../TS/interface";
-
 
 export function createProject(data: FormValuesProps): ProjectType {
     const cooperation = {
@@ -8,13 +7,17 @@ export function createProject(data: FormValuesProps): ProjectType {
             company: data.cooperation_company,
             service: data.cooperation_service
         }
-    }
-    const photo = { photo: data.photo ? { url: data.photo.url, alt: data.photo.alt + ' Dima & Partner' } : { url: '', alt: '' } }
-    const year = { year: data.year_form.getFullYear() }
+    };
+    const year = { year: data.year_form.getTime() };
+    const photo = { photo: data.photo ? { url: data.photo.url, alt: data.photo.alt + ' Dima & Partner' } : { url: '', alt: '' } };
+    const description = [data.description1, data.description2, data.description3]
     const newProject: any = { ...data }
     delete newProject.year_form;
     delete newProject.cooperation_company;
     delete newProject.cooperation_service;
     delete newProject.photo;
-    return { ...newProject, ...cooperation, ...year, ...photo }
+    delete newProject.description1;
+    delete newProject.description2;
+    delete newProject.description3;
+    return { ...newProject, ...cooperation, ...year, ...photo, ...description }
 }

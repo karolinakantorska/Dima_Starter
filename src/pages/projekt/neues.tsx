@@ -1,7 +1,7 @@
 
 import Page from "src/components/Page"
 
-import ProjectNewEditForm from "src/components/_Projekte/ProjectNewEditForm";
+import ProjectNewEditForm from "src/components/_Projekte/NewEditProjekt/ProjectNewEditForm";
 import AuthGuard from "src/guards/AuthGuard";
 import Layout from "src/layouts"
 

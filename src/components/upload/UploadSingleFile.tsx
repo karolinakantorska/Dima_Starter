@@ -17,7 +17,7 @@ const DropZoneStyle = styled('div')(({ theme }) => ({
   position: 'relative',
   padding: theme.spacing(5, 1),
   borderRadius: theme.shape.borderRadius,
-  transition: theme.transitions.create('padding'),
+  //transition: theme.transitions.create('padding'),
   backgroundColor: theme.palette.background.neutral,
   border: `1px dashed ${theme.palette.grey[500_32]}`,
   '&:hover': { opacity: 0.72, cursor: 'pointer' },
@@ -36,7 +36,7 @@ export default function UploadSingleFile({
     multiple: false,
     ...other,
   });
-
+  const { maxSize } = other;
   return (
     <Box sx={{ width: '100%', ...sx }}>
       <DropZoneStyle
@@ -55,7 +55,7 @@ export default function UploadSingleFile({
       >
         <input {...getInputProps()} />
 
-        <BlockContent />
+        <BlockContent maxSize={maxSize ? maxSize : false} />
 
         {file && (
           <Image

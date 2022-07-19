@@ -3,7 +3,7 @@ import type { GetStaticPaths, GetStaticProps } from "next";
 import Page from "src/components/Page"
 import { useRouter } from 'next/router';
 
-import ProjectNewEditForm from "src/components/_Projekte/ProjectNewEditForm";
+import ProjectNewEditForm from "src/components/_Projekte/NewEditProjekt/ProjectNewEditForm";
 // layouts
 import Layout from "src/layouts"
 import { getCollectionId, getCollectionDocument } from "src/utils/apis/apis";

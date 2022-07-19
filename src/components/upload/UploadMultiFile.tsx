@@ -36,7 +36,7 @@ export default function UploadMultiFile({
   const { getRootProps, getInputProps, isDragActive, isDragReject, fileRejections } = useDropzone({
     ...other,
   });
-
+  const { maxSize } = other;
   return (
     <Box sx={{ width: '100%', ...sx }}>
       <DropZoneStyle
@@ -51,7 +51,7 @@ export default function UploadMultiFile({
         }}
       >
         <input {...getInputProps()} />
-        <BlockContent />
+        <BlockContent maxSize={maxSize ? maxSize : false} />
       </DropZoneStyle>
 
       {fileRejections.length > 0 && <RejectionFiles fileRejections={fileRejections} />}

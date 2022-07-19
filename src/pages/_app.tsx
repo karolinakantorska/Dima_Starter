@@ -19,7 +19,8 @@ import Head from 'next/head';
 import App, { AppProps, AppContext } from 'next/app';
 // @mui
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
-import LocalizationProvider from '@mui/lab/LocalizationProvider';
+//import LocalizationProvider from '@mui/lab/LocalizationProvider';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 // utils
 import { getSettings } from '../utils/getSettings';
 // contexts

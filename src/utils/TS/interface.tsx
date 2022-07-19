@@ -6,25 +6,27 @@ export interface ProjectType {
   photoAuthor?: string;
   id: string;
   title: string;
-  description: string;
-  year: number;
+  description: string[];
+  year: Date;
   objektAlter: ObjektAlter;
-  objektType: ObjektTypes;
-  services: ArrayOfServicesType;
-  timeStamp: number;
+  //objektType: ObjektTypes;
+  //services: ArrayOfServicesType;
+  //timeStamp: number;
   region: Regionen;
   phase: ArrayOfPhases;
   client: string;
   size: number;
   architect: Company;
   generalConstr: string,
+  bauleitung: string,
   cooperation: {
     service: Services | string;
     company: Company;
   };
   location: string;
-  constructionVideo?: string;
   video?: string;
+  finished: boolean;
+  constructionStart: number;
 }
 export type ProjectsListType = ProjectType[];
 

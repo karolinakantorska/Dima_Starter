@@ -32,6 +32,7 @@ export function ProjectsListCom(
     type: 'tween',
     ease: 'linear',
     duration: router.query.id && 1,
+    when: "afterChildren"
   };
   const variant = {
     initial: { opacity: 1 },

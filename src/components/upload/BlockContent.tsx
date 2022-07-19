@@ -5,7 +5,8 @@ import { UploadIllustration } from '../../assets';
 
 // ----------------------------------------------------------------------
 
-export default function BlockContent() {
+export default function BlockContent({ maxSize }: { maxSize: number | false }) {
+
   return (
     <Stack
       spacing={2}
@@ -32,6 +33,14 @@ export default function BlockContent() {
           </Typography>
           &nbsp;thorough your machine
         </Typography>
+
+        {maxSize && <Typography
+          variant="body2"
+          component="p"
+          sx={{ pt: 2, color: 'text.secondary' }}
+        >
+          Maximales Filegrosse: {Math.round(maxSize / Math.pow(1024, 1)).toString()} MB
+        </Typography>}
       </Box>
     </Stack>
   );
