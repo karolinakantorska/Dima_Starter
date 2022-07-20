@@ -13,7 +13,7 @@ import { SiteTitle } from '../_Reusable/SiteTitle';
 export function ContactCom() {
   //const initialInputs = { param: "Alle" }
 
-  const isDesktop = useResponsive('up', 'lm');
+  //const isDesktop = useResponsive('up', 'lm');
   const isMiddle = useResponsive('down', 'md');
   const isSmall = useResponsive('down', 'sm');
 
