@@ -1,20 +1,7 @@
 import { Theme } from '@mui/material/styles';
 
-//import * as RegularBQ from '/public/font/Univers-BQ-Regular.woff2';
-/*
-@font-face {
-  font-family: GothamMedium;
-  src: url("/fonts/GothamRnd-Medium.woff2");
-  format: ("woff2");
-  font-display: swap;
-}
-font-family: 'Univers BQ';
-    src: url('UniversBQ-Light.woff2') format('woff2'),
-        url('UniversBQ-Light.woff') format('woff');
-    font-weight: 300;
-    font-style: normal;
-    font-display: swap;
-*/
+//import * as RegularBQ from '/font/UniversBQ-Light.woff2';
+
 // ----------------------------------------------------------------------
 
 export default function CssBaseline(theme: Theme) {
@@ -25,14 +12,12 @@ export default function CssBaseline(theme: Theme) {
       styleOverrides: 
       {
         '@font-face':{
-fontFamily: 'Univers BQ',
-    src: 'url("/font/UniversBQ-Light.woff2") format("woff2"),url("UniversBQ-Light.woff") format("woff")',
-
-    fontWeight: 300,
-    fontStyle: 'normal',
-   fontDisplay: 'swap',
+          fontFamily: 'Univers BQ',
+          src: 'url("/font/UniversBQ-Light.woff2") format("woff2"),url("UniversBQ-Light.woff") format("woff")',
+          fontWeight: 600,
+          fontStyle: 'normal',
+          fontDisplay: 'swap',
         },
-
         '*': {
           margin: 0,
           padding: 0,
