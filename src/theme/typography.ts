@@ -2,9 +2,9 @@ import { pxToRem, responsiveFontSizes } from '../utils/getFontValue';
 //import BG_Regular_woff2 from '/public/fonts/univers_bq_regular.woff2';
 
 // ----------------------------------------------------------------------
-const FONT_PRIMARY = ' BG_Regular, Univers,Open Sans, Arial,sans-serif'; // Google Font
+const FONT_PRIMARY = 'Ibarra Real Nova, serif'; // Google Font
 
-// const FONT_SECONDARY = 'CircularStd, sans-serif'; // Local Font
+// const FONT_SECONDARY = ' BG_Regular, Univers,Open Sans, Arial,sans-serif'; // Local Font
         
 //console.log('BG_Regular_woff2:',BG_Regular_woff2);
 /*

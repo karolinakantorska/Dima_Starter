@@ -2,17 +2,17 @@ import * as React from 'react';
 // next
 import Document, { Html, Head, Main, NextScript } from 'next/document';
 // emotion
-//import { CacheProvider } from '@emotion/react';
-//import createCache from '@emotion/cache';
-//import createEmotionServer from '@emotion/server/create-instance';
+import { CacheProvider } from '@emotion/react';
+import createCache from '@emotion/cache';
+import createEmotionServer from '@emotion/server/create-instance';
 
 
 // ----------------------------------------------------------------------
-/*
+
 function createEmotionCache() {
   return createCache({ key: 'css' });
 }
-*/
+
 export default class MyDocument extends Document {
   render() {
     return (
@@ -54,7 +54,7 @@ export default class MyDocument extends Document {
 }
 
 // ----------------------------------------------------------------------
-/*
+
 MyDocument.getInitialProps = async (ctx) => {
   const originalRenderPage = ctx.renderPage;
 
@@ -88,4 +88,3 @@ MyDocument.getInitialProps = async (ctx) => {
     styles: [...React.Children.toArray(initialProps.styles), ...emotionStyleTags],
   };
 };
-*/
