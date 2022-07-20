@@ -6,6 +6,7 @@ import useResponsive from '../../hooks/useResponsive';
 import { ProjectType } from '../../utils/TS/interface';
 import { firstLettersBig, } from '../../utils/Text/textUtils';
 import CarouselBasic3 from '../carousel/CarouselBasic3';
+import LoadingScreen from '../LoadingScreen';
 
 export function OneProjectCom({ project }: { project: ProjectType }) {
   const isDesktop = useResponsive('up', 'lm');
@@ -28,23 +29,25 @@ export function OneProjectCom({ project }: { project: ProjectType }) {
       { name: 'bauprojekt', data: project.architect },
       { name: 'standort', data: project.location },
       { name: 'bauherschaft', data: project.client },
-      { name: 'bauzeit', data: project.year.toLocaleString('de-DE', { dateStyle: "medium" }) },
+      { name: 'bauzeit', data: new Date(project.year).toLocaleString('de-DE', { year: 'numeric', month: 'long', }) },
     ]
     if (project?.cooperation) {
       arr.push({ name: project.cooperation.service, data: project.cooperation.company })
     }
     return arr
   }
+  console.log('project.year', new Date(project.year))
+
   const TableRowMobile = ({ row }: any) => (
     <TableRow
       key={row.name}
       sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
     >
       <TableCell component="td" sx={{ pr: 0, pt: 5, pb: 5, width: '100%' }}>
-        <Typography sx={{ pl: 1, }} variant="body1" component="p" color="dima" >
+        <Typography sx={{ pl: 1, }} variant="body2" component="p" color="dima" >
           {row.name.toUpperCase()}
         </Typography>
-        <Typography sx={{ pl: 1, pt: 2, }} variant="body1" component="p" color="text.primary">
+        <Typography sx={{ pl: 1, pt: 2, }} variant="body2" component="p" color="text.primary">
           {row.data}
         </Typography>
       </TableCell>
@@ -55,13 +58,13 @@ export function OneProjectCom({ project }: { project: ProjectType }) {
       key={row.name}
       sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
     >
-      <TableCell component="td" sx={{ pr: 0, pt: 5, pb: 5, }}>
-        <Typography sx={{ pl: 1, }} variant="body1" component="p" color="dima" >
+      <TableCell component="td" sx={{ py: 4, }}>
+        <Typography variant="body2" component="p" color="dima" >
           {row.name.toUpperCase()}
         </Typography>
       </TableCell>
       <TableCell align="left" sx={{ pl: 6, }} >
-        <Typography variant="body1" component="p" color="text.primary">
+        <Typography variant="body2" component="p" color="text.primary">
           {row.data}
         </Typography>
       </TableCell>
@@ -74,17 +77,17 @@ export function OneProjectCom({ project }: { project: ProjectType }) {
       <Stack
         component={m.div}
         {...variant}
-        spacing={isDesktop ? 20 : isSmall ? 5 : 8}
+        spacing={isDesktop ? 18.5 : isSmall ? 5 : 8}
       >
         <CarouselBasic3 photos={photosCarusel} />
         <Box
           sx={{
             display: 'grid',
             gridTemplateColumns: isDesktop ? '1fr 1fr' : '1fr ',
-            columnGap: '53px',
+            columnGap: '63px',
           }}
         >
-          <Box sx={isSmall ? { pl: 0 } : { pl: 5 }}>
+          <Box sx={isSmall ? { pl: 0 } : { pl: 15 }}>
             <Table id="Project_Table">
               <TableBody>
                 {isMobile && row2().map((row) => (<TableRowMobile key={row.name} row={row} />))}
@@ -92,12 +95,12 @@ export function OneProjectCom({ project }: { project: ProjectType }) {
               </TableBody>
             </Table>
           </Box>
-          <Box sx={isSmall ? { pl: 0, pt: 0, } : { pl: 5, pt: 5, }}>
-            <Typography variant="h2" component="h2" paragraph color="dima">
+          <Box sx={isSmall ? { pl: 0, pt: 0, } : { pl: 5, pt: 5, pr: 15 }}>
+            <Typography variant="body2" component="h2" paragraph color="dima" sx={{ mb: 2.75 }}>
               {firstLettersBig(project.title)}
             </Typography>
             {project.description.map((desc, i) => (
-              <Typography key={i} variant="h6" component="div" paragraph color="text.primary">
+              <Typography key={i} variant="body1" component="div" paragraph color="text.primary" sx={{ mb: 1.5 }}>
                 {desc}
               </Typography>
             ))}
@@ -108,9 +111,7 @@ export function OneProjectCom({ project }: { project: ProjectType }) {
 
   } else {
     return (
-      <Typography variant="h6" component="div" paragraph color="text.primary">
-        Loading...
-      </Typography>
+      <LoadingScreen />
     )
   }
 }

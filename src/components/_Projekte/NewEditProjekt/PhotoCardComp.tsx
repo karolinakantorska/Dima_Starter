@@ -86,7 +86,16 @@ export function PhotoCardCom({ setLoading, setError }: { setLoading: any, setErr
                 maxSize={314572}
                 onDrop={handleDropImage}
             />
-            {values.photo?.alt && <p>{values.photo.alt}</p>}
+            {values.photo?.alt && (
+                <Typography
+                    variant="body2"
+                    component="p"
+                    sx={{
+                        color: 'dima',
+                    }}
+                >
+                    {values.photo.alt}
+                </Typography>)}
             <Typography
                 variant="body2"
                 component="p"

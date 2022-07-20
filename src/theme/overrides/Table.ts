@@ -43,7 +43,7 @@ export default function Table(theme: Theme) {
         },
         body: {
           '&:first-of-type': {
-            paddingLeft: theme.spacing(1),
+            paddingLeft: theme.spacing(2),
           },
           '&:last-of-type': {
             paddingRight: theme.spacing(5),

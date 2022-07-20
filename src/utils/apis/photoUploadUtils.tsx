@@ -8,5 +8,5 @@ export function createMetadata(title: string) {
     }
 }
 export function fileNameWithoutFileExtension(text: string) {
-    return text.replace(/\.[^.]*$/, '.').replace(/^\w/, c => c.toUpperCase());
+    return text.replace(/\.[^.]*$/, ' ').replace(/^\w/, c => c.toUpperCase());
 }

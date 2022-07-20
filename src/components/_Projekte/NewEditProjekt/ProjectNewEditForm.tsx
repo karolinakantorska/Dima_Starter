@@ -88,7 +88,7 @@ export default function ProjectNewEditForm({ isEdit, currentProject }: Props) {
       description3: currentProject?.description[2] || '',
       description4: currentProject?.description[3] || '',
       description5: currentProject?.description[4] || '',
-      year_form: currentProject && currentProject.year && new Date(`"${currentProject.year}-01-01"`) || new Date(),
+      year_form: currentProject && currentProject.year && new Date(currentProject.year) || new Date(),
       objektAlter: currentProject?.objektAlter || 'Newbau',
       //objektType: currentProject?.objektType || [],
       //services: currentProject?.services || [],
@@ -122,7 +122,7 @@ export default function ProjectNewEditForm({ isEdit, currentProject }: Props) {
   } = methods;
 
   const values = watch();
-  //console.log('values', values)
+  console.log('values', values.year)
 
   useEffect(() => {
     if (isEdit && currentProject) {
@@ -137,8 +137,9 @@ export default function ProjectNewEditForm({ isEdit, currentProject }: Props) {
   const onSubmit = async (data: FormValuesProps) => {
     setLoading(true);
     const projectToDB = createProject(data);
+
     if (currentProject?.id) {
-      //console.log('editProject');
+      console.log('editProject');
       editProjectInFirestore('projects', currentProject.id, projectToDB)
         .then(() => {
           //console.log('response', response);
@@ -187,6 +188,7 @@ export default function ProjectNewEditForm({ isEdit, currentProject }: Props) {
               <CategoryCardCom />
             </Stack>
           </Grid>
+
 
           <Grid item xs={12} md={12}>
             <LoadingButton

@@ -5,12 +5,12 @@ import { styled, useTheme } from '@mui/material/styles';
 import { Box, Link } from '@mui/material';
 
 // components
-//import Image from 'src/components/Image';
+import Image from 'src/components/Image';
 import { CarouselDots, CarouselArrows } from 'src/components/carousel';
 import { ImagesType } from '../../utils/TS/interface';
 import { DimaName } from "src/utils/dima";
 import * as logo from "/public/assets/bg_gradient.jpeg"
-import Image from "next/image";
+//import Image from "next/image";
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 
 // ----------------------------------------------------------------------
@@ -137,9 +137,9 @@ function CarouselItem({ item }: { item: CarouselItemProps }) {
   const { image, title } = item;
 
   return (
-    <Image src={image} height={675} width={1200} alt={title} />
+    <Image alt={title} src={image} ratio="16/9" />
   );
 }
 /*
-<Image alt={title} src={image} ratio="16/9" alt={title}  />
+<Image alt={title} src={image} ratio="16/9"  />
 */

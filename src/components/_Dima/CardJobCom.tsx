@@ -24,6 +24,8 @@ export function CardJobCom({ job }: { job: Job }) {
     const pt = isMiddle ? 2.5 : 5;
     const px = isMiddle ? 2 : 5.25;
     const pb = isMiddle ? 2.5 : 7.5;
+    console.log('announcment', announcment);
+    console.log('announcment', typeof announcment);
     return (
         <Card sx={{ height: 300 }}>
             <Link href={`${PATH_JOBS.job}/${id}`}  >

@@ -37,7 +37,9 @@ export function ProjektCardCom({
 
   const propsPhotoAuthor = {
     position: 'absolute',
-    bottom: 0
+    bottom: 0,
+    pb: .5,
+    pl: 1
   }
   const boxProps = {
     minWidth: '20px',
@@ -53,7 +55,6 @@ export function ProjektCardCom({
   const cardProps = {
     gridRow: isBigAndDisplaysDesktop ? 'span 2' : gridRow,
     gridColumn: isBigAndDisplaysDesktop ? rewerseBig ? '3/span 3' : '1/span 3' : 'span 1',
-
   }
 
   return (
@@ -82,7 +83,7 @@ export function ProjektCardCom({
                 position: 'absolute',
                 background: 'transparent',
                 zIndex: 2000,
-                transition: '.5s',
+                transition: '.15s',
                 boxShadow: 'inset 0px 0px rgba(255,255,255,0.5)',
                 /*
                 '&:active': {
@@ -104,7 +105,7 @@ export function ProjektCardCom({
                 display="span"
                 sx={{ ...propsPhotoAuthor }}
               >
-                {photoAuthor}
+                Foto: {photoAuthor}
               </Typography>}
 
           </CardActionArea>
