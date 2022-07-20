@@ -1,19 +1,23 @@
 import { Theme } from '@mui/material/styles';
-//import { BG_Regular } from '../typography';
-import zIndex from '@mui/material/styles/zIndex';
+
+//import * as RegularBQ from '/font/UniversBQ-Light.woff2';
 
 // ----------------------------------------------------------------------
 
 export default function CssBaseline(theme: Theme) {
- 
+
   return {
     MuiCssBaseline: {
-      /*
- '@global': {
-        '@font-face': [ BG_Regular],
-      },
-      */
-      styleOverrides: {
+
+      styleOverrides: 
+      {
+        '@font-face':{
+          fontFamily: 'Univers BQ',
+          src: 'url("/font/UniversBQ-Light.woff2") format("woff2"),url("UniversBQ-Light.woff") format("woff")',
+          fontWeight: 600,
+          fontStyle: 'normal',
+          fontDisplay: 'swap',
+        },
         '*': {
           margin: 0,
           padding: 0,
@@ -24,10 +28,12 @@ export default function CssBaseline(theme: Theme) {
           height: '100%',
           WebkitOverflowScrolling: 'touch',
           scrollBehavior: 'smooth',
+          
         },
         body: {
           width: '100%',
           height: '100%',
+          fontFamily: 'Univers BQ',
         },
         '#__next': {
           width: '100%',
@@ -54,6 +60,11 @@ export default function CssBaseline(theme: Theme) {
         a:{
           color: theme.palette.text.disabled
         },
+        /*
+        p:{
+fontFamily: 'Univers-BQ-Regular',
+        },
+        */
         '&.hamburger-react':{
           zIndex:2002,
         }
