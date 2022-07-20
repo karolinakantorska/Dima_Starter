@@ -1,5 +1,4 @@
 
-import { useRouter } from 'next/router';
 
 // components
 import Page from '../components/Page';
@@ -16,7 +15,6 @@ Index.getLayout = function getLayout(page: React.ReactElement) {
 // ----------------------------------------------------------------------
 
 export default function Index() {
-  const router = useRouter();
 
   return (
     <Page title="Dima & Partner" style={{

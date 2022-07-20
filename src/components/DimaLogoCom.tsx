@@ -1,10 +1,10 @@
-import React, { useEffect, useState, SyntheticEvent, ReactEventHandler } from 'react';
+import React from 'react';
 
 import NextLink from 'next/link';
 
 
 
-import { Box, BoxProps } from '@mui/material';
+import { Box } from '@mui/material';
 
 export default function DimaLogoCom({ x, y }: { x: number, y: number }) {
 

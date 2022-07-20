@@ -16,7 +16,7 @@ Werkliste.getLayout = function getLayout(page: React.ReactElement) {
 // ----------------------------------------------------------------------
 export default function Werkliste(props: any) {
 
-  const { data } = props;
+  //const { data } = props;
   return (
 
     <Page title="Werkliste | Dima & Partner">

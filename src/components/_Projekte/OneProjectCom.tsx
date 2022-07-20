@@ -36,7 +36,6 @@ export function OneProjectCom({ project }: { project: ProjectType }) {
     }
     return arr
   }
-  console.log('project.year', new Date(project.year))
 
   const TableRowMobile = ({ row }: any) => (
     <TableRow
@@ -111,7 +110,7 @@ export function OneProjectCom({ project }: { project: ProjectType }) {
 
   } else {
     return (
-      <LoadingScreen />
+      <p>loading</p>
     )
   }
 }
