@@ -13,8 +13,8 @@ import { ProjectType } from 'src/utils/TS/interface';
 
 import { CardActionArea } from '@mui/material';
 import { PATH_PROJEKTE } from 'src/routes/paths';
-import Typography from '@mui/material/Typography';
 import { TextCardCom } from './textCardCom';
+import { forwardRef } from 'react';
 
 export function ProjektCardCom({
   project,
@@ -35,12 +35,6 @@ export function ProjektCardCom({
   const isBig = isDesktop ? big : false;
   const isBigAndDisplaysDesktop = isDesktop && big;
 
-  const propsPhotoAuthor = {
-    position: 'absolute',
-    bottom: 0,
-    pb: .5,
-    pl: 1
-  }
   const boxProps = {
     minWidth: '20px',
     display: 'grid',
@@ -99,19 +93,12 @@ export function ProjektCardCom({
               }}
             />
             <Image src={photo.url} alt={photo.alt} ratio="16/9" />
-            {photoAuthor &&
-              <Typography
-                variant="body2"
-                display="span"
-                sx={{ ...propsPhotoAuthor }}
-              >
-                Foto: {photoAuthor}
-              </Typography>}
-
           </CardActionArea>
         </Card>
       </Link>
+
       <TextCardCom project={project} big={isBig} rewerseBig={rewerseBig} />
+
     </Box >
   );
 }

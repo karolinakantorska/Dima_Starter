@@ -3,13 +3,12 @@ import { useEffect, useMemo, useState } from 'react';
 import { useRouter } from 'next/router';
 //import { useRouter } from 'next/router';
 // form
-import { useForm, Controller, } from 'react-hook-form';
+import { useForm, } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { NewProjectSchema } from 'src/utils/myUtils/formSchema';
 // @mui
 import { LoadingButton } from '@mui/lab';
 import {
-  Card,
   Grid,
   Stack,
   Typography,
@@ -49,7 +48,6 @@ export interface FormValuesProps extends Partial<ProjectType> {
   description4: string;
   description5: string;
 }
-
 type Props = {
   isEdit?: boolean;
   currentProject?: ProjectType
@@ -89,12 +87,12 @@ export default function ProjectNewEditForm({ isEdit, currentProject }: Props) {
       description4: currentProject?.description[3] || '',
       description5: currentProject?.description[4] || '',
       year_form: currentProject && currentProject.year && new Date(currentProject.year) || new Date(),
-      objektAlter: currentProject?.objektAlter || 'Newbau',
+      objektAlter: currentProject?.objektAlter || 'Neubau',
       //objektType: currentProject?.objektType || [],
       //services: currentProject?.services || [],
       region: currentProject?.region || 'Andere Regionen',
       client: currentProject?.client || '',
-      size: currentProject?.size || 999,
+      size: currentProject?.size || 0,
       architect: currentProject?.architect || '',
       cooperation_company: currentProject?.cooperation?.company || '',
       cooperation_service: currentProject?.cooperation?.service || '',
@@ -102,6 +100,7 @@ export default function ProjectNewEditForm({ isEdit, currentProject }: Props) {
       //constructionVideo: currentProject?.constructionVideo || '',
       //video: currentProject?.video || '',
       finished: currentProject?.finished || false,
+      big: currentProject?.big || false,
     }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [currentProject]
@@ -114,9 +113,6 @@ export default function ProjectNewEditForm({ isEdit, currentProject }: Props) {
   const {
     reset,
     watch,
-    control,
-    setValue,
-    getValues,
     handleSubmit,
     formState: { isSubmitting },
   } = methods;
@@ -188,7 +184,6 @@ export default function ProjectNewEditForm({ isEdit, currentProject }: Props) {
               <CategoryCardCom />
             </Stack>
           </Grid>
-
 
           <Grid item xs={12} md={12}>
             <LoadingButton

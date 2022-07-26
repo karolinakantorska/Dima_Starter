@@ -36,18 +36,7 @@ export function AuthorsCardCom() {
             </Typography>
             <RHFTextField variant="filled" name="client" label="Bauherr" />
             <RHFTextField variant="filled" name="architect" label="Architekt" />
-            <Typography
-                variant="body2"
-                component="p"
-                sx={{
-                    pt: 5,
-                    color: 'dima',
-
-                }}        >
-                Zusamearbeit mit:
-            </Typography>
-            <RHFTextField variant="filled" name="cooperation_company" label="Unternehmen" />
-            <RHFTextField variant="filled" name="cooperation_service" label="Leistungen" />
+            <RHFTextField variant="filled" name="realisation" label="Ausführung" />
         </Stack>
 
     )

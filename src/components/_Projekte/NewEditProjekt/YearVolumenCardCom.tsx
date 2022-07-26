@@ -30,7 +30,6 @@ export function YearVolumenCardCom() {
                 component="p"
                 sx={{
                     color: 'dima',
-
                 }}
             >
                 Project Eingaben:
@@ -40,7 +39,7 @@ export function YearVolumenCardCom() {
                 control={control}
                 render={({ field, fieldState: { error } }) => (
                     <DatePicker
-                        views={['year', 'month']}
+                        views={['year']}
                         label="Baujahr"
                         value={field.value}
                         onChange={(newValue) => {

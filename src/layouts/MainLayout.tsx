@@ -6,12 +6,12 @@ import { Box, Container, Stack } from '@mui/material';
 import { HEADER } from 'src/config';
 import MainHeader from './MainHeader';
 import { styled } from '@mui/material/styles';
+import FooterCom from '../components/_Reusable/FooterCom';
 
 // ----------------------------------------------------------------------
 
 type Props = {
   children: ReactNode;
-
 };
 const ContainerStyle = styled(Container)(({ theme }) => ({
 
@@ -27,15 +27,13 @@ const ContainerStyle = styled(Container)(({ theme }) => ({
   },
 }));
 export default function MainLayout({ children }: Props) {
-
   return (
-
     <Stack sx={{ minHeight: 1, }}>
       <MainHeader />
       <ContainerStyle maxWidth='lg'>
         {children}
       </ContainerStyle>
-      <Box sx={{ flexGrow: 1 }} />
+
     </Stack>
 
   )

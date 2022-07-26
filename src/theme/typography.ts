@@ -1,9 +1,9 @@
 import { pxToRem, responsiveFontSizes } from '../utils/getFontValue';
 //import * as RegularBQ from '/font/UniversBQ-Light.woff2';
 // ----------------------------------------------------------------------
-const FONT_PRIMARY = 'Univers BQ, Univers , Open Sans, Arial, sans-serif'; // Google Font
+const FONT_PRIMARY = 'Univers BQ, Open Sans, Arial, sans-serif'; 
 
-// const FONT_SECONDARY = ' BG_Regular, Univers,Open Sans, Arial,sans-serif'; // Local Font
+// const FONT_SECONDARY ='universbq-55regularregula, Open Sans, Arial, sans-serif'; // Local Font
         
 
 const typography = {
@@ -61,13 +61,13 @@ const typography = {
   },
   body1: {
     fontWeight: 600,  
-    lineHeight: 25 / 20,
+    lineHeight: 22 / 20,
     fontSize: pxToRem(16),
     ...responsiveFontSizes({ sm: 16, md: 18, lg: 20 }),
   },
   body2: {
     fontWeight: 600,
-    lineHeight: 23 / 20,
+    lineHeight: 22 / 20,
     fontSize: pxToRem(16),
     ...responsiveFontSizes({ sm: 16, md: 18, lg: 20 }),
   },

@@ -4,12 +4,13 @@ import { Box, Table, TableBody, TableRow, TableCell, Typography, Stack, } from '
 
 import useResponsive from '../../hooks/useResponsive';
 import { ProjectType } from '../../utils/TS/interface';
-import { firstLettersBig, } from '../../utils/Text/textUtils';
+
 import CarouselBasic3 from '../carousel/CarouselBasic3';
-import LoadingScreen from '../LoadingScreen';
 
 export function OneProjectCom({ project }: { project: ProjectType }) {
-  const isDesktop = useResponsive('up', 'lm');
+  const isDesktop = useResponsive('up', 'lg');
+  const isSmallDesktop = useResponsive('up', 'lm');
+  const isMiddle = useResponsive('down', 'lm');
   const isSmall = useResponsive('down', 'sm');
   const isMobile = useResponsive('down', 'mobile');
 
@@ -23,20 +24,34 @@ export function OneProjectCom({ project }: { project: ProjectType }) {
     animate: { opacity: 1 },
     transition: transition,
   };
+
   const row2 = () => {
+    const time = project.finished ? 'bauzeit' : 'projektzeit';
     const arr = [
-      { name: 'realisation', data: project.generalConstr },
-      { name: 'bauprojekt', data: project.architect },
-      { name: 'standort', data: project.location },
-      { name: 'bauherschaft', data: project.client },
-      { name: 'bauzeit', data: new Date(project.year).toLocaleString('de-DE', { year: 'numeric', month: 'long', }) },
+      { name: 'bauherr', data: project.client },
+      { name: 'architekt', data: project.architect },
+      { name: 'realisation', data: project.realisation },
+      { name: time, data: new Date(project.year).toLocaleString('de-DE', { year: 'numeric' }) },
     ]
-    if (project?.cooperation) {
-      arr.push({ name: project.cooperation.service, data: project.cooperation.company })
+    if (project.size !== 0) {
+      arr.push({ name: 'volumen', data: `ca. ${project.size.toString()} Mio. CHF` })
     }
     return arr
   }
-
+  const containerBoxProps = {
+    display: 'grid',
+    gridTemplateColumns: isSmallDesktop ? '56fr 44fr' : '1fr ',
+  }
+  const boxProps = {
+    pl: isDesktop ? 15 : isSmall ? 0 : 2,
+    maxWidth: '730px'
+  }
+  const secondBoxProps = {
+    pl: isDesktop ? 12.5 : isMiddle ? isSmall ? 0 : 2 : 10,
+    pr: isDesktop ? 16 : isSmall ? 0 : 2,
+    pt: isSmallDesktop ? 4 : 10,
+    maxWidth: '730px'
+  }
   const TableRowMobile = ({ row }: any) => (
     <TableRow
       key={row.name}
@@ -57,12 +72,12 @@ export function OneProjectCom({ project }: { project: ProjectType }) {
       key={row.name}
       sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
     >
-      <TableCell component="td" sx={{ py: 4, }}>
+      <TableCell component="td" sx={{ py: 3.9, width: '55%' }}>
         <Typography variant="body2" component="p" color="dima" >
           {row.name.toUpperCase()}
         </Typography>
       </TableCell>
-      <TableCell align="left" sx={{ pl: 6, }} >
+      <TableCell align="left" sx={{ pl: 0, }} >
         <Typography variant="body2" component="p" color="text.primary">
           {row.data}
         </Typography>
@@ -80,23 +95,19 @@ export function OneProjectCom({ project }: { project: ProjectType }) {
       >
         <CarouselBasic3 photos={photosCarusel} />
         <Box
-          sx={{
-            display: 'grid',
-            gridTemplateColumns: isDesktop ? '1fr 1fr' : '1fr ',
-            columnGap: '63px',
-          }}
+          sx={{ ...containerBoxProps }}
         >
-          <Box sx={isSmall ? { pl: 0 } : { pl: 15 }}>
+          <Box sx={{ ...boxProps }}>
             <Table id="Project_Table">
               <TableBody>
-                {isMobile && row2().map((row) => (<TableRowMobile key={row.name} row={row} />))}
-                {!isMobile && row2().map((row) => (<TableRowDesktop key={row.name} row={row} />))}
+
+                {row2().map((row) => (<TableRowDesktop key={row.name} row={row} />))}
               </TableBody>
             </Table>
           </Box>
-          <Box sx={isSmall ? { pl: 0, pt: 0, } : { pl: 5, pt: 5, pr: 15 }}>
+          <Box sx={{ ...secondBoxProps }}>
             <Typography variant="body2" component="h2" paragraph color="dima" sx={{ mb: 2.75 }}>
-              {firstLettersBig(project.title)}
+              {project.title.toUpperCase()}
             </Typography>
             {project.description.map((desc, i) => (
               <Typography key={i} variant="body1" component="div" paragraph color="text.primary" sx={{ mb: 1.5 }}>
@@ -110,7 +121,11 @@ export function OneProjectCom({ project }: { project: ProjectType }) {
 
   } else {
     return (
-      <p>loading</p>
+      <p>loading...</p>
     )
   }
 }
+/*
+{isMobile && row2().map((row) => (<TableRowMobile key={row.name} row={row} />))}
+                {!isMobile && row2().map((row) => (<TableRowDesktop key={row.name} row={row} />))}
+                */

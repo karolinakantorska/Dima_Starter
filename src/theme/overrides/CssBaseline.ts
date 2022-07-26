@@ -3,17 +3,24 @@ import { Theme } from '@mui/material/styles';
 //import * as RegularBQ from '/font/UniversBQ-Light.woff2';
 
 // ----------------------------------------------------------------------
+/*
+font-family: 'universbq-55regularregular';
+    src: url('universbq-regular-webfont.woff2') format('woff2'),
+         url('universbq-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+*/
+
 
 export default function CssBaseline(theme: Theme) {
 
   return {
     MuiCssBaseline: {
-
       styleOverrides: 
       {
         '@font-face':{
           fontFamily: 'Univers BQ',
-          src: 'url("/font/UniversBQ-Light.woff2") format("woff2"),url("UniversBQ-Light.woff") format("woff")',
+          src: 'url("/font/universbq-regular-webfont.woff2") format("woff2"),url("/font/universbq-regular-webfont.woff") format("woff")',
           fontWeight: 600,
           fontStyle: 'normal',
           fontDisplay: 'swap',

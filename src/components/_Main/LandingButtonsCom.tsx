@@ -27,7 +27,7 @@ export default function LandingButtonsCom() {
         maxWidth: '280px',
         maxHeight: '86px',
         p: 0,
-        opacity: 0.85,
+        opacity: 0.7,
         color: 'text.primary',
     }
     return (
@@ -39,14 +39,16 @@ export default function LandingButtonsCom() {
                             sx={{
                                 ...buttonProps,
                                 backgroundColor: 'dima',
-                                transition: '0.5s',
+                                transition: '1s',
                                 '&:hover': {
                                     opacity: 1,
-                                    boxShadow: 'inset 0px -100px #df530c',
+                                    boxShadow: 'inset 0px -100px dima',
+                                    color: 'background.default'
                                 },
                                 '&:focus': {
                                     opacity: 1,
-                                    boxShadow: 'inset 0px -100px #df530c',
+                                    boxShadow: 'inset 0px -100px dima',
+                                    color: 'background.default'
                                 },
 
                             }}
@@ -66,11 +68,17 @@ export default function LandingButtonsCom() {
                             sx={{
                                 ...buttonProps,
                                 backgroundColor: 'background.default',
+                                transition: '1s',
                                 '&:hover': {
                                     opacity: 1,
-                                    backgroundColor: 'background.default',
+                                    boxShadow: 'inset 0px -100px background.default',
                                     color: 'dima'
-                                }
+                                },
+                                '&:focus': {
+                                    opacity: 1,
+                                    boxShadow: 'inset 0px -100px background.default',
+                                    color: 'dima'
+                                },
                             }}
                         >
                             <Typography

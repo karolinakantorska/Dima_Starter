@@ -25,13 +25,13 @@ export default function Table(theme: Theme) {
           color: theme.palette.text.secondary,
           backgroundColor: theme.palette.background.neutral,
           '&:first-of-type': {
-            paddingLeft: theme.spacing(3),
+            paddingLeft: theme.spacing(0),
             borderTopLeftRadius: theme.shape.borderRadius,
             borderBottomLeftRadius: theme.shape.borderRadius,
             boxShadow: `inset 8px 0 0 ${theme.palette.background.paper}`,
           },
           '&:last-of-type': {
-            paddingRight: theme.spacing(3),
+            paddingRight: theme.spacing(0),
             borderTopRightRadius: theme.shape.borderRadius,
             borderBottomRightRadius: theme.shape.borderRadius,
             boxShadow: `inset -8px 0 0 ${theme.palette.background.paper}`,
@@ -46,7 +46,7 @@ export default function Table(theme: Theme) {
             paddingLeft: theme.spacing(2),
           },
           '&:last-of-type': {
-            paddingRight: theme.spacing(5),
+            paddingRight: theme.spacing(0),
           },
         },
       },

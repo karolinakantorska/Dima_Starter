@@ -11,7 +11,6 @@ import { firstLettersBig } from '../../utils/Text/textUtils';
 import { Box } from '@mui/system';
 import { IconButton, Grid, CardActions, CardContent, Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions, Button, Alert } from '@mui/material';
 import { deleteProjectFromFirestore } from 'src/utils/apis/deleteFromFirestore';
-import { useRouter } from 'next/router';
 import { PATH_PROJEKTE } from '../../routes/paths';
 import useAuth from 'src/utils/firebaseAuth/useAuth';
 
@@ -31,7 +30,6 @@ export function TextCardCom({ project, big, rewerseBig, }: {
   const { isAuthenticated } = useAuth();
   const isBigAndDisplaysDesktop = isDesktop && big;
 
-
   const pl = isMiddle ? 2 : 3.15;
   const pr = isMiddle ? 2 : 3.15;
   const pt = isMiddle ? 3 : 4.75;
@@ -40,6 +38,12 @@ export function TextCardCom({ project, big, rewerseBig, }: {
     gridColumn: rewerseBig ? '1 / span 2' : '4 / span 2',
     gridRow: 'span 2',
     backgroundColor: 'background.default'
+  }
+  const propsGridTextBox = {
+    backgroundColor: 'background.paper',
+    minHeight: big ? '300px' : '100px',
+    height: isAuthenticated ? '100%' : '70%',
+
   }
   function handleOpen() {
     setOpen(true);
@@ -74,45 +78,58 @@ export function TextCardCom({ project, big, rewerseBig, }: {
 
   const TextBox = () => (
     <Grid
-      className="big"
       container
       direction='column'
       justifyContent="space-between"
-      sx={big ? { backgroundColor: 'background.paper', minHeight: '300px' } : { height: '100%' }}
-    >
-      <CardContent
-        className="Card Content"
-        sx={{ pl: pl, pt: pt, pr: pr }}
-      >
-        <Typography
-          variant="body2"
-          component="p"
-          sx={{
-            color: 'dima',
 
-          }}        >
-          {objektAlter.toUpperCase()}
-        </Typography>
-        <Typography
-          variant="body2"
-          component="p"
+      sx={{ ...propsGridTextBox }}
+    >
+      <Link href={`${PATH_PROJEKTE.projekt}/${id}`} >
+        <CardContent
+          className="Card Content"
           sx={{
-            color: 'text.secondary',
-            pt: 1,
-          }}        >
-          {title}
-        </Typography>
-        <Typography
-          variant="body2"
-          component="p"
-          sx={{
-            mb: 2,
-            pt: 1,
-            color: 'text.secondary'
-          }}>
-          {firstLettersBig(location)}
-        </Typography>
-      </CardContent>
+            pl: pl,
+            pt: pt,
+            pr: pr,
+            cursor: 'pointer',
+            height: '70%',
+            '&:hover': {
+              textShadow: '#979797 1px 0 10px'
+            },
+            '&:focus': {
+              textShadow: '#979797 1px 0 10px'
+            },
+          }}
+        >
+          <Typography
+            variant="body2"
+            component="p"
+            sx={{
+              color: 'dima',
+
+            }}        >
+            {objektAlter.toUpperCase()}
+          </Typography>
+          <Typography
+            variant="body2"
+            component="p"
+            sx={{
+              color: 'text.secondary',
+              pt: .4,
+            }}        >
+            {title}
+          </Typography>
+          <Typography
+            variant="body2"
+            component="p"
+            sx={{
+              pt: .4,
+              color: 'text.secondary'
+            }}>
+            {firstLettersBig(location)}
+          </Typography>
+        </CardContent>
+      </Link>
       {isAuthenticated && <CardActions sx={{ p: 0 }}>
         <Icons />
       </CardActions>}

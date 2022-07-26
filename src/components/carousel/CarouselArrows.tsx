@@ -36,7 +36,7 @@ export default function CarouselArrows({
     position: 'absolute',
     //mt: 0,
     height: 'calc(100%)',
-    width: '18%',
+    width: '15%',
     top: 0,
     zIndex: 9,
   } as const;
@@ -45,9 +45,7 @@ export default function CarouselArrows({
     width: '100%',
     padding: 0,
     color: 'text.disabled',
-
     '&:hover': {
-
       backgroundColor: 'transparent',
       color: 'text.white',
     },
@@ -67,7 +65,7 @@ export default function CarouselArrows({
     <Box {...other} className="arrow box">
       <Box sx={{ ...style, }}>
         <Button
-          className='carousel button'
+          disableRipple
           aria-label="previous photo"
           size="large"
           onClick={onPrevious}
@@ -84,7 +82,8 @@ export default function CarouselArrows({
 
       <Box sx={{ ...style, right: 0 }}>
         <Button
-          aria-label="previous photo"
+          disableRipple
+          aria-label="next photo"
           size="large"
           onClick={onNext}
           sx={{

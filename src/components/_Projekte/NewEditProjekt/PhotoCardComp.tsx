@@ -2,6 +2,7 @@ import { useCallback, } from 'react';
 import { useFormContext } from 'react-hook-form';
 import { Stack, Typography, } from '@mui/material';
 import {
+    RHFSwitch,
     RHFTextField,
     RHFUploadMultiFile,
     RHFUploadSingleFile,
@@ -78,7 +79,7 @@ export function PhotoCardCom({ setLoading, setError }: { setLoading: any, setErr
                 component="p"
                 sx={{ color: 'dima', }}
             >
-                Cover image:
+                Titelbild:
             </Typography>
             <RHFUploadSingleFile
                 name='photo'
@@ -86,6 +87,7 @@ export function PhotoCardCom({ setLoading, setError }: { setLoading: any, setErr
                 maxSize={314572}
                 onDrop={handleDropImage}
             />
+            <RHFSwitch name="big" label="Grosses Titelbild" />
             {values.photo?.alt && (
                 <Typography
                     variant="body2"
@@ -96,6 +98,8 @@ export function PhotoCardCom({ setLoading, setError }: { setLoading: any, setErr
                 >
                     {values.photo.alt}
                 </Typography>)}
+
+
             <Typography
                 variant="body2"
                 component="p"
@@ -103,6 +107,7 @@ export function PhotoCardCom({ setLoading, setError }: { setLoading: any, setErr
                     color: 'dima',
                 }}
             >
+
                 Fotos:
             </Typography>
             <RHFUploadMultiFile

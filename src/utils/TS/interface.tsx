@@ -17,7 +17,7 @@ export interface ProjectType {
   client: string;
   size: number;
   architect: Company;
-  generalConstr: string,
+  realisation: string,
   bauleitung: string,
   cooperation: {
     service: Services | string;
@@ -26,6 +26,7 @@ export interface ProjectType {
   location: string;
   video?: string;
   finished: boolean;
+  big: boolean;
   //constructionStart: number;
 }
 export type ProjectsListType = ProjectType[];
@@ -50,7 +51,7 @@ export const regionenArray = [
 ] as const;
 export type Regionen = typeof regionenArray[number];
 
-export const objektAlterArray = ['Newbau', 'Sanierung', 'Wettbewerb'] as const;
+export const objektAlterArray = ['Neubau', 'Umbau', 'Wettbewerb'] as const;
 export type ObjektAlter = typeof objektAlterArray[number];
 
 export const phaseArray = ['Entwicklung', 'Plannung', 'Realisierung',] as const;

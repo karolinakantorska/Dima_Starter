@@ -24,7 +24,7 @@ export const NewProjectSchema = Yup.object().shape({
         .max(80, 'Projecttitle muss kurzer als 80 Buchstaben sein'),
     location: Yup.string()
         .max(80, 'Projecttitle muss kurzer als 80 Buchstaben sein'),
-    size: Yup.number().moreThan(0, 'Projectgrosse soll mehr als 0 sein').lessThan(100000000, 'Projectgrosse soll weniger als 100 000 000 sein'),
+    size: Yup.number().lessThan(100000000, 'Projectgrosse soll weniger als 100 000 000 sein'),
     //service: Yup.array().min(1, 'Wahlen Sie bitte mindestens eine Option'),
     //objektType: Yup.array().min(1, 'Wahlen Sie bitte mindestens eine Option'),
 });

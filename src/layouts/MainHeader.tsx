@@ -59,14 +59,12 @@ export default function MainHeader({ logo = true }: { logo?: boolean }) {
   const gtc = isDesktop ? 'repeat(3, 1fr)' : isMiddle ? '1fr' : 'repeat(2, 1fr)';
   const gc = isDesktop ? '3/4' : '2/3';
 
-  console.log('isOffset: ', isOffset)
+
   return (
     <AppBar
       sx={{
         boxShadow: 0,
         bgcolor: isHome ? 'transparent' : 'background.default',
-        borderBottom: isOffset ? '1px solid #e87b45' : '0px solid background.default',
-
       }}>
       <ToolbarStyle
         disableGutters
