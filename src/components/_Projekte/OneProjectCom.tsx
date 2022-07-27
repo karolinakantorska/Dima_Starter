@@ -6,13 +6,14 @@ import useResponsive from '../../hooks/useResponsive';
 import { ProjectType } from '../../utils/TS/interface';
 
 import CarouselBasic3 from '../carousel/CarouselBasic3';
+import FooterCom from '../_Reusable/FooterCom';
 
 export function OneProjectCom({ project }: { project: ProjectType }) {
   const isDesktop = useResponsive('up', 'lg');
   const isSmallDesktop = useResponsive('up', 'lm');
   const isMiddle = useResponsive('down', 'lm');
   const isSmall = useResponsive('down', 'sm');
-  const isMobile = useResponsive('down', 'mobile');
+  //const isMobile = useResponsive('down', 'mobile');
 
   const transition = {
     type: 'tween',
@@ -52,6 +53,7 @@ export function OneProjectCom({ project }: { project: ProjectType }) {
     pt: isSmallDesktop ? 4 : 10,
     maxWidth: '730px'
   }
+  /*
   const TableRowMobile = ({ row }: any) => (
     <TableRow
       key={row.name}
@@ -66,7 +68,8 @@ export function OneProjectCom({ project }: { project: ProjectType }) {
         </Typography>
       </TableCell>
     </TableRow>
-  )
+  );
+  */
   const TableRowDesktop = ({ row }: any) => (
     <TableRow
       key={row.name}
@@ -88,35 +91,39 @@ export function OneProjectCom({ project }: { project: ProjectType }) {
   if (project) {
     const photosCarusel = [project.photo, ...project.photos]
     return (
-      <Stack
-        component={m.div}
-        {...variant}
-        spacing={isDesktop ? 18.5 : isSmall ? 5 : 8}
-      >
-        <CarouselBasic3 photos={photosCarusel} />
-        <Box
-          sx={{ ...containerBoxProps }}
-        >
-          <Box sx={{ ...boxProps }}>
-            <Table id="Project_Table">
-              <TableBody>
+      <>
 
-                {row2().map((row) => (<TableRowDesktop key={row.name} row={row} />))}
-              </TableBody>
-            </Table>
-          </Box>
-          <Box sx={{ ...secondBoxProps }}>
-            <Typography variant="body2" component="h2" paragraph color="dima" sx={{ mb: 2.75 }}>
-              {project.title.toUpperCase()}
-            </Typography>
-            {project.description.map((desc, i) => (
-              <Typography key={i} variant="body1" component="div" paragraph color="text.primary" sx={{ mb: 1.5 }}>
-                {desc}
+        <Stack
+          component={m.div}
+          {...variant}
+          spacing={isDesktop ? 18.5 : isSmall ? 5 : 8}
+        >
+          <CarouselBasic3 photos={photosCarusel} />
+          <Box
+            sx={{ ...containerBoxProps }}
+          >
+            <Box sx={{ ...boxProps }}>
+              <Table id="Project_Table">
+                <TableBody>
+
+                  {row2().map((row) => (<TableRowDesktop key={row.name} row={row} />))}
+                </TableBody>
+              </Table>
+            </Box>
+            <Box sx={{ ...secondBoxProps }}>
+              <Typography variant="body2" component="h2" paragraph color="dima" sx={{ mb: 2.75 }}>
+                {project.title.toUpperCase()}
               </Typography>
-            ))}
+              {project.description.map((desc, i) => (
+                <Typography key={i} variant="body1" component="div" paragraph color="text.primary" sx={{ mb: 1.5 }}>
+                  {desc}
+                </Typography>
+              ))}
+            </Box>
           </Box>
-        </Box>
-      </Stack>
+        </Stack>
+        <FooterCom photoAuthor={project?.photoAuthor && project.photoAuthor} />
+      </>
     )
 
   } else {

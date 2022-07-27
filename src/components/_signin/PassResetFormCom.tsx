@@ -2,7 +2,6 @@ import * as Yup from 'yup';
 import { useState } from 'react';
 // next
 import NextLink from 'next/link';
-import { useRouter } from 'next/router'
 // form
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -39,7 +38,7 @@ export const GridStyle = styled(Grid)(({ theme }) => ({
 
 export default function PassResetFormCom() {
   const { resetPassword } = useAuth();
-  const router = useRouter();
+  //const router = useRouter();
   const isMountedRef = useIsMountedRef();
   const [success, setSuccess] = useState<false | string>(false)
   const LoginSchema = Yup.object().shape({

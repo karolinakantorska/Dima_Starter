@@ -1,8 +1,6 @@
 import { useFormContext } from 'react-hook-form';
 import { objektAlterArray, } from 'src/utils/TS/interface';
 import {
-    Card,
-
     Stack,
     Typography,
 
@@ -16,8 +14,6 @@ import {
 export function TitleCardCom() {
     const {
         watch,
-        setValue,
-        formState: { errors },
     } = useFormContext();
 
     const values = watch();

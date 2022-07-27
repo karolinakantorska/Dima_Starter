@@ -1,9 +1,9 @@
 import { useFormContext } from 'react-hook-form';
 import { regionenArray } from 'src/utils/TS/interface';
 import {
-    Card,
+
     Typography,
-    InputAdornment,
+
     Stack
 
 } from '@mui/material';
@@ -15,9 +15,7 @@ import {
 export function CategoryCardCom() {
     const {
         watch,
-        setValue,
-        getValues,
-        formState: { errors },
+
     } = useFormContext();
 
     const values = watch();

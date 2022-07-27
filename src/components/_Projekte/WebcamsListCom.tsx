@@ -1,7 +1,7 @@
 
 // @mui
 
-import { Box, Card, CardActions, Typography } from '@mui/material';
+import { Box, } from '@mui/material';
 import { layoutHeader } from 'src/utils/dima';
 import { webcams } from 'src/_mock/webcams/webcams';
 

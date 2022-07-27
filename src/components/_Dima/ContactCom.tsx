@@ -1,11 +1,10 @@
 import useResponsive from '../../hooks/useResponsive';
 import Glarus from '/public/location/Glarus.jpg';
 import Zurich from '/public/location/Zurich.jpg';
-import { Card, CardMedia, Stack, Typography, } from '@mui/material';
-import { Box } from '@mui/system';
-import { dimaContact } from 'src/utils/dima';
+import { Card, CardMedia, Stack, Typography, Box } from '@mui/material';
+import { dimaContact, layoutHeader } from 'src/utils/dima';
 import { firstLettersBig } from '../../utils/Text/textUtils';
-import { layoutHeader } from 'src/utils/dima';
+
 import { SiteTitle } from '../_Reusable/SiteTitle';
 
 //console.log('Glarus:', Glarus)

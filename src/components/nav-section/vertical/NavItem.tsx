@@ -69,7 +69,7 @@ export function NavItemRoot({ item, isCollapse, open = false, active, onOpen }: 
 type NavItemSubProps = Omit<NavItemProps, 'isCollapse'>;
 
 export function NavItemSub({ item, open = false, active = false, onOpen }: NavItemSubProps) {
-  const { title, path, info, children, disabled, caption, roles } = item;
+  const { title, path, children, disabled, roles } = item;
 
   const renderContent = (
     <>

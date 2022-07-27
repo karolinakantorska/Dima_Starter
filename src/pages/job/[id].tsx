@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 // components
 import Page from '../../components/Page';
 
-import { _mockProjekts } from '../../_mock/referenzen/referenzen';
+//import { _mockProjekts } from '../../_mock/referenzen/referenzen';
 //import AnimatedStartLayout from '../../layouts/animated/AnimatedStartLayout';
 
 import Layout from '../../layouts';
@@ -39,3 +39,4 @@ export default function Job({ data }: any) {
   }
 
 }
+

@@ -14,24 +14,31 @@ import { ProjectType } from 'src/utils/TS/interface';
 import { CardActionArea } from '@mui/material';
 import { PATH_PROJEKTE } from 'src/routes/paths';
 import { TextCardCom } from './textCardCom';
-import { forwardRef } from 'react';
+
 
 export function ProjektCardCom({
   project,
   gridRow,
   big,
   rewerseBig,
+  open,
+  setOpen,
+  handleDelete,
 }: {
   project: ProjectType;
   gridRow: '1' | '2';
   big: boolean;
   rewerseBig: boolean;
+
+  open: boolean,
+  setOpen: any,
+  handleDelete: any
 }) {
   //console.log('project', project)
-  const { id, photo, photoAuthor } = project;
-  //console.log('photoAuthor', photoAuthor)
+  const { id, photo } = project;
+
   const isDesktop = useResponsive('up', 'lm');
-  const isSmall = useResponsive('down', 'sm');
+  //const isSmall = useResponsive('down', 'sm');
   const isBig = isDesktop ? big : false;
   const isBigAndDisplaysDesktop = isDesktop && big;
 
@@ -57,7 +64,7 @@ export function ProjektCardCom({
       component={m.div}
       whileHover="hover"
     >
-      <Link href={`${PATH_PROJEKTE.projekt}/${id}`} >
+      <Link href={`${PATH_PROJEKTE.projekt}/${id}`} passHref >
         <Card
           component={m.div}
           variants={varHover(1.05)}
@@ -97,7 +104,8 @@ export function ProjektCardCom({
         </Card>
       </Link>
 
-      <TextCardCom project={project} big={isBig} rewerseBig={rewerseBig} />
+      <TextCardCom project={project} big={isBig} rewerseBig={rewerseBig}
+        open={open} setOpen={setOpen} handleDelete={handleDelete} />
 
     </Box >
   );

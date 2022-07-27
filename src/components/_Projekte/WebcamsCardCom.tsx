@@ -1,26 +1,20 @@
 
 // @mui
 
-import { Box, Card, CardActionArea, CardActions, CardMedia, Link, Typography } from '@mui/material';
+import { Box, Card, Link, Typography } from '@mui/material';
 
 // hooks 
 import useResponsive from '../../hooks/useResponsive';
-import parse from 'html-react-parser';
-import DimaLogoCom from '../DimaLogoCom';
-import { useRouter } from 'next/router';
-import zIndex from '@mui/material/styles/zIndex';
-
-
 
 // TODO use location instead use route
 export function WebcamsCardCom({ wcam }: { wcam: any }) {
   //const initialInputs = { param: "Alle" }
-  const { id, title, end, url, url2 } = wcam;
+  const { title, end, url, } = wcam;
   //const isDesktop = useResponsive('up', 'lm');
 
   const isSmall = useResponsive('down', 'sm');
   const isMiddle = useResponsive('down', 'md');
-  const router = useRouter()
+  //const router = useRouter()
   //const gtc = isDesktop ? 'repeat(3, 1fr)' : isSmall ? '1fr' : 'repeat(2, 1fr)';
   //const { query } = useRouter();
 

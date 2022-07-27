@@ -8,7 +8,7 @@ interface PropsButtonLink {
 }
 export default function ButtonLinkCom({ href, text }: PropsButtonLink) {
     return (
-        <Link href={href}>
+        <Link href={href} passHref>
             <Button variant="text">{text}</Button>
         </Link>
     )

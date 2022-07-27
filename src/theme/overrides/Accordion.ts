@@ -21,14 +21,18 @@ export default function Accordion(theme: Theme) {
     MuiAccordionSummary: {
       styleOverrides: {
         root: {
-          paddingLeft: theme.spacing(2),
-          paddingRight: theme.spacing(1),
+          paddingLeft: theme.spacing(0),
+          paddingRight: theme.spacing(0),
+          marginTop: 0,
           '&.Mui-disabled': {
             opacity: 1,
             color: theme.palette.action.disabled,
             '&.MuiTypography-root': {
               color: 'inherit'
             }
+          },
+          '.MuiAccordionSummary-content':{
+marginTop: 0,
           }
         },
         expandIconWrapper: {

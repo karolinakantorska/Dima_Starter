@@ -6,7 +6,6 @@ import { layoutHeader } from 'src/utils/dima';
 import { jobs } from 'src/_mock/jobs/jobs';
 
 // hooks
-import useResponsive from '../../hooks/useResponsive';
 
 import { SiteTitle } from '../_Reusable/SiteTitle';
 import { CardEmptyJobCom } from './CardEmptyJobCom';
@@ -17,8 +16,8 @@ import { CardJobCom } from './CardJobCom';
 export function JobsListCom() {
   //const initialInputs = { param: "Alle" }
 
-  const isDesktop = useResponsive('up', 'lm');
-  const isSmall = useResponsive('down', 'sm');
+  //const isDesktop = useResponsive('up', 'lm');
+  //const isSmall = useResponsive('down', 'sm');
 
   //const { query } = useRouter();
 

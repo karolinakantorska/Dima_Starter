@@ -12,7 +12,7 @@ export default function DimaLogoCom({ x, y }: { x: number, y: number }) {
     const DIMA = '#DADADA';
 
     return (
-        <NextLink href="/">
+        <NextLink href="/" passHref>
             <Box
                 sx={{
                     width: x,

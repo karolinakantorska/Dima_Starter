@@ -1,5 +1,4 @@
-import { m } from 'framer-motion';
-//import Image from 'next/image';
+
 // @mui
 import Card from '@mui/material/Card';
 import Box from '@mui/material/Box';
@@ -7,13 +6,13 @@ import Box from '@mui/material/Box';
 // components
 
 // hooks
-import useResponsive from '../../hooks/useResponsive';
+//import useResponsive from '../../hooks/useResponsive';
 
 import Typography from '@mui/material/Typography';
 
 export function VideoCardCom() {
 
-  const isDesktop = useResponsive('up', 'lm');
+  //const isDesktop = useResponsive('up', 'lm');
 
 
 

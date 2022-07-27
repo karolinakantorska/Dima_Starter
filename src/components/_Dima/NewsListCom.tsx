@@ -1,11 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 // @mui
-import { Box, Grid, Button, Stack, Typography } from '@mui/material';
+import { Box, } from '@mui/material';
 import { layoutHeader } from 'src/utils/dima';
 import { news } from 'src/_mock/news/news';
 
 // hooks
-import useResponsive from '../../hooks/useResponsive';
 import { SiteTitle } from '../_Reusable/SiteTitle';
 import { NewsCom } from './NewsCom';
 
@@ -15,8 +14,8 @@ import { NewsCom } from './NewsCom';
 export function NewsListCom() {
   //const initialInputs = { param: "Alle" }
   //const [dark, setDark] = useState(false);
-  const isDesktop = useResponsive('up', 'lm');
-  const isSmall = useResponsive('down', 'sm');
+  //const isDesktop = useResponsive('up', 'lm');
+  //const isSmall = useResponsive('down', 'sm');
   let dark = true;
   //const { query } = useRouter();
 

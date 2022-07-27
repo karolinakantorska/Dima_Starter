@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { useState, } from 'react';
+
 // @mui
 import Card from '@mui/material/Card';
 import Typography from '@mui/material/Typography';
@@ -9,21 +9,22 @@ import { ProjectType } from '../../utils/TS/interface';
 import useResponsive from '../../hooks/useResponsive';
 import { firstLettersBig } from '../../utils/Text/textUtils';
 import { Box } from '@mui/system';
-import { IconButton, Grid, CardActions, CardContent, Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions, Button, Alert } from '@mui/material';
-import { deleteProjectFromFirestore } from 'src/utils/apis/deleteFromFirestore';
+import { IconButton, Grid, CardActions, CardContent, Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions, Button } from '@mui/material';
+
 import { PATH_PROJEKTE } from '../../routes/paths';
 import useAuth from 'src/utils/firebaseAuth/useAuth';
 
+export function TextCardCom({
+  project,
+  big,
+  rewerseBig,
+  open, setOpen, handleDelete }: {
+    project: ProjectType, big: boolean, rewerseBig: boolean,
+    open: boolean, setOpen: any, handleDelete: any
+    ,
+  }) {
 
-export function TextCardCom({ project, big, rewerseBig, }: {
-  project: ProjectType, big: boolean, rewerseBig: boolean
-  ,
-}) {
-
-
-  const [open, setOpen] = useState(false);
-  const [error, setError] = useState<null | { code: string, message: string }>(null);
-  const { title, location, id, objektAlter, } = project;
+  const { title, location, id, objektAlter, photo, photos } = project;
 
   const isDesktop = useResponsive('up', 'lm');
   const isMiddle = useResponsive('down', 'md');
@@ -43,7 +44,6 @@ export function TextCardCom({ project, big, rewerseBig, }: {
     backgroundColor: 'background.paper',
     minHeight: big ? '300px' : '100px',
     height: isAuthenticated ? '100%' : '70%',
-
   }
   function handleOpen() {
     setOpen(true);
@@ -51,18 +51,10 @@ export function TextCardCom({ project, big, rewerseBig, }: {
   function handleClose() {
     setOpen(false);
   };
-  function handleDelete() {
-    deleteProjectFromFirestore('projects', id)
-      .catch((error) => {
-        console.log('error', error);
-        //setError(error)
-        //setLoading(false);
-      })
-    setOpen(false);
-  };
+
   const Icons = () => (
     <>
-      <Link href={`${PATH_PROJEKTE.editProject}/${id}`}  >
+      <Link href={`${PATH_PROJEKTE.editProject}/${id}`} passHref >
         <IconButton aria-label={'edit'}>
           <EditRoundedIcon />
         </IconButton>
@@ -84,7 +76,7 @@ export function TextCardCom({ project, big, rewerseBig, }: {
 
       sx={{ ...propsGridTextBox }}
     >
-      <Link href={`${PATH_PROJEKTE.projekt}/${id}`} >
+      <Link href={`${PATH_PROJEKTE.projekt}/${id}`} passHref >
         <CardContent
           className="Card Content"
           sx={{
@@ -144,7 +136,10 @@ export function TextCardCom({ project, big, rewerseBig, }: {
         </DialogContentText>
       </DialogContent>
       <DialogActions>
-        <Button onClick={handleDelete}>Löschen</Button>
+        <Button onClick={() => {
+          //deleteImage(photo.url);
+          handleDelete(id, photo.url, photos)
+        }}>Löschen</Button>
         <Button onClick={handleClose} autoFocus variant="outlined">
           Nein!
         </Button>
@@ -154,7 +149,6 @@ export function TextCardCom({ project, big, rewerseBig, }: {
 
   return (
     <>
-      {error && <Alert severity="error" onClose={() => { setError(null) }} >Fehler:{error.message} </Alert>}
       {!isBigAndDisplaysDesktop
         && <Card  >
           <TextBox />
@@ -178,9 +172,11 @@ export function TextCardCom({ project, big, rewerseBig, }: {
         </Card>
       }
       <MyDialog />
-
     </>
   )
 }
 
 
+/*
+<Alert severity="error" onClose={() => { setError(null) }} >Fehler:{error.message} </Alert>
+*/

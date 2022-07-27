@@ -61,7 +61,7 @@ const typography = {
   },
   body1: {
     fontWeight: 600,  
-    lineHeight: 22 / 20,
+    lineHeight: 24 / 20,
     fontSize: pxToRem(16),
     ...responsiveFontSizes({ sm: 16, md: 18, lg: 20 }),
   },

@@ -1,13 +1,14 @@
-
 import { m, } from 'framer-motion';
 import { Box, } from '@mui/material';
 import useResponsive from '../../hooks/useResponsive';
 import { ProjektCardCom } from './ProjektCardCom';
 import { ProjectsListType, ProjectType } from '../../utils/TS/interface';
 import { useRouter } from 'next/router';
-import { useState } from 'react';
-
-
+import { deleteProjectFromFirestore } from '../../utils/apis/deleteFromFirestore';
+import { useState, useEffect } from 'react';
+import { AlertCom } from './NewEditProjekt/AlertCom';
+import { PATH_PROJEKTE } from 'src/routes/paths';
+//import { deleteImage } from 'src/utils/apis/deletePhotoFromStorage';
 
 export function ProjectsListCom(
   { projectsList }: {
@@ -18,10 +19,31 @@ export function ProjectsListCom(
     mirrored: boolean,
     bigReversed: boolean
   };
+  const [error, setError] = useState<null | { code: string, message: string }>(null)
+  const [succes, setSucces] = useState<boolean | string>(false);
+  const [loading, setLoading] = useState(false);
+  const [open, setOpen] = useState(false);
 
+  useEffect(() => {
+    if (succes) {
+      setTimeout(() => {
+        setSucces(false);
+        router.push(PATH_PROJEKTE.projekte);
+      }, 2500);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [succes]);
+
+  useEffect(() => {
+    if (error) {
+      setTimeout(() => setError(null), 9000);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [error]);
   const projectsTODisplay: ProjectDisplay[] = [];
   let mirrored = true;
   let reversed = true;
+
   projectsList.map((project, i) => {
     if (project) {
       if (!project.big) {
@@ -33,8 +55,7 @@ export function ProjectsListCom(
       const projectDisplay = { project: project, mirrored: mirrored, bigReversed: reversed }
       projectsTODisplay.push(projectDisplay)
     }
-  })
-  console.log('projectsTODisplay', projectsTODisplay)
+  });
 
   const router = useRouter();
   const isDesktop = useResponsive('up', 'lm');
@@ -51,37 +72,48 @@ export function ProjectsListCom(
     exit: router.query.id && { opacity: 0 },
     transition: transition,
   };
-
+  function handleDelete(id: any,) {
+    //photosURLs.map((entry: string) => deleteImage(entry));
+    deleteProjectFromFirestore('projects', id)
+      .then(() => {
+        setLoading(false);
+        setSucces(true);
+      })
+      .catch((error) => {
+        console.log('error', error);
+        setError(error);
+        setLoading(false);
+      })
+    setOpen(false);
+  };
   return (
-    <Box
-      component={m.div}
-      {...variant}
-      display="grid"
-      gridTemplateColumns={gtc}
-      gridAutoFlow='dense'
-      columnGap="12px"
-      rowGap="20px"
-    >
-      {projectsTODisplay.map((project, i) => {
-        //const divideIn2 = i % 2 == 0 ? true : false;
-        //const divideIn4 = (i + 1) % 4 == 0 ? true : false;
-        //const divideIn8 = (i + 1) % 8 == 0 ? true : false;
-        return (
-          <ProjektCardCom
-            key={project.project.id}
-            project={project.project}
-            //gridRow={divideIn2 ? '1' : '2'}
-            gridRow={project.mirrored ? '1' : '2'}
-            big={project.project.big}
-            //rewerseBig={divideIn8 ? true : false}
-            rewerseBig={project.bigReversed}
-          />
-        );
-      })}
-    </Box>
+    <>
+      <AlertCom succes={succes} error={error} loading={loading} setError={setError} />
+      <Box
+        component={m.div}
+        {...variant}
+        display="grid"
+        gridTemplateColumns={gtc}
+        gridAutoFlow='dense'
+        columnGap="12px"
+        rowGap="20px"
+      >
+        {projectsTODisplay && projectsTODisplay.map((project, i) => {
+          return (
+            <ProjektCardCom
+              key={project.project.id}
+              project={project.project}
+              gridRow={project.mirrored ? '1' : '2'}
+              big={project.project.big}
+              rewerseBig={project.bigReversed}
+              open={open}
+              setOpen={setOpen}
+              handleDelete={handleDelete}
+            />
+          );
+        })}
+        {!projectsTODisplay && <p>Es gibt momentan keine Projekte</p>}
+      </Box>
+    </>
   );
 }
-
-/*
-    
-    */

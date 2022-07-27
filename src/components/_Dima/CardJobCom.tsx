@@ -1,13 +1,13 @@
 import React from "react";
 // @mui
-import { Grid, Stack, Typography, Card, CardContent, CardActionArea, Box } from '@mui/material';
+import { Grid, Typography, Card, CardContent, CardActionArea, } from '@mui/material';
 import { Job, } from 'src/utils/TS/interface';
 
 // hooks
 import useResponsive from '../../hooks/useResponsive';
 
 
-import { useRouter } from "next/router";
+//import { useRouter } from "next/router";
 import { PATH_JOBS } from '../../routes/paths';
 import Link from "next/link";
 
@@ -20,15 +20,15 @@ export function CardJobCom({ job }: { job: Job }) {
         procent,
     } = job;
     const isMiddle = useResponsive('down', 'lm');
-    const { route } = useRouter();
+    //const { route } = useRouter();
     const pt = isMiddle ? 2.5 : 5;
     const px = isMiddle ? 2 : 5.25;
     const pb = isMiddle ? 2.5 : 7.5;
-    console.log('announcment', announcment);
-    console.log('announcment', typeof announcment);
+    //console.log('announcment', announcment);
+    //console.log('announcment', typeof announcment);
     return (
         <Card sx={{ height: 300 }}>
-            <Link href={`${PATH_JOBS.job}/${id}`}  >
+            <Link href={`${PATH_JOBS.job}/${id}`} passHref >
                 <CardActionArea sx={{ height: '100%' }}>
                     <CardContent sx={{
                         height: '100%',

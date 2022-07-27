@@ -1,6 +1,6 @@
 import React from 'react';
-import { Container, Stack, ButtonGroup, Button, Typography, ButtonBase } from '@mui/material';
-import { styled } from '@mui/material/styles';
+import { Container, Stack, ButtonGroup, Typography, ButtonBase } from '@mui/material';
+
 import useResponsive from '../../hooks/useResponsive';
 import NextLink from 'next/link';
 import { PATH_DIMA, PATH_PROJEKTE } from 'src/routes/paths';
@@ -34,7 +34,7 @@ export default function LandingButtonsCom() {
         <Container sx={{ ...containerProps }}>
             <Stack >
                 <ButtonGroup variant="text" >
-                    <NextLink href={PATH_DIMA.philosophie} >
+                    <NextLink href={PATH_DIMA.philosophie} passHref>
                         <ButtonBase
                             sx={{
                                 ...buttonProps,
@@ -63,7 +63,7 @@ export default function LandingButtonsCom() {
                         </ButtonBase>
                     </NextLink>
 
-                    <NextLink href={PATH_PROJEKTE.projekte} >
+                    <NextLink href={PATH_PROJEKTE.projekte} passHref >
                         <ButtonBase
                             sx={{
                                 ...buttonProps,

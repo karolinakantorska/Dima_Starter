@@ -12,5 +12,5 @@ export function deleteProjectFromFirestore(title: string, id: string) {
             });
 
     })
-}
+};
 

@@ -1,4 +1,3 @@
-import { _mockProjekts } from '../../_mock/referenzen/referenzen';
 //import AnimatedStartLayout from '../../layouts/animated/AnimatedStartLayout';
 
 import { Accordion, AccordionDetails, AccordionSummary, Card, CardContent, Stack, Typography } from "@mui/material";
@@ -8,13 +7,15 @@ import { News } from "src/utils/TS/interface";
 
 // TODO use location instead use route
 export function NewsCom({ news, dark }: { news: News, dark: boolean }) {
-  const { id,
-    photos,
-    video,
+  const {
+    //id,
+    //photos,
+    //video,
     date,
     title,
     description,
-    link, } = news;
+    //link, 
+  } = news;
   const backgroundColor = dark ? 'background.between' : 'background.paper';
   const pt = 3.8;
   const py = 4;
@@ -50,7 +51,6 @@ export function NewsCom({ news, dark }: { news: News, dark: boolean }) {
             {`${title.toUpperCase()}`}
           </Typography>
 
-
           {description && <Accordion
             disableGutters={true}
             sx={dark ? { backgroundColor: 'background.between' } : { backgroundColor: 'background.paper' }}
@@ -59,7 +59,7 @@ export function NewsCom({ news, dark }: { news: News, dark: boolean }) {
             <AccordionSummary
               expandIcon={<ExpandMoreIcon />}
               aria-controls="expand mehr lesen "
-              sx={{ pl: 3, pr: 3, pb: 0 }}
+              sx={{ p: 0, }}
             >
               <Typography
                 variant="body2"

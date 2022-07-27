@@ -7,11 +7,11 @@ import { SvgIcon, Link } from '@mui/material';
 
 
 export const Mail = ({ email }: { email: string }) => {
-
-    const handleClick = () => {
-
-    };
-
+    /*
+        const handleClick = () => {
+    
+        };
+    */
     function MailIcon(props: any) {
         return (
             <SvgIcon {...props}>

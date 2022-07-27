@@ -1,23 +1,17 @@
 import { useFormContext } from 'react-hook-form';
-import { objektAlterArray, } from 'src/utils/TS/interface';
-import {
-    Card,
 
+import {
     Stack,
     Typography,
 
 } from '@mui/material';
 import {
-
     RHFTextField,
-    RHFRadioGroup,
     //RHFEditor,
 } from '../../hook-form';
 export function AuthorsCardCom() {
     const {
         watch,
-        setValue,
-        formState: { errors },
     } = useFormContext();
 
     const values = watch();
@@ -30,14 +24,16 @@ export function AuthorsCardCom() {
                 component="p"
                 sx={{
                     color: 'dima',
-
                 }}        >
                 Betailigte Unternehmern:
             </Typography>
             <RHFTextField variant="filled" name="client" label="Bauherr" />
             <RHFTextField variant="filled" name="architect" label="Architekt" />
-            <RHFTextField variant="filled" name="realisation" label="Ausführung" />
+            <RHFTextField variant="filled" name="realisation" label="GU, TU Bauleitung" />
         </Stack>
 
     )
 }
+/*
+Fehler:Function addDoc() called with invalid data. Unsupported field value: undefined (found in field realisation in document projects/fiTCHRD4GbGXvJT3heiv)
+*/

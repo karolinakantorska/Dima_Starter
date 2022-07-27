@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 // @mui
 import { Grid, Stack, Typography, Card, CardMedia, } from '@mui/material';
 import { Person } from 'src/utils/TS/interface';
@@ -9,22 +9,27 @@ import { Mail } from "../_Reusable/Mail";
 
 
 export function CardPersonCom({ person }: { person: Person }) {
-    const [anchorEl, setAnchorEl] = React.useState<SVGSVGElement | null>(null);
-    const [openAlert, setOpenAlert] = useState(false);
+    //const [anchorEl, setAnchorEl] = React.useState<SVGSVGElement | null>(null);
+    //const [openAlert, setOpenAlert] = useState(false);
+    /*
     const handleOpen = (event: React.MouseEvent<SVGSVGElement>) => {
         setAnchorEl(event.currentTarget);
     };
-    const handleClose = () => {
-        setAnchorEl(null);
-    };
-    const copyText = (text: string) => {
-        navigator.clipboard.writeText(text);
-        setOpenAlert(true);
-        setTimeout(() => setOpenAlert(false), 1000);
-        clearTimeout();
-    }
-
-    const open = Boolean(anchorEl);
+    */
+    /*
+     const handleClose = () => {
+         setAnchorEl(null);
+     };
+     */
+    /*
+     const copyText = (text: string) => {
+         navigator.clipboard.writeText(text);
+         setOpenAlert(true);
+         setTimeout(() => setOpenAlert(false), 1000);
+         clearTimeout();
+     }
+ */
+    //const open = Boolean(anchorEl);
     const isDesktop = useResponsive('up', 'lg');
     const isSmall = useResponsive('down', 'sm');
     const { photo, name, surname, title, job, email } = person;

@@ -12,7 +12,7 @@ export default function DimaLetterCom({ x, y }: { x: number, y: number }) {
     const DIMA = '#DADADA';
 
     return (
-        <NextLink href="/">
+        <NextLink href="/" passHref>
             <Box
                 sx={{
                     width: x,
@@ -22,11 +22,9 @@ export default function DimaLetterCom({ x, y }: { x: number, y: number }) {
 
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
-
                     width="100%"
                     height="100%"
                     viewBox="0 0 150 80"
-
                 >
 
                     <g>

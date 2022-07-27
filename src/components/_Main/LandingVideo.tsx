@@ -1,5 +1,5 @@
 import React from 'react';
-const src = '/video/DIMA_IntroMovie.mp4';
+//const src = '/video/DIMA_IntroMovie.mp4';
 export default function LandingVideo() {
     //console.log('DIMA_IntroMovie', DIMA_IntroMovie)
 

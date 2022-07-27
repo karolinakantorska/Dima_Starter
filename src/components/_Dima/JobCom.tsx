@@ -1,4 +1,4 @@
-import { _mockProjekts } from '../../_mock/referenzen/referenzen';
+
 //import AnimatedStartLayout from '../../layouts/animated/AnimatedStartLayout';
 
 import { Card, CardContent, Stack, Typography } from "@mui/material";
@@ -10,7 +10,7 @@ import { Job } from "src/utils/TS/interface";
 
 // TODO use location instead use route
 export function JobCom({ job }: { job: Job }) {
-  const { id,
+  const {
     announcment,
     start,
     dedline,

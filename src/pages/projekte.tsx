@@ -30,6 +30,6 @@ export const getStaticProps: GetStaticProps = async () => {
   const data = await getOrderedCollection("projects", "year");
   return {
     props: { data },
-    revalidate: 10,
+    revalidate: 1,
   };
 };

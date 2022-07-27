@@ -1,6 +1,6 @@
 import { useFormContext, Controller } from 'react-hook-form';
 import {
-    Card,
+
     TextField,
     Stack,
     Typography,
@@ -18,7 +18,7 @@ export function YearVolumenCardCom() {
         setValue,
 
         getValues,
-        formState: { errors },
+
     } = useFormContext();
 
     const values = watch();

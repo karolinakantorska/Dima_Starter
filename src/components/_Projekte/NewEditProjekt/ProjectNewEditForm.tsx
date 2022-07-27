@@ -57,8 +57,8 @@ export default function ProjectNewEditForm({ isEdit, currentProject }: Props) {
   const { push } = useRouter();
   //console.log('currentProject', currentProject);
   const [error, setError] = useState<null | { code: string, message: string }>(null)
-  const [succes, setSucces] = useState<boolean | string>(false)
-  const [loading, setLoading] = useState(false)
+  const [succes, setSucces] = useState<boolean | string>(false);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     if (succes) {
@@ -94,8 +94,7 @@ export default function ProjectNewEditForm({ isEdit, currentProject }: Props) {
       client: currentProject?.client || '',
       size: currentProject?.size || 0,
       architect: currentProject?.architect || '',
-      cooperation_company: currentProject?.cooperation?.company || '',
-      cooperation_service: currentProject?.cooperation?.service || '',
+      realisation: currentProject?.realisation || '',
       location: currentProject?.location || '',
       //constructionVideo: currentProject?.constructionVideo || '',
       //video: currentProject?.video || '',
@@ -118,7 +117,6 @@ export default function ProjectNewEditForm({ isEdit, currentProject }: Props) {
   } = methods;
 
   const values = watch();
-  console.log('values', values.year)
 
   useEffect(() => {
     if (isEdit && currentProject) {
@@ -135,13 +133,12 @@ export default function ProjectNewEditForm({ isEdit, currentProject }: Props) {
     const projectToDB = createProject(data);
 
     if (currentProject?.id) {
-      console.log('editProject');
+      //const Id = currentProject ? currentProject.id : ;
       editProjectInFirestore('projects', currentProject.id, projectToDB)
         .then(() => {
           //console.log('response', response);
           setSucces(true);
           setLoading(false);
-          reset();
         })
         .then(() => push(PATH_PROJEKTE.projekte))
         .catch((error) => {
@@ -153,8 +150,10 @@ export default function ProjectNewEditForm({ isEdit, currentProject }: Props) {
       addProjestToFirestore('projects', projectToDB)
         .then((response: any) => {
           //console.log('response', response);
-          setSucces(response);
+          //setId(response);
+          setSucces(true);
           setLoading(false);
+          reset();
         })
         .catch((error) => {
           //console.log('error', error);
@@ -166,8 +165,8 @@ export default function ProjectNewEditForm({ isEdit, currentProject }: Props) {
 
   return (
     <>
-      <AlertCom succes={succes} error={error} setError={setError} />
-      < Typography variant="h6" component="h2">{currentProject?.title ? `${currentProject.title} Projekt bearbeiten` : 'Neues Projekt Hinzugrifen'}</Typography>
+      <AlertCom succes={succes} error={error} loading={loading} setError={setError} />
+      < Typography variant="h6" component="h2">{currentProject?.id ? `Projekt bearbeiten` : 'Neues Projekt Hinzugrifen'}</Typography>
       <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)} >
         <Grid container direction='row' spacing={6} sx={{ pt: 3 }}>
           <Grid item xs={12} md={7}  >
@@ -194,7 +193,7 @@ export default function ProjectNewEditForm({ isEdit, currentProject }: Props) {
               loading={isSubmitting}
               disabled={loading}
             >
-              {!isEdit ? 'Create Project' : 'Save Changes'}
+              Projekt Speichern
             </LoadingButton>
           </Grid>
         </Grid>
