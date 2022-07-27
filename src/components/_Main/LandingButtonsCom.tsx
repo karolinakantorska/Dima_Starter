@@ -14,8 +14,6 @@ export default function LandingButtonsCom() {
         height: 0,
         top: '-50vh',
         mt: '-43px',
-        //top: isDesktop ? '60%' : '60%',
-        //left: isDesktop ? '30%' : isSmall ? 0 : '20%',
         zIndex: 2,
     }
     const height = isSmall ? '50px' : '10vw';
@@ -27,8 +25,8 @@ export default function LandingButtonsCom() {
         maxWidth: '280px',
         maxHeight: '86px',
         p: 0,
-        opacity: 0.7,
         color: 'text.primary',
+        transition: '0.5s',
     }
     return (
         <Container sx={{ ...containerProps }}>
@@ -38,19 +36,16 @@ export default function LandingButtonsCom() {
                         <ButtonBase
                             sx={{
                                 ...buttonProps,
-                                backgroundColor: 'dima',
-                                transition: '1s',
+                                backgroundColor: 'rgba(239, 123, 16, .7)',
+
                                 '&:hover': {
-                                    opacity: 1,
-                                    boxShadow: 'inset 0px -100px dima',
+                                    boxShadow: 'inset 0px -100px rgba(239, 123, 16, 1)',
                                     color: 'background.default'
                                 },
                                 '&:focus': {
-                                    opacity: 1,
-                                    boxShadow: 'inset 0px -100px dima',
+                                    boxShadow: 'inset 0px -100px rgba(239, 123, 16, 1)',
                                     color: 'background.default'
                                 },
-
                             }}
                         >
                             <Typography
@@ -67,16 +62,16 @@ export default function LandingButtonsCom() {
                         <ButtonBase
                             sx={{
                                 ...buttonProps,
-                                backgroundColor: 'background.default',
+                                backgroundColor: 'rgba(43,37,31,0.7)',
                                 transition: '1s',
                                 '&:hover': {
-                                    opacity: 1,
-                                    boxShadow: 'inset 0px -100px background.default',
+
+                                    boxShadow: 'inset 0px -100px rgba(43,37,31,1)',
                                     color: 'dima'
                                 },
                                 '&:focus': {
                                     opacity: 1,
-                                    boxShadow: 'inset 0px -100px background.default',
+                                    boxShadow: 'inset 0px -100px rgba(43,37,31,1)',
                                     color: 'dima'
                                 },
                             }}

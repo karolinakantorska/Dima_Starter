@@ -67,7 +67,7 @@ declare module '@mui/material' {
 const PRIMARY = {
   lighter: '#fef3e1',
   light: '#faa62e',
-  main: '#EF7B10',//#EF7B10
+  main: '#EF7B10',//#EF7B10 rgb(239, 123, 16)
   dark: '#e96c0e',
   darker: '#df530c',
 };
@@ -120,7 +120,7 @@ const GREY = {
   700: '#5b5b5b',
   800: '#4F4840',// #3c3c3c paper 
   850: '#39332D',//#39332D
-  900: '#2B251F', //#2f2f2f
+  900: '#2B251F', //rgb(43,37,31)
   900_12: alpha('#2B251F', 0.12),
   500_8: alpha('#979797', 0.08),
   500_12: alpha('#979797', 0.12),

@@ -4,16 +4,12 @@ import { getStorage, ref, getDownloadURL, uploadBytesResumable, deleteObject, } 
 import { createMetadata, fileNameWithoutFileExtension } from './photoUploadUtils';
 
 export function uploadOnePhoto(photo: any, folderName: string) {
-  //console.log('photo.name', photo.name);
-  //console.log('photo.path', photo.path);
-  //console.log('folderName', folderName);
   const storage = getStorage();
-  //console.log('storage', storage);
   const timestamp = Date.now();
-  //const title = fileNameWithoutFileExtension(photo.name);
-  // const metadata = createMetadata(title);
-  const storageRef = ref(storage, `${folderName}`);
-  console.log('storageRef', storageRef);
+  const title = fileNameWithoutFileExtension(photo.name);
+  //const metadata = createMetadata(title);
+  const storageRef = ref(storage, `${folderName}/${photo.name}_${timestamp}`);
+
   const uploadTask = uploadBytesResumable(storageRef, photo);
   return new Promise((resolve, reject) => {
     uploadTask.on('state_changed',

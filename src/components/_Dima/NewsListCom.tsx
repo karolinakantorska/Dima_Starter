@@ -3,17 +3,15 @@ import React from "react";
 import { Box, } from '@mui/material';
 import { layoutHeader } from 'src/utils/dima';
 import { news } from 'src/_mock/news/news';
-
 // hooks
 import { SiteTitle } from '../_Reusable/SiteTitle';
 import { NewsCom } from './NewsCom';
-
-
+import FooterCom from "../_Reusable/FooterCom";
 
 // TODO use location instead use route
 export function NewsListCom() {
   //const initialInputs = { param: "Alle" }
-  //const [dark, setDark] = useState(false);
+
   //const isDesktop = useResponsive('up', 'lm');
   //const isSmall = useResponsive('down', 'sm');
   let dark = true;
@@ -36,13 +34,9 @@ export function NewsListCom() {
             dark = !dark;
           }
           return (<NewsCom key={news.id} news={news} dark={dark} />)
-
-
         })}
       </Box>
+      <FooterCom />
     </>
   )
 }
-/*
-
-*/

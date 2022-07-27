@@ -19,17 +19,18 @@ export function PhotoCardCom({ setLoading, setError }: { setLoading: any, setErr
     const values = watch();
 
     function handleDropImage(acceptedFiles: any) {
+        setLoading(true);
         if (values.photo?.url) {
             deleteImage(values.photo.url);
         };
         handleDropPhoto(acceptedFiles);
+        setLoading(false)
     };
 
     const handleDropPhoto = useCallback(
         //missing dependencies: 'setError' and 'setLoading',Either include them or remove the dependency array
         (acceptedFiles) => {
             const file = acceptedFiles[0];
-
             //setLoading(true);
             uploadOnePhoto(file, "projects")
                 .then((result: any) => setValue(
@@ -67,7 +68,7 @@ export function PhotoCardCom({ setLoading, setError }: { setLoading: any, setErr
     );
 
     const handleRemoveAll = () => {
-        values.photos.map((photo: ImageType) => deleteImage(photo.url))
+        values.photos.map((photo: ImageType) => deleteImage(photo.url));
         setValue('photos', []);
     };
     const handleRemove = (file: ImageType) => {

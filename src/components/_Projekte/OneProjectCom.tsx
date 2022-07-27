@@ -1,5 +1,5 @@
 import { m, } from 'framer-motion';
-// @mui
+// @mui 
 import { Box, Table, TableBody, TableRow, TableCell, Typography, Stack, } from '@mui/material';
 
 import useResponsive from '../../hooks/useResponsive';
@@ -92,7 +92,6 @@ export function OneProjectCom({ project }: { project: ProjectType }) {
     const photosCarusel = [project.photo, ...project.photos]
     return (
       <>
-
         <Stack
           component={m.div}
           {...variant}

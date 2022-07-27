@@ -2,7 +2,7 @@ export const news = [
     {
         id: '1',
         photos: [],
-        video: 'https://dms.licdn.com/playlist/C4E05AQHtoxRfP1NyEA/mp4-640p-30fp-crf28/0/1646142684108?e=1655812800&v=beta&t=dzFki30SpJaoxW0FUt_8MSo859wi_1qnlMEZVWVk8Us',
+        video: 'https://res.cloudinary.com/karolinauploads/video/upload/v1658137765/Dima/DIMA_IntroMovie.mp4',
         date: new Date('August 01, 2021'),
         title: 'Aktueller Standt der Überbaung in Maseltragen aus der Vogelperspektive',
         description: '',
@@ -10,12 +10,15 @@ export const news = [
     },
     {
         id: '2',
-        photos: [],
+        photos: [
+            'https://firebasestorage.googleapis.com/v0/b/archweb-c117f.appspot.com/o/projects%2FMaseldrangen_Wohnbau_cov.jpg_1658839197553?alt=media&token=bf0b0d9c-fdd7-425b-a76d-52031fbb8fca',
+            'https://firebasestorage.googleapis.com/v0/b/archweb-c117f.appspot.com/o/projects%2FWohnuberbauung-Feldbreite-Emmenbrucke-cov.jpg_1658838679682?alt=media&token=e79fe194-6bdb-4613-9c7a-54f2ddd42c44'
+        ],
         video: '',
         date: new Date('Marz 01, 2022'),
         title: 'Alle Webcams auf einem Blick',
         description: '',
-        link: ''
+        link: 'https://www.bau-cam.ch/dima/'
     },
     {
         id: '3',
@@ -28,9 +31,7 @@ export const news = [
     },
     {
         id: '4',
-        photos: [
-            '/public/news/Baucameras Dima & partner.jpg',
-        ],
+        photos: [],
         video: '',
         date: new Date('September 16, 2022'),
         title: 'Grundsteinlegung Wohn- & Pflegezentrum Tertianum, Richterswil',

@@ -95,8 +95,8 @@ export function ProjectsListCom(
         display="grid"
         gridTemplateColumns={gtc}
         gridAutoFlow='dense'
-        columnGap="12px"
-        rowGap="20px"
+        columnGap="15px"
+        rowGap="15px"
       >
         {projectsTODisplay && projectsTODisplay.map((project, i) => {
           return (

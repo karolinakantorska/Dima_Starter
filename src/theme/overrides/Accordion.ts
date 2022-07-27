@@ -24,6 +24,8 @@ export default function Accordion(theme: Theme) {
           paddingLeft: theme.spacing(0),
           paddingRight: theme.spacing(0),
           marginTop: 0,
+          marginBottom: 0,
+          minHeight:0,
           '&.Mui-disabled': {
             opacity: 1,
             color: theme.palette.action.disabled,
@@ -33,6 +35,7 @@ export default function Accordion(theme: Theme) {
           },
           '.MuiAccordionSummary-content':{
 marginTop: 0,
+marginBottom: 0,
           }
         },
         expandIconWrapper: {

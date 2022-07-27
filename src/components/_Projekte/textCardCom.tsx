@@ -162,7 +162,7 @@ export function TextCardCom({
             }}
           >
             <Box className='between' sx={{
-              backgroundColor: 'background.default',
+              backgroundColor: 'background.paper',
               gridRow: 'span 2',
               gridColumn: rewerseBig ? '2' : '1',
             }}>
