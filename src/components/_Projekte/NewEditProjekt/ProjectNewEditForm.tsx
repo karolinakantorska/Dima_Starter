@@ -25,8 +25,8 @@ import { TitleCardCom } from './TitleCardCom';
 import { DescriptionCardCom } from './DescriptionCardCom';
 import { PhotoCardCom } from './PhotoCardComp';
 import { AuthorsCardCom } from './AuthorsCardCom';
-import { YearVolumenCardCom } from './YearVolumenCardCom';
-import { CategoryCardCom } from './CategoryCardCom';
+import { YearCardCom } from './YearCardCom';
+import { CategoryVolumenCardCom } from './CategoryVolumenCardCom';
 
 
 // components
@@ -39,7 +39,8 @@ import { CategoryCardCom } from './CategoryCardCom';
 // ----------------------------------------------------------------------
 
 export interface FormValuesProps extends Partial<ProjectType> {
-  year_form: any;
+  year_form: Date;
+  year_start_form: Date;
   cooperation_company: string;
   cooperation_service: string;
   description1: string;
@@ -86,11 +87,13 @@ export default function ProjectNewEditForm({ isEdit, currentProject }: Props) {
       description3: currentProject?.description[2] || '',
       description4: currentProject?.description[3] || '',
       description5: currentProject?.description[4] || '',
-      year_form: currentProject && currentProject.year && new Date(currentProject.year) || new Date(),
+      year_form: currentProject && currentProject.year && new Date(currentProject.year) || new Date(2010, 1, 1),
+      year_start_form: currentProject && currentProject.startYear && new Date(currentProject.startYear) || new Date(2010, 1, 1),
       objektAlter: currentProject?.objektAlter || 'Neubau',
       //objektType: currentProject?.objektType || [],
       //services: currentProject?.services || [],
       region: currentProject?.region || 'Andere Regionen',
+      phase: currentProject?.phase || 'in Ausführung',
       client: currentProject?.client || '',
       size: currentProject?.size || 0,
       architect: currentProject?.architect || '',
@@ -98,7 +101,7 @@ export default function ProjectNewEditForm({ isEdit, currentProject }: Props) {
       location: currentProject?.location || '',
       //constructionVideo: currentProject?.constructionVideo || '',
       //video: currentProject?.video || '',
-      finished: currentProject?.finished || false,
+      //finished: currentProject?.finished || false,
       big: currentProject?.big || false,
     }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -179,8 +182,9 @@ export default function ProjectNewEditForm({ isEdit, currentProject }: Props) {
           <Grid item xs={12} md={5}>
             <Stack spacing={8}>
               <AuthorsCardCom />
-              <YearVolumenCardCom />
-              <CategoryCardCom />
+              <CategoryVolumenCardCom />
+              <YearCardCom />
+
             </Stack>
           </Grid>
 

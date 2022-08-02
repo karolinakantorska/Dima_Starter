@@ -14,6 +14,7 @@ import { ProjectType } from 'src/utils/TS/interface';
 import { CardActionArea } from '@mui/material';
 import { PATH_PROJEKTE } from 'src/routes/paths';
 import { TextCardCom } from './textCardCom';
+import { Dispatch, SetStateAction } from 'react';
 
 
 export function ProjektCardCom({
@@ -21,18 +22,20 @@ export function ProjektCardCom({
   gridRow,
   big,
   rewerseBig,
-  open,
-  setOpen,
-  handleDelete,
+  setSucces,
+  setLoading,
+  setError,
 }: {
   project: ProjectType;
   gridRow: '1' | '2';
   big: boolean;
   rewerseBig: boolean;
-
-  open: boolean,
-  setOpen: any,
-  handleDelete: any
+  setSucces: Dispatch<SetStateAction<string | boolean>>;
+  setLoading: Dispatch<SetStateAction<boolean>>;
+  setError: Dispatch<SetStateAction<{
+    code: string;
+    message: string;
+  } | null>>;
 }) {
   //console.log('project', project)
   const { id, photo } = project;
@@ -51,7 +54,6 @@ export function ProjektCardCom({
     gridColumn: isBigAndDisplaysDesktop ? 'span 3' : 'span 1',
     gridTemplateColumns: isBigAndDisplaysDesktop ? '1fr 12px 1fr 12px 1fr' : '1fr',
     columnGap: '0px',
-
   }
   const cardProps = {
     gridRow: isBigAndDisplaysDesktop ? 'span 2' : gridRow,
@@ -86,17 +88,10 @@ export function ProjektCardCom({
                 zIndex: 2000,
                 transition: '.15s',
                 boxShadow: 'inset 0px 0px rgba(255,255,255,0.5)',
-                /*
-                '&:active': {
-                  boxShadow: 'inset 0px -600px rgba(255,255,255,0.5)',
-                  //background: 'linear-gradient(50deg, rgba(255,255,255,0.8) 1%, rgba(255,255,255,0.1) 40%)',
-                  //transform: 'scale(6) translate(35%, 0);  ',
-                }
-                */
+
               }}
               whileTap={{
                 boxShadow: 'inset 0px -600px rgba(255,255,255,0.5)',
-                //transition: { easing: 'linear' }
               }}
             />
             <Image src={photo.url} alt={photo.alt} ratio="16/9" />
@@ -104,9 +99,9 @@ export function ProjektCardCom({
         </Card>
       </Link>
 
-      <TextCardCom project={project} big={isBig} rewerseBig={rewerseBig}
-        open={open} setOpen={setOpen} handleDelete={handleDelete} />
-
+      <TextCardCom project={project} big={isBig} rewerseBig={rewerseBig} setSucces={setSucces}
+        setLoading={setLoading}
+        setError={setError} />
     </Box >
   );
 }

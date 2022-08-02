@@ -7,25 +7,28 @@ export interface ProjectType {
   id: string;
   title: string;
   description: string[];
+  startYear: Date;
   year: Date;
   objektAlter: ObjektAlter;
   //objektType: ObjektTypes;
   //services: ArrayOfServicesType;
   //timeStamp: number;
   region: Regionen;
-  phase: ArrayOfPhases;
+  phase: Phase;
   client: string;
   size: number;
   architect: Company;
   realisation: string,
   bauleitung: string,
+  /*
   cooperation: {
     service: Services | string;
     company: Company;
   };
+  */
   location: string;
   video?: string;
-  finished: boolean;
+  //finished: boolean;
   big: boolean;
   //constructionStart: number;
 }
@@ -54,7 +57,12 @@ export type Regionen = typeof regionenArray[number];
 export const objektAlterArray = ['Neubau', 'Umbau', 'Wettbewerb'] as const;
 export type ObjektAlter = typeof objektAlterArray[number];
 
-export const phaseArray = ['Entwicklung', 'Plannung', 'Realisierung',] as const;
+export const phaseArray = [
+  'in Plannung',
+  'in Ausführung',
+  'Gebaut',
+] as const;
+
 export type Phase = typeof phaseArray[number];
 export type ArrayOfPhases = Phase[];
 

@@ -10,7 +10,6 @@ export function deleteProjectFromFirestore(title: string, id: string) {
             .catch(function (error) {
                 reject(error)
             });
-
     })
 };
 

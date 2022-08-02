@@ -4,7 +4,6 @@ import useResponsive from '../../hooks/useResponsive';
 import { ProjektCardCom } from './ProjektCardCom';
 import { ProjectsListType, ProjectType } from '../../utils/TS/interface';
 import { useRouter } from 'next/router';
-import { deleteProjectFromFirestore } from '../../utils/apis/deleteFromFirestore';
 import { useState, useEffect } from 'react';
 import { AlertCom } from './NewEditProjekt/AlertCom';
 import { PATH_PROJEKTE } from 'src/routes/paths';
@@ -22,7 +21,6 @@ export function ProjectsListCom(
   const [error, setError] = useState<null | { code: string, message: string }>(null)
   const [succes, setSucces] = useState<boolean | string>(false);
   const [loading, setLoading] = useState(false);
-  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     if (succes) {
@@ -72,20 +70,7 @@ export function ProjectsListCom(
     exit: router.query.id && { opacity: 0 },
     transition: transition,
   };
-  function handleDelete(id: any,) {
-    //photosURLs.map((entry: string) => deleteImage(entry));
-    deleteProjectFromFirestore('projects', id)
-      .then(() => {
-        setLoading(false);
-        setSucces(true);
-      })
-      .catch((error) => {
-        console.log('error', error);
-        setError(error);
-        setLoading(false);
-      })
-    setOpen(false);
-  };
+
   return (
     <>
       <AlertCom succes={succes} error={error} loading={loading} setError={setError} />
@@ -106,9 +91,9 @@ export function ProjectsListCom(
               gridRow={project.mirrored ? '1' : '2'}
               big={project.project.big}
               rewerseBig={project.bigReversed}
-              open={open}
-              setOpen={setOpen}
-              handleDelete={handleDelete}
+              setSucces={setSucces}
+              setLoading={setLoading}
+              setError={setError}
             />
           );
         })}

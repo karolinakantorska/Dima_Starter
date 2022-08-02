@@ -1,11 +1,11 @@
 import Link from 'next/link';
-
+import { useState, useEffect, Dispatch, SetStateAction } from 'react';
 // @mui
 import Card from '@mui/material/Card';
 import Typography from '@mui/material/Typography';
 import EditRoundedIcon from '@mui/icons-material/EditRounded';
 import DeleteIcon from '@mui/icons-material/Delete';
-import { ProjectType } from '../../utils/TS/interface';
+import { ImageType, ProjectType } from '../../utils/TS/interface';
 import useResponsive from '../../hooks/useResponsive';
 import { firstLettersBig } from '../../utils/Text/textUtils';
 import { Box } from '@mui/system';
@@ -13,45 +13,86 @@ import { IconButton, Grid, CardActions, CardContent, Dialog, DialogTitle, Dialog
 
 import { PATH_PROJEKTE } from '../../routes/paths';
 import useAuth from 'src/utils/firebaseAuth/useAuth';
+import { deleteProjectFromFirestore } from '../../utils/apis/deleteFromFirestore';
+import { deleteImage } from 'src/utils/apis/uploadPhoto';
 
 export function TextCardCom({
   project,
   big,
   rewerseBig,
-  open, setOpen, handleDelete }: {
-    project: ProjectType, big: boolean, rewerseBig: boolean,
-    open: boolean, setOpen: any, handleDelete: any
-    ,
-  }) {
+  setSucces,
+  setLoading,
+  setError,
+}: {
+  project: ProjectType,
+  big: boolean,
+  rewerseBig: boolean,
+  setSucces: Dispatch<SetStateAction<string | boolean>>;
+  setLoading: Dispatch<SetStateAction<boolean>>;
+  setError: Dispatch<SetStateAction<{
+    code: string;
+    message: string;
+  } | null>>;
+
+}) {
 
   const { title, location, id, objektAlter, photo, photos } = project;
-
+  const [open, setOpen] = useState(false);
   const isDesktop = useResponsive('up', 'lm');
   const isMiddle = useResponsive('down', 'md');
   const { isAuthenticated } = useAuth();
   const isBigAndDisplaysDesktop = isDesktop && big;
 
-  const pl = isMiddle ? 2 : 3.15;
-  const pr = isMiddle ? 2 : 3.15;
-  const pt = isMiddle ? 3 : 4.75;
-
   const cardPropsBig = {
     gridColumn: rewerseBig ? '1 / span 2' : '4 / span 2',
     gridRow: 'span 2',
     backgroundColor: 'background.default'
-  }
+  };
   const propsGridTextBox = {
     backgroundColor: 'background.paper',
     minHeight: big ? '300px' : '100px',
-    height: isAuthenticated ? '100%' : '70%',
-  }
+    height: '100%',
+  };
+  const propsCardContent = {
+    pl: isMiddle ? 2 : 3.15,
+    pr: isMiddle ? 2 : 3.15,
+    pt: isMiddle ? 3 : 4.75,
+
+    cursor: 'pointer',
+
+    height: isAuthenticated ? '75%' : '100%',
+    '&:hover': {
+      textShadow: '#979797 1px 0 10px'
+    },
+    '&:focus': {
+      textShadow: '#979797 1px 0 10px'
+    },
+  };
+
   function handleOpen() {
     setOpen(true);
-  }
+  };
   function handleClose() {
     setOpen(false);
   };
+  function handleDelete(id: any, photo: string, photos: [] | ImageType[]) {
 
+    setLoading(true);
+    deleteProjectFromFirestore('projects', id)
+      .then(() => {
+        deleteImage(photo);
+        photos.map((photo: ImageType) => deleteImage(photo.url));
+        setLoading(false);
+        setSucces(true);
+      })
+      .catch((error) => {
+        //console.log('error', error);
+        setError(error);
+        setLoading(false);
+      });
+
+    setOpen(false);
+  };
   const Icons = () => (
     <>
       <Link href={`${PATH_PROJEKTE.editProject}/${id}`} passHref >
@@ -80,26 +121,14 @@ export function TextCardCom({
         <CardContent
           className="Card Content"
           sx={{
-            pl: pl,
-            pt: pt,
-            pr: pr,
-            cursor: 'pointer',
-            height: '70%',
-            '&:hover': {
-              textShadow: '#979797 1px 0 10px'
-            },
-            '&:focus': {
-              textShadow: '#979797 1px 0 10px'
-            },
+            ...propsCardContent
+
           }}
         >
           <Typography
             variant="body2"
             component="p"
-            sx={{
-              color: 'dima',
-
-            }}        >
+            sx={{ color: 'dima', }}        >
             {objektAlter.toUpperCase()}
           </Typography>
           <Typography

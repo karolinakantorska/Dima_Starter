@@ -26,7 +26,7 @@ export default function LandingButtonsCom() {
         maxHeight: '86px',
         p: 0,
         color: 'text.primary',
-        transition: '0.5s',
+        transition: '0.3s',
     }
     return (
         <Container sx={{ ...containerProps }}>
@@ -63,7 +63,7 @@ export default function LandingButtonsCom() {
                             sx={{
                                 ...buttonProps,
                                 backgroundColor: 'rgba(43,37,31,0.7)',
-                                transition: '1s',
+
                                 '&:hover': {
 
                                     boxShadow: 'inset 0px -100px rgba(43,37,31,1)',

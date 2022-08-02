@@ -19,7 +19,7 @@ export default function Table(theme: Theme) {
     MuiTableCell: {
       styleOverrides: {
         root: {
-          borderBottom: `1px solid ${theme.palette.dima}` ,
+          borderBottom: `2px solid ${theme.palette.dima}` ,
         },
         head: {
           color: theme.palette.text.secondary,
@@ -43,7 +43,7 @@ export default function Table(theme: Theme) {
         },
         body: {
           '&:first-of-type': {
-            paddingLeft: theme.spacing(2),
+            //paddingLeft: theme.spacing(2),
           },
           '&:last-of-type': {
             paddingRight: theme.spacing(0),
@@ -54,7 +54,7 @@ export default function Table(theme: Theme) {
     MuiTablePagination: {
       styleOverrides: {
         root: {
-          borderTop: `solid 1px ${theme.palette.divider}`,
+          borderTop: `solid 2px ${theme.palette.divider}`,
         },
         toolbar: {
           height: 64,

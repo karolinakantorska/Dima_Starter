@@ -1,15 +1,7 @@
 import { useFormContext } from 'react-hook-form';
 
-import {
-
-    Stack,
-    Typography,
-
-} from '@mui/material';
-import {
-    RHFTextField,
-
-} from '../../hook-form';
+import { Stack, Typography, } from '@mui/material';
+import { RHFTextField, } from '../../hook-form';
 export function DescriptionCardCom() {
     const {
         watch,
@@ -38,8 +30,5 @@ export function DescriptionCardCom() {
                 />
             ))}
         </Stack>
-
-
-
     )
 }

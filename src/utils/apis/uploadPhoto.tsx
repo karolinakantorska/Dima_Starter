@@ -8,7 +8,7 @@ export function uploadOnePhoto(photo: any, folderName: string) {
   const timestamp = Date.now();
   const title = fileNameWithoutFileExtension(photo.name);
   //const metadata = createMetadata(title);
-  const storageRef = ref(storage, `${folderName}/${photo.name}_${timestamp}`);
+  const storageRef = ref(storage, `${folderName}/${title}_${timestamp}`);
 
   const uploadTask = uploadBytesResumable(storageRef, photo);
   return new Promise((resolve, reject) => {
@@ -43,6 +43,7 @@ export function uploadPhotos(photos: any[], folderName: string) {
 }
 
 export function deleteImage(url: string) {
+  console.log('deletingImage')
   const storage = getStorage();
   const desertRef = ref(storage, url);
   deleteObject(desertRef);

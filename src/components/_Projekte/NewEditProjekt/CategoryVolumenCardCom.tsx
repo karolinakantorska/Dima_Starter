@@ -1,31 +1,25 @@
 import { useFormContext } from 'react-hook-form';
 import { regionenArray } from 'src/utils/TS/interface';
 import {
-
     Typography,
-
-    Stack
+    Stack,
+    InputAdornment
 
 } from '@mui/material';
 
 import {
-    RHFRadioGroup,
+    RHFRadioGroup, RHFTextField,
 
 } from '../../hook-form';
-export function CategoryCardCom() {
-    const {
-        watch,
-
-    } = useFormContext();
-
-    const values = watch();
+export function CategoryVolumenCardCom() {
+    const { setValue, getValues, } = useFormContext();
 
     const regionen = regionenArray.slice();
     const REGION = regionen.map((entry: any) => ({ label: entry, value: entry }));
-    const STAGE = [{ label: 'Im Bau', value: false }, { label: 'Realisiert', value: true }];
 
     return (
         <Stack spacing={3}>
+
             <Typography
                 variant="body2"
                 component="p"
@@ -42,23 +36,31 @@ export function CategoryCardCom() {
                     '& .MuiFormControlLabel-root': { mr: 4 },
                 }}
             />
+
             <Typography
                 variant="body2"
                 component="p"
                 sx={{
                     color: 'dima',
-
                 }}
             >
-                Projektphase :
+                Volumen:
             </Typography>
-            <RHFRadioGroup
-                name="finished"
-                options={STAGE}
-                sx={{
-                    '& .MuiFormControlLabel-root': { mr: 4 },
+            <RHFTextField
+                variant="filled"
+                name="size"
+                label="volumen"
+                //placeholder="2"
+                value={getValues('size') === 0 ? '' : getValues('size')}
+                onChange={(event) => setValue('size', Number(event.target.value))}
+                InputLabelProps={{ shrink: true }}
+                InputProps={{
+                    endAdornment: <InputAdornment position="start">Mio. CHF</InputAdornment>,
+                    type: 'number',
                 }}
             />
+
+
         </Stack>
 
 

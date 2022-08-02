@@ -57,12 +57,13 @@ export default function CarouselBasic3({ photos }: { photos: ImagesType }) {
     fontSize: 60,
 
     [theme.breakpoints.down('mobile')]: {
-      fontSize: 20,
-      ml: '-10px',
+      display: 'none'
+      //fontSize: 30,
+      //ml: '-15px',
     },
     [theme.breakpoints.between('mobile', 'lg')]: {
-      fontSize: 70,
-      ml: '-35px',
+      fontSize: 40,
+      ml: '-20px',
     },
   }
   const propsArrow = {

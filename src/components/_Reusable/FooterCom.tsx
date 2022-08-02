@@ -2,7 +2,7 @@ import { Stack, Typography } from "@mui/material";
 
 // ----------------------------------------------------------------------
 
-export default function FooterCom({ photoAuthor }: { photoAuthor?: string | undefined }) {
+export default function FooterCom() {
 
     return (
         <Stack spacing={1} sx={{ minHeight: '350px', pt: 18 }}  >
@@ -14,13 +14,7 @@ export default function FooterCom({ photoAuthor }: { photoAuthor?: string | unde
                 Impressum
             </Typography>
 
-            {photoAuthor && <Typography
-                variant="body2"
-                component="span"
-                color="text.secondary"
-            >
-                &#169;Photography: {`${photoAuthor}`}
-            </Typography>}
+
         </Stack>
     );
 }

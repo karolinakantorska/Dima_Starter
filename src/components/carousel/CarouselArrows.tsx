@@ -4,7 +4,6 @@ import { IconifyIcon } from '@iconify/react';
 import { useTheme, } from '@mui/material/styles';
 import { Box, BoxProps, StackProps, Button, } from '@mui/material';
 //
-
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 
@@ -53,11 +52,14 @@ export default function CarouselArrows({
   const arrowStyle = {
     fontSize: 60,
     fontWeight: 300,
+
     [theme.breakpoints.down('mobile')]: {
-      fontSize: 20,
+      //fontSize: 20,
+      display: 'none'
     },
+
     [theme.breakpoints.between('mobile', 'lg')]: {
-      fontSize: 40,
+      fontSize: 30,
     },
   }
   //if (children) {
@@ -80,7 +82,7 @@ export default function CarouselArrows({
 
       {children}
 
-      <Box sx={{ ...style, right: 0 }}>
+      <Box sx={{ ...style, right: 8 }}>
         <Button
           disableRipple
           aria-label="next photo"

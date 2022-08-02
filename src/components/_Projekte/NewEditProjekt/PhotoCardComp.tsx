@@ -19,30 +19,25 @@ export function PhotoCardCom({ setLoading, setError }: { setLoading: any, setErr
     const values = watch();
 
     function handleDropImage(acceptedFiles: any) {
-        setLoading(true);
         if (values.photo?.url) {
             deleteImage(values.photo.url);
         };
         handleDropPhoto(acceptedFiles);
-        setLoading(false)
     };
 
     const handleDropPhoto = useCallback(
-        //missing dependencies: 'setError' and 'setLoading',Either include them or remove the dependency array
         (acceptedFiles) => {
             const file = acceptedFiles[0];
-            //setLoading(true);
+            setLoading(true);
             uploadOnePhoto(file, "projects")
-                .then((result: any) => setValue(
-                    'photo', { ...result }
-                    /*Object.assign(file, {...result})*/
-                )).then(() => {
-                    //setLoading(false)
+                .then((result: any) => {
+                    setValue('photo', { ...result });
+                    setLoading(false);
                 })
                 .catch((error) => {
                     console.log('error', error);
-                    //setError(error);
-                    //setLoading(false);
+                    setError(error);
+                    setLoading(false);
                 })
         },
         [setValue]
@@ -51,17 +46,17 @@ export function PhotoCardCom({ setLoading, setError }: { setLoading: any, setErr
         (acceptedFiles) => {
             const newPhotos = acceptedFiles;
             const photos = values.photos || [];
-            //setLoading(true);
+            setLoading(true);
             uploadPhotos(newPhotos, 'photos')
                 .then((result: any) => {
-                    const images: ImagesType = Object.values(result)
-                    setValue('photos', [...photos, ...images]
-                    )
-                }).then(() => setLoading(false))
+                    const images: ImagesType = Object.values(result);
+                    setValue('photos', [...photos, ...images]);
+                    setLoading(false);
+                })
                 .catch((error) => {
-                    //setError(error);
-                    //setLoading(false);
-                    //console.log('error', error)
+                    setError(error);
+                    setLoading(false);
+                    console.log('error', error)
                 })
         },
         [setValue, values.photos]

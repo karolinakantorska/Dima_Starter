@@ -13,7 +13,7 @@ export function OneProjectCom({ project }: { project: ProjectType }) {
   const isSmallDesktop = useResponsive('up', 'lm');
   const isMiddle = useResponsive('down', 'lm');
   const isSmall = useResponsive('down', 'sm');
-  //const isMobile = useResponsive('down', 'mobile');
+  const isMobile = useResponsive('down', 'mobile');
 
   const transition = {
     type: 'tween',
@@ -27,60 +27,78 @@ export function OneProjectCom({ project }: { project: ProjectType }) {
   };
 
   const row2 = () => {
-    const time = project.finished ? 'bauzeit' : 'projektzeit';
+    const time = (project.phase === 'Gebaut')
+      ? `${new Date(project.startYear).toLocaleString('de-DE', { year: 'numeric' })} -
+         ${new Date(project.year).toLocaleString('de-DE', { year: 'numeric' })}`
+      : project.phase;
     const arr = [
       { name: 'bauherr', data: project.client },
       { name: 'architekt', data: project.architect },
       { name: 'realisation', data: project.realisation },
-      { name: time, data: new Date(project.year).toLocaleString('de-DE', { year: 'numeric' }) },
+      {
+        name: 'bauzeit',
+        data: time
+      },
     ]
     if (project.size !== 0) {
       arr.push({ name: 'volumen', data: `ca. ${project.size.toString()} Mio. CHF` })
     }
     return arr
   }
-  const containerBoxProps = {
+  const propsContent = {
+    mt: isSmall ? 6 : 0,
+  };
+  const propsContainerBox = {
     display: 'grid',
-    gridTemplateColumns: isSmallDesktop ? '56fr 44fr' : '1fr ',
-  }
-  const boxProps = {
+    gridTemplateColumns: isSmall ? '1fr' : '56fr 44fr',
+  };
+  const propsBox = {
     pl: isDesktop ? 15 : isSmall ? 0 : 2,
     maxWidth: '730px'
-  }
-  const secondBoxProps = {
-    pl: isDesktop ? 12.5 : isMiddle ? isSmall ? 0 : 2 : 10,
-    pr: isDesktop ? 16 : isSmall ? 0 : 2,
-    pt: isSmallDesktop ? 4 : 10,
+  };
+  const propsSecondBox = {
+    pl: isSmall ? 0 : isDesktop ? 10 : 6,
+    pr: isSmall ? 0 : isDesktop ? 16 : 2,
+    pt: isSmall ? 8 : isDesktop ? 4 : 1.6,
     maxWidth: '730px'
+  };
+  const propsTableCell = {
+    py: isSmall ? 1.2 : isDesktop ? 3.9 : '3%',
+    pl: isSmallDesktop ? 2 : 0,
+    width: isSmall ? '30%' : isSmallDesktop ? '55%' : '40%',
+  };
+  const propsTableCell2 = {
+    py: isSmall ? 1.2 : isDesktop ? 3.9 : '3%',
+    pl: 0
   }
-  /*
+
   const TableRowMobile = ({ row }: any) => (
     <TableRow
       key={row.name}
       sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
     >
-      <TableCell component="td" sx={{ pr: 0, pt: 5, pb: 5, width: '100%' }}>
-        <Typography sx={{ pl: 1, }} variant="body2" component="p" color="dima" >
+      <TableCell component="td" sx={{ pl: 0, pr: 0, pt: 1, pb: 1, width: '100%' }}>
+        <Typography sx={{ pl: 0, }} variant="body2" component="p" color="dima" >
           {row.name.toUpperCase()}
         </Typography>
-        <Typography sx={{ pl: 1, pt: 2, }} variant="body2" component="p" color="text.primary">
+        <Typography sx={{ pl: 0, pt: 1, }} variant="body2" component="p" color="text.primary">
           {row.data}
         </Typography>
       </TableCell>
-    </TableRow>
+    </TableRow >
   );
-  */
+
   const TableRowDesktop = ({ row }: any) => (
     <TableRow
       key={row.name}
       sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
     >
-      <TableCell component="td" sx={{ py: 3.9, width: '55%' }}>
+      <TableCell component="td" sx={{ ...propsTableCell }}>
         <Typography variant="body2" component="p" color="dima" >
           {row.name.toUpperCase()}
         </Typography>
       </TableCell>
-      <TableCell align="left" sx={{ pl: 0, }} >
+      <TableCell align="left" sx={{ ...propsTableCell2 }} >
         <Typography variant="body2" component="p" color="text.primary">
           {row.data}
         </Typography>
@@ -95,21 +113,22 @@ export function OneProjectCom({ project }: { project: ProjectType }) {
         <Stack
           component={m.div}
           {...variant}
-          spacing={isDesktop ? 18.5 : isSmall ? 5 : 8}
+          spacing={isDesktop ? 18.5 : 10}
+          sx={{ ...propsContent }}
         >
           <CarouselBasic3 photos={photosCarusel} />
           <Box
-            sx={{ ...containerBoxProps }}
+            sx={{ ...propsContainerBox }}
           >
-            <Box sx={{ ...boxProps }}>
+            <Box sx={{ ...propsBox }}>
               <Table id="Project_Table">
                 <TableBody>
-
-                  {row2().map((row) => (<TableRowDesktop key={row.name} row={row} />))}
+                  {!isMobile && row2().map((row) => (<TableRowDesktop key={row.name} row={row} />))}
+                  {isMobile && row2().map((row) => (<TableRowMobile key={row.name} row={row} />))}
                 </TableBody>
               </Table>
             </Box>
-            <Box sx={{ ...secondBoxProps }}>
+            <Box sx={{ ...propsSecondBox }}>
               <Typography variant="body2" component="h2" paragraph color="dima" sx={{ mb: 2.75 }}>
                 {project.title.toUpperCase()}
               </Typography>
@@ -118,10 +137,17 @@ export function OneProjectCom({ project }: { project: ProjectType }) {
                   {desc}
                 </Typography>
               ))}
+              {project.photoAuthor && <Typography
+                variant="body2"
+                component="span"
+                color="text.secondary"
+              >
+                &#169;Photography: {`${project.photoAuthor}`}
+              </Typography>}
             </Box>
           </Box>
         </Stack>
-        <FooterCom photoAuthor={project?.photoAuthor && project.photoAuthor} />
+        <FooterCom />
       </>
     )
 
