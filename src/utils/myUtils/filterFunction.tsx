@@ -3,9 +3,9 @@ import { ProjectsListType, ProjectType, FilterParams, Phase, Regionen } from "..
 export function filter(allProjects: ProjectsListType, { param }: { param: Phase | Regionen }) {
 
     switch (param) {
-        case "Entwicklung":
-        case "Plannung":
-        case "Realisierung":
+        case "in Plannung":
+        case "in Ausführung":
+        case "Gebaut":
             console.log('param ', param, 'bin in phase')
             return allProjects.filter((project) => project.phase.includes(param));
         case "Glarus":
