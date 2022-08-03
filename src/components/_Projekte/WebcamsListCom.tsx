@@ -17,7 +17,7 @@ export function WebcamsListCom() {
   //const initialInputs = { param: "Alle" }
 
   const isDesktop = useResponsive('up', 'lg');
-  const isSmall = useResponsive('down', 'sm');
+  const isSmall = useResponsive('down', 'md');
   const gtc = isDesktop ? 'repeat(3, 1fr)' : isSmall ? '1fr' : 'repeat(2, 1fr)';
   //const { query } = useRouter();
 

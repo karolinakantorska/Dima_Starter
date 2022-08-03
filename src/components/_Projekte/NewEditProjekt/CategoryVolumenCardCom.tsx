@@ -19,7 +19,6 @@ export function CategoryVolumenCardCom() {
 
     return (
         <Stack spacing={3}>
-
             <Typography
                 variant="body2"
                 component="p"

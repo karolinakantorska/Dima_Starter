@@ -1,4 +1,5 @@
 import Page from "src/components/Page"
+import PersonNewEditForm from "src/components/_Team/NewEdit/PersonNewEditForm";
 import AuthGuard from "src/guards/AuthGuard";
 import Layout from "src/layouts"
 // ----------------------------------------------------------------------
@@ -13,7 +14,7 @@ export default function NeueMitarbeiter() {
   return (
     <AuthGuard>
       <Page title={`${isEdit ? 'Edit' : 'Neues'} Mitarbeiter | Dima & Partner`}>
-        <p>neue Mitarbeiter</p>
+        <PersonNewEditForm />
       </Page>
     </AuthGuard>
   );

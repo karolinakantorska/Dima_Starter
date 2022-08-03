@@ -32,7 +32,7 @@ export function CardPersonCom({ person }: { person: Person }) {
     //const open = Boolean(anchorEl);
     const isDesktop = useResponsive('up', 'lg');
     const isSmall = useResponsive('down', 'sm');
-    const { photo, name, surname, title, job, email } = person;
+    const { photo, name, surname, title1, title2, job1, job2, job3, email } = person;
 
     //const { query } = useRouter();
 
@@ -43,7 +43,7 @@ export function CardPersonCom({ person }: { person: Person }) {
                 component="img"
                 height={isDesktop ? 545 : 'auto'}
                 image={photo}
-                alt={`${name} ${surname} ${job}`}
+                alt={`${name} ${surname} ${job1}`}
             />
             <Grid
                 container
@@ -60,15 +60,20 @@ export function CardPersonCom({ person }: { person: Person }) {
                     >
                         {`${name.toUpperCase()} ${surname.toUpperCase()}`}
                     </Typography>
-                    {title.map((title) => <Typography key={title} variant="body2" component="p" sx={{ pt: '2px' }} >{title}</Typography>)}
+                    <Typography variant="body2" component="p" sx={{ pt: '2px' }} >{title1}</Typography>
+                    <Typography variant="body2" component="p" sx={{ pt: '2px' }} >{title2}</Typography>
                 </Grid>
                 <Grid item sx={{ width: '100%' }}>
                     <Stack
                         direction="row"
                         justifyContent="space-between"
                         alignItems="flex-end"
-                    >
-                        {job.map((job) => <Typography key={job} variant="body2" component="p" sx={{ mr: '15px' }}>{job}</Typography>)}
+                    ><div>
+                            <Typography variant="body2" component="p" sx={{ mr: '15px' }}>{job1}</Typography>
+                            <Typography variant="body2" component="p" sx={{}}>{job2}</Typography>
+                            <Typography variant="body2" component="p" sx={{}}>{job3}</Typography>
+                        </div>
+
                         <Mail email={email} />
 
                     </Stack>

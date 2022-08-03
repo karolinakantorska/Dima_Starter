@@ -17,50 +17,66 @@ export function WebcamsCardCom({ wcam }: { wcam: any }) {
   //const router = useRouter()
   //const gtc = isDesktop ? 'repeat(3, 1fr)' : isSmall ? '1fr' : 'repeat(2, 1fr)';
   //const { query } = useRouter();
-
-
+  const propsContainer = {
+    boxSizing: 'border-box',
+    //border: '5px solid red',
+    display: 'grid',
+    gridAutoRows: 'auto 70px'
+  };
+  const propsIFrameContainer = {
+    height: isMiddle ? isSmall ? '250px' : '380px' : '280px',
+  };
+  const propsIFrame = {
+    pointerEvents: 'none',
+    height: '180%',
+    width: '180%',
+    overflow: 'hidden',
+    mt: '-30%',
+    ml: '-25%'
+  };
+  const propsCard = {
+    pl: 2.25, pt: 1.60, pb: 1.1
+  };
   return (
-    <Card sx={{ height: '350px' }}>
-      <Box
-        component='iframe'
-        overflow='hidden'
-        src={url}
-        title={title}
-        loading='lazy'
-        scrolling="no"
-        seamless
-        sx={{
-          pointerEvents: 'none',
-          height: '366px',
-          width: isMiddle ? isSmall ? '110%' : '140%' : '110%',
-          borderColor: 'dima',
-          border: 'none ',
-          mt: '-90px',
-          ml: '-4px'
-        }}
-        className="iFrame Container"
-      >
-        <p>Ihr Browser unterstützt keine iframes.</p>
-      </Box>
+    <>
+      <Card sx={{ ...propsContainer }}>
+        <Box sx={{ ...propsIFrameContainer }}>
+          <Box
+            component='iframe'
+            src={url}
+            title={title}
+            loading='lazy'
+            scrolling="no"
+            seamless
+            sx={{ ...propsIFrame }}
+            className="iFrame Container"
+          >
+            <p>Ihr Browser unterstützt keine iframes.</p>
+          </Box>
+        </Box>
 
-      <Box sx={{ height: 70, pl: 2.25, pt: 1.60, pb: 1.1 }}>
-        <Typography
-          variant="body1"
-          component="p"
-          sx={{ color: 'dima', }}
-        >
-          {`${title.toUpperCase()}`}
-        </Typography>
-        <Typography
-          variant="body1"
-          component="p"
-          sx={{ color: 'text.secondary', }}
-        >
-          {`Im Bau - Realisierung Geplant Auf ${end.toString()}`}
-        </Typography>
-      </Box>
+        <Card sx={{ ...propsCard }}>
+          <Typography
+            variant="body1"
+            component="p"
+            sx={{ color: 'dima', }}
+          >
+            {`${title.toUpperCase()}`}
+          </Typography>
+          <Typography
+            variant="body1"
+            component="p"
+            sx={{ color: 'text.secondary', }}
+          >
+            {`Im Bau - Realisierung Geplant Auf ${end.toString()}`}
+          </Typography>
+        </Card>
+      </Card >
+    </>
 
-      <Link
+  )
+}
+/*      <Link
         href={url}
         //target="_blank"
         rel="noopener"
@@ -81,6 +97,4 @@ export function WebcamsCardCom({ wcam }: { wcam: any }) {
             }
           }} />
       </Link>
-    </Card >
-  )
-}
+      */

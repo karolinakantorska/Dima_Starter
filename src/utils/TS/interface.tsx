@@ -107,11 +107,14 @@ export interface UserData {
 
 export interface Person {
   id: string,
-  photo: string;
+  photo: ImageType;
   name: string;
   surname: string;
-  title: string[];
-  job: string[];
+  title1: string;
+  title2: string;
+  job1: string;
+  job2: string;
+  job3: string;
   displayOrder: number;
   email: string;
 }

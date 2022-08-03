@@ -3,28 +3,37 @@ import * as Yup from 'yup';
 export const NewProjectSchema = Yup.object().shape({
     photos: Yup.array(),
     photoAuthor: Yup.string()
-        .max(80, 'Projecttitle muss kurzer als 80 Buchstaben sein'),
+        .max(80, 'Name darf maximal 80 Zeichen lang sein'),
     title: Yup.string().required('Projecttitle ist erforderlich')
         .min(2, 'Projecttitle muss länger als zwei Buchstaben sein')
-        .max(100, 'Projecttitle muss kurzer als 100 Buchstaben sein'),
+        .max(32, 'Projecttitle darf maximal 32 Zeichen lang sein'),
     description1: Yup.string()
-        .max(4000, 'Projecttitle muss kurzer als 8000 Buchstaben sein'),
+        .max(4000, 'Die Beschreibung darf maximal 4000 Zeichen lang sein'),
     description2: Yup.string()
-        .max(4000, 'Projecttitle muss kurzer als 8000 Buchstaben sein'),
+        .max(4000, 'Die Beschreibung darf maximal 4000 Zeichen lang sein'),
     description3: Yup.string()
-        .max(4000, 'Projecttitle muss kurzer als 8000 Buchstaben sein'),
+        .max(4000, 'Die Beschreibung darf maximal 4000 Zeichen lang sein'),
     description4: Yup.string()
-        .max(4000, 'Projecttitle muss kurzer als 8000 Buchstaben sein'),
+        .max(4000, 'Die Beschreibung darf maximal 4000 Zeichen lang sein'),
     description5: Yup.string()
-        .max(4000, 'Projecttitle muss kurzer als 8000 Buchstaben sein'),
+        .max(4000, 'Die Beschreibung darf maximal 4000 Zeichen lang sein'),
     year_form: Yup.date().required('Bauyahr ist erforderlich'),
     client: Yup.string()
-        .max(80, 'Projecttitle muss kurzer als 80 Buchstaben sein'),
+        .max(80, 'Bauhername darf maximal 80 Zeichen lang sein'),
     architect: Yup.string()
-        .max(80, 'Projecttitle muss kurzer als 80 Buchstaben sein'),
+        .max(80, 'Architektname darf maximal 80 Zeichen lang sein'),
     location: Yup.string()
-        .max(80, 'Projecttitle muss kurzer als 80 Buchstaben sein'),
+        .max(32, 'Die Beschreibung darf maximal 80 Zeichen lang sein'),
     size: Yup.number().lessThan(100000000, 'Projectgrosse soll weniger als 100 000 000 sein'),
-    //service: Yup.array().min(1, 'Wahlen Sie bitte mindestens eine Option'),
-    //objektType: Yup.array().min(1, 'Wahlen Sie bitte mindestens eine Option'),
+});
+
+export const NewPersonSchema = Yup.object().shape({
+    name: Yup.string().required('Vorname ist erforderlich')
+        .min(2, 'Vorname muss länger als zwei Buchstaben sein')
+        .max(32, 'Vorname darf maximal 32 Zeichen lang sein'),
+    surname: Yup.string().required('Nahname ist erforderlich')
+        .min(2, 'Nahname muss länger als zwei Buchstaben sein')
+        .max(32, 'Nahname darf maximal 32 Zeichen lang sein'),
+    email: Yup.string().email('Must be a valid email').max(32, 'E-Mailadresse darf maximal 32 Zeichen lang sein').min(2, 'E-Mailadresse muss länger als zwei Buchstaben sein').required('Email is required')
+
 });

@@ -1,11 +1,14 @@
 import useResponsive from '../../hooks/useResponsive';
+import { m } from 'framer-motion';
 import Glarus from '/public/location/Glarus.jpg';
 import Zurich from '/public/location/Zurich.jpg';
-import { Card, CardMedia, Stack, Typography, Box } from '@mui/material';
+import { Card, CardMedia, Stack, Typography, Box, CardActionArea } from '@mui/material';
 import { dimaContact, layoutHeader } from 'src/utils/dima';
 import { firstLettersBig } from '../../utils/Text/textUtils';
 
 import { SiteTitle } from '../_Reusable/SiteTitle';
+import Link from 'next/link';
+import Image from '../Image';
 
 //console.log('Glarus:', Glarus)
 // TODO use location instead use route
@@ -49,20 +52,44 @@ export function ContactCom() {
       </Box>
     )
   }
+    ;
+  const ImageCard = ({ href, link }: { href: string, link: string }) => (
+    <Link href={href} passHref>
+      <Card sx={{
+        maxWidth: 500,
+      }}>
+        <Box
+          component={m.div}
+          key="animated children"
+          sx={{
+            height: '100%',
+            width: '100%',
+            position: 'absolute',
+            background: 'transparent',
+            zIndex: 2000,
+            transition: '.5s',
+            boxShadow: 'inset 0px 0px rgba(255,255,255,0.2)',
 
+          }}
+          whileHover={{
+            boxShadow: 'inset 0px -600px rgba(255,255,255,0.2)',
+          }}
+        />
+        <CardMedia
+          component="img"
+          image={link}
+        />
+      </Card >
+    </Link>
+  )
   return (
     <>
       <SiteTitle text={layoutHeader.contact} />
-      <Stack spacing={8} sx={{ mt: 8, pb: 5 }}>
+      <Stack spacing={8} sx={{ mt: 8, }}>
         <Stack
           direction={isSmall ? 'column-reverse' : 'row'}
         >
-          <Card sx={{ maxWidth: 500 }}>
-            <CardMedia
-              component="img"
-              image={Glarus.src}
-            />
-          </Card >
+          < ImageCard href="https://goo.gl/maps/1bqKPqRwh7MAjys17" link={Glarus.src} />
           <TextBox text={dimaContact.glarus} />
         </Stack>
         <Stack
@@ -77,6 +104,8 @@ export function ContactCom() {
           <TextBox text={dimaContact.zurich} />
         </Stack>
       </Stack>
+
     </>
   )
 }
+

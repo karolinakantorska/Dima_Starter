@@ -169,7 +169,7 @@ export default function ProjectNewEditForm({ isEdit, currentProject }: Props) {
   return (
     <>
       <AlertCom succes={succes} error={error} loading={loading} setError={setError} />
-      < Typography variant="h6" component="h2">{currentProject?.id ? `Projekt bearbeiten` : 'Neues Projekt Hinzugrifen'}</Typography>
+
       <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)} >
         <Grid container direction='row' spacing={6} sx={{ pt: 3 }}>
           <Grid item xs={12} md={7}  >

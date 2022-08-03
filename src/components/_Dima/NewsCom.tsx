@@ -40,43 +40,37 @@ export function NewsCom({
     animate: { opacity: 1 },
     transition: transition,
   };
-  const backgroundColor = dark ? 'background.between' : 'background.paper';
-  const pt = 3.8;
-  const py = 4;
-  const pb = 3.8;
-  const gridRow = expand ? 'span 2' : 'span 1';
-  const height1 = expand ? '444px' : '212px';
-
   const hoverProps = {
     boxShadow: 'inset 0px -1px #EF7B10',
     cursor: 'pointer',
   }
+  const propsCard = {
+    backgroundColor: dark ? 'background.between' : 'background.paper',
+    height: expand ? '444px' : '212px',
+    gridRow: expand ? 'span 2' : 'span 1',
+    transition: 'height 1s',
+    '&:hover': {
+      ...hoverProps
+    },
+    '&:focus': {
+      ...hoverProps
+    },
+  };
 
+  const propsStack = {
+    pt: 3.8,
+    px: 4,
+    pb: 3.8,
+  };
   return (
     <Card
       onClick={togleExpand}
-      sx={{
-        backgroundColor: backgroundColor,
-        height: height1,
-        gridRow: gridRow,
-        transition: 'height 1s',
-        '&:hover': {
-          ...hoverProps
-        },
-        '&:focus': {
-          ...hoverProps
-        },
-      }}>
+      sx={{ ...propsCard }}>
       <Stack
         direction="column"
-        spacing={3.8}
+        //spacing={3.8}
         justifyContent="space-between"
-        sx={{
-          height: '212px',
-          pt: pt,
-          px: py,
-          pb: pb,
-        }}
+        sx={{ ...propsStack, height: '212px' }}
       >
         <div>
           <Typography
@@ -94,10 +88,10 @@ export function NewsCom({
           </Typography>
         </div>
 
-
         <Typography
           variant="body2"
           component="p"
+          className="Hallo"
         >
           MEHR LESEN
           {expand
@@ -112,9 +106,7 @@ export function NewsCom({
           {...variant}
           spacing={2}
           sx={{
-            pt: pt,
-            px: py,
-            pb: pb,
+            ...propsStack
           }} >
           {description && <Typography
             variant="body2"

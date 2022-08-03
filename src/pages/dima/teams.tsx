@@ -4,7 +4,7 @@ import Layout from 'src/layouts';
 import Page from 'src/components/Page';
 
 
-import { TeamListCom } from 'src/components/_Dima/TeamListCom';
+import { TeamListCom } from 'src/components/_Team/TeamListCom';
 
 // ----------------------------------------------------------------------
 

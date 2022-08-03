@@ -40,6 +40,7 @@ export function TextCardCom({
   const [open, setOpen] = useState(false);
   const isDesktop = useResponsive('up', 'lm');
   const isMiddle = useResponsive('down', 'md');
+  const isSmall = useResponsive('down', 'sm');
   const { isAuthenticated } = useAuth();
   const isBigAndDisplaysDesktop = isDesktop && big;
 
@@ -52,21 +53,24 @@ export function TextCardCom({
     backgroundColor: 'background.paper',
     minHeight: big ? '300px' : '100px',
     height: '100%',
+
   };
   const propsCardContent = {
-    pl: isMiddle ? 2 : 3.15,
-    pr: isMiddle ? 2 : 3.15,
-    pt: isMiddle ? 3 : 4.75,
-
+    pl: isMiddle ? 1.8 : 3.15,
+    pr: isMiddle ? 1.8 : 3.15,
+    pt: isMiddle ? 2 : 4.75,
+    width: '100%',
     cursor: 'pointer',
-
-    height: isAuthenticated ? '75%' : '100%',
+    height: isAuthenticated ? '70%' : '100%',
     '&:hover': {
       textShadow: '#979797 1px 0 10px'
     },
     '&:focus': {
       textShadow: '#979797 1px 0 10px'
     },
+  };
+  const propsIcon = {
+    fontSize: isMiddle ? 20 : 'middle'
   };
 
   function handleOpen() {
@@ -97,14 +101,14 @@ export function TextCardCom({
     <>
       <Link href={`${PATH_PROJEKTE.editProject}/${id}`} passHref >
         <IconButton aria-label={'edit'}>
-          <EditRoundedIcon />
+          <EditRoundedIcon sx={{ ...propsIcon }} />
         </IconButton>
       </Link>
       <IconButton
         aria-label={'delete'}
         onClick={handleOpen}
       >
-        <DeleteIcon />
+        <DeleteIcon sx={{ ...propsIcon }} />
       </IconButton>
     </>
   )
@@ -112,18 +116,14 @@ export function TextCardCom({
   const TextBox = () => (
     <Grid
       container
+      className="Card Content maxHeight144"
       direction='column'
       justifyContent="space-between"
-
       sx={{ ...propsGridTextBox }}
     >
       <Link href={`${PATH_PROJEKTE.projekt}/${id}`} passHref >
         <CardContent
-          className="Card Content"
-          sx={{
-            ...propsCardContent
-
-          }}
+          sx={{ ...propsCardContent }}
         >
           <Typography
             variant="body2"
@@ -178,10 +178,7 @@ export function TextCardCom({
 
   return (
     <>
-      {!isBigAndDisplaysDesktop
-        && <Card  >
-          <TextBox />
-        </Card>}
+      {!isBigAndDisplaysDesktop && <TextBox />}
       {isBigAndDisplaysDesktop &&
         <Card sx={big && { ...cardPropsBig }} >
           <Box

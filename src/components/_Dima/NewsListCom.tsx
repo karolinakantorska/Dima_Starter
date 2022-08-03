@@ -6,14 +6,16 @@ import { news } from 'src/_mock/news/news';
 // hooks
 import { SiteTitle } from '../_Reusable/SiteTitle';
 import { NewsCom } from './NewsCom';
-import FooterCom from "../_Reusable/FooterCom";
+
+import useResponsive from "src/hooks/useResponsive";
 
 // TODO use location instead use route
 export function NewsListCom() {
   //const initialInputs = { param: "Alle" }
 
   //const isDesktop = useResponsive('up', 'lm');
-  //const isSmall = useResponsive('down', 'sm');
+  const isSmall = useResponsive('down', 'sm');
+  const isMiddle = useResponsive('down', 'md');
   let dark = true;
   //const { query } = useRouter();
 
@@ -22,7 +24,7 @@ export function NewsListCom() {
       <SiteTitle text={layoutHeader.news} />
       <Box
         display="grid"
-        gridTemplateColumns='repeat(2, 1fr)'
+        gridTemplateColumns={isMiddle ? '1fr' : 'repeat(2, 1fr)'}
         gridTemplateRows='1fr'
         //justifyItems='stretch'
         columnGap="13px"
@@ -36,7 +38,6 @@ export function NewsListCom() {
           return (<NewsCom key={news.id} news={news} dark={dark} />)
         })}
       </Box>
-      <FooterCom />
     </>
   )
 }

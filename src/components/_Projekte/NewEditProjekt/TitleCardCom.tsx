@@ -29,7 +29,7 @@ export function TitleCardCom() {
                     color: 'dima',
 
                 }}        >
-                ProjectName:
+                Projecttitle:
             </Typography>
             <RHFRadioGroup
 

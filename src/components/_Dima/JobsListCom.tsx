@@ -2,9 +2,9 @@
 // @mui
 import { Box, } from '@mui/material';
 import React from 'react';
+import useResponsive from 'src/hooks/useResponsive';
 import { layoutHeader } from 'src/utils/dima';
 import { jobs } from 'src/_mock/jobs/jobs';
-
 // hooks
 
 import { SiteTitle } from '../_Reusable/SiteTitle';
@@ -16,8 +16,8 @@ import { CardJobCom } from './CardJobCom';
 export function JobsListCom() {
   //const initialInputs = { param: "Alle" }
 
-  //const isDesktop = useResponsive('up', 'lm');
-  //const isSmall = useResponsive('down', 'sm');
+  const isDesktop = useResponsive('up', 'md');
+  const isSmall = useResponsive('down', 'sm');
 
   //const { query } = useRouter();
 
@@ -26,7 +26,7 @@ export function JobsListCom() {
       <SiteTitle text={layoutHeader.jobs} />
       <Box
         display="grid"
-        gridTemplateColumns='repeat(3, 1fr)'
+        gridTemplateColumns={isDesktop ? 'repeat(3, 1fr)' : isSmall ? '1fr' : 'repeat(2, 1fr)'}
         columnGap="12px"
         rowGap="12px"
         sx={{ mt: 7.5 }}
@@ -35,15 +35,15 @@ export function JobsListCom() {
         {jobs.map((job, i) => (
           <React.Fragment key={job.id}>
             <CardJobCom job={job} />
-            <CardEmptyJobCom />
+            {isDesktop && <CardEmptyJobCom />}
           </React.Fragment>
 
         ))}
         <CardEmptyJobCom />
-        <CardEmptyJobCom />
-        <CardEmptyJobCom />
-        <CardEmptyJobCom color='background.default' />
-        <CardEmptyJobCom />
+        {!isSmall && <><CardEmptyJobCom />
+          <CardEmptyJobCom />
+          <CardEmptyJobCom color='background.default' />
+          <CardEmptyJobCom /></>}
       </Box>
     </>
   )

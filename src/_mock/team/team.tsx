@@ -1,12 +1,17 @@
-export const team = [
+import { Person } from "src/utils/TS/interface";
+
+export const team: Person[] = [
     {
         id: '1',
 
         photo: '/people/p_1.jpg',
         name: 'Stefan',
         surname: 'Creus',
-        title: ['Dipl. Architekt Eth | Emba Hsg'],
-        job: ['Partner | Geschäftsleitung'],
+        title1: 'Dipl. Architekt Eth | Emba Hsg',
+        title2: '',
+        job1: 'Partner',
+        job2: 'Geschäftsleitung',
+        job3: '',
         displayOrder: 0,
         email: 'info@dima-partner.ch'
     },
@@ -15,8 +20,11 @@ export const team = [
         photo: '/people/p_2.jpg',
         name: 'Vito',
         surname: 'Pantelana',
-        title: ['Dipl. Architekt Eth | Sia'],
-        job: ['Partner | Geschäftsleitung | Leiter Plannung'],
+        title1: 'Dipl. Architekt Eth | Sia',
+        title2: '',
+        job1: 'Partner',
+        job2: 'Geschäftsleitung',
+        job3: 'Leiter Plannung',
         displayOrder: 1,
         email: 'info@dima-partner.ch'
     },
@@ -25,8 +33,11 @@ export const team = [
         photo: '/people/p_3.jpg',
         name: 'Frantz',
         surname: 'Noser',
-        title: ['Architekt'],
-        job: ['Partner'],
+        title1: 'Architekt',
+        title2: '',
+        job1: 'Partner',
+        job2: '',
+        job3: '',
         displayOrder: 2,
         email: 'info@dima-partner.ch'
     },
@@ -35,8 +46,11 @@ export const team = [
         photo: '/people/p_4.jpg',
         name: 'Hansruedi',
         surname: 'Dürst',
-        title: [],
-        job: ['Projektleiter Baumenagement'],
+        title1: '',
+        title2: '',
+        job1: 'Projektleiter',
+        job2: 'Baumenagement',
+        job3: '',
         displayOrder: 2,
         email: 'info@dima-partner.ch'
     },
@@ -45,8 +59,11 @@ export const team = [
         photo: '/people/p_5.jpg',
         name: 'Karin',
         surname: 'Fischli',
-        title: ['Eidg. Dipl. Immobilienvermarketerin'],
-        job: ['Käuferberatung'],
+        title1: 'Eidg. Dipl. Immobilienvermarketerin',
+        title2: '',
+        job1: 'Käuferberatung',
+        job2: '',
+        job3: '',
         displayOrder: 2,
         email: 'info@dima-partner.ch'
     },
@@ -55,8 +72,11 @@ export const team = [
         photo: '/people/p_6.jpg',
         name: 'Jürg',
         surname: 'Fischli',
-        title: [],
-        job: ['Bauleiter'],
+        title1: '',
+        title2: '',
+        job1: 'Bauleiter',
+        job2: '',
+        job3: '',
         displayOrder: 2,
         email: 'info@dima-partner.ch'
     },
@@ -65,8 +85,12 @@ export const team = [
         photo: '/people/p_7.jpg',
         name: 'Melanie',
         surname: 'Lutschiger',
-        title: ['Dipl. Technikerin Hf Hochbau', 'Eidg. Dipl. Bauleiterin Hfp'],
-        job: ['Bauleitung'],
+
+        title1: 'Dipl. Technikerin Hf Hochbau',
+        title2: 'Eidg. Dipl. Bauleiterin Hfp',
+        job1: 'Bauleiterin',
+        job2: '',
+        job3: '',
         displayOrder: 2,
         email: 'info@dima-partner.ch'
     },

@@ -21,9 +21,13 @@ export function CardJobCom({ job }: { job: Job }) {
     } = job;
     const isMiddle = useResponsive('down', 'lm');
     //const { route } = useRouter();
-    const pt = isMiddle ? 2.5 : 5;
-    const px = isMiddle ? 2 : 5.25;
-    const pb = isMiddle ? 2.5 : 7.5;
+    const propsCardContent = {
+        height: '100%',
+        pt: isMiddle ? 4 : 5,
+        px: isMiddle ? 3.5 : 5.25,
+        pb: isMiddle ? 4.5 : 7.5,
+    }
+
     //console.log('announcment', announcment);
     //console.log('announcment', typeof announcment);
     return (
@@ -31,10 +35,7 @@ export function CardJobCom({ job }: { job: Job }) {
             <Link href={`${PATH_JOBS.job}/${id}`} passHref >
                 <CardActionArea sx={{ height: '100%' }}>
                     <CardContent sx={{
-                        height: '100%',
-                        pt: pt,
-                        px: px,
-                        pb: pb,
+                        ...propsCardContent
                     }}>
                         <Grid
                             container

@@ -33,22 +33,8 @@ export default function MainLayout({ children }: Props) {
       <ContainerStyle maxWidth='lg'>
         {children}
       </ContainerStyle>
-
+      <FooterCom />
     </Stack>
 
   )
 }
-/*
-<Container sx={{
-      position: 'absolute', marginLeft: 'auto', marginRight: 'auto', left: 0,
-      right: 0,
-    }}>
-      <Stack sx={{ minHeight: 1, }}>
-        <MainHeader />
-        <ContainerStyle disableGutters={true}  >
-          {children}
-        </ContainerStyle>
-        <Box sx={{ flexGrow: 1 }} />
-      </Stack>
-    </Container>
-    */

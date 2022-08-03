@@ -12,6 +12,7 @@ import BlockContent from './BlockContent';
 // ----------------------------------------------------------------------
 
 const DropZoneStyle = styled('div')(({ theme }) => ({
+  height: '100%',
   outline: 'none',
   overflow: 'hidden',
   position: 'relative',
@@ -39,7 +40,7 @@ export default function UploadSingleFile({
   const { maxSize } = other;
   return (
     <Box sx={{ width: '100%', ...sx }}>
-      <DropZoneStyle
+      <DropZoneStyle className='hallo'
         {...getRootProps()}
         sx={{
           ...(isDragActive && { opacity: 0.72 }),
@@ -47,6 +48,7 @@ export default function UploadSingleFile({
             color: 'error.main',
             borderColor: 'error.light',
             bgcolor: 'error.lighter',
+
           }),
           ...(file && {
             padding: '12% 0',

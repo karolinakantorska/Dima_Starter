@@ -21,12 +21,12 @@ export const PATH_DIMA = {
 unternehmung: '/dima/unternehmung',
 philosophie: '/dima/philosophie',
 teams: '/dima/teams',
-neueMitarbeiter: '/dima/neueMitarbeiter',
+neueMitarbeiter: '/dima/neue_mitarbeiter',
 };
 export const PATH_PROJEKTE = {
   projekte: '/projekte',
   projekt: '/projekt',
-  addProject: '/projekt/neues',
+  addProject: '/projekt/neues_projekt',
   editProject: '/projekt/bearbeiten',
   werkliste: '/werkliste',
 };

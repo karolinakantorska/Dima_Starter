@@ -79,7 +79,7 @@ export default function LoginForm() {
   const onSubmit = async (data: FormValuesProps) => {
     try {
       await login(data.email, data.password);
-      router.push('/');
+      router.back();
     } catch (error) {
       console.error(error);
       const message = errorMessage(error.message);

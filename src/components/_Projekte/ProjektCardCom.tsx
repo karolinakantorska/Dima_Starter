@@ -38,10 +38,10 @@ export function ProjektCardCom({
   } | null>>;
 }) {
   //console.log('project', project)
-  const { id, photo } = project;
+  const { id, photo, title } = project;
 
   const isDesktop = useResponsive('up', 'lm');
-  //const isSmall = useResponsive('down', 'sm');
+  const isSmall = useResponsive('down', 'sm');
   const isBig = isDesktop ? big : false;
   const isBigAndDisplaysDesktop = isDesktop && big;
 
@@ -49,7 +49,7 @@ export function ProjektCardCom({
     minWidth: '20px',
     display: 'grid',
     overflow: 'hidden',
-    gridAutoRows: '1fr',
+    gridAutoRows: isSmall ? 'auto 1fr' : '1fr 1fr',
     gridAutoFlow: isBigAndDisplaysDesktop ? 'column' : 'row',
     gridColumn: isBigAndDisplaysDesktop ? 'span 3' : 'span 1',
     gridTemplateColumns: isBigAndDisplaysDesktop ? '1fr 12px 1fr 12px 1fr' : '1fr',
@@ -66,7 +66,7 @@ export function ProjektCardCom({
       component={m.div}
       whileHover="hover"
     >
-      <Link href={`${PATH_PROJEKTE.projekt}/${id}`} passHref >
+      <Link href={`${PATH_PROJEKTE.projekt}/${title}/${id}`} passHref >
         <Card
           component={m.div}
           variants={varHover(1.05)}
@@ -94,7 +94,11 @@ export function ProjektCardCom({
                 boxShadow: 'inset 0px -600px rgba(255,255,255,0.5)',
               }}
             />
-            <Image src={photo.url} alt={photo.alt} ratio="16/9" />
+            <Image
+              src={photo.url}
+              alt={photo.alt}
+              ratio="16/9"
+            />
           </CardActionArea>
         </Card>
       </Link>
