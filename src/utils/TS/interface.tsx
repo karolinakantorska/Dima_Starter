@@ -121,14 +121,16 @@ export interface Person {
 export interface Job {
   id: string,
   announcment: Date,
-  start: Date,
-  dedline: Date,
   location: string,
   title: string,
   procentMin?: number,
   procent: number,
-  description: string,
+  descriptionJob: string,
+  descWe: string,
+  tasks: string[],
+  skils: string[],
   kontaktperson: string,
+  tel: string,
   email: string,
 
 }

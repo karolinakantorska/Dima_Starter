@@ -28,10 +28,11 @@ import { EmailCardCom } from './EmailCardCom';
 import { PhotoCardCom } from './PhotoCardComp';
 
 
-
+/*
 export interface FormValuesProps extends Partial<Person> {
 
 }
+*/
 type Props = {
   isEdit?: boolean;
   currentPerson?: Person
@@ -74,7 +75,7 @@ export default function PersonNewEditForm({ isEdit, currentPerson }: Props) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [currentPerson]
   );
-  const methods = useForm<FormValuesProps>({
+  const methods = useForm<Person>({
     resolver: yupResolver(NewPersonSchema),
     defaultValues,
   });
@@ -98,7 +99,7 @@ export default function PersonNewEditForm({ isEdit, currentPerson }: Props) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isEdit, currentPerson]);
 
-  const onSubmit = async (data: FormValuesProps) => {
+  const onSubmit = async (data: Person) => {
     setLoading(true);
     //const projectToDB = createProject(data);
     /*

@@ -30,7 +30,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const data = await getCollectionId("projects");
   console.log('data', data)
   const paths = data.map((item) => ({
-    params: { id: item.id, title: '' },
+    params: { id: item.id, title: 'title' },
   }));
   return { paths, fallback: true };
 };

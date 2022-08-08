@@ -3,8 +3,7 @@ import { Person } from "src/utils/TS/interface";
 export const team: Person[] = [
     {
         id: '1',
-
-        photo: '/people/p_1.jpg',
+        photo: { url: '/people/p_1.jpg', alt: 'mitarbeiter' },
         name: 'Stefan',
         surname: 'Creus',
         title1: 'Dipl. Architekt Eth | Emba Hsg',
@@ -17,7 +16,7 @@ export const team: Person[] = [
     },
     {
         id: '2',
-        photo: '/people/p_2.jpg',
+        photo: { url: '/people/p_2.jpg', alt: 'mitarbeiter' },
         name: 'Vito',
         surname: 'Pantelana',
         title1: 'Dipl. Architekt Eth | Sia',
@@ -30,7 +29,8 @@ export const team: Person[] = [
     },
     {
         id: '3',
-        photo: '/people/p_3.jpg',
+
+        photo: { url: '/people/p_3.jpg', alt: 'mitarbeiter' },
         name: 'Frantz',
         surname: 'Noser',
         title1: 'Architekt',
@@ -43,7 +43,7 @@ export const team: Person[] = [
     },
     {
         id: '4',
-        photo: '/people/p_4.jpg',
+        photo: { url: '/people/p_4.jpg', alt: 'mitarbeiter' },
         name: 'Hansruedi',
         surname: 'Dürst',
         title1: '',
@@ -56,7 +56,8 @@ export const team: Person[] = [
     },
     {
         id: '5',
-        photo: '/people/p_5.jpg',
+
+        photo: { url: '/people/p_5.jpg', alt: 'mitarbeiter' },
         name: 'Karin',
         surname: 'Fischli',
         title1: 'Eidg. Dipl. Immobilienvermarketerin',
@@ -69,7 +70,8 @@ export const team: Person[] = [
     },
     {
         id: '6',
-        photo: '/people/p_6.jpg',
+
+        photo: { url: '/people/p_6.jpg', alt: 'mitarbeiter' },
         name: 'Jürg',
         surname: 'Fischli',
         title1: '',
@@ -82,7 +84,8 @@ export const team: Person[] = [
     },
     {
         id: '7',
-        photo: '/people/p_7.jpg',
+
+        photo: { url: '/people/p_7.jpg', alt: 'mitarbeiter' },
         name: 'Melanie',
         surname: 'Lutschiger',
 

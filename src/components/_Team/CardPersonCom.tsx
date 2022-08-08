@@ -42,7 +42,7 @@ export function CardPersonCom({ person }: { person: Person }) {
             <CardMedia
                 component="img"
                 height={isDesktop ? 545 : 'auto'}
-                image={photo}
+                image={photo.url}
                 alt={`${name} ${surname} ${job1}`}
             />
             <Grid
