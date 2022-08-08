@@ -74,7 +74,7 @@ export function CardPersonCom({ person }: { person: Person }) {
                             <Typography variant="body2" component="p" sx={{}}>{job3}</Typography>
                         </div>
 
-                        <Mail email={email} />
+                        {(email !== '') && <Mail email={email} />}
 
                     </Stack>
                 </Grid>
