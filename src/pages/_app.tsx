@@ -61,14 +61,14 @@ export default function MyApp(props: MyAppProps) {
             <SettingsProvider defaultSettings={settings}>
               <MotionLazyContainer>
                 <ThemeProvider>
-
-                  <ProgressBar />
-                  <AnimatePresence
-                    exitBeforeEnter={false}
-                  >
-                    {getLayout(<Component {...pageProps} key={router.route} />)}
-                  </AnimatePresence>
-
+                  <ThemeSettings>
+                    <ProgressBar />
+                    <AnimatePresence
+                      exitBeforeEnter={false}
+                    >
+                      {getLayout(<Component {...pageProps} key={router.route} />)}
+                    </AnimatePresence>
+                  </ThemeSettings>
                 </ThemeProvider>
               </MotionLazyContainer>
             </SettingsProvider>
