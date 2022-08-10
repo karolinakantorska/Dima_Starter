@@ -18,18 +18,18 @@ type Props = {
 };
 
 export default function ThemeProvider({ children }: Props) {
-  const themeDirection = "ltr";
+
   const themeOptions: ThemeOptions = useMemo(
     () => ({
       palette: palette.dark,
       typography,
       breakpoints,
       shape: { borderRadius: 0 },
-      direction: themeDirection,
+      direction: "ltr",
       shadows: shadows.dark,
       customShadows: customShadows.dark,
     }),
-    [false, themeDirection]
+    [false]
   );
 
   const theme = createTheme(themeOptions);

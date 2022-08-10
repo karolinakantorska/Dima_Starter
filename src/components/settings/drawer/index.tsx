@@ -140,11 +140,6 @@ export default function SettingsDrawer() {
                   </Stack>
 
                   <Stack spacing={1.5}>
-                    <Typography variant="subtitle2">Contrast</Typography>
-                    <SettingContrast />
-                  </Stack>
-
-                  <Stack spacing={1.5}>
                     <Typography variant="subtitle2">Layout</Typography>
                     <SettingLayout />
                   </Stack>

@@ -1,8 +1,4 @@
 import SettingsDrawer from './drawer';
-//
-import ThemeContrast from './ThemeContrast';
-
-
 // ----------------------------------------------------------------------
 
 type Props = {
@@ -11,13 +7,9 @@ type Props = {
 
 export default function ThemeSettings({ children }: Props) {
   return (
-
-    <ThemeContrast>
-
+    <>
       {children}
       <SettingsDrawer />
-
-    </ThemeContrast>
-
+    </>
   );
 }
