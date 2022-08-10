@@ -58,20 +58,20 @@ export default function MyApp(props: MyAppProps) {
       <AuthProvider>
         <LocalizationProvider dateAdapter={AdapterDateFns}>
           <CollapseDrawerProvider>
+            <SettingsProvider defaultSettings={settings}>
+              <MotionLazyContainer>
+                <ThemeProvider>
 
-            <MotionLazyContainer>
-              <ThemeProvider>
+                  <ProgressBar />
+                  <AnimatePresence
+                    exitBeforeEnter={false}
+                  >
+                    {getLayout(<Component {...pageProps} key={router.route} />)}
+                  </AnimatePresence>
 
-                <ProgressBar />
-                <AnimatePresence
-                  exitBeforeEnter={false}
-                >
-                  {getLayout(<Component {...pageProps} key={router.route} />)}
-                </AnimatePresence>
-
-              </ThemeProvider>
-            </MotionLazyContainer>
-
+                </ThemeProvider>
+              </MotionLazyContainer>
+            </SettingsProvider>
           </CollapseDrawerProvider>
         </LocalizationProvider>
       </AuthProvider>
