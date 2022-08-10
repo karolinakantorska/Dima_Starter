@@ -27,7 +27,6 @@ export default function Referenz({ data, params }: any) {
 }
 export const getStaticPaths: GetStaticPaths = async () => {
   const data = await getCollectionId("projects");
-  console.log('data1', data)
   const paths = data.map((item) => ({
     params: { id: item.id },
     //params: { id: item.id, title: 'title' },

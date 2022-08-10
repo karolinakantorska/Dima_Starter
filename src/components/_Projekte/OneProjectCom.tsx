@@ -101,6 +101,7 @@ export function OneProjectCom({ project }: { project: ProjectType }) {
   )
 
   if (project) {
+    console.log('project.photos', project.photos)
     const photosCarusel = [project.photo, ...project.photos]
     return (
       <>

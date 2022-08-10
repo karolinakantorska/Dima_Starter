@@ -65,7 +65,7 @@ export function ProjektCardCom({
       component={m.div}
       whileHover="hover"
     >
-      <Link href={`${PATH_PROJEKTE.projekt}/${title}/${id}`} passHref >
+      <Link href={`${PATH_PROJEKTE.projekt}/${id}`} passHref >
         <Card
           component={m.div}
           variants={varHover(1.05)}
@@ -74,7 +74,7 @@ export function ProjektCardCom({
         >
           <CardActionArea
             disableRipple
-            aria-label={project.title}
+            aria-label={title}
           >
             <Box
               component={m.div}

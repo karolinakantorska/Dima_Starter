@@ -16,7 +16,7 @@ export function TitleTextCom({
     return (
         <Typography
             variant="body1"
-            component="h6"
+            component="h3"
             sx={{ color: 'dima', ...sx }}>
             {text}
         </Typography>

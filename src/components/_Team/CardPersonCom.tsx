@@ -13,6 +13,7 @@ import { DeleteDialogCom } from '../_Reusable/DeleteDialogCom';
 import { ChipDisplayOrderCom } from '../_Reusable/ChipDisplayOrderCom';
 import { TitleTextCom } from '../_Reusable/TitleTextCom';
 import { BodyTextCom } from '../_Reusable/BodyTextCom';
+import useAuth from 'src/utils/firebaseAuth/useAuth';
 
 export function CardPersonCom({
     person,
@@ -30,6 +31,7 @@ export function CardPersonCom({
 }) {
     const isDesktop = useResponsive('up', 'lg');
     const isSmall = useResponsive('down', 'sm');
+    const { isAuthenticated } = useAuth();
     const { id, photo, name, surname, title1, title2, job1, job2, email } = person;
     const [open, setOpen] = useState(false);
 
@@ -41,6 +43,7 @@ export function CardPersonCom({
     };
     function handleDelete() {
         setLoading(true);
+        console.log('deleting')
         deleteProjectFromFirestore('team', id)
             .then(() => {
                 deleteImage(photo.url);
@@ -48,7 +51,7 @@ export function CardPersonCom({
                 setSucces(true);
             })
             .catch((error) => {
-                //console.log('error', error);
+                console.log('error', error);
                 setError(error);
                 setLoading(false);
             });
@@ -57,9 +60,9 @@ export function CardPersonCom({
 
     return (
         <Card >
-            <Grid container justifyContent="flex-end" sx={{ position: 'absolute' }} >
+            {isAuthenticated && <Grid container justifyContent="flex-end" sx={{ position: 'absolute' }} >
                 <ChipDisplayOrderCom displayOrder={person.displayOrder} />
-            </Grid>
+            </Grid>}
             <CardMedia
                 component="img"
                 height={isDesktop ? 545 : 'auto'}
@@ -67,9 +70,9 @@ export function CardPersonCom({
                 alt={`${name} ${surname} ${job1}`}
                 sx={{ height: '574px' }}
             />
-            <Grid container justifyContent="flex-end" sx={{ mt: '-40px', }} >
+            {isAuthenticated && <Grid container justifyContent="flex-end" sx={{ mt: '-40px', }} >
                 <EditDeleteIconCom handleOpen={handleOpen} editURL={`${PATH_DIMA.editMitarbeiter}/${id}`} />
-            </Grid>
+            </Grid>}
             <Grid
                 container
                 direction="column"
@@ -95,13 +98,13 @@ export function CardPersonCom({
                     </Stack>
                 </Grid>
             </Grid>
-            <DeleteDialogCom
+            {isAuthenticated && <DeleteDialogCom
                 open={open}
                 handleClose={handleClose}
                 handleDelete={handleDelete}
                 objectToBeDeled="Mitarbeiter"
                 titleOfObjectToBeDeled={`${name.toUpperCase()} ${surname.toUpperCase()}`}
-            />
+            />}
         </Card >
     )
 }

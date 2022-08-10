@@ -99,7 +99,7 @@ export function TextCardCom({
       justifyContent="space-between"
       sx={{ ...propsGridTextBox }}
     >
-      <Link href={`${PATH_PROJEKTE.projekt}/${title}/${id}`} passHref >
+      <Link href={`${PATH_PROJEKTE.projekt}/${id}`} passHref >
         <CardContent
           sx={{ ...propsCardContent }}
         >

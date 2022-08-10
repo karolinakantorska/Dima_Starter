@@ -2,7 +2,7 @@ import useResponsive from '../../hooks/useResponsive';
 import { m } from 'framer-motion';
 import Glarus from '/public/location/Glarus.jpg';
 import Zurich from '/public/location/Zurich.jpg';
-import { Card, CardMedia, Stack, Typography, Box, } from '@mui/material';
+import { Card, CardMedia, Stack, Typography, Box, Skeleton } from '@mui/material';
 import { dimaContact, layoutHeader } from 'src/utils/dima';
 import { firstLettersBig } from '../../utils/Text/textUtils';
 
@@ -10,6 +10,7 @@ import { SiteTitle } from '../_Reusable/SiteTitle';
 import Link from 'next/link';
 import { TitleTextCom } from '../_Reusable/TitleTextCom';
 import { BodyTextCom } from '../_Reusable/BodyTextCom';
+import Image from 'next/image';
 
 //console.log('Glarus:', Glarus)
 // TODO use location instead use route
@@ -48,9 +49,7 @@ export function ContactCom() {
     ;
   const ImageCard = ({ href, link }: { href: string, link: string }) => (
     <Link href={href} passHref>
-      <Card sx={{
-        maxWidth: 500,
-      }}>
+      <Card sx={{ maxHeight: '279px' }} >
         <Box
           component={m.div}
           key="animated children"
@@ -68,10 +67,7 @@ export function ContactCom() {
             boxShadow: 'inset 0px -600px rgba(255,255,255,0.2)',
           }}
         />
-        <CardMedia
-          component="img"
-          image={link}
-        />
+        <Image src={link} width='500px' height='279px' alt='Lageplan in Glarus' />
       </Card >
     </Link>
   )
@@ -88,12 +84,7 @@ export function ContactCom() {
         <Stack
           direction={isSmall ? 'column-reverse' : 'row'}
         >
-          <Card sx={{ maxWidth: 500 }}>
-            <CardMedia
-              component="img"
-              image={Zurich.src}
-            />
-          </Card >
+          <Image src={Zurich.src} width='500px' height='279px' alt='Lageplan in Zurich' />
           <TextBox text={dimaContact.zurich} />
         </Stack>
       </Stack>
