@@ -16,7 +16,7 @@ ResetPass.getLayout = function getLayout(page: React.ReactElement) {
 export default function ResetPass() {
   return (
 
-    <Page title="Dima & Partner">
+    <Page title="Reset Password">
 
       <PassResetFormCom />
 

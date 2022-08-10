@@ -11,7 +11,7 @@ import Layout from '../../layouts';
 
 import { jobs } from "src/_mock/jobs/jobs";
 
-import { JobCom } from "src/components/_Dima/JobCom";
+import { OneJobCom } from "src/components/_Job/OneJobCom";
 // ----------------------------------------------------------------------
 
 Job.getLayout = function getLayout(page: React.ReactElement) {
@@ -27,8 +27,8 @@ export default function Job({ data }: any) {
 
   if (id) {
     return (
-      <Page title={`Dima & Partner`}>
-        <JobCom job={job[0]} />
+      <Page title={`Job`}>
+        <OneJobCom job={job[0]} />
       </Page>
     );
   } else {

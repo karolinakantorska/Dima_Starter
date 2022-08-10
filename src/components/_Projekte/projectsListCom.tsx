@@ -5,7 +5,7 @@ import { ProjektCardCom } from './ProjektCardCom';
 import { ProjectsListType, ProjectType } from '../../utils/TS/interface';
 import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
-import { AlertCom } from './NewEditProjekt/AlertCom';
+import { AlertCom } from '../_Reusable/AlertCom';
 import { PATH_PROJEKTE } from 'src/routes/paths';
 //import { deleteImage } from 'src/utils/apis/deletePhotoFromStorage';
 

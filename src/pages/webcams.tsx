@@ -17,7 +17,7 @@ Webcams.getLayout = function getLayout(page: React.ReactElement) {
 export default function Webcams() {
   return (
 
-    <Page title="Webcams | Dima & Partner">
+    <Page title="Webcams">
       <WebcamsListCom />
     </Page>
 

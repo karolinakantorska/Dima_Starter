@@ -17,7 +17,7 @@ export default function NeuesProjekt() {
   const isEdit = false;
   return (
     <AuthGuard>
-      <Page title={`${isEdit ? 'Edit' : 'Neues'} Projekt | Dima & Partner`}>
+      <Page title={`Neues Projekt`}>
         <ProjectNewEditForm isEdit={isEdit} />
       </Page>
     </AuthGuard>

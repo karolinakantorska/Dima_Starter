@@ -19,7 +19,7 @@ export default function Werkliste(props: any) {
   //const { data } = props;
   return (
 
-    <Page title="Werkliste | Dima & Partner">
+    <Page title="Werkliste">
       <p>Werkliste</p>
     </Page>
 

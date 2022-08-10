@@ -13,7 +13,7 @@ Unternehmung.getLayout = function getLayout(page: React.ReactElement) {
 export default function Unternehmung() {
   return (
 
-    <Page title="Unternehmung | Dima & Partner">
+    <Page title="Unternehmung">
 
       <p>Unternehmung</p>
 

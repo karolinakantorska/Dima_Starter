@@ -28,12 +28,23 @@ export const NewProjectSchema = Yup.object().shape({
 });
 
 export const NewPersonSchema = Yup.object().shape({
-    name: Yup.string().required('Vorname ist erforderlich')
+    name: Yup.string()
+        .required('Vorname ist erforderlich')
         .min(2, 'Vorname muss länger als zwei Buchstaben sein')
-        .max(32, 'Vorname darf maximal 32 Zeichen lang sein'),
-    surname: Yup.string().required('Nahname ist erforderlich')
+        .max(29, 'Vorname darf maximal 29 Zeichen lang sein'),
+    surname: Yup.string()
+        .required('Nahname ist erforderlich')
         .min(2, 'Nahname muss länger als zwei Buchstaben sein')
-        .max(32, 'Nahname darf maximal 32 Zeichen lang sein'),
-    email: Yup.string().email('Must be a valid email').max(32, 'E-Mailadresse darf maximal 32 Zeichen lang sein').min(2, 'E-Mailadresse muss länger als zwei Buchstaben sein').required('Email is required')
+        .max(29, 'Nahname darf maximal 29 Zeichen lang sein'),
+    title1: Yup.string()
+        .max(29, 'Berufname darf maximal 29 Zeichen lang sein'),
+    title2: Yup.string()
+        .max(29, 'Berufname darf maximal 29 Zeichen lang sein'),
+    job1: Yup.string()
+        .max(29, 'Aufgabename darf maximal 29 Zeichen lang sein'),
+    job2: Yup.string()
+        .max(29, 'Aufgabename darf maximal 29 Zeichen lang sein'),
+
+    email: Yup.string().email('Must be a valid email').max(35, 'E-Mailadresse darf maximal 35 Zeichen lang sein').min(2, 'E-Mailadresse muss länger als zwei Buchstaben sein').required('Email is required')
 
 });

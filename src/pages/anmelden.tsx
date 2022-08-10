@@ -13,7 +13,7 @@ Anmelden.getLayout = function getLayout(page: React.ReactElement) {
 // ----------------------------------------------------------------------
 export default function Anmelden() {
   return (
-    <Page title="Anmelden | Dima & Partner">
+    <Page title="Anmelden">
       <LoginForm />
     </Page>
   );

@@ -7,7 +7,6 @@ import DoneIcon from '@mui/icons-material/Done';
 
 export const Mail = ({ email }: { email: string }) => {
     const [copied, setCopied] = useState(false);
-
     const handleClick = () => {
         navigator.clipboard.writeText(email);
         setCopied(true);
@@ -40,7 +39,6 @@ export const Mail = ({ email }: { email: string }) => {
                     : <DoneIcon sx={{ color: 'success.main' }} />
                 }
             </>
-
         )
     }
 

@@ -2,12 +2,13 @@ import { useFormContext, Controller } from 'react-hook-form';
 import {
     TextField,
     Stack,
-    Typography,
+
 } from '@mui/material';
 //import DatePicker from '@mui/lab/DatePicker';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { RHFRadioGroup, RHFTextField, } from '../../hook-form';
 import { phaseArray } from 'src/utils/TS/interface';
+import { TitleTextCom } from 'src/components/_Reusable/TitleTextCom';
 
 export function YearCardCom() {
     const {
@@ -22,16 +23,7 @@ export function YearCardCom() {
     return (
 
         <Stack spacing={3}>
-            <Typography
-                variant="body2"
-                component="p"
-                sx={{
-                    color: 'dima',
-
-                }}
-            >
-                Projektphase :
-            </Typography>
+            <TitleTextCom text="Projektphase: " />
             <RHFRadioGroup
                 name="phase"
                 options={PHASE}
@@ -41,17 +33,7 @@ export function YearCardCom() {
             />
             {(values.phase === 'Gebaut') &&
                 <>
-                    <Typography
-                        variant="body2"
-                        component="p"
-                        sx={{
-                            color: 'dima',
-
-                        }}
-                    >
-                        Bauzeit :
-                    </Typography>
-
+                    <TitleTextCom text="Bauzeit: " />
                     <Controller
                         name="year_start_form"
                         control={control}

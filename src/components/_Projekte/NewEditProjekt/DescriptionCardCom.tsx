@@ -1,7 +1,8 @@
 import { useFormContext } from 'react-hook-form';
 
-import { Stack, Typography, } from '@mui/material';
+import { Stack, } from '@mui/material';
 import { RHFTextField, } from '../../hook-form';
+import { TitleTextCom } from '../../_Reusable/TitleTextCom';
 export function DescriptionCardCom() {
     const {
         watch,
@@ -11,15 +12,8 @@ export function DescriptionCardCom() {
     const fields = [1, 2, 3, 4, 5]
     return (
         <Stack spacing={3}>
-            <Typography
-                variant="body2"
-                component="p"
-                sx={{
-                    color: 'dima',
-                }}
-            >
-                Bezeichnung:
-            </Typography>
+            <TitleTextCom text="Bezeichnung:" />
+
             {fields.map((f) => (
                 <RHFTextField
                     key={f}

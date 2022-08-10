@@ -22,6 +22,7 @@ unternehmung: '/dima/unternehmung',
 philosophie: '/dima/philosophie',
 teams: '/dima/teams',
 neueMitarbeiter: '/dima/neue_mitarbeiter',
+editMitarbeiter: '/dima/bearbeiten',
 };
 export const PATH_PROJEKTE = {
   projekte: '/projekte',

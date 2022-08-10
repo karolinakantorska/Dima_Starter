@@ -10,6 +10,8 @@ import useResponsive from '../../hooks/useResponsive';
 //import { useRouter } from "next/router";
 import { PATH_JOBS } from '../../routes/paths';
 import Link from "next/link";
+import { BodyTextCom } from "../_Reusable/BodyTextCom";
+import { TitleTextCom } from "../_Reusable/TitleTextCom";
 
 export function CardJobCom({ job }: { job: Job }) {
     const { id,
@@ -46,35 +48,14 @@ export function CardJobCom({ job }: { job: Job }) {
                             }}
                         >
                             <Grid item>
-                                <Typography
-                                    variant="body2"
-                                    component="div"
-                                >
-                                    {`${announcment.toLocaleString('de-DE', { dateStyle: "long" })}`}
-                                </Typography>
-                                <Typography
-                                    variant="body2"
-                                    component="p"
-                                >
-                                    {` Unsere Team in ${location} sucht:`}
-                                </Typography>
+                                <BodyTextCom text={`${announcment.toLocaleString('de-DE', { dateStyle: "long" })}`} />
+                                <BodyTextCom text={`Unsere Team in ${location} sucht:`} />
                             </Grid>
                             <Grid item>
-                                <Typography
-                                    variant="body1"
-                                    component="p"
-                                    sx={{ color: 'dima', pt: 0.75 }}
-                                >
-                                    {`${title.toUpperCase()} ${procentMin ? procentMin.toString().toUpperCase() : ''} - ${procent.toString().toUpperCase()}%`}
-                                </Typography>
+                                <TitleTextCom text={`${title.toUpperCase()} ${procentMin ? procentMin.toString().toUpperCase() : ''} - ${procent.toString().toUpperCase()}%`} sx={{ pt: 0.75 }} />
                             </Grid>
                             <Grid item>
-                                <Typography
-                                    variant="body2"
-                                    component="p"
-                                >
-                                    ZUM STELLENBESCHRIEB
-                                </Typography>
+                                <BodyTextCom text={`ZUM STELLENBESCHRIEB`} />
                             </Grid>
                         </Grid>
                     </CardContent>

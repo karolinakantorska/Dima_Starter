@@ -12,7 +12,7 @@ Kontakt.getLayout = function getLayout(page: React.ReactElement) {
 // ----------------------------------------------------------------------
 export default function Kontakt() {
   return (
-    <Page title="Kontakt | Dima & Partner">
+    <Page title="Kontakt">
       <ContactCom />
     </Page>
 

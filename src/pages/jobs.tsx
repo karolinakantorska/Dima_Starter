@@ -4,7 +4,7 @@ import Layout from 'src/layouts';
 import Page from 'src/components/Page';
 
 
-import { JobsListCom } from 'src/components/_Dima/JobsListCom';
+import { JobsListCom } from 'src/components/_Job/JobsListCom';
 
 // ----------------------------------------------------------------------
 
@@ -16,7 +16,7 @@ Jobs.getLayout = function getLayout(page: React.ReactElement) {
 export default function Jobs() {
   return (
 
-    <Page title="Jobs | Dima & Partner">
+    <Page title="Jobs">
       <JobsListCom />
     </Page>
 

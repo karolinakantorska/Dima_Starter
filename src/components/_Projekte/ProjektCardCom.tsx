@@ -1,3 +1,4 @@
+import React, { Dispatch, SetStateAction } from 'react';
 import { m } from 'framer-motion';
 //import Image from 'next/image';
 // @mui
@@ -14,8 +15,6 @@ import { ProjectType } from 'src/utils/TS/interface';
 import { CardActionArea } from '@mui/material';
 import { PATH_PROJEKTE } from 'src/routes/paths';
 import { TextCardCom } from './textCardCom';
-import { Dispatch, SetStateAction } from 'react';
-
 
 export function ProjektCardCom({
   project,
@@ -101,14 +100,12 @@ export function ProjektCardCom({
             />
           </CardActionArea>
         </Card>
-      </Link>
 
+      </Link>
       <TextCardCom project={project} big={isBig} rewerseBig={rewerseBig} setSucces={setSucces}
         setLoading={setLoading}
         setError={setError} />
-    </Box >
+    </Box>
   );
 }
-/*
-<Image src={avatar} alt={name} ratio="16/9" />
-*/
+

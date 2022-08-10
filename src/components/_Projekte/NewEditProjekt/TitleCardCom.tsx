@@ -1,9 +1,8 @@
 import { useFormContext } from 'react-hook-form';
 import { objektAlterArray, } from 'src/utils/TS/interface';
+import { TitleTextCom } from '../../_Reusable/TitleTextCom';
 import {
     Stack,
-    Typography,
-
 } from '@mui/material';
 import {
 
@@ -22,15 +21,7 @@ export function TitleCardCom() {
 
     return (
         <Stack spacing={3}>
-            <Typography
-                variant="body2"
-                component="p"
-                sx={{
-                    color: 'dima',
-
-                }}        >
-                Projecttitle:
-            </Typography>
+            <TitleTextCom text="Projecttitle:" />
             <RHFRadioGroup
 
                 name="objektAlter"

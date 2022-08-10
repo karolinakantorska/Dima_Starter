@@ -114,7 +114,6 @@ export interface Person {
   title2: string;
   job1: string;
   job2: string;
-  job3: string;
   displayOrder: number;
   email: string;
 }

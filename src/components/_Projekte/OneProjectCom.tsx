@@ -7,6 +7,8 @@ import { ProjectType } from '../../utils/TS/interface';
 
 import CarouselBasic3 from '../carousel/CarouselBasic3';
 import FooterCom from '../_Reusable/FooterCom';
+import { TitleTextCom } from '../_Reusable/TitleTextCom';
+import { BodyTextCom } from '../_Reusable/BodyTextCom';
 
 export function OneProjectCom({ project }: { project: ProjectType }) {
   const isDesktop = useResponsive('up', 'lg');
@@ -78,12 +80,8 @@ export function OneProjectCom({ project }: { project: ProjectType }) {
       sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
     >
       <TableCell component="td" sx={{ pl: 0, pr: 0, pt: 1, pb: 1, width: '100%' }}>
-        <Typography sx={{ pl: 0, }} variant="body2" component="p" color="dima" >
-          {row.name.toUpperCase()}
-        </Typography>
-        <Typography sx={{ pl: 0, pt: 1, }} variant="body2" component="p" color="text.primary">
-          {row.data}
-        </Typography>
+        <TitleTextCom text={row.name.toUpperCase()} sx={{ pl: 0, }} />
+        <BodyTextCom text={row.data} sx={{ pl: 0, pt: 1, }} />
       </TableCell>
     </TableRow >
   );
@@ -94,14 +92,11 @@ export function OneProjectCom({ project }: { project: ProjectType }) {
       sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
     >
       <TableCell component="td" sx={{ ...propsTableCell }}>
-        <Typography variant="body2" component="p" color="dima" >
-          {row.name.toUpperCase()}
-        </Typography>
+        <TitleTextCom text={row.name.toUpperCase()} />
+
       </TableCell>
       <TableCell align="left" sx={{ ...propsTableCell2 }} >
-        <Typography variant="body2" component="p" color="text.primary">
-          {row.data}
-        </Typography>
+        <BodyTextCom text={row.data} />
       </TableCell>
     </TableRow>
   )
@@ -129,21 +124,14 @@ export function OneProjectCom({ project }: { project: ProjectType }) {
               </Table>
             </Box>
             <Box sx={{ ...propsSecondBox }}>
-              <Typography variant="body2" component="h2" paragraph color="dima" sx={{ mb: 2.75 }}>
-                {project.title.toUpperCase()}
-              </Typography>
+              <TitleTextCom text={project.title.toUpperCase()} sx={{ mb: 2.75 }} />
+
               {project.description.map((desc, i) => (
-                <Typography key={i} variant="body1" component="div" paragraph color="text.primary" sx={{ mb: 1.5 }}>
-                  {desc}
-                </Typography>
+                <>
+                  {(desc !== '') && <BodyTextCom key={desc} text={desc} sx={{ mb: 1.5 }} />}
+                </>
               ))}
-              {project.photoAuthor && <Typography
-                variant="body2"
-                component="span"
-                color="text.secondary"
-              >
-                &#169;Photography: {`${project.photoAuthor}`}
-              </Typography>}
+              {project.photoAuthor && <BodyTextCom text={`© Photography: ${project.photoAuthor}`} />}
             </Box>
           </Box>
         </Stack>

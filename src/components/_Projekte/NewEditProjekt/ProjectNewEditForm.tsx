@@ -20,7 +20,7 @@ import { ProjectType, } from 'src/utils/TS/interface';
 import { addProjestToFirestore, editProjectInFirestore } from 'src/utils/apis/addToFirestore';
 import { createProject } from 'src/utils/myUtils/createProject';
 import { PATH_PROJEKTE } from 'src/routes/paths';
-import { AlertCom } from './AlertCom';
+import { AlertCom } from '../../_Reusable/AlertCom';
 import { TitleCardCom } from './TitleCardCom';
 import { DescriptionCardCom } from './DescriptionCardCom';
 import { PhotoCardCom } from './PhotoCardComp';
@@ -119,7 +119,7 @@ export default function ProjectNewEditForm({ isEdit, currentProject }: Props) {
     formState: { isSubmitting },
   } = methods;
 
-  const values = watch();
+  // const values = watch();
 
   useEffect(() => {
     if (isEdit && currentProject) {
@@ -184,7 +184,6 @@ export default function ProjectNewEditForm({ isEdit, currentProject }: Props) {
               <AuthorsCardCom />
               <CategoryVolumenCardCom />
               <YearCardCom />
-
             </Stack>
           </Grid>
 

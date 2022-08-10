@@ -15,7 +15,7 @@ Landing.getLayout = function getLayout(page: ReactElement) {
 export default function Landing() {
   //const { themeStretch } = useSettings();
   return (
-    <Page title="Kontakt | Dima & Partner">
+    <Page title="Loading">
       <LoadingScreen />
     </Page>
   );

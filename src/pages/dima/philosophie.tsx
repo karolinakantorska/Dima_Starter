@@ -13,7 +13,7 @@ Philosophie.getLayout = function getLayout(page: React.ReactElement) {
 
 export default function Philosophie() {
   return (
-    <Page title="Philosophie | Dima & Partner">
+    <Page title="Philosophie">
       <p>Philosophie</p>
     </Page>
   );

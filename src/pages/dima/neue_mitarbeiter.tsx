@@ -13,7 +13,7 @@ export default function NeueMitarbeiter() {
   const isEdit = false;
   return (
     <AuthGuard>
-      <Page title={`${isEdit ? 'Edit' : 'Neues'} Mitarbeiter | Dima & Partner`}>
+      <Page title={`${isEdit ? 'Edit' : 'Neues'} Mitarbeiter`}>
         <PersonNewEditForm />
       </Page>
     </AuthGuard>

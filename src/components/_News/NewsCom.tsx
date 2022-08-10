@@ -6,6 +6,8 @@ import parse from 'html-react-parser';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import { News } from "src/utils/TS/interface";
+import { BodyTextCom } from "../_Reusable/BodyTextCom";
+import { TitleTextCom } from "../_Reusable/TitleTextCom";
 
 // TODO use location instead use route
 export function NewsCom({
@@ -73,25 +75,12 @@ export function NewsCom({
         sx={{ ...propsStack, height: '212px' }}
       >
         <div>
-          <Typography
-            variant="body2"
-            component="div"
-          >
-            {`${date.toLocaleString('de-DE', { dateStyle: "long" })}`}
-          </Typography>
-          <Typography
-            variant="body1"
-            component="p"
-            sx={{ color: 'dima', pt: 3.8 }}
-          >
-            {`${title.toUpperCase()}`}
-          </Typography>
+          <BodyTextCom text={`${date.toLocaleString('de-DE', { dateStyle: "long" })}`} />
+          <TitleTextCom text={`${title.toUpperCase()}`} sx={{ pt: 3.8 }} />
         </div>
-
         <Typography
           variant="body2"
           component="p"
-          className="Hallo"
         >
           MEHR LESEN
           {expand
@@ -115,12 +104,7 @@ export function NewsCom({
             {parse(description)}
           </Typography>}
           {link && (<Link href={link}>
-            <Typography
-              variant="body2"
-              component="p"
-            >
-              link
-            </Typography>
+            <BodyTextCom text={`link`} />
           </Link>)}
           {video && (
             <video width="260" height="150" controls muted>

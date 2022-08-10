@@ -1,20 +1,16 @@
+import React from 'react';
 import {
     Stack,
-    Typography,
-
 } from '@mui/material';
+
 import { RHFTextField, } from '../../hook-form';
+import { TitleTextCom } from 'src/components/_Reusable/TitleTextCom';
 
 export function NameCardCom() {
     return (
         <Stack spacing={3}>
-            <Typography
-                variant="body2"
-                component="p"
-                sx={{ color: 'dima', }}
-            >
-                Mitarbeiter:
-            </Typography>
+            <TitleTextCom text="Mitarbeiter: " />
+
             <RHFTextField
                 variant="filled"
                 name="name"

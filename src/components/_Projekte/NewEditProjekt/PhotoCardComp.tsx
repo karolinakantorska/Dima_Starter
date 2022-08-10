@@ -1,6 +1,6 @@
 import { useCallback, } from 'react';
 import { useFormContext } from 'react-hook-form';
-import { Stack, Typography, } from '@mui/material';
+import { Stack, } from '@mui/material';
 import {
     RHFSwitch,
     RHFTextField,
@@ -10,6 +10,7 @@ import {
 } from '../../hook-form';
 import { deleteImage, uploadOnePhoto, uploadPhotos } from 'src/utils/apis/uploadPhoto';
 import { ImageType, ImagesType } from 'src/utils/TS/interface';
+import { TitleTextCom } from 'src/components/_Reusable/TitleTextCom';
 
 export function PhotoCardCom({ setLoading, setError }: { setLoading: any, setError: any }) {
     const {
@@ -73,13 +74,7 @@ export function PhotoCardCom({ setLoading, setError }: { setLoading: any, setErr
     };
     return (
         <Stack spacing={3}>
-            <Typography
-                variant="body2"
-                component="p"
-                sx={{ color: 'dima', }}
-            >
-                Titelbild:
-            </Typography>
+            <TitleTextCom text="Titelbild:" />
             <RHFUploadSingleFile
                 name='photo'
                 //accept={{ onDragLeave: [...imageFormat] }}
@@ -87,26 +82,10 @@ export function PhotoCardCom({ setLoading, setError }: { setLoading: any, setErr
                 onDrop={handleDropImage}
             />
             <RHFSwitch name="big" label="Grosses Titelbild" />
-            {values.photo?.alt && (
-                <Typography
-                    variant="body2"
-                    component="p"
-                    sx={{
-                        color: 'dima',
-                    }}
-                >
-                    {values.photo.alt}
-                </Typography>)}
-            <Typography
-                variant="body2"
-                component="p"
-                sx={{
-                    color: 'dima',
-                }}
-            >
-
-                Fotos:
-            </Typography>
+            {values.photo?.alt &&
+                <TitleTextCom text={values.photo.alt} />
+            }
+            <TitleTextCom text="Fotos:" />
             <RHFUploadMultiFile
                 showPreview
                 name="photos"

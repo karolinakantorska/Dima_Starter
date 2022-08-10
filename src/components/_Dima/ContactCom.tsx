@@ -2,13 +2,14 @@ import useResponsive from '../../hooks/useResponsive';
 import { m } from 'framer-motion';
 import Glarus from '/public/location/Glarus.jpg';
 import Zurich from '/public/location/Zurich.jpg';
-import { Card, CardMedia, Stack, Typography, Box, CardActionArea } from '@mui/material';
+import { Card, CardMedia, Stack, Typography, Box, } from '@mui/material';
 import { dimaContact, layoutHeader } from 'src/utils/dima';
 import { firstLettersBig } from '../../utils/Text/textUtils';
 
 import { SiteTitle } from '../_Reusable/SiteTitle';
 import Link from 'next/link';
-import Image from '../Image';
+import { TitleTextCom } from '../_Reusable/TitleTextCom';
+import { BodyTextCom } from '../_Reusable/BodyTextCom';
 
 //console.log('Glarus:', Glarus)
 // TODO use location instead use route
@@ -34,18 +35,10 @@ export function ContactCom() {
       <Box
         sx={{ pl: pl, py: py, pb: pb, minWidth: '300px' }}
       >
-        <Typography variant="body2" component="h2" sx={{ color: 'dima' }}        >
-          {town.toUpperCase()}
-        </Typography>
-        <Typography variant="body1" component="p" sx={{ color: 'text.secondary', pt: .9 }}        >
-          {`${firstLettersBig(street)} ${numer}`}
-        </Typography>
-        <Typography variant="body1" component="p" sx={{ color: 'text.secondary' }}        >
-          {`CH-${post} ${firstLettersBig(town)}`}
-        </Typography>
-        <Typography variant="body1" component="p" sx={{ color: 'text.secondary' }}        >
-          {`T ${phone}`}
-        </Typography>
+        <TitleTextCom text={town.toUpperCase()} />
+        <BodyTextCom text={`${firstLettersBig(street)} ${numer}`} sx={{ pt: .9 }} />
+        <BodyTextCom text={`CH-${post} ${firstLettersBig(town)}`} />
+        <BodyTextCom text={`T ${phone}`} />
         <Typography variant="body1" component="p" sx={{ color: 'text.secondary' }}>
           {email.substring(0, 3)}<span style={{ display: "none" }}>sth@num</span>{email.substring(3, 9)}<span style={{ display: "none" }}>num.ch</span>{email.substring(9)}
         </Typography>
@@ -104,7 +97,6 @@ export function ContactCom() {
           <TextBox text={dimaContact.zurich} />
         </Stack>
       </Stack>
-
     </>
   )
 }

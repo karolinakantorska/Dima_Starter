@@ -1,7 +1,6 @@
 import { useFormContext } from 'react-hook-form';
 import { regionenArray } from 'src/utils/TS/interface';
 import {
-    Typography,
     Stack,
     InputAdornment
 
@@ -11,6 +10,7 @@ import {
     RHFRadioGroup, RHFTextField,
 
 } from '../../hook-form';
+import { TitleTextCom } from 'src/components/_Reusable/TitleTextCom';
 export function CategoryVolumenCardCom() {
     const { setValue, getValues, } = useFormContext();
 
@@ -19,15 +19,7 @@ export function CategoryVolumenCardCom() {
 
     return (
         <Stack spacing={3}>
-            <Typography
-                variant="body2"
-                component="p"
-                sx={{
-                    color: 'dima',
-                }}
-            >
-                Region:
-            </Typography>
+            <TitleTextCom text="Region:" />
             <RHFRadioGroup
                 name="region"
                 options={REGION}
@@ -35,16 +27,7 @@ export function CategoryVolumenCardCom() {
                     '& .MuiFormControlLabel-root': { mr: 4 },
                 }}
             />
-
-            <Typography
-                variant="body2"
-                component="p"
-                sx={{
-                    color: 'dima',
-                }}
-            >
-                Volumen:
-            </Typography>
+            <TitleTextCom text="Volumen:" />
             <RHFTextField
                 variant="filled"
                 name="size"
@@ -58,8 +41,6 @@ export function CategoryVolumenCardCom() {
                     type: 'number',
                 }}
             />
-
-
         </Stack>
 
 

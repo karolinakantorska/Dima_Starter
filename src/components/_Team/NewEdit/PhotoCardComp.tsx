@@ -1,12 +1,13 @@
-import { useCallback, } from 'react';
+import React, { useCallback, } from 'react';
 import { useFormContext } from 'react-hook-form';
-import { Box, Stack, Typography, } from '@mui/material';
+import { Box, Stack, } from '@mui/material';
+import { TitleTextCom } from 'src/components/_Reusable/TitleTextCom';
 import {
     RHFUploadSingleFile,
     //RHFEditor,
 } from '../../hook-form';
-import { deleteImage, uploadOnePhoto, uploadPhotos } from 'src/utils/apis/uploadPhoto';
-import { ImageType, ImagesType } from 'src/utils/TS/interface';
+import { deleteImage, uploadOnePhoto } from '../../../utils/apis/uploadPhoto';
+
 
 export function PhotoCardCom({ setLoading, setError }: { setLoading: any, setError: any }) {
     const {
@@ -42,13 +43,8 @@ export function PhotoCardCom({ setLoading, setError }: { setLoading: any, setErr
 
     return (
         <Stack spacing={3}>
-            <Typography
-                variant="body2"
-                component="p"
-                sx={{ color: 'dima', }}
-            >
-                Porträt:
-            </Typography>
+            <TitleTextCom text="Porträt: " />
+
             <Box sx={{ height: 1000 }} >
                 <RHFUploadSingleFile
                     name='photo'
@@ -59,16 +55,8 @@ export function PhotoCardCom({ setLoading, setError }: { setLoading: any, setErr
                 />
             </Box>
 
-            {values.photo?.alt && (
-                <Typography
-                    variant="body2"
-                    component="p"
-                    sx={{
-                        color: 'dima',
-                    }}
-                >
-                    {values.photo.alt}
-                </Typography>)}
+            {values.photo?.alt && <TitleTextCom text={values.photo.alt} />
+            }
         </Stack>
 
     )

@@ -10,7 +10,7 @@ export const team: Person[] = [
         title2: '',
         job1: 'Partner',
         job2: 'Geschäftsleitung',
-        job3: '',
+
         displayOrder: 0,
         email: 'info@dima-partner.ch'
     },
@@ -21,9 +21,8 @@ export const team: Person[] = [
         surname: 'Pantelana',
         title1: 'Dipl. Architekt Eth | Sia',
         title2: '',
-        job1: 'Partner',
-        job2: 'Geschäftsleitung',
-        job3: 'Leiter Plannung',
+        job1: 'Partner | Geschäftsleitung',
+        job2: 'Leiter Plannung',
         displayOrder: 1,
         email: 'info@dima-partner.ch'
     },
@@ -37,7 +36,7 @@ export const team: Person[] = [
         title2: '',
         job1: 'Partner',
         job2: '',
-        job3: '',
+
         displayOrder: 2,
         email: 'info@dima-partner.ch'
     },
@@ -50,7 +49,7 @@ export const team: Person[] = [
         title2: '',
         job1: 'Projektleiter',
         job2: 'Baumenagement',
-        job3: '',
+
         displayOrder: 2,
         email: 'info@dima-partner.ch'
     },
@@ -64,7 +63,7 @@ export const team: Person[] = [
         title2: '',
         job1: 'Käuferberatung',
         job2: '',
-        job3: '',
+
         displayOrder: 2,
         email: 'info@dima-partner.ch'
     },
@@ -78,7 +77,7 @@ export const team: Person[] = [
         title2: '',
         job1: 'Bauleiter',
         job2: '',
-        job3: '',
+
         displayOrder: 2,
         email: 'info@dima-partner.ch'
     },
@@ -93,7 +92,7 @@ export const team: Person[] = [
         title2: 'Eidg. Dipl. Bauleiterin Hfp',
         job1: 'Bauleiterin',
         job2: '',
-        job3: '',
+
         displayOrder: 2,
         email: 'info@dima-partner.ch'
     },

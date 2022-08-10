@@ -17,7 +17,7 @@ Index.getLayout = function getLayout(page: React.ReactElement) {
 export default function Index() {
 
   return (
-    <Page title="Dima & Partner" style={{
+    <Page title="" style={{
       width: "100vw",
       height: "100vh",
       overflow: "hidden",

@@ -1,10 +1,10 @@
 import { GetStaticProps } from "next";
 // layouts
-import Layout from '../layouts';
+import Layout from 'src/layouts';
 // components
-import Page from '../components/Page';
+import Page from 'src/components/Page';
 
-import { ProjectsListCom } from '../components/_Projekte/projectsListCom';
+import { ProjectsListCom } from 'src/components/_Projekte/projectsListCom';
 import { getOrderedCollection } from "src/utils/apis/apis";
 
 // ----------------------------------------------------------------------
@@ -15,18 +15,15 @@ Projekte.getLayout = function getLayout(page: React.ReactElement) {
 
 // ----------------------------------------------------------------------
 export default function Projekte(props: any) {
-
   const { data } = props;
   return (
-
-    <Page title="Projekte | Dima & Partner">
+    <Page title="Projekte">
       <ProjectsListCom projectsList={data} />
     </Page>
 
   );
 }
 export const getStaticProps: GetStaticProps = async () => {
-
   const data = await getOrderedCollection("projects", "year");
   return {
     props: { data },

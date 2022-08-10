@@ -1,10 +1,12 @@
 
 // @mui
 
-import { Box, Card, Link, Typography } from '@mui/material';
+import { Box, Card, Link } from '@mui/material';
 
 // hooks 
 import useResponsive from '../../hooks/useResponsive';
+import { BodyTextCom } from '../_Reusable/BodyTextCom';
+import { TitleTextCom } from '../_Reusable/TitleTextCom';
 
 // TODO use location instead use route
 export function WebcamsCardCom({ wcam }: { wcam: any }) {
@@ -37,6 +39,29 @@ export function WebcamsCardCom({ wcam }: { wcam: any }) {
   const propsCard = {
     pl: 2.25, pt: 1.60, pb: 1.1
   };
+  const LinkEvent = () =>
+  (<Link
+    href={url}
+    //target="_blank"
+    rel="noopener"
+    underline="none"
+  >
+    <Box
+      sx={{
+        position: 'absolute',
+        backgroundColor: 'text.white',
+        width: '100%',
+        height: '100%',
+        bottom: 0,
+        cursor: 'pointer',
+        opacity: 0,
+        ariaLabel: `Link zum ${title} Baucam`,
+        '&:hover': {
+          opacity: 0.1,
+        }
+      }} />
+  </Link>)
+
   return (
     <>
       <Card sx={{ ...propsContainer }}>
@@ -56,45 +81,12 @@ export function WebcamsCardCom({ wcam }: { wcam: any }) {
         </Box>
 
         <Card sx={{ ...propsCard }}>
-          <Typography
-            variant="body1"
-            component="p"
-            sx={{ color: 'dima', }}
-          >
-            {`${title.toUpperCase()}`}
-          </Typography>
-          <Typography
-            variant="body1"
-            component="p"
-            sx={{ color: 'text.secondary', }}
-          >
-            {`Im Bau - Realisierung Geplant Auf ${end.toString()}`}
-          </Typography>
+          <TitleTextCom text={`${title.toUpperCase()}`} />
+          <BodyTextCom text={`Im Bau - Realisierung Geplant Auf ${end.toString()}`} />
         </Card>
+        <LinkEvent />
       </Card >
     </>
 
   )
 }
-/*      <Link
-        href={url}
-        //target="_blank"
-        rel="noopener"
-        underline="none"
-      >
-        <Box
-          sx={{
-            position: 'absolute',
-            backgroundColor: 'text.white',
-            width: '100%',
-            height: '100%',
-            bottom: 0,
-            cursor: 'pointer',
-            opacity: 0,
-            ariaLabel: `Link zum ${title} Baucam`,
-            '&:hover': {
-              opacity: 0.1,
-            }
-          }} />
-      </Link>
-      */

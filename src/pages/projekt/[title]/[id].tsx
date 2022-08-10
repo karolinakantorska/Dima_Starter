@@ -21,7 +21,7 @@ Referenz.getLayout = function getLayout(page: React.ReactElement) {
 export default function Referenz({ data }: any) {
 
   return (
-    <Page title={`Dima & Partner`}>
+    <Page title={`${data.title}`}>
       <OneProjectCom project={data} />
     </Page>
   );

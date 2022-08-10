@@ -1,31 +1,34 @@
-import { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
+
 // next
 import { useRouter } from 'next/router';
 //import { useRouter } from 'next/router';
 // form
 import { useForm, } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { NewPersonSchema, } from 'src/utils/myUtils/formSchema';
+
 // @mui
 import { LoadingButton } from '@mui/lab';
 import {
   Grid,
   Stack,
-  Typography,
 } from '@mui/material';
 // @types
 import { FormProvider } from '../../hook-form';
-import { Person, } from 'src/utils/TS/interface';
+
 // utils
-import { addProjestToFirestore, editProjectInFirestore } from 'src/utils/apis/addToFirestore';
-import { createProject } from 'src/utils/myUtils/createProject';
-import { PATH_PROJEKTE } from 'src/routes/paths';
-import { AlertCom } from 'src/components/_Projekte/NewEditProjekt/AlertCom';
+import { addProjestToFirestore, editProjectInFirestore } from '../../../utils/apis/addToFirestore';
+
 import { NameCardCom } from './NameCardCom';
 import { TitleCardCom } from './TitleCardCom';
 import { JobCardCom } from './JobCardCom';
 import { EmailCardCom } from './EmailCardCom';
 import { PhotoCardCom } from './PhotoCardComp';
+import { Person } from '../../../utils/TS/interface';
+import { NewPersonSchema } from '../../../utils/myUtils/formSchema';
+import { AlertCom } from '../../_Reusable/AlertCom';
+import { PATH_DIMA } from '../../../routes/paths';
+
 
 
 /*
@@ -68,7 +71,6 @@ export default function PersonNewEditForm({ isEdit, currentPerson }: Props) {
       title2: currentPerson?.title2 || '',
       job1: currentPerson?.job1 || '',
       job2: currentPerson?.job2 || '',
-      job3: currentPerson?.job3 || '',
       displayOrder: currentPerson?.displayOrder || 100,
       email: currentPerson?.email || '',
     }),
@@ -88,7 +90,7 @@ export default function PersonNewEditForm({ isEdit, currentPerson }: Props) {
   } = methods;
 
   const values = watch();
-  console.log('values', values)
+  //console.log('values', values)
   useEffect(() => {
     if (isEdit && currentPerson) {
       reset(defaultValues);
@@ -101,44 +103,42 @@ export default function PersonNewEditForm({ isEdit, currentPerson }: Props) {
 
   const onSubmit = async (data: Person) => {
     setLoading(true);
-    //const projectToDB = createProject(data);
-    /*
-        if (currentProject?.id) {
-          //const Id = currentProject ? currentProject.id : ;
-          editProjectInFirestore('projects', currentProject.id, projectToDB)
-            .then(() => {
-              //console.log('response', response);
-              setSucces(true);
-              setLoading(false);
-            })
-            .then(() => push(PATH_PROJEKTE.projekte))
-            .catch((error) => {
-              //console.log('error', error);
-              setError(error)
-              setLoading(false);
-            })
-        } else {
-          addProjestToFirestore('projects', projectToDB)
-            .then((response: any) => {
-              //console.log('response', response);
-              //setId(response);
-              setSucces(true);
-              setLoading(false);
-              reset();
-            })
-            .catch((error) => {
-              //console.log('error', error);
-              setError(error)
-              setLoading(false);
-            })
-        }
-        */
-  };
 
+    console.log('data:', data)
+
+    if (currentPerson?.id) {
+      //const Id = currentProject ? currentProject.id : ;
+      editProjectInFirestore('team', currentPerson.id, data)
+        .then(() => {
+          //console.log('response', response);
+          setSucces(true);
+          setLoading(false);
+        })
+        .then(() => push(PATH_DIMA.teams))
+        .catch((error) => {
+          //console.log('error', error);
+          setError(error)
+          setLoading(false);
+        })
+    } else {
+      addProjestToFirestore('team', data)
+        .then((response: any) => {
+          //console.log('response', response);
+          //setId(response);
+          setSucces(true);
+          setLoading(false);
+          reset();
+        })
+        .catch((error) => {
+          //console.log('error', error);
+          setError(error)
+          setLoading(false);
+        })
+    }
+  };
   return (
     <>
       <AlertCom succes={succes} error={error} loading={loading} setError={setError} />
-
       <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)} >
         <Grid container direction='row' spacing={6} sx={{ pt: 3 }}>
           <Grid item xs={12} md={7}  >
@@ -170,8 +170,6 @@ export default function PersonNewEditForm({ isEdit, currentPerson }: Props) {
         </Grid>
       </FormProvider >
     </>
+
   );
 }
-/*
-<RHFEditor simple name="description" />
-*/
