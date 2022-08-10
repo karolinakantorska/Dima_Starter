@@ -13,7 +13,6 @@ import { BodyTextCom } from '../_Reusable/BodyTextCom';
 export function OneProjectCom({ project }: { project: ProjectType }) {
   const isDesktop = useResponsive('up', 'lg');
   const isSmallDesktop = useResponsive('up', 'lm');
-  const isMiddle = useResponsive('down', 'lm');
   const isSmall = useResponsive('down', 'sm');
   const isMobile = useResponsive('down', 'mobile');
 
@@ -105,6 +104,18 @@ export function OneProjectCom({ project }: { project: ProjectType }) {
     const photosCarusel = [project.photo, ...project.photos]
     return (
       <>
+
+        <FooterCom />
+      </>
+    )
+
+  } else {
+    return (
+      <p>loading...</p>
+    )
+  }
+}
+/*
         <Stack
           component={m.div}
           {...variant}
@@ -135,17 +146,4 @@ export function OneProjectCom({ project }: { project: ProjectType }) {
             </Box>
           </Box>
         </Stack>
-        <FooterCom />
-      </>
-    )
-
-  } else {
-    return (
-      <p>loading...</p>
-    )
-  }
-}
-/*
-{isMobile && row2().map((row) => (<TableRowMobile key={row.name} row={row} />))}
-                {!isMobile && row2().map((row) => (<TableRowDesktop key={row.name} row={row} />))}
-                */
+        */
