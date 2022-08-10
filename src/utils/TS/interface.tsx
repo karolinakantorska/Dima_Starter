@@ -116,7 +116,26 @@ export interface Person {
   job2: string;
   displayOrder: number;
   email: string;
+  jobLocation: JobLocations;
+  jobCategory: JobCategory;
 }
+export const jobLocationArray = [
+  'Glarus',
+  'Zürich',
+  'Graubunden',
+] as const;
+export type JobLocations = typeof jobLocationArray[number];
+
+export const jobCategoryArray = [
+  'Architekten',
+  'Bauleitern',
+  'Geschäftsführern',
+  'Partnern',
+  'Käuferbetreuern',
+  'Lehrlinge'
+] as const;
+export type JobCategory = typeof jobCategoryArray[number];
+
 export interface Job {
   id: string,
   announcment: Date,

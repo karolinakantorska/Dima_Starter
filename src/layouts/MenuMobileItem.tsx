@@ -55,11 +55,9 @@ export function MenuMobileItem({ item, }: MenuMobileItemProps) {
     const { title, path, children } = item;
     const isActive = pathname === path;
     const handleOpen = () => {
-        console.log('open');
         setOpen(true);
     };
     const handleClose = () => {
-        console.log('close');
         setOpen(false);
     };
     if (children) {

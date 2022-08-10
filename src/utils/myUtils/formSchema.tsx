@@ -44,7 +44,7 @@ export const NewPersonSchema = Yup.object().shape({
         .max(29, 'Aufgabename darf maximal 29 Zeichen lang sein'),
     job2: Yup.string()
         .max(29, 'Aufgabename darf maximal 29 Zeichen lang sein'),
-
-    email: Yup.string().email('Must be a valid email').max(35, 'E-Mailadresse darf maximal 35 Zeichen lang sein').min(2, 'E-Mailadresse muss länger als zwei Buchstaben sein').required('Email is required')
-
+    displayOrder: Yup.number().required('Anzeigen Reihenfolge ist erforderlich').max(99, 'Anzeigen Reihenfolge darf maximal 99 sein.'),
+    email: Yup.string().email('Must be a valid email').max(35, 'E-Mailadresse darf maximal 35 Zeichen lang sein')
 });
+

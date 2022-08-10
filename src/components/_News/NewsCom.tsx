@@ -1,7 +1,7 @@
 //import AnimatedStartLayout from '../../layouts/animated/AnimatedStartLayout';
 import React, { useState } from "react";
 import { m, } from 'framer-motion';
-import { Card, ImageList, ImageListItem, Link, Stack, Typography, Collapse } from "@mui/material";
+import { Card, ImageList, ImageListItem, Link, Stack, Typography } from "@mui/material";
 import parse from 'html-react-parser';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
@@ -23,7 +23,7 @@ export function NewsCom({
     setExpand((expand) => !expand);
   }
   const {
-    id,
+    //id,
     photos,
     video,
     date,

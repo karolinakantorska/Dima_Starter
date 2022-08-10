@@ -1,14 +1,12 @@
 import Link from 'next/link';
 import { useState, Dispatch, SetStateAction } from 'react';
 // @mui
-import { Card } from '@mui/material';
-
 
 import { ImageType, ProjectType } from '../../utils/TS/interface';
 import useResponsive from '../../hooks/useResponsive';
 import { firstLettersBig } from '../../utils/Text/textUtils';
 import { Box } from '@mui/system';
-import { Grid, CardActions, CardContent, } from '@mui/material';
+import { Grid, CardActions, CardContent, Card } from '@mui/material';
 
 import { PATH_PROJEKTE } from '../../routes/paths';
 import useAuth from 'src/utils/firebaseAuth/useAuth';

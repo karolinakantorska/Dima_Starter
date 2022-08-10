@@ -28,8 +28,7 @@ import { Person } from '../../../utils/TS/interface';
 import { NewPersonSchema } from '../../../utils/myUtils/formSchema';
 import { AlertCom } from '../../_Reusable/AlertCom';
 import { PATH_DIMA } from '../../../routes/paths';
-
-
+import { CategoryCardCom } from './CategoryCardCom';
 
 /*
 export interface FormValuesProps extends Partial<Person> {
@@ -71,8 +70,10 @@ export default function PersonNewEditForm({ isEdit, currentPerson }: Props) {
       title2: currentPerson?.title2 || '',
       job1: currentPerson?.job1 || '',
       job2: currentPerson?.job2 || '',
-      displayOrder: currentPerson?.displayOrder || 100,
+      displayOrder: currentPerson?.displayOrder || 99,
       email: currentPerson?.email || '',
+      jobLocation: currentPerson?.jobLocation || 'Glarus',
+      jobCategory: currentPerson?.jobCategory || 'Bauleitern',
     }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [currentPerson]
@@ -84,12 +85,12 @@ export default function PersonNewEditForm({ isEdit, currentPerson }: Props) {
 
   const {
     reset,
-    watch,
+    //watch,
     handleSubmit,
     formState: { isSubmitting },
   } = methods;
 
-  const values = watch();
+  //const values = watch();
   //console.log('values', values)
   useEffect(() => {
     if (isEdit && currentPerson) {
@@ -103,11 +104,9 @@ export default function PersonNewEditForm({ isEdit, currentPerson }: Props) {
 
   const onSubmit = async (data: Person) => {
     setLoading(true);
-
-    console.log('data:', data)
-
     if (currentPerson?.id) {
       //const Id = currentProject ? currentProject.id : ;
+
       editProjectInFirestore('team', currentPerson.id, data)
         .then(() => {
           //console.log('response', response);
@@ -147,6 +146,7 @@ export default function PersonNewEditForm({ isEdit, currentPerson }: Props) {
               <TitleCardCom />
               <JobCardCom />
               <EmailCardCom />
+              <CategoryCardCom />
             </Stack>
           </Grid>
           <Grid item xs={12} md={5}>

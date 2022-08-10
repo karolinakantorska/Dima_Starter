@@ -11,7 +11,6 @@ import { LoadingButton } from '@mui/lab';
 import {
   Grid,
   Stack,
-  Typography,
 } from '@mui/material';
 // @types
 import { FormProvider } from '../../hook-form';
@@ -114,7 +113,6 @@ export default function ProjectNewEditForm({ isEdit, currentProject }: Props) {
 
   const {
     reset,
-    watch,
     handleSubmit,
     formState: { isSubmitting },
   } = methods;

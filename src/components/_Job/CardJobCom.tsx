@@ -1,6 +1,6 @@
 import React from "react";
 // @mui
-import { Grid, Typography, Card, CardContent, CardActionArea, } from '@mui/material';
+import { Grid, Card, CardContent, CardActionArea, } from '@mui/material';
 import { Job, } from 'src/utils/TS/interface';
 
 // hooks

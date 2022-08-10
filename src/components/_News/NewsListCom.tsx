@@ -14,7 +14,7 @@ export function NewsListCom() {
   //const initialInputs = { param: "Alle" }
 
   //const isDesktop = useResponsive('up', 'lm');
-  const isSmall = useResponsive('down', 'sm');
+  //const isSmall = useResponsive('down', 'sm');
   const isMiddle = useResponsive('down', 'md');
   let dark = true;
   //const { query } = useRouter();

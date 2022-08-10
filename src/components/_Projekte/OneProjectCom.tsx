@@ -104,18 +104,6 @@ export function OneProjectCom({ project }: { project: ProjectType }) {
     const photosCarusel = [project.photo, ...project.photos]
     return (
       <>
-
-        <FooterCom />
-      </>
-    )
-
-  } else {
-    return (
-      <p>loading...</p>
-    )
-  }
-}
-/*
         <Stack
           component={m.div}
           {...variant}
@@ -146,4 +134,13 @@ export function OneProjectCom({ project }: { project: ProjectType }) {
             </Box>
           </Box>
         </Stack>
-        */
+
+      </>
+    )
+
+  } else {
+    return (
+      <p>loading...</p>
+    )
+  }
+}

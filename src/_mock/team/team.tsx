@@ -10,9 +10,10 @@ export const team: Person[] = [
         title2: '',
         job1: 'Partner',
         job2: 'Geschäftsleitung',
-
         displayOrder: 0,
-        email: 'info@dima-partner.ch'
+        email: 'info@dima-partner.ch',
+        jobLocation: 'Glarus',
+        jobCategory: 'Bauleitern',
     },
     {
         id: '2',
@@ -24,11 +25,12 @@ export const team: Person[] = [
         job1: 'Partner | Geschäftsleitung',
         job2: 'Leiter Plannung',
         displayOrder: 1,
-        email: 'info@dima-partner.ch'
+        email: 'info@dima-partner.ch',
+        jobLocation: 'Glarus',
+        jobCategory: 'Bauleitern',
     },
     {
         id: '3',
-
         photo: { url: '/people/p_3.jpg', alt: 'mitarbeiter' },
         name: 'Frantz',
         surname: 'Noser',
@@ -36,9 +38,10 @@ export const team: Person[] = [
         title2: '',
         job1: 'Partner',
         job2: '',
-
         displayOrder: 2,
-        email: 'info@dima-partner.ch'
+        email: 'info@dima-partner.ch',
+        jobLocation: 'Glarus',
+        jobCategory: 'Bauleitern',
     },
     {
         id: '4',
@@ -49,13 +52,13 @@ export const team: Person[] = [
         title2: '',
         job1: 'Projektleiter',
         job2: 'Baumenagement',
-
         displayOrder: 2,
-        email: 'info@dima-partner.ch'
+        email: 'info@dima-partner.ch',
+        jobLocation: 'Glarus',
+        jobCategory: 'Bauleitern',
     },
     {
         id: '5',
-
         photo: { url: '/people/p_5.jpg', alt: 'mitarbeiter' },
         name: 'Karin',
         surname: 'Fischli',
@@ -63,13 +66,13 @@ export const team: Person[] = [
         title2: '',
         job1: 'Käuferberatung',
         job2: '',
-
         displayOrder: 2,
-        email: 'info@dima-partner.ch'
+        email: 'info@dima-partner.ch',
+        jobLocation: 'Glarus',
+        jobCategory: 'Bauleitern',
     },
     {
         id: '6',
-
         photo: { url: '/people/p_6.jpg', alt: 'mitarbeiter' },
         name: 'Jürg',
         surname: 'Fischli',
@@ -77,23 +80,23 @@ export const team: Person[] = [
         title2: '',
         job1: 'Bauleiter',
         job2: '',
-
         displayOrder: 2,
-        email: 'info@dima-partner.ch'
+        email: 'info@dima-partner.ch',
+        jobLocation: 'Glarus',
+        jobCategory: 'Bauleitern',
     },
     {
         id: '7',
-
         photo: { url: '/people/p_7.jpg', alt: 'mitarbeiter' },
         name: 'Melanie',
         surname: 'Lutschiger',
-
         title1: 'Dipl. Technikerin Hf Hochbau',
         title2: 'Eidg. Dipl. Bauleiterin Hfp',
         job1: 'Bauleiterin',
         job2: '',
-
         displayOrder: 2,
-        email: 'info@dima-partner.ch'
+        email: 'info@dima-partner.ch',
+        jobLocation: 'Glarus',
+        jobCategory: 'Bauleitern',
     },
 ]

@@ -34,8 +34,6 @@ export function EditDeleteIconCom({
             backgroundColor: 'rgba(255,255,255,0.6)',
         }
     }
-    console.log(editURL)
-
     return (
         <>
             <Link href={editURL} passHref >
