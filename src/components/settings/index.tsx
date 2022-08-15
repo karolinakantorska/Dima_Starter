@@ -1,4 +1,4 @@
-import SettingsDrawer from './drawer';
+//import SettingsDrawer from './drawer';
 // ----------------------------------------------------------------------
 
 type Props = {
@@ -9,7 +9,6 @@ export default function ThemeSettings({ children }: Props) {
   return (
     <>
       {children}
-      <SettingsDrawer />
     </>
   );
 }
