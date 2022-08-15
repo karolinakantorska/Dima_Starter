@@ -9,6 +9,7 @@ export default function ThemeSettings({ children }: Props) {
   return (
     <>
       {children}
+      <SettingsDrawer />
     </>
   );
 }
