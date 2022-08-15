@@ -111,47 +111,6 @@ export default function SettingsDrawer() {
         {open && (
           <>
             <RootStyle {...varSidebar}>
-              <Stack
-                direction="row"
-                alignItems="center"
-                justifyContent="space-between"
-                sx={{ py: 2, pr: 1, pl: 2.5 }}
-              >
-                <Typography variant="subtitle1" sx={{ flexGrow: 1 }}>
-                  Settings
-                </Typography>
-
-
-
-                <IconButton onClick={handleClose}>
-                  <Iconify icon={'eva:close-fill'} width={20} height={20} />
-                </IconButton>
-              </Stack>
-
-              <Divider sx={{ borderStyle: 'dashed' }} />
-
-              <Scrollbar sx={{ flexGrow: 1 }}>
-                <Stack spacing={3} sx={{ p: 3 }}>
-                  <Stack spacing={1.5}>
-                    <Typography variant="subtitle2">Mode</Typography>
-                    <SettingMode />
-                  </Stack>
-
-                  <Stack spacing={1.5}>
-                    <Typography variant="subtitle2">Layout</Typography>
-                    <SettingLayout />
-                  </Stack>
-
-
-
-                  <Stack spacing={1.5}>
-                    <Typography variant="subtitle2">Stretch</Typography>
-                    <SettingStretch />
-                  </Stack>
-
-                  <SettingFullscreen />
-                </Stack>
-              </Scrollbar>
             </RootStyle>
           </>
         )}
