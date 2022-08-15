@@ -55,8 +55,8 @@ export default function SettingsDrawer() {
     themeContrast,
     themeDirection,
     themeColorPresets,
-    onResetSetting,
-  } = useSettings();
+    //onResetSetting,
+  } = defaultSettings
 
   const [open, setOpen] = useState(false);
 
@@ -121,9 +121,7 @@ export default function SettingsDrawer() {
                   Settings
                 </Typography>
 
-                <IconButton onClick={onResetSetting}>
-                  <Iconify icon={'ic:round-refresh'} width={20} height={20} />
-                </IconButton>
+
 
                 <IconButton onClick={handleClose}>
                   <Iconify icon={'eva:close-fill'} width={20} height={20} />

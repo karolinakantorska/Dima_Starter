@@ -22,7 +22,7 @@ import AdapterDateFns from '@mui/lab/AdapterDateFns';
 //import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 // utils
-import { getSettings } from '../utils/getSettings';
+//import { getSettings } from '../utils/getSettings';
 // contexts
 import { SettingsProvider } from '../contexts/SettingsContext';
 import { CollapseDrawerProvider } from '../contexts/CollapseDrawerContext';
@@ -30,7 +30,7 @@ import { CollapseDrawerProvider } from '../contexts/CollapseDrawerContext';
 import ThemeProvider from '../theme';
 // components
 import ThemeSettings from '../components/settings';
-import { SettingsValueProps } from '../components/settings/type';
+//import { SettingsValueProps } from '../components/settings/type';
 import ProgressBar from '../components/ProgressBar';
 import MotionLazyContainer from '../components/animate/MotionLazyContainer';
 import { defaultSettings } from '../config';
