@@ -20,6 +20,7 @@ export function CardPersonCom({
     setSucces,
     setLoading,
     setError,
+    revalidate
 }: {
     person: Person
     setSucces: Dispatch<SetStateAction<string | boolean>>;
@@ -28,6 +29,7 @@ export function CardPersonCom({
         code: string;
         message: string;
     } | null>>;
+    revalidate: any;
 }) {
     const isDesktop = useResponsive('up', 'lg');
     const isSmall = useResponsive('down', 'sm');
@@ -49,6 +51,7 @@ export function CardPersonCom({
                 deleteImage(photo.url);
                 setLoading(false);
                 setSucces(true);
+                revalidate();
             })
             .catch((error) => {
                 console.log('error', error);

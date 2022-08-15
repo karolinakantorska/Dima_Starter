@@ -1,4 +1,5 @@
 // layouts
+import React, { useState } from 'react';
 import Layout from 'src/layouts';
 import { GetStaticProps } from "next";
 // components
@@ -18,7 +19,8 @@ Teams.getLayout = function getLayout(page: React.ReactElement) {
 
 export default function Teams(props: any) {
   const { data } = props;
-  console.log('data: ', data)
+  //console.log('data: ', data)
+
   return (
     <Page title="Teams">
       <TeamListCom teamList={data} />

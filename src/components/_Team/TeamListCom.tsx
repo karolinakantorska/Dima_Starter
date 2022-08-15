@@ -18,6 +18,10 @@ export function TeamListCom(
   const [error, setError] = useState<null | { code: string, message: string }>(null)
   const [succes, setSucces] = useState<boolean | string>(false);
   const [loading, setLoading] = useState(false);
+
+  const revalidate = async () => {
+    await fetch("/api/revalidate?secret=nslkfuizrbjc67dfgg");
+  }
   const router = useRouter();
   useEffect(() => {
     if (succes) {
@@ -57,6 +61,7 @@ export function TeamListCom(
             setSucces={setSucces}
             setLoading={setLoading}
             setError={setError}
+            revalidate={revalidate}
           />)}
         </Box>
       </>

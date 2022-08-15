@@ -46,7 +46,7 @@ const ToolbarShadowStyle = styled('div')(({ theme }) => ({
 
 // ----------------------------------------------------------------------
 
-export default function MainHeader({ logo = true }: { logo?: boolean }) {
+export default function MainHeader() {
 
   const isOffset = useOffSetTop(HEADER.MAIN_DESKTOP_HEIGHT);
   const theme = useTheme();
@@ -70,7 +70,6 @@ export default function MainHeader({ logo = true }: { logo?: boolean }) {
         disableGutters
         sx={{
           ...(isOffset && {
-            //...cssStyles(theme).bgBlur(),
             height: { md: HEADER.MAIN_DESKTOP_HEIGHT - 16 },
           }),
         }}

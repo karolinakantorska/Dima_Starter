@@ -67,7 +67,7 @@ export default function MenuMobile({ navConfig, size }: MenuProps) {
   const { pathname } = useRouter();
 
   //const [open, setOpen] = useState(false);
-  const [drawerOpen, setDrawerOpen] = useState(true);
+  const [drawerOpen, setDrawerOpen] = useState(false);
   const { logout, isAuthenticated } = useAuth();
 
   // TODO not closing in PC view
