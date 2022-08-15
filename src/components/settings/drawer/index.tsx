@@ -48,73 +48,19 @@ const RootStyle = styled(m.div)(({ theme }) => ({
 // ----------------------------------------------------------------------
 
 export default function SettingsDrawer() {
-  const {
-    themeMode,
-    themeLayout,
-    themeStretch,
-    themeContrast,
-    themeDirection,
-    themeColorPresets,
-    //onResetSetting,
-  } = defaultSettings
 
-  const [open, setOpen] = useState(false);
 
-  const notDefault =
-    themeMode !== defaultSettings.themeMode ||
-    themeLayout !== defaultSettings.themeLayout ||
-    themeStretch !== defaultSettings.themeStretch ||
-    themeContrast !== defaultSettings.themeContrast ||
-    themeDirection !== defaultSettings.themeDirection ||
-    themeColorPresets !== defaultSettings.themeColorPresets;
 
-  const varSidebar =
-    themeDirection !== 'rtl'
-      ? varFade({
-        distance: NAVBAR.BASE_WIDTH,
-        durationIn: 0.32,
-        durationOut: 0.32,
-      }).inRight
-      : varFade({
-        distance: NAVBAR.BASE_WIDTH,
-        durationIn: 0.32,
-        durationOut: 0.32,
-      }).inLeft;
 
-  useEffect(() => {
-    if (open) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
-    }
-  }, [open]);
 
-  const handleToggle = () => {
-    setOpen((prev) => !prev);
-  };
 
-  const handleClose = () => {
-    setOpen(false);
-  };
+
+
+
 
   return (
     <>
-      <Backdrop
-        open={open}
-        onClick={handleClose}
-        sx={{ background: 'transparent', zIndex: (theme) => theme.zIndex.drawer + 1 }}
-      />
-
-      {!open && <ToggleButton open={open} notDefault={notDefault} onToggle={handleToggle} />}
-
-      <AnimatePresence>
-        {open && (
-          <>
-            <RootStyle {...varSidebar}>
-            </RootStyle>
-          </>
-        )}
-      </AnimatePresence>
+      <p>Hallo</p>
     </>
   );
 }
