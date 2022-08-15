@@ -5,6 +5,7 @@ import useResponsive from '../../hooks/useResponsive';
 
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 type Props = {
     colorRGB: string,
     color: string,
@@ -13,6 +14,11 @@ type Props = {
 };
 export default function LandingButtonCom({ colorRGB, color, text, href }: Props) {
     const isSmall = useResponsive('down', 'sm');
+    const router = useRouter();
+    const handleClick = () => {
+
+        router.push(href);
+    }
     const buttonProps = {
         height: isSmall ? '50px' : '10vw',
         width: isSmall ? '280px' : '35vw',
@@ -32,24 +38,23 @@ export default function LandingButtonCom({ colorRGB, color, text, href }: Props)
         },
     }
     return (
-        <>
 
-            <Link href={href} passHref >
-                <ButtonBase
-                    sx={{
-                        ...buttonProps,
-                    }}
-                >
-                    <Typography
-                        variant="body2" component="a"
-                        sx={{
-                            color: "inherit",
-                        }} >
-                        {isSmall ? `${text}` : `Unsere ${text}`}
-                    </Typography> <ArrowForwardIosIcon sx={{ ml: '16px', color: "inherit" }} />
-                </ButtonBase>
-            </Link>
-        </>
+        <ButtonBase
+            onClick={handleClick}
+            sx={{
+                ...buttonProps,
+            }}
+        >
+            <Typography
+                variant="body2" component="a"
+                sx={{
+                    color: "inherit",
+                }} >
+                {isSmall ? `${text}` : `Unsere ${text}`}
+            </Typography> <ArrowForwardIosIcon sx={{ ml: '16px', color: "inherit" }} />
+        </ButtonBase>
+
+
     )
 }
 /*
