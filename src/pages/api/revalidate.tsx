@@ -8,6 +8,9 @@ export default async function handler(
     }
 ) {
     // Check for secret to confirm this is a valid request
+    console.log('req.query.secret', req.query.secret);
+    console.log('process.env.NEXT_PUBLIC_MY_SECRET_TOKEN', process.env.NEXT_PUBLIC_MY_SECRET_TOKEN);
+    console.log(req.query.secret !== process.env.NEXT_PUBLIC_MY_SECRET_TOKEN);
     if (req.query.secret !== process.env.NEXT_PUBLIC_MY_SECRET_TOKEN) {
         return res.status(401).json({ message: 'Invalid token' })
     }
