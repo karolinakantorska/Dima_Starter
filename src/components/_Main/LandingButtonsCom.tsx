@@ -4,9 +4,7 @@ import LandingButtonCom from './LandingButtonCom';
 
 import { PATH_DIMA, PATH_PROJEKTE } from 'src/routes/paths';
 
-
 export default function LandingButtonsCom() {
-
 
     const containerProps = {
         position: 'relative',
@@ -15,8 +13,6 @@ export default function LandingButtonsCom() {
         mt: '-43px',
         zIndex: 2,
     }
-
-
 
     return (
         <Container sx={{ ...containerProps }}>
