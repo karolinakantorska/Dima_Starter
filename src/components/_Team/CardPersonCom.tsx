@@ -50,7 +50,7 @@ export function CardPersonCom({
                 deleteImage(photo.url);
                 setLoading(false);
                 setSucces(true);
-                //revalidate();
+                revalidate();
             })
             .catch((error) => {
                 console.log('error', error);

@@ -10,18 +10,17 @@ import { useRouter } from 'next/router';
 import { SiteTitle } from '../_Reusable/SiteTitle';
 import { CardPersonCom } from './CardPersonCom';
 import { PATH_DIMA } from '../../routes/paths';
+import { AlertCom } from '../_Reusable/AlertCom';
 
 export function TeamListCom(
-  { teamList }: {
+  { teamList, revalidate }: {
     teamList: Person[],
+    revalidate: () => Promise<void>
   }) {
   const [error, setError] = useState<null | { code: string, message: string }>(null)
   const [succes, setSucces] = useState<boolean | string>(false);
   const [loading, setLoading] = useState(false);
 
-  const revalidate = async () => {
-    await fetch("/api/revalidate?secret=nslkfuizrbjc67dfgg");
-  }
   const router = useRouter();
   useEffect(() => {
     if (succes) {
@@ -48,6 +47,7 @@ export function TeamListCom(
     return (
       <>
         <SiteTitle text={layoutHeader.teams} />
+        <AlertCom succes={succes} error={error} loading={loading} setError={setError} />
         <Box
           display="grid"
           gridTemplateColumns={gtc}
@@ -55,7 +55,7 @@ export function TeamListCom(
           rowGap="20px"
           sx={{ mt: 6 }}
         >
-          {teamList.reverse().map((person) => <CardPersonCom
+          {teamList.map((person) => <CardPersonCom
             key={person.id}
             person={person}
             setSucces={setSucces}

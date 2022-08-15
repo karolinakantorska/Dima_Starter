@@ -20,10 +20,12 @@ Teams.getLayout = function getLayout(page: React.ReactElement) {
 export default function Teams(props: any) {
   const { data } = props;
   //console.log('data: ', data)
-
+  const revalidate = async () => {
+    await fetch("/api/revalidate?secret=nslkfuizrbjc67dfgg");
+  }
   return (
     <Page title="Teams">
-      <TeamListCom teamList={data} />
+      <TeamListCom teamList={data} revalidate={revalidate} />
     </Page>
   );
 }
