@@ -48,16 +48,6 @@ const RootStyle = styled(m.div)(({ theme }) => ({
 // ----------------------------------------------------------------------
 
 export default function SettingsDrawer() {
-
-
-
-
-
-
-
-
-
-
   return (
     <>
       <p>Hallo</p>
