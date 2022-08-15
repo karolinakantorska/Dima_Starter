@@ -42,7 +42,7 @@ type NextPageWithLayout = NextPage & {
 };
 
 interface MyAppProps extends AppProps {
-  settings: SettingsValueProps;
+  //settings: SettingsValueProps;
   Component: NextPageWithLayout;
 }
 
@@ -64,17 +64,17 @@ export default function MyApp(
             <SettingsProvider defaultSettings={defaultSettings}>
               <MotionLazyContainer>
                 <ThemeProvider>
-
-                  <ProgressBar />
-                  <AnimatePresence
-                    exitBeforeEnter={false}
-                  >
-                    {getLayout(<Component
-                      {...pageProps}
-                      key={router.route}
-                    />)}
-                  </AnimatePresence>
-
+                  <ThemeSettings>
+                    <ProgressBar />
+                    <AnimatePresence
+                      exitBeforeEnter={false}
+                    >
+                      {getLayout(<Component
+                        {...pageProps}
+                        key={router.route}
+                      />)}
+                    </AnimatePresence>
+                  </ThemeSettings>
                 </ThemeProvider>
               </MotionLazyContainer>
             </SettingsProvider>
@@ -89,13 +89,14 @@ export default function MyApp(
 
 MyApp.getInitialProps = async (context: AppContext) => {
   const appProps = await App.getInitialProps(context);
+  /*
   const cookies = cookie.parse(
     context.ctx.req ? context.ctx.req.headers.cookie || '' : document.cookie
   );
-
-  const settings = getSettings(cookies);
+*/
+  //const settings = getSettings(cookies);
   return {
     ...appProps,
-    settings,
+    //settings,
   };
 };
