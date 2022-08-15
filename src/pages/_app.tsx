@@ -33,6 +33,7 @@ import ThemeSettings from '../components/settings';
 import { SettingsValueProps } from '../components/settings/type';
 import ProgressBar from '../components/ProgressBar';
 import MotionLazyContainer from '../components/animate/MotionLazyContainer';
+import { defaultSettings } from '../config';
 
 // ----------------------------------------------------------------------
 
@@ -45,8 +46,10 @@ interface MyAppProps extends AppProps {
   Component: NextPageWithLayout;
 }
 
-export default function MyApp(props: MyAppProps) {
-  const { Component, pageProps, settings, router } = props;
+export default function MyApp(
+  props: MyAppProps
+) {
+  const { Component, pageProps, router } = props;
 
   const getLayout = Component.getLayout ?? ((page) => page);
 
@@ -58,17 +61,20 @@ export default function MyApp(props: MyAppProps) {
       <AuthProvider>
         <LocalizationProvider dateAdapter={AdapterDateFns}>
           <CollapseDrawerProvider>
-            <SettingsProvider defaultSettings={settings}>
+            <SettingsProvider defaultSettings={defaultSettings}>
               <MotionLazyContainer>
                 <ThemeProvider>
-                  <ThemeSettings>
-                    <ProgressBar />
-                    <AnimatePresence
-                      exitBeforeEnter={false}
-                    >
-                      {getLayout(<Component {...pageProps} key={router.route} />)}
-                    </AnimatePresence>
-                  </ThemeSettings>
+
+                  <ProgressBar />
+                  <AnimatePresence
+                    exitBeforeEnter={false}
+                  >
+                    {getLayout(<Component
+                      {...pageProps}
+                      key={router.route}
+                    />)}
+                  </AnimatePresence>
+
                 </ThemeProvider>
               </MotionLazyContainer>
             </SettingsProvider>
@@ -88,7 +94,6 @@ MyApp.getInitialProps = async (context: AppContext) => {
   );
 
   const settings = getSettings(cookies);
-
   return {
     ...appProps,
     settings,
