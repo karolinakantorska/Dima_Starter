@@ -45,13 +45,12 @@ export function CardPersonCom({
     };
     function handleDelete() {
         setLoading(true);
-        console.log('deleting')
         deleteProjectFromFirestore('team', id)
             .then(() => {
                 deleteImage(photo.url);
                 setLoading(false);
                 setSucces(true);
-                revalidate();
+                //revalidate();
             })
             .catch((error) => {
                 console.log('error', error);
