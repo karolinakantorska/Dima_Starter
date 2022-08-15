@@ -32,21 +32,21 @@ export default function LandingButtonCom({ colorRGB, color, text, href }: Props)
         },
     }
     return (
-        <Link href={href} passHref >
-            <ButtonBase
+
+        <ButtonBase
+            sx={{
+                ...buttonProps,
+            }}
+        >
+            <Typography
+                variant="body2" component="a"
                 sx={{
-                    ...buttonProps,
-                }}
-            >
-                <Typography
-                    variant="body2" component="a"
-                    sx={{
-                        color: "inherit",
-                    }} >
-                    {isSmall ? `${text}` : `Unsere ${text}`}
-                </Typography> <ArrowForwardIosIcon sx={{ ml: '16px', color: "inherit" }} />
-            </ButtonBase>
-        </Link>
+                    color: "inherit",
+                }} >
+                {isSmall ? `${text}` : `Unsere ${text}`}
+            </Typography> <ArrowForwardIosIcon sx={{ ml: '16px', color: "inherit" }} />
+        </ButtonBase>
+
 
     )
 }
