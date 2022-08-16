@@ -27,6 +27,6 @@ export const getStaticProps: GetStaticProps = async () => {
   const data = await getOrderedCollection("projects", "year");
   return {
     props: { data },
-    revalidate: 1,
+    revalidate: 60,
   };
 };

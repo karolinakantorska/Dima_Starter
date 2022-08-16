@@ -7,20 +7,20 @@ import useResponsive from '../../hooks/useResponsive';
 import { Mail } from "../_Reusable/Mail";
 import { deleteProjectFromFirestore } from '../../utils/apis/deleteFromFirestore';
 import { deleteImage } from 'src/utils/apis/uploadPhoto';
-import { PATH_DIMA } from 'src/routes/paths';
+import { PATH_DIMA, PATH_REV } from 'src/routes/paths';
 import { EditDeleteIconCom } from '../_Reusable/EditDeleteIconCom';
 import { DeleteDialogCom } from '../_Reusable/DeleteDialogCom';
 import { ChipDisplayOrderCom } from '../_Reusable/ChipDisplayOrderCom';
 import { TitleTextCom } from '../_Reusable/TitleTextCom';
 import { BodyTextCom } from '../_Reusable/BodyTextCom';
 import useAuth from 'src/utils/firebaseAuth/useAuth';
+import { useRouter } from 'next/router';
 
 export function CardPersonCom({
     person,
     setSucces,
     setLoading,
     setError,
-    revalidate
 }: {
     person: Person
     setSucces: Dispatch<SetStateAction<string | boolean>>;
@@ -29,14 +29,13 @@ export function CardPersonCom({
         code: string;
         message: string;
     } | null>>;
-    revalidate: any;
+
 }) {
     const isDesktop = useResponsive('up', 'lg');
     const isSmall = useResponsive('down', 'sm');
     const { isAuthenticated } = useAuth();
     const { id, photo, name, surname, title1, title2, job1, job2, email } = person;
     const [open, setOpen] = useState(false);
-
     function handleOpen() {
         setOpen(true);
     };
@@ -47,10 +46,13 @@ export function CardPersonCom({
         setLoading(true);
         deleteProjectFromFirestore('team', id)
             .then(() => {
-                deleteImage(photo.url);
-                setLoading(false);
-                setSucces(true);
-                revalidate();
+                if (photo.url !== '') {
+                    deleteImage(photo.url);
+                }
+                fetch(`${PATH_REV.revalidate}?path=${PATH_DIMA.teams}&secret=${process.env.NEXT_PUBLIC_MY_SECRET_TOKEN}`).then(() => {
+                    setLoading(false);
+                    setSucces(true);
+                })
             })
             .catch((error) => {
                 console.log('error', error);

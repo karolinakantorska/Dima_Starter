@@ -1,24 +1,15 @@
-import React, { useEffect, useMemo, useState } from 'react';
-
-// next
+import React, { useContext, useEffect, useMemo, useState } from 'react';
 import { useRouter } from 'next/router';
-//import { useRouter } from 'next/router';
-// form
 import { useForm, } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 
-// @mui
 import { LoadingButton } from '@mui/lab';
 import {
   Grid,
   Stack,
 } from '@mui/material';
-// @types
 import { FormProvider } from '../../hook-form';
-
-// utils
 import { addProjestToFirestore, editProjectInFirestore } from '../../../utils/apis/addToFirestore';
-
 import { NameCardCom } from './NameCardCom';
 import { TitleCardCom } from './TitleCardCom';
 import { JobCardCom } from './JobCardCom';
@@ -27,19 +18,17 @@ import { PhotoCardCom } from './PhotoCardComp';
 import { Person } from '../../../utils/TS/interface';
 import { NewPersonSchema } from '../../../utils/myUtils/formSchema';
 import { AlertCom } from '../../_Reusable/AlertCom';
-import { PATH_DIMA } from '../../../routes/paths';
+import { PATH_DIMA, PATH_REV } from '../../../routes/paths';
 import { CategoryCardCom } from './CategoryCardCom';
-
+import { ReloadContext } from 'src/contexts/RevalidateContext';
 /*
 export interface FormValuesProps extends Partial<Person> {
-
 }
 */
 type Props = {
   isEdit?: boolean;
   currentPerson?: Person
 };
-
 export default function PersonNewEditForm({ isEdit, currentPerson }: Props) {
   const { push } = useRouter();
   //console.log('currentProject', currentProject);
@@ -47,9 +36,15 @@ export default function PersonNewEditForm({ isEdit, currentPerson }: Props) {
   const [succes, setSucces] = useState<boolean | string>(false);
   const [loading, setLoading] = useState(false);
 
+  const { setChanged } = useContext(ReloadContext);
   useEffect(() => {
     if (succes) {
-      setTimeout(() => setSucces(false), 5000);
+      setTimeout(() => {
+        setSucces(false);
+        if (currentPerson?.id) {
+          push(PATH_DIMA.teams);
+        }
+      }, 1500);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [succes]);
@@ -105,28 +100,28 @@ export default function PersonNewEditForm({ isEdit, currentPerson }: Props) {
   const onSubmit = async (data: Person) => {
     setLoading(true);
     if (currentPerson?.id) {
-      //const Id = currentProject ? currentProject.id : ;
-
       editProjectInFirestore('team', currentPerson.id, data)
         .then(() => {
-          //console.log('response', response);
-          setSucces(true);
-          setLoading(false);
+          fetch(`${PATH_REV.revalidate}?path=${PATH_DIMA.teams}&secret=${process.env.NEXT_PUBLIC_MY_SECRET_TOKEN}`).then(() => {
+            setLoading(false);
+            setSucces(true);
+            setChanged('teams');
+          })
         })
-        .then(() => push(PATH_DIMA.teams))
         .catch((error) => {
-          //console.log('error', error);
+          console.log(error);
           setError(error)
           setLoading(false);
         })
     } else {
       addProjestToFirestore('team', data)
-        .then((response: any) => {
-          //console.log('response', response);
-          //setId(response);
-          setSucces(true);
-          setLoading(false);
-          reset();
+        .then(() => {
+          fetch(`${PATH_REV.revalidate}?path=${PATH_DIMA.teams}&secret=${process.env.NEXT_PUBLIC_MY_SECRET_TOKEN}`).then(() => {
+            setLoading(false);
+            setSucces(true);
+            setChanged('teams');
+            reset();
+          })
         })
         .catch((error) => {
           //console.log('error', error);

@@ -1,33 +1,41 @@
-
-// @mui
 import React, { useEffect, useState } from 'react';
 import { Box, } from '@mui/material';
 import { layoutHeader } from 'src/utils/dima';
 import { Person } from 'src/utils/TS/interface';
-// hooks
 import useResponsive from '../../hooks/useResponsive';
 import { useRouter } from 'next/router';
 import { SiteTitle } from '../_Reusable/SiteTitle';
 import { CardPersonCom } from './CardPersonCom';
-import { PATH_DIMA } from '../../routes/paths';
 import { AlertCom } from '../_Reusable/AlertCom';
+import { useContext } from 'react';
+import { ReloadContext } from 'src/contexts/RevalidateContext';
 
 export function TeamListCom(
-  { teamList, revalidate }: {
+  { teamList }: {
     teamList: Person[],
-    revalidate: () => Promise<void>
+
   }) {
   const [error, setError] = useState<null | { code: string, message: string }>(null)
   const [succes, setSucces] = useState<boolean | string>(false);
   const [loading, setLoading] = useState(false);
 
   const router = useRouter();
+
+  const { changed, setChanged } = useContext(ReloadContext);
+  console.log('changed: ', changed)
+  useEffect(() => {
+    if (changed === 'teams') {
+      setChanged(false);
+      router.reload();
+    }
+  }, []);
+
   useEffect(() => {
     if (succes) {
       setTimeout(() => {
         setSucces(false);
-        router.push(PATH_DIMA.teams);
-      }, 2500);
+        router.reload();
+      }, 1500);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [succes]);
@@ -38,6 +46,7 @@ export function TeamListCom(
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [error]);
+
   const isDesktop = useResponsive('up', 'lg');
   const isMiddle = useResponsive('up', 'lm');
   const isSmall = useResponsive('up', 'md');
@@ -61,7 +70,6 @@ export function TeamListCom(
             setSucces={setSucces}
             setLoading={setLoading}
             setError={setError}
-            revalidate={revalidate}
           />)}
         </Box>
       </>

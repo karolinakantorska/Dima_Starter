@@ -18,7 +18,7 @@ import { ProjectType, } from 'src/utils/TS/interface';
 // utils
 import { addProjestToFirestore, editProjectInFirestore } from 'src/utils/apis/addToFirestore';
 import { createProject } from 'src/utils/myUtils/createProject';
-import { PATH_PROJEKTE } from 'src/routes/paths';
+import { PATH_PROJEKTE, PATH_REV } from 'src/routes/paths';
 import { AlertCom } from '../../_Reusable/AlertCom';
 import { TitleCardCom } from './TitleCardCom';
 import { DescriptionCardCom } from './DescriptionCardCom';
@@ -26,6 +26,7 @@ import { PhotoCardCom } from './PhotoCardComp';
 import { AuthorsCardCom } from './AuthorsCardCom';
 import { YearCardCom } from './YearCardCom';
 import { CategoryVolumenCardCom } from './CategoryVolumenCardCom';
+import { PATH_DIMA } from '../../../routes/paths';
 
 
 // components
@@ -132,12 +133,13 @@ export default function ProjectNewEditForm({ isEdit, currentProject }: Props) {
   const onSubmit = async (data: FormValuesProps) => {
     setLoading(true);
     const projectToDB = createProject(data);
-
     if (currentProject?.id) {
       //const Id = currentProject ? currentProject.id : ;
       editProjectInFirestore('projects', currentProject.id, projectToDB)
         .then(() => {
           //console.log('response', response);
+          // TODO revalidate 
+          //push(`${PATH_REV.revalidate}?path=${PATH_PROJEKTE.projekte}&secret=${process.env.NEXT_PUBLIC_MY_SECRET_TOKEN}`);
           setSucces(true);
           setLoading(false);
         })
@@ -152,6 +154,7 @@ export default function ProjectNewEditForm({ isEdit, currentProject }: Props) {
         .then((response: any) => {
           //console.log('response', response);
           //setId(response);
+          // TODO revalidate
           setSucces(true);
           setLoading(false);
           reset();

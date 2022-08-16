@@ -7,10 +7,8 @@ import 'slick-carousel/slick/slick-theme.css';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 import 'react-lazy-load-image-component/src/effects/opacity.css';
 import 'react-lazy-load-image-component/src/effects/black-and-white.css';
-
 //Auth
 import { AuthProvider } from '../contexts/FirebaseContext';
-import cookie from 'cookie';
 import { ReactElement, ReactNode } from 'react';
 import { AnimatePresence } from 'framer-motion';
 // next
@@ -19,10 +17,8 @@ import Head from 'next/head';
 import App, { AppProps, AppContext } from 'next/app';
 // @mui
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
-//import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 // utils
-//import { getSettings } from '../utils/getSettings';
 // contexts
 import { SettingsProvider } from '../contexts/SettingsContext';
 import { CollapseDrawerProvider } from '../contexts/CollapseDrawerContext';
@@ -30,10 +26,10 @@ import { CollapseDrawerProvider } from '../contexts/CollapseDrawerContext';
 import ThemeProvider from '../theme';
 // components
 import ThemeSettings from '../components/settings';
-//import { SettingsValueProps } from '../components/settings/type';
 import ProgressBar from '../components/ProgressBar';
 import MotionLazyContainer from '../components/animate/MotionLazyContainer';
 import { defaultSettings } from '../config';
+import { ReloadProvider } from 'src/contexts/RevalidateContext';
 
 // ----------------------------------------------------------------------
 
@@ -65,15 +61,17 @@ export default function MyApp(
               <MotionLazyContainer>
                 <ThemeProvider>
                   <ThemeSettings>
-                    <ProgressBar />
-                    <AnimatePresence
-                      exitBeforeEnter={false}
-                    >
-                      {getLayout(<Component
-                        {...pageProps}
-                        key={router.route}
-                      />)}
-                    </AnimatePresence>
+                    <ReloadProvider>
+                      <ProgressBar />
+                      <AnimatePresence
+                        exitBeforeEnter={false}
+                      >
+                        {getLayout(<Component
+                          {...pageProps}
+                          key={router.route}
+                        />)}
+                      </AnimatePresence>
+                    </ReloadProvider>
                   </ThemeSettings>
                 </ThemeProvider>
               </MotionLazyContainer>

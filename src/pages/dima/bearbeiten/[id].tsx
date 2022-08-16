@@ -13,7 +13,6 @@ import PersonNewEditForm from "src/components/_Team/NewEdit/PersonNewEditForm";
 PersonBearbeiten.getLayout = function getLayout(page: React.ReactElement) {
   return <Layout >{page}</Layout>;
 };
-
 // ----------------------------------------------------------------------
 export default function PersonBearbeiten({ data }: any) {
   const isEdit = true;
@@ -27,7 +26,6 @@ export default function PersonBearbeiten({ data }: any) {
         <PersonNewEditForm isEdit={isEdit} currentPerson={data} />
       </Page>
     </AuthGuard>
-
   );
 }
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -36,13 +34,13 @@ export const getStaticPaths: GetStaticPaths = async () => {
     params: { id: item.id },
   }));
   //console.log(paths);
-  return { paths, fallback: false };
+  return { paths, fallback: true };
 };
 export const getStaticProps: GetStaticProps = async ({ params }: any) => {
   const { id } = params;
   const data = await getCollectionDocument("team", id);
   return {
     props: { data },
-    revalidate: 10,
+    revalidate: 60,
   };
 };
