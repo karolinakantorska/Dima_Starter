@@ -1,7 +1,7 @@
 // @mui
 import { enUS, frFR, zhCN, viVN, arSD } from '@mui/material/locale';
 // components
-import { SettingsValueProps } from './components/settings/type';
+//import { SettingsValueProps } from './components/settings/type';
 
 // LAYOUT
 // ----------------------------------------------------------------------
@@ -32,7 +32,7 @@ export const ICON = {
 // SETTINGS
 // Please remove `localStorage` when you change settings.
 // ----------------------------------------------------------------------
-
+/*
 export const cookiesExpires = 3;
 
 export const cookiesKey = {
@@ -52,7 +52,7 @@ export const defaultSettings: SettingsValueProps = {
   themeColorPresets: 'orange',
   themeStretch: false,
 };
-
+*/
 // MULTI LANGUAGES
 // Please remove `localStorage` when you change settings.
 // ----------------------------------------------------------------------

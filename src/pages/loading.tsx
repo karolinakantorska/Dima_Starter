@@ -13,7 +13,6 @@ Landing.getLayout = function getLayout(page: ReactElement) {
 
 // ----------------------------------------------------------------------
 export default function Landing() {
-  //const { themeStretch } = useSettings();
   return (
     <Page title="Loading">
       <LoadingScreen />
