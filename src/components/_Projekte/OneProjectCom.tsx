@@ -1,20 +1,34 @@
 import { m, } from 'framer-motion';
 // @mui 
-import { Box, Table, TableBody, TableRow, TableCell, Typography, Stack, } from '@mui/material';
+import { Box, Table, TableBody, TableRow, TableCell, Stack, } from '@mui/material';
 
 import useResponsive from '../../hooks/useResponsive';
 import { ProjectType } from '../../utils/TS/interface';
 
 import CarouselBasic3 from '../carousel/CarouselBasic3';
-import FooterCom from '../_Reusable/FooterCom';
+
 import { TitleTextCom } from '../_Reusable/TitleTextCom';
 import { BodyTextCom } from '../_Reusable/BodyTextCom';
+import { useContext, useEffect } from 'react';
+import { ReloadContext } from 'src/contexts/RevalidateContext';
+import { useRouter } from 'next/router';
 
 export function OneProjectCom({ project }: { project: ProjectType }) {
   const isDesktop = useResponsive('up', 'lg');
   const isSmallDesktop = useResponsive('up', 'lm');
   const isSmall = useResponsive('down', 'sm');
   const isMobile = useResponsive('down', 'mobile');
+
+  const { changed, setChanged } = useContext(ReloadContext);
+
+  const router = useRouter();
+
+  useEffect(() => {
+    if (changed.id === project.id) {
+      setChanged({ changed: false, id: '' });
+      router.reload();
+    }
+  }, []);
 
   const transition = {
     type: 'tween',

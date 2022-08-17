@@ -76,14 +76,30 @@ export function ProjektCardCom({
             disableRipple
             aria-label={title}
           >
-            <Box
+            <Image
+              src={photo.url}
+              alt={photo.alt}
+              ratio="16/9"
+            />
+          </CardActionArea>
+        </Card>
+      </Link>
+      <TextCardCom project={project} big={isBig} rewerseBig={rewerseBig} setSucces={setSucces}
+        setLoading={setLoading}
+        setError={setError} />
+    </Box>
+  );
+}
+
+/*
+ <Box
               component={m.div}
               key="animated children"
               sx={{
                 height: '100%',
                 width: '100%',
                 position: 'absolute',
-                background: 'transparent',
+                background: 'red',
                 zIndex: 2000,
                 transition: '.15s',
                 boxShadow: 'inset 0px 0px rgba(255,255,255,0.5)',
@@ -93,19 +109,4 @@ export function ProjektCardCom({
                 boxShadow: 'inset 0px -600px rgba(255,255,255,0.5)',
               }}
             />
-            <Image
-              src={photo.url}
-              alt={photo.alt}
-              ratio="16/9"
-            />
-          </CardActionArea>
-        </Card>
-
-      </Link>
-      <TextCardCom project={project} big={isBig} rewerseBig={rewerseBig} setSucces={setSucces}
-        setLoading={setLoading}
-        setError={setError} />
-    </Box>
-  );
-}
-
+            */

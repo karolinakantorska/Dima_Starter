@@ -21,6 +21,7 @@ import { AlertCom } from '../../_Reusable/AlertCom';
 import { PATH_DIMA, PATH_REV } from '../../../routes/paths';
 import { CategoryCardCom } from './CategoryCardCom';
 import { ReloadContext } from 'src/contexts/RevalidateContext';
+import { revalidateURL } from 'src/utils/myUtils/revalidateURL';
 /*
 export interface FormValuesProps extends Partial<Person> {
 }
@@ -102,10 +103,12 @@ export default function PersonNewEditForm({ isEdit, currentPerson }: Props) {
     if (currentPerson?.id) {
       editProjectInFirestore('team', currentPerson.id, data)
         .then(() => {
-          fetch(`${PATH_REV.revalidate}?path=${PATH_DIMA.teams}&secret=${process.env.NEXT_PUBLIC_MY_SECRET_TOKEN}`).then(() => {
+          fetch(revalidateURL(PATH_DIMA.teams)).then(() => {
             setLoading(false);
             setSucces(true);
-            setChanged('teams');
+            setChanged({
+              changed: 'teams', id: currentPerson.id
+            });
           })
         })
         .catch((error) => {
@@ -115,11 +118,12 @@ export default function PersonNewEditForm({ isEdit, currentPerson }: Props) {
         })
     } else {
       addProjestToFirestore('team', data)
-        .then(() => {
-          fetch(`${PATH_REV.revalidate}?path=${PATH_DIMA.teams}&secret=${process.env.NEXT_PUBLIC_MY_SECRET_TOKEN}`).then(() => {
+        .then((response) => {
+
+          fetch(revalidateURL(PATH_DIMA.teams)).then(() => {
             setLoading(false);
             setSucces(true);
-            setChanged('teams');
+            setChanged({ changed: 'teams', id: response });
             reset();
           })
         })

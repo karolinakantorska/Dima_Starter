@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useContext, useEffect, useMemo, useState } from 'react';
 // next
 import { useRouter } from 'next/router';
 //import { useRouter } from 'next/router';
@@ -27,6 +27,8 @@ import { AuthorsCardCom } from './AuthorsCardCom';
 import { YearCardCom } from './YearCardCom';
 import { CategoryVolumenCardCom } from './CategoryVolumenCardCom';
 import { PATH_DIMA } from '../../../routes/paths';
+import { revalidateURL } from 'src/utils/myUtils/revalidateURL';
+import { ReloadContext } from 'src/contexts/RevalidateContext';
 
 
 // components
@@ -60,17 +62,23 @@ export default function ProjectNewEditForm({ isEdit, currentProject }: Props) {
   const [error, setError] = useState<null | { code: string, message: string }>(null)
   const [succes, setSucces] = useState<boolean | string>(false);
   const [loading, setLoading] = useState(false);
+  const { setChanged } = useContext(ReloadContext);
 
   useEffect(() => {
     if (succes) {
-      setTimeout(() => setSucces(false), 5000);
+      setTimeout(() => {
+        setSucces(false);
+        if (currentProject?.id) {
+          push(PATH_PROJEKTE.projekte);
+        }
+      }, 2500);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [succes]);
 
   useEffect(() => {
     if (error) {
-      setTimeout(() => setError(null), 9000);
+      setTimeout(() => setError(null), 5000);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [error]);
@@ -137,13 +145,12 @@ export default function ProjectNewEditForm({ isEdit, currentProject }: Props) {
       //const Id = currentProject ? currentProject.id : ;
       editProjectInFirestore('projects', currentProject.id, projectToDB)
         .then(() => {
-          //console.log('response', response);
-          // TODO revalidate 
-          //push(`${PATH_REV.revalidate}?path=${PATH_PROJEKTE.projekte}&secret=${process.env.NEXT_PUBLIC_MY_SECRET_TOKEN}`);
-          setSucces(true);
-          setLoading(false);
+          fetch(revalidateURL(PATH_PROJEKTE.projekte)).then(() => {
+            setLoading(false);
+            setSucces(true);
+            setChanged({ changed: 'projects', id: currentProject.id });
+          })
         })
-        .then(() => push(PATH_PROJEKTE.projekte))
         .catch((error) => {
           //console.log('error', error);
           setError(error)
@@ -151,13 +158,13 @@ export default function ProjectNewEditForm({ isEdit, currentProject }: Props) {
         })
     } else {
       addProjestToFirestore('projects', projectToDB)
-        .then((response: any) => {
-          //console.log('response', response);
-          //setId(response);
-          // TODO revalidate
-          setSucces(true);
-          setLoading(false);
-          reset();
+        .then((response) => {
+          fetch(revalidateURL(PATH_PROJEKTE.projekte)).then(() => {
+            setLoading(false);
+            setSucces(true);
+            setChanged({ changed: 'projects', id: response });
+            reset();
+          })
         })
         .catch((error) => {
           //console.log('error', error);

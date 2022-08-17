@@ -33,7 +33,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
   return { paths, fallback: true };
 };
 export const getStaticProps: GetStaticProps = async ({ params }: any) => {
-  console.log('params1: ', params)
   const { id } = params;
   const data = await getCollectionDocument("projects", id);
   return {

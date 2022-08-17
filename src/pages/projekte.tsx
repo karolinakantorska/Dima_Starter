@@ -4,7 +4,7 @@ import Layout from 'src/layouts';
 // components
 import Page from 'src/components/Page';
 
-import { ProjectsListCom } from 'src/components/_Projekte/projectsListCom';
+import { ProjectsListCom } from 'src/components/_Projekte/ProjectsListCom';
 import { getOrderedCollection } from "src/utils/apis/apis";
 
 // ----------------------------------------------------------------------
@@ -27,6 +27,5 @@ export const getStaticProps: GetStaticProps = async () => {
   const data = await getOrderedCollection("projects", "year");
   return {
     props: { data },
-    revalidate: 60,
   };
 };

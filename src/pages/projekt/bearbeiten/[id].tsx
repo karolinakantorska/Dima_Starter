@@ -8,6 +8,9 @@ import ProjectNewEditForm from "src/components/_Projekte/NewEditProjekt/ProjectN
 import Layout from "src/layouts"
 import { getCollectionId, getCollectionDocument } from "src/utils/apis/apis";
 import AuthGuard from "src/guards/AuthGuard";
+import { useState, useEffect } from "react";
+import LoadingScreen from "src/components/LoadingScreen";
+
 // components
 // ----------------------------------------------------------------------
 
@@ -16,22 +19,36 @@ ProjektBearbeiten.getLayout = function getLayout(page: React.ReactElement) {
 };
 
 // ----------------------------------------------------------------------
-export default function ProjektBearbeiten({ data }: any) {
+export default function ProjektBearbeiten() {
   const isEdit = true;
+  const [data, setData] = useState<any>(false);
   const router = useRouter();
   const { id } = router.query;
-  console.log('id:', id);
-  console.log('data:', data);
+  const ID = (typeof id === 'string') ? id : '';
+  useEffect(() => {
+    getCollectionDocument("projects", ID).then((result) => setData(result));
+  }, [])
+
   return (
     <AuthGuard>
       <Page title={`Edit Projekt`}>
-        <ProjectNewEditForm isEdit={isEdit} currentProject={data} />
+        {data ? <ProjectNewEditForm
+          isEdit={isEdit}
+          currentProject={data}
+        /> : <LoadingScreen />}
       </Page>
     </AuthGuard>
 
   );
 }
 
+/*
+<ProjectNewEditForm
+          isEdit={isEdit}
+          currentProject={data}
+        />
+        */
+/*
 export const getStaticPaths: GetStaticPaths = async () => {
   const data = await getCollectionId("projects");
   const paths = data.map((item) => ({
@@ -49,3 +66,4 @@ export const getStaticProps: GetStaticProps = async ({ params }: any) => {
     revalidate: 10,
   };
 };
+*/

@@ -1,5 +1,4 @@
 export function createMetadata(title: string) {
-    console.log('title', title)
     return {
         contentType: 'image/jpeg',
         customMetadata: {

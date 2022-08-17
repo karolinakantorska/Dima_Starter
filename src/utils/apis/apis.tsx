@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { collection, getDocs, doc, getDoc, query, orderBy } from "firebase/firestore";
 import { DB } from "src/contexts/FirebaseContext";
+import { ProjectType } from 'src/utils/TS/interface';
 
 export async function getOrderedCollection(collectionName: string, sortBy: string) {
   const q = query(collection(DB, collectionName), orderBy(sortBy, "desc"));

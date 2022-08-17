@@ -7,7 +7,7 @@ export function uploadOnePhoto(photo: any, folderName: string) {
   const storage = getStorage();
   const timestamp = Date.now();
   const title = fileNameWithoutFileExtension(photo.name);
-  //const metadata = createMetadata(title);
+  const metadata = createMetadata(title);
   const storageRef = ref(storage, `${folderName}/${title}_${timestamp}`);
 
   const uploadTask = uploadBytesResumable(storageRef, photo);

@@ -1,3 +1,5 @@
+
+
 export default async function handler(
     req: { query: { secret: string | undefined, path: string } },
     res: {
@@ -5,13 +7,18 @@ export default async function handler(
         unstable_revalidate: (arg0: string) => any; json: (arg0: { revalidated: boolean }) => any
     }
 ) {
+
     if (req.query.secret !== process.env.NEXT_PUBLIC_MY_SECRET_TOKEN) {
+        console.log('Invalid token');
         return res.status(401).json({ message: 'Invalid token' })
     }
+
     try {
         await res.unstable_revalidate(req.query.path);
+        console.log('revalidated');
         return res.json({ revalidated: true });
     } catch (err) {
+        console.log('not revalidated');
         return res.status(500).send('Error revalidating' + err)
     }
 

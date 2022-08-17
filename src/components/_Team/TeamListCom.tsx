@@ -22,10 +22,10 @@ export function TeamListCom(
   const router = useRouter();
 
   const { changed, setChanged } = useContext(ReloadContext);
-  console.log('changed: ', changed)
+
   useEffect(() => {
-    if (changed === 'teams') {
-      setChanged(false);
+    if (changed.changed === 'teams') {
+      setChanged({ changed: false, id: '' });
       router.reload();
     }
   }, []);

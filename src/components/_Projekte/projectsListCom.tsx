@@ -4,9 +4,9 @@ import useResponsive from '../../hooks/useResponsive';
 import { ProjektCardCom } from './ProjektCardCom';
 import { ProjectsListType, ProjectType } from '../../utils/TS/interface';
 import { useRouter } from 'next/router';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { AlertCom } from '../_Reusable/AlertCom';
-import { PATH_PROJEKTE } from 'src/routes/paths';
+import { ReloadContext } from 'src/contexts/RevalidateContext';
 //import { deleteImage } from 'src/utils/apis/deletePhotoFromStorage';
 
 export function ProjectsListCom(
@@ -21,13 +21,21 @@ export function ProjectsListCom(
   const [error, setError] = useState<null | { code: string, message: string }>(null)
   const [succes, setSucces] = useState<boolean | string>(false);
   const [loading, setLoading] = useState(false);
+  const { changed, setChanged } = useContext(ReloadContext);
+
+  useEffect(() => {
+    if (changed.changed === 'projects') {
+      setChanged({ changed: false, id: '' });
+      router.reload();
+    }
+  }, []);
 
   useEffect(() => {
     if (succes) {
       setTimeout(() => {
         setSucces(false);
-        router.push(PATH_PROJEKTE.projekte);
-      }, 2500);
+        router.reload();
+      }, 1500);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [succes]);

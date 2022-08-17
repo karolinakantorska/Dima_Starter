@@ -8,7 +8,7 @@ import { firstLettersBig } from '../../utils/Text/textUtils';
 import { Box } from '@mui/system';
 import { Grid, CardActions, CardContent, Card } from '@mui/material';
 
-import { PATH_PROJEKTE } from '../../routes/paths';
+import { PATH_PROJEKTE, PATH_REV } from '../../routes/paths';
 import useAuth from 'src/utils/firebaseAuth/useAuth';
 import { deleteProjectFromFirestore } from '../../utils/apis/deleteFromFirestore';
 import { deleteImage } from 'src/utils/apis/uploadPhoto';
@@ -16,6 +16,7 @@ import { DeleteDialogCom } from '../_Reusable/DeleteDialogCom';
 import { EditDeleteIconCom } from '../_Reusable/EditDeleteIconCom';
 import { TitleTextCom } from '../_Reusable/TitleTextCom';
 import { BodyTextCom } from '../_Reusable/BodyTextCom';
+import { revalidateURL } from 'src/utils/myUtils/revalidateURL';
 
 export function TextCardCom({
   project,
@@ -80,8 +81,10 @@ export function TextCardCom({
       .then(() => {
         if (photo.url) { deleteImage(photo.url); }
         if (photos.length > 0) { photos.map((photo: ImageType) => deleteImage(photo.url)) };
-        setLoading(false);
-        setSucces(true);
+        fetch(revalidateURL(PATH_PROJEKTE.projekte)).then(() => {
+          setLoading(false);
+          setSucces(true);
+        })
       })
       .catch((error) => {
         //console.log('error', error);
@@ -118,7 +121,7 @@ export function TextCardCom({
 
   return (
     <>
-      {!isBigAndDisplaysDesktop && <TextBox />}
+      {!isBigAndDisplaysDesktop && <Card><TextBox /></Card>}
       {isBigAndDisplaysDesktop &&
         <Card sx={big && { ...cardPropsBig }} >
           <Box

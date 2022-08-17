@@ -14,7 +14,8 @@ import { ChipDisplayOrderCom } from '../_Reusable/ChipDisplayOrderCom';
 import { TitleTextCom } from '../_Reusable/TitleTextCom';
 import { BodyTextCom } from '../_Reusable/BodyTextCom';
 import useAuth from 'src/utils/firebaseAuth/useAuth';
-import { useRouter } from 'next/router';
+import { revalidateURL } from 'src/utils/myUtils/revalidateURL';
+
 
 export function CardPersonCom({
     person,
@@ -31,6 +32,7 @@ export function CardPersonCom({
     } | null>>;
 
 }) {
+
     const isDesktop = useResponsive('up', 'lg');
     const isSmall = useResponsive('down', 'sm');
     const { isAuthenticated } = useAuth();
@@ -42,6 +44,7 @@ export function CardPersonCom({
     function handleClose() {
         setOpen(false);
     };
+
     function handleDelete() {
         setLoading(true);
         deleteProjectFromFirestore('team', id)
@@ -49,7 +52,7 @@ export function CardPersonCom({
                 if (photo.url !== '') {
                     deleteImage(photo.url);
                 }
-                fetch(`${PATH_REV.revalidate}?path=${PATH_DIMA.teams}&secret=${process.env.NEXT_PUBLIC_MY_SECRET_TOKEN}`).then(() => {
+                fetch(revalidateURL(PATH_DIMA.teams)).then(() => {
                     setLoading(false);
                     setSucces(true);
                 })

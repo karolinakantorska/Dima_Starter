@@ -7,6 +7,7 @@ import Layout from "src/layouts"
 import { getCollectionId, getCollectionDocument } from "src/utils/apis/apis";
 import AuthGuard from "src/guards/AuthGuard";
 import PersonNewEditForm from "src/components/_Team/NewEdit/PersonNewEditForm";
+import { useEffect, useState } from "react";
 // components
 // ----------------------------------------------------------------------
 
@@ -14,12 +15,15 @@ PersonBearbeiten.getLayout = function getLayout(page: React.ReactElement) {
   return <Layout >{page}</Layout>;
 };
 // ----------------------------------------------------------------------
-export default function PersonBearbeiten({ data }: any) {
+export default function PersonBearbeiten() {
   const isEdit = true;
   const router = useRouter();
   const { id } = router.query;
-  console.log('id:', id);
-  console.log('data:', data);
+  const [data, setData] = useState<any>(false);
+  const ID = (typeof id === 'string') ? id : '';
+  useEffect(() => {
+    getCollectionDocument("projects", ID).then((result) => setData(result));
+  }, [])
   return (
     <AuthGuard>
       <Page title={`${isEdit ? 'Edit' : 'Neues'} Mitarbeiter`}>
@@ -28,6 +32,7 @@ export default function PersonBearbeiten({ data }: any) {
     </AuthGuard>
   );
 }
+/*
 export const getStaticPaths: GetStaticPaths = async () => {
   const data = await getCollectionId("team");
   const paths = data.map((item) => ({
@@ -44,3 +49,4 @@ export const getStaticProps: GetStaticProps = async ({ params }: any) => {
     revalidate: 60,
   };
 };
+*/
