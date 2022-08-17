@@ -108,8 +108,8 @@ export default function CarouselBasic3({ photos }: { photos: ImagesType }) {
           onPrevious={handlePrevious}
         >
           <Slider ref={carouselRef} {...settings}>
-            {photos.map((photo) => (
-              <CarouselItem key={photo.alt} item={{ image: photo.url, title: photo.alt, description: photo.alt }} />
+            {photos.map((photo, i) => (
+              <CarouselItem key={photo.alt + i} item={{ image: photo.url, title: photo.alt, description: photo.alt }} />
             ))
             }
           </Slider>

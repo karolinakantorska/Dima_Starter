@@ -114,7 +114,6 @@ export function OneProjectCom({ project }: { project: ProjectType }) {
   )
 
   if (project) {
-    console.log('project.photos', project.photos)
     const photosCarusel = [project.photo, ...project.photos]
     return (
       <>
@@ -132,7 +131,7 @@ export function OneProjectCom({ project }: { project: ProjectType }) {
               <Table id="Project_Table">
                 <TableBody>
                   {!isMobile && row2().map((row, i) => (<TableRowDesktop key={i} row={row} />))}
-                  {isMobile && row2().map((row, i) => (<TableRowMobile key={i} row={row} />))}
+                  {isMobile && row2().map((row, i) => (<TableRowMobile key={i + i} row={row} />))}
                 </TableBody>
               </Table>
             </Box>

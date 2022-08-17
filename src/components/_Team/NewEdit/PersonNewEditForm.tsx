@@ -103,9 +103,10 @@ export default function PersonNewEditForm({ isEdit, currentPerson }: Props) {
       editProjectInFirestore('team', currentPerson.id, data)
         .then(() => {
           fetch(revalidateURL(PATH_DIMA.teams)).then(() => {
+            localStorage.setItem('teams', 'teams');
             setLoading(false);
             setSucces(true);
-            localStorage.setItem('teams', 'teams');
+
           })
         })
         .catch((error) => {
@@ -117,9 +118,10 @@ export default function PersonNewEditForm({ isEdit, currentPerson }: Props) {
       addProjestToFirestore('team', data)
         .then((response) => {
           fetch(revalidateURL(PATH_DIMA.teams)).then(() => {
+            localStorage.setItem('teams', 'teams');
             setLoading(false);
             setSucces(true);
-            localStorage.setItem('teams', 'teams');
+
             reset();
           })
         })

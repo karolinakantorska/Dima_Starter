@@ -1,4 +1,4 @@
-import { useContext, useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 // next
 import { useRouter } from 'next/router';
 //import { useRouter } from 'next/router';
@@ -26,9 +26,9 @@ import { PhotoCardCom } from './PhotoCardComp';
 import { AuthorsCardCom } from './AuthorsCardCom';
 import { YearCardCom } from './YearCardCom';
 import { CategoryVolumenCardCom } from './CategoryVolumenCardCom';
-import { PATH_DIMA } from '../../../routes/paths';
+
 import { revalidateURL } from 'src/utils/myUtils/revalidateURL';
-import { ReloadContext } from 'src/contexts/RevalidateContext';
+
 
 
 // components
@@ -125,9 +125,7 @@ export default function ProjectNewEditForm({ isEdit, currentProject }: Props) {
     handleSubmit,
     formState: { isSubmitting },
   } = methods;
-
   // const values = watch();
-
   useEffect(() => {
     if (isEdit && currentProject) {
       reset(defaultValues);
@@ -146,10 +144,10 @@ export default function ProjectNewEditForm({ isEdit, currentProject }: Props) {
       editProjectInFirestore('projects', currentProject.id, projectToDB)
         .then(() => {
           fetch(revalidateURL(PATH_PROJEKTE.projekte)).then(() => {
-            setLoading(false);
-            setSucces(true);
             localStorage.setItem('projects', 'projects');
             localStorage.setItem('projectsId', currentProject.id);
+            setLoading(false);
+            setSucces(true);
           })
         })
         .catch((error) => {
@@ -161,10 +159,11 @@ export default function ProjectNewEditForm({ isEdit, currentProject }: Props) {
       addProjestToFirestore('projects', projectToDB)
         .then((response: string) => {
           fetch(revalidateURL(PATH_PROJEKTE.projekte)).then(() => {
-            setLoading(false);
-            setSucces(true);
             localStorage.setItem('projects', 'projects');
             localStorage.setItem('projectsId', response);
+            setLoading(false);
+            setSucces(true);
+
             reset();
           })
         })

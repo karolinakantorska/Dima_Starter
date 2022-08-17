@@ -37,6 +37,5 @@ export const getStaticProps: GetStaticProps = async ({ params }: any) => {
   const data = await getCollectionDocument("projects", id);
   return {
     props: { data },
-    revalidate: 10,
   };
 };
