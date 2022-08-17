@@ -24,7 +24,7 @@ export default function Projekte(props: any) {
   );
 }
 export const getStaticProps: GetStaticProps = async () => {
-  const data = await getOrderedCollection("projects", "year");
+  const data = await getOrderedCollection("projects", "year", "desc");
   return {
     props: { data },
   };

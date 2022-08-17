@@ -27,7 +27,7 @@ export default function Teams(props: any) {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const data = await getOrderedCollection("team", "displayOrder");
+  const data = await getOrderedCollection("team", "displayOrder", "asc");
   return {
     props: { data },
     //revalidate: 60,

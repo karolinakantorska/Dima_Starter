@@ -21,11 +21,12 @@ export function TeamListCom(
 
   const router = useRouter();
 
-  const { changed, setChanged } = useContext(ReloadContext);
+
 
   useEffect(() => {
-    if (changed.changed === 'teams') {
-      setChanged({ changed: false, id: '' });
+    const changed = localStorage.getItem('teams');
+    if (changed === 'teams') {
+      localStorage.removeItem('teams');
       router.reload();
     }
   }, []);

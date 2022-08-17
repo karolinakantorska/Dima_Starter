@@ -1,8 +1,9 @@
 
 import { doc, setDoc, addDoc, collection, WithFieldValue, DocumentData } from "firebase/firestore";
 import { DB } from "src/contexts/FirebaseContext";
+import { ProjectType } from "../TS/interface";
 
-export function addProjestToFirestore(title: string, project: WithFieldValue<DocumentData>) {
+export function addProjestToFirestore(title: string, project: WithFieldValue<DocumentData>): Promise<string> {
     //console.log('I am adding a project', project);
     return new Promise((resolve, reject) => {
         addDoc(collection(DB, title), project)

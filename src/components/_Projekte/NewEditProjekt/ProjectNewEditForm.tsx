@@ -62,7 +62,7 @@ export default function ProjectNewEditForm({ isEdit, currentProject }: Props) {
   const [error, setError] = useState<null | { code: string, message: string }>(null)
   const [succes, setSucces] = useState<boolean | string>(false);
   const [loading, setLoading] = useState(false);
-  const { setChanged } = useContext(ReloadContext);
+
 
   useEffect(() => {
     if (succes) {
@@ -148,7 +148,8 @@ export default function ProjectNewEditForm({ isEdit, currentProject }: Props) {
           fetch(revalidateURL(PATH_PROJEKTE.projekte)).then(() => {
             setLoading(false);
             setSucces(true);
-            setChanged({ changed: 'projects', id: currentProject.id });
+            localStorage.setItem('projects', 'projects');
+            localStorage.setItem('projectsId', currentProject.id);
           })
         })
         .catch((error) => {
@@ -158,11 +159,12 @@ export default function ProjectNewEditForm({ isEdit, currentProject }: Props) {
         })
     } else {
       addProjestToFirestore('projects', projectToDB)
-        .then((response) => {
+        .then((response: string) => {
           fetch(revalidateURL(PATH_PROJEKTE.projekte)).then(() => {
             setLoading(false);
             setSucces(true);
-            setChanged({ changed: 'projects', id: response });
+            localStorage.setItem('projects', 'projects');
+            localStorage.setItem('projectsId', response);
             reset();
           })
         })
@@ -177,7 +179,6 @@ export default function ProjectNewEditForm({ isEdit, currentProject }: Props) {
   return (
     <>
       <AlertCom succes={succes} error={error} loading={loading} setError={setError} />
-
       <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)} >
         <Grid container direction='row' spacing={6} sx={{ pt: 3 }}>
           <Grid item xs={12} md={7}  >
@@ -212,6 +213,3 @@ export default function ProjectNewEditForm({ isEdit, currentProject }: Props) {
     </>
   );
 }
-/*
-<RHFEditor simple name="description" />
-*/

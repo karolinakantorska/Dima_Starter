@@ -21,12 +21,13 @@ export function ProjectsListCom(
   const [error, setError] = useState<null | { code: string, message: string }>(null)
   const [succes, setSucces] = useState<boolean | string>(false);
   const [loading, setLoading] = useState(false);
-  const { changed, setChanged } = useContext(ReloadContext);
 
   useEffect(() => {
-    if (changed.changed === 'projects') {
-      setChanged({ changed: false, id: '' });
+    const changed = localStorage.getItem('projects');
+    if (changed === 'projects') {
+      localStorage.removeItem('projects');
       router.reload();
+
     }
   }, []);
 

@@ -37,7 +37,6 @@ export default function PersonNewEditForm({ isEdit, currentPerson }: Props) {
   const [succes, setSucces] = useState<boolean | string>(false);
   const [loading, setLoading] = useState(false);
 
-  const { setChanged } = useContext(ReloadContext);
   useEffect(() => {
     if (succes) {
       setTimeout(() => {
@@ -106,9 +105,7 @@ export default function PersonNewEditForm({ isEdit, currentPerson }: Props) {
           fetch(revalidateURL(PATH_DIMA.teams)).then(() => {
             setLoading(false);
             setSucces(true);
-            setChanged({
-              changed: 'teams', id: currentPerson.id
-            });
+            localStorage.setItem('teams', 'teams');
           })
         })
         .catch((error) => {
@@ -119,11 +116,10 @@ export default function PersonNewEditForm({ isEdit, currentPerson }: Props) {
     } else {
       addProjestToFirestore('team', data)
         .then((response) => {
-
           fetch(revalidateURL(PATH_DIMA.teams)).then(() => {
             setLoading(false);
             setSucces(true);
-            setChanged({ changed: 'teams', id: response });
+            localStorage.setItem('teams', 'teams');
             reset();
           })
         })

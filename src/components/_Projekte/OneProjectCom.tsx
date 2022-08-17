@@ -19,13 +19,12 @@ export function OneProjectCom({ project }: { project: ProjectType }) {
   const isSmall = useResponsive('down', 'sm');
   const isMobile = useResponsive('down', 'mobile');
 
-  const { changed, setChanged } = useContext(ReloadContext);
-
   const router = useRouter();
 
   useEffect(() => {
-    if (changed.id === project.id) {
-      setChanged({ changed: false, id: '' });
+    const changed = localStorage.getItem('projectsId');
+    if (changed === project.id) {
+      localStorage.removeItem('projectsId');
       router.reload();
     }
   }, []);
@@ -132,8 +131,8 @@ export function OneProjectCom({ project }: { project: ProjectType }) {
             <Box sx={{ ...propsBox }}>
               <Table id="Project_Table">
                 <TableBody>
-                  {!isMobile && row2().map((row) => (<TableRowDesktop key={row.name} row={row} />))}
-                  {isMobile && row2().map((row) => (<TableRowMobile key={row.name} row={row} />))}
+                  {!isMobile && row2().map((row, i) => (<TableRowDesktop key={i} row={row} />))}
+                  {isMobile && row2().map((row, i) => (<TableRowMobile key={i} row={row} />))}
                 </TableBody>
               </Table>
             </Box>
@@ -142,7 +141,7 @@ export function OneProjectCom({ project }: { project: ProjectType }) {
 
               {project.description.map((desc, i) => (
                 <>
-                  {(desc !== '') && <BodyTextCom key={desc} text={desc} sx={{ mb: 1.5 }} />}
+                  {(desc !== '') && <BodyTextCom key={i} text={desc} sx={{ mb: 1.5 }} />}
                 </>
               ))}
               {project.photoAuthor && <BodyTextCom text={`© Photography: ${project.photoAuthor}`} />}

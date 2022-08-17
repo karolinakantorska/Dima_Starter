@@ -61,17 +61,16 @@ export default function MyApp(
               <MotionLazyContainer>
                 <ThemeProvider>
                   <ThemeSettings>
-                    <ReloadProvider>
-                      <ProgressBar />
-                      <AnimatePresence
-                        exitBeforeEnter={false}
-                      >
-                        {getLayout(<Component
-                          {...pageProps}
-                          key={router.route}
-                        />)}
-                      </AnimatePresence>
-                    </ReloadProvider>
+                    <ProgressBar />
+                    <AnimatePresence
+                      exitBeforeEnter={false}
+                    >
+                      {getLayout(<Component
+                        {...pageProps}
+                        key={router.route}
+                      />)}
+                    </AnimatePresence>
+
                   </ThemeSettings>
                 </ThemeProvider>
               </MotionLazyContainer>

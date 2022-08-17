@@ -8,6 +8,7 @@ import { getCollectionId, getCollectionDocument } from "src/utils/apis/apis";
 import AuthGuard from "src/guards/AuthGuard";
 import PersonNewEditForm from "src/components/_Team/NewEdit/PersonNewEditForm";
 import { useEffect, useState } from "react";
+import LoadingScreen from "src/components/LoadingScreen";
 // components
 // ----------------------------------------------------------------------
 
@@ -22,12 +23,12 @@ export default function PersonBearbeiten() {
   const [data, setData] = useState<any>(false);
   const ID = (typeof id === 'string') ? id : '';
   useEffect(() => {
-    getCollectionDocument("projects", ID).then((result) => setData(result));
+    getCollectionDocument("team", ID).then((result) => { console.log(result); setData(result) });
   }, [])
   return (
     <AuthGuard>
       <Page title={`${isEdit ? 'Edit' : 'Neues'} Mitarbeiter`}>
-        <PersonNewEditForm isEdit={isEdit} currentPerson={data} />
+        {data ? <PersonNewEditForm isEdit={isEdit} currentPerson={data} /> : <LoadingScreen />}
       </Page>
     </AuthGuard>
   );
