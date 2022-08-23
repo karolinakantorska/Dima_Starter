@@ -7,7 +7,7 @@ import useResponsive from '../../hooks/useResponsive';
 import { Mail } from "../_Reusable/Mail";
 import { deleteProjectFromFirestore } from '../../utils/apis/deleteFromFirestore';
 import { deleteImage } from 'src/utils/apis/uploadPhoto';
-import { PATH_DIMA, PATH_REV } from 'src/routes/paths';
+import { PATH_DIMA } from 'src/routes/paths';
 import { EditDeleteIconCom } from '../_Reusable/EditDeleteIconCom';
 import { DeleteDialogCom } from '../_Reusable/DeleteDialogCom';
 import { ChipDisplayOrderCom } from '../_Reusable/ChipDisplayOrderCom';
@@ -32,7 +32,6 @@ export function CardPersonCom({
     } | null>>;
 
 }) {
-
     const isDesktop = useResponsive('up', 'lg');
     const isSmall = useResponsive('down', 'sm');
     const { isAuthenticated } = useAuth();
@@ -66,45 +65,48 @@ export function CardPersonCom({
     };
 
     return (
-        <Card >
-            {isAuthenticated && <Grid container justifyContent="flex-end" sx={{ position: 'absolute' }} >
-                <ChipDisplayOrderCom displayOrder={person.displayOrder} />
-            </Grid>}
-            <CardMedia
-                component="img"
-                height={isDesktop ? 545 : 'auto'}
-                image={photo.url ? photo.url : '/assets/bg_gradient.jpeg'}
-                alt={`${name} ${surname} ${job1}`}
-                sx={{ height: '574px' }}
-            />
-            {isAuthenticated && <Grid container justifyContent="flex-end" sx={{ mt: '-40px', }} >
-                <EditDeleteIconCom handleOpen={handleOpen} editURL={`${PATH_DIMA.editMitarbeiter}/${id}`} />
-            </Grid>}
-            <Grid
-                container
-                direction="column"
-                justifyContent="space-between"
-                alignItems="flex-start"
-                sx={isSmall ? { p: 1.75, height: '130px' } : { px: 3.25, pt: 4.15, pb: 4, height: '195px' }}
-            >
-                <Grid item>
-                    <TitleTextCom text={`${name.toUpperCase()} ${surname.toUpperCase()}`} />
-                    <BodyTextCom text={title1} sx={{ pt: '2px' }} />
-                    <BodyTextCom text={title2} sx={{ pt: '2px' }} />
+        <>
+            <Card >
+                {isAuthenticated && <Grid container justifyContent="flex-end" sx={{ position: 'absolute' }} >
+                    <ChipDisplayOrderCom displayOrder={person.displayOrder} />
+                </Grid>}
+                <CardMedia
+                    component="img"
+                    height={isDesktop ? 545 : 'auto'}
+                    image={photo.url ? photo.url : '/assets/bg_gradient.jpeg'}
+                    alt={`${name} ${surname} ${job1}`}
+                    sx={{ height: '574px' }}
+                />
+                {isAuthenticated && <Grid container justifyContent="flex-end" sx={{ mt: '-40px', }} >
+                    <EditDeleteIconCom handleOpen={handleOpen} editURL={`${PATH_DIMA.editMitarbeiter}/${id}`} />
+                </Grid>}
+                <Grid
+                    container
+                    direction="column"
+                    justifyContent="space-between"
+                    alignItems="flex-start"
+                    sx={isSmall ? { p: 1.75, height: '130px' } : { px: 3.25, pt: 4.15, pb: 4, height: '195px' }}
+                >
+                    <Grid item>
+                        <TitleTextCom text={`${name.toUpperCase()} ${surname.toUpperCase()}`} />
+                        <BodyTextCom text={title1} sx={{ pt: '2px' }} />
+                        <BodyTextCom text={title2} sx={{ pt: '2px' }} />
+                    </Grid>
+                    <Grid item sx={{ width: '100%' }}>
+                        <Stack
+                            direction="row"
+                            justifyContent="space-between"
+                            alignItems="flex-end"
+                        ><div>
+                                <BodyTextCom text={job1} sx={{ mr: '15px' }} />
+                                <BodyTextCom text={job2} sx={{ pt: '2px' }} />
+                            </div>
+                            {(email !== '') && <Mail email={email} />}
+                        </Stack>
+                    </Grid>
                 </Grid>
-                <Grid item sx={{ width: '100%' }}>
-                    <Stack
-                        direction="row"
-                        justifyContent="space-between"
-                        alignItems="flex-end"
-                    ><div>
-                            <BodyTextCom text={job1} sx={{ mr: '15px' }} />
-                            <BodyTextCom text={job2} sx={{ pt: '2px' }} />
-                        </div>
-                        {(email !== '') && <Mail email={email} />}
-                    </Stack>
-                </Grid>
-            </Grid>
+
+            </Card >
             {isAuthenticated && <DeleteDialogCom
                 open={open}
                 handleClose={handleClose}
@@ -112,6 +114,7 @@ export function CardPersonCom({
                 objectToBeDeled="Mitarbeiter"
                 titleOfObjectToBeDeled={`${name.toUpperCase()} ${surname.toUpperCase()}`}
             />}
-        </Card >
+        </>
+
     )
 }

@@ -1,17 +1,9 @@
-//import type { GetStaticPaths, GetStaticProps } from "next";
+import type { GetStaticPaths, GetStaticProps } from "next";
 import { useRouter } from 'next/router';
-// layouts
-// components
 import Page from '../../components/Page';
-
-//import { _mockProjekts } from '../../_mock/referenzen/referenzen';
-//import AnimatedStartLayout from '../../layouts/animated/AnimatedStartLayout';
-
 import Layout from '../../layouts';
-
-import { jobs } from "src/_mock/jobs/jobs";
-
 import { OneJobCom } from "src/components/_Job/OneJobCom";
+import { getCollectionId, getCollectionDocument } from "src/utils/apis/apis";
 // ----------------------------------------------------------------------
 
 Job.getLayout = function getLayout(page: React.ReactElement) {
@@ -23,20 +15,29 @@ export default function Job({ data }: any) {
   const router = useRouter();
   const { id } = router.query;
 
-  const job = jobs.filter((job) => job.id === id);
-
   if (id) {
     return (
       <Page title={`Job`}>
-        <OneJobCom job={job[0]} />
+        <OneJobCom job={data} />
       </Page>
     );
   } else {
     return (
       <p>wait...</p>
     )
-
   }
-
 }
-
+export const getStaticPaths: GetStaticPaths = async () => {
+  const data = await getCollectionId("jobs");
+  const paths = data.map((item) => ({
+    params: { id: item.id },
+  }));
+  return { paths, fallback: true };
+};
+export const getStaticProps: GetStaticProps = async ({ params }: any) => {
+  const { id } = params;
+  const data = await getCollectionDocument("jobs", id);
+  return {
+    props: { data },
+  };
+};

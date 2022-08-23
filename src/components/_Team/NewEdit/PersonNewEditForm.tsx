@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { useRouter } from 'next/router';
 import { useForm, } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -18,9 +18,8 @@ import { PhotoCardCom } from './PhotoCardComp';
 import { Person } from '../../../utils/TS/interface';
 import { NewPersonSchema } from '../../../utils/myUtils/formSchema';
 import { AlertCom } from '../../_Reusable/AlertCom';
-import { PATH_DIMA, PATH_REV } from '../../../routes/paths';
+import { PATH_DIMA, } from '../../../routes/paths';
 import { CategoryCardCom } from './CategoryCardCom';
-import { ReloadContext } from 'src/contexts/RevalidateContext';
 import { revalidateURL } from 'src/utils/myUtils/revalidateURL';
 /*
 export interface FormValuesProps extends Partial<Person> {

@@ -7,8 +7,6 @@ import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
 import { AlertCom } from '../_Reusable/AlertCom';
 
-//import { deleteImage } from 'src/utils/apis/deletePhotoFromStorage';
-
 export function ProjectsListCom(
   { projectsList }: {
     projectsList: ProjectsListType,
@@ -24,12 +22,12 @@ export function ProjectsListCom(
 
   useEffect(() => {
     const changed = localStorage.getItem('projects');
-    console.log('changed', changed);
-    console.log('changed === projects', (changed === 'projects'));
     if (changed === 'projects') {
       localStorage.removeItem('projects');
       router.reload();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+
   }, []);
 
   useEffect(() => {

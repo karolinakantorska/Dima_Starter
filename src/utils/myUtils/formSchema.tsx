@@ -1,5 +1,6 @@
 import * as Yup from 'yup';
 
+
 export const NewProjectSchema = Yup.object().shape({
     photos: Yup.array(),
     photoAuthor: Yup.string()
@@ -47,4 +48,11 @@ export const NewPersonSchema = Yup.object().shape({
     displayOrder: Yup.number().required('Anzeigen Reihenfolge ist erforderlich').max(99, 'Anzeigen Reihenfolge darf maximal 99 sein.'),
     email: Yup.string().email('Must be a valid email').max(35, 'E-Mailadresse darf maximal 35 Zeichen lang sein')
 });
+const phoneRegExp = /(\b(0041|0)|\B\+41)(\s?\(0\))?(\s)?[1-9]{2}(\s)?[0-9]{3}(\s)?[0-9]{2}(\s)?[0-9]{2}\b/
 
+export const NewJobSchema = Yup.object().shape({
+    title: Yup.string()
+        .max(29, 'Berufname darf maximal 29 Zeichen lang sein'),
+    phone: Yup.string().matches(phoneRegExp, 'Das ist kein gultiges Telefonnummer'),
+    email: Yup.string().email('Must be a valid email').max(35, 'E-Mailadresse darf maximal 35 Zeichen lang sein')
+});

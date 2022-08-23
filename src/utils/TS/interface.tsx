@@ -10,9 +10,6 @@ export interface ProjectType {
   startYear: Date;
   year: Date;
   objektAlter: ObjektAlter;
-  //objektType: ObjektTypes;
-  //services: ArrayOfServicesType;
-  //timeStamp: number;
   region: Regionen;
   phase: Phase;
   client: string;
@@ -20,32 +17,21 @@ export interface ProjectType {
   architect: Company;
   realisation: string,
   bauleitung: string,
-  /*
-  cooperation: {
-    service: Services | string;
-    company: Company;
-  };
-  */
   location: string;
   video?: string;
-  //finished: boolean;
   big: boolean;
-  //constructionStart: number;
 }
 export type ProjectsListType = ProjectType[];
 
 export interface PropsProjects {
   projectsList: ProjectsListType;
 }
-
 export interface ImageType {
   url: string;
   alt: string;
 }
 export type ImagesType = ImageType[];
-
 export type Company = string | typeof dima | typeof Cadosch | typeof Kgp_Immobilien | typeof privat;
-
 export const regionenArray = [
   'Glarus',
   'Zürich',
@@ -104,7 +90,6 @@ export type User = UserData | null;
 export interface UserData {
   uid: string;
 }
-
 export interface Person {
   id: string,
   photo: ImageType;
@@ -141,17 +126,29 @@ export interface Job {
   announcment: Date,
   location: string,
   title: string,
-  procentMin?: number,
-  procent: number,
-  descriptionJob: string,
-  descWe: string,
+  procentMin: MinProcent,
+  procent: Procent,
+  descriptionJob: string[],
+  descWe: string[],
   tasks: string[],
-  skils: string[],
+  skills: string[],
   kontaktperson: string,
-  tel: string,
+  phone: string,
   email: string,
-
 }
+export const procentArray = [
+  '20',
+  '40',
+  '60',
+  '80',
+  '100',
+] as const;
+export const minProcentArray = [
+  'keins',
+  ...procentArray
+] as const;
+export type MinProcent = typeof minProcentArray[number];
+export type Procent = typeof procentArray[number];
 export interface News {
   id: string,
   photos: string[],

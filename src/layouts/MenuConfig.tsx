@@ -135,11 +135,13 @@ export const menuConfigAdmin = [
     title: 'Kontakt',
     path: PATH_KONTAKT.kontakt,
   },
+  {
+    title: '+ Job',
+    path: PATH_JOBS.neuesJob,
+  },
+  {
+    title: '+ News',
+    path: PATH_NEWS.neuesNews
+  },
 ];
-/*
-| {
-    title: string;
-    path: string;
-    children?: undefined;
-})[]
-  */
+

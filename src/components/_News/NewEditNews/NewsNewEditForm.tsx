@@ -8,35 +8,52 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { NewProjectSchema } from 'src/utils/myUtils/formSchema';
 // @mui
 import { LoadingButton } from '@mui/lab';
-import { Grid, Stack, } from '@mui/material';
+import {
+  Grid,
+  Stack,
+} from '@mui/material';
 // @types
 import { FormProvider } from '../../hook-form';
 import { ProjectType, } from 'src/utils/TS/interface';
 // utils
 import { addProjestToFirestore, editProjectInFirestore } from 'src/utils/apis/addToFirestore';
 import { createProject } from 'src/utils/myUtils/createProject';
-import { PATH_PROJEKTE } from 'src/routes/paths';
+import { PATH_PROJEKTE, PATH_REV } from 'src/routes/paths';
 import { AlertCom } from '../../_Reusable/AlertCom';
 import { TitleCardCom } from './TitleCardCom';
-
+import { DescriptionCardCom } from './DescriptionCardCom';
 import { PhotoCardCom } from './PhotoCardComp';
 import { AuthorsCardCom } from './AuthorsCardCom';
 import { YearCardCom } from './YearCardCom';
 import { CategoryVolumenCardCom } from './CategoryVolumenCardCom';
-
 import { revalidateURL } from 'src/utils/myUtils/revalidateURL';
-import { DescCardCom } from 'src/components/_Reusable/DescCardCom';
+
+// components
+
+// ----------------------------------------------------------------------
+
+//const services = ServicesArray.slice();
+//const objektTypes = objektTypeArray.slice();
+
+// ----------------------------------------------------------------------
 
 export interface FormValuesProps extends Partial<ProjectType> {
   year_form: Date;
   year_start_form: Date;
+  cooperation_company: string;
+  cooperation_service: string;
+  description1: string;
+  description2: string;
+  description3: string;
+  description4: string;
+  description5: string;
 }
 type Props = {
   isEdit?: boolean;
   currentProject?: ProjectType
 };
 
-export default function ProjectNewEditForm({ isEdit, currentProject }: Props) {
+export default function NewsNewEditForm({ isEdit, currentProject }: Props) {
   const { push } = useRouter();
   //console.log('currentProject', currentProject);
   const [error, setError] = useState<null | { code: string, message: string }>(null)
@@ -69,10 +86,17 @@ export default function ProjectNewEditForm({ isEdit, currentProject }: Props) {
       photos: currentProject?.photos || [],
       photoAuthor: currentProject?.photoAuthor || '',
       title: currentProject?.title || '',
-      description: currentProject?.description || [''],
+      //description: currentProject?.description || [],
+      description1: currentProject?.description[0] || '',
+      description2: currentProject?.description[1] || '',
+      description3: currentProject?.description[2] || '',
+      description4: currentProject?.description[3] || '',
+      description5: currentProject?.description[4] || '',
       year_form: currentProject && currentProject.year && new Date(currentProject.year) || new Date(2010, 1, 1),
       year_start_form: currentProject && currentProject.startYear && new Date(currentProject.startYear) || new Date(2010, 1, 1),
       objektAlter: currentProject?.objektAlter || 'Neubau',
+      //objektType: currentProject?.objektType || [],
+      //services: currentProject?.services || [],
       region: currentProject?.region || 'Andere Regionen',
       phase: currentProject?.phase || 'in Ausführung',
       client: currentProject?.client || '',
@@ -80,6 +104,9 @@ export default function ProjectNewEditForm({ isEdit, currentProject }: Props) {
       architect: currentProject?.architect || '',
       realisation: currentProject?.realisation || '',
       location: currentProject?.location || '',
+      //constructionVideo: currentProject?.constructionVideo || '',
+      //video: currentProject?.video || '',
+      //finished: currentProject?.finished || false,
       big: currentProject?.big || false,
     }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -93,11 +120,9 @@ export default function ProjectNewEditForm({ isEdit, currentProject }: Props) {
   const {
     reset,
     handleSubmit,
-    watch,
     formState: { isSubmitting },
   } = methods;
-  const values = watch();
-  console.log('values', values)
+  // const values = watch();
   useEffect(() => {
     if (isEdit && currentProject) {
       reset(defaultValues);
@@ -156,7 +181,7 @@ export default function ProjectNewEditForm({ isEdit, currentProject }: Props) {
             <Stack spacing={8}>
               <TitleCardCom />
               <PhotoCardCom setLoading={setLoading} setError={setError} />
-              <DescCardCom name="description" text="Bezeichnung:" />
+              <DescriptionCardCom />
             </Stack>
           </Grid>
           <Grid item xs={12} md={5}>
@@ -176,7 +201,7 @@ export default function ProjectNewEditForm({ isEdit, currentProject }: Props) {
               loading={isSubmitting}
               disabled={loading}
             >
-              Projekt Speichern
+              News Speichern
             </LoadingButton>
           </Grid>
         </Grid>
@@ -184,5 +209,3 @@ export default function ProjectNewEditForm({ isEdit, currentProject }: Props) {
     </>
   );
 }
-/*
-Fehler:Function setDoc() called with invalid data.Unsupported field value: undefined(found in field description1 in document projects / wJWLNUJ25KoLwHQkiqZ6)*/

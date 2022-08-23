@@ -23,7 +23,7 @@ export function EditDeleteIconCom({
     };
     const propsIconButton = {
         backgroundColor: 'rgba(255,255,255,0.2)',
-        mx: '10px',
+        mr: '18px',
         mt: '-10px',
         mb: '10px',
         color: 'background.default',

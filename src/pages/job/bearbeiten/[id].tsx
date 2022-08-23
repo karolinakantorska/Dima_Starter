@@ -1,33 +1,40 @@
+import { useState, useEffect } from "react";
 import Page from "src/components/Page"
 import { useRouter } from 'next/router';
-// layouts
 import Layout from "src/layouts"
-import { getCollectionDocument } from "src/utils/apis/apis";
 import AuthGuard from "src/guards/AuthGuard";
-import PersonNewEditForm from "src/components/_Team/NewEdit/PersonNewEditForm";
-import { useEffect, useState } from "react";
+import { getCollectionDocument } from "src/utils/apis/apis";
 import LoadingScreen from "src/components/LoadingScreen";
+import JobNewEditForm from "src/components/_Job/NewEditJob/JobNewEditForm";
+
 // components
 // ----------------------------------------------------------------------
 
-PersonBearbeiten.getLayout = function getLayout(page: React.ReactElement) {
+JobBearbeiten.getLayout = function getLayout(page: React.ReactElement) {
   return <Layout >{page}</Layout>;
 };
+
 // ----------------------------------------------------------------------
-export default function PersonBearbeiten() {
+export default function JobBearbeiten() {
   const isEdit = true;
-  const router = useRouter();
   const [data, setData] = useState<any>(false);
+  const router = useRouter();
+
   useEffect(() => {
     const { id } = router.query;
     const ID = (typeof id === 'string') ? id : '';
-    getCollectionDocument("team", ID).then((result) => { console.log(result); setData(result) });
+    getCollectionDocument("jobs", ID).then((result) => setData(result));
   }, [])
+
   return (
     <AuthGuard>
-      <Page title={`${isEdit ? 'Edit' : 'Neues'} Mitarbeiter`}>
-        {data ? <PersonNewEditForm isEdit={isEdit} currentPerson={data} /> : <LoadingScreen />}
+      <Page title={`Edit Job`}>
+        {data ? <JobNewEditForm
+          isEdit={isEdit}
+          currentJob={data}
+        /> : <LoadingScreen />}
       </Page>
     </AuthGuard>
+
   );
 }

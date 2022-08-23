@@ -1,4 +1,3 @@
-import { description } from '../_mock/referenzen/description';
 export const dimaContact = {
     glarus: {
         phone: ' +41 55 646 80 00',
@@ -7,7 +6,7 @@ export const dimaContact = {
         street: 'gewerbezentrum holenstein',
         numer: '19',
         post: '8750',
-        email: 'info(at)dima-partner.ch'
+        email: 'info@dima-partner.ch'
     },
     zurich: {
         phone: ' +41 44 461 89 89',
@@ -16,7 +15,7 @@ export const dimaContact = {
         street: 'Grubenstrasse',
         numer: '38',
         post: '8045',
-        email: 'info(at)dima-partner.ch'
+        email: 'info@dima-partner.ch'
     }
 
 }
@@ -25,7 +24,13 @@ export const DimaName = {
     whole: 'DIMA & Partner',
     withAG: 'DIMA & Partner AG'
 }
+export const DimaDescription = {
+    job: [
+        'Bei uns fordern wir Sie mit spannenden Aufgaben und fördern Sie mit Weiterbildungsangeboten und der chance, sich intern weiterzuentwickeln.',
+        'Wir bieten Ihnen zeitgemässe Anstellungsbedingungen in Form von Mobile Working und Home Office sowie ein von Teamgeist geprägtes Umfeld.'
+    ],
 
+}
 export const layoutHeader = {
     teams: {
         title: 'team',

@@ -37,6 +37,7 @@ export function PhotoCardCom({ setLoading, setError }: { setLoading: any, setErr
                     setError(error);
                     setLoading(false);
                 })
+            // eslint-disable-next-line react-hooks/exhaustive-deps
         },
         [setValue]
     );

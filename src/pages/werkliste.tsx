@@ -1,11 +1,8 @@
-import { GetStaticProps } from "next";
 // layouts
 import Layout from '../layouts';
 // components
 import Page from '../components/Page';
 
-
-import { getOrderedCollection } from "src/utils/apis/apis";
 
 // ----------------------------------------------------------------------
 

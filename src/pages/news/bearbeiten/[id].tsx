@@ -1,37 +1,34 @@
+import { useState, useEffect } from "react";
 import Page from "src/components/Page"
 import { useRouter } from 'next/router';
-
-import ProjectNewEditForm from "src/components/_Projekte/NewEditProjekt/ProjectNewEditForm";
-// layouts
 import Layout from "src/layouts"
-import { getCollectionDocument } from "src/utils/apis/apis";
 import AuthGuard from "src/guards/AuthGuard";
-import { useState, useEffect } from "react";
+import { getCollectionDocument } from "src/utils/apis/apis";
 import LoadingScreen from "src/components/LoadingScreen";
+import NewsNewEditForm from "src/components/_News/NewEditNews/NewsNewEditForm";
 
 // components
 // ----------------------------------------------------------------------
 
-ProjektBearbeiten.getLayout = function getLayout(page: React.ReactElement) {
+NewsBearbeiten.getLayout = function getLayout(page: React.ReactElement) {
   return <Layout >{page}</Layout>;
 };
 
 // ----------------------------------------------------------------------
-export default function ProjektBearbeiten() {
+export default function NewsBearbeiten() {
   const isEdit = true;
   const [data, setData] = useState<any>(false);
   const router = useRouter();
-
+  const { id } = router.query;
+  const ID = (typeof id === 'string') ? id : '';
   useEffect(() => {
-    const { id } = router.query;
-    const ID = (typeof id === 'string') ? id : '';
     getCollectionDocument("projects", ID).then((result) => setData(result));
   }, [])
 
   return (
     <AuthGuard>
-      <Page title={`Edit Projekt`}>
-        {data ? <ProjectNewEditForm
+      <Page title={`Edit News`}>
+        {data ? <NewsNewEditForm
           isEdit={isEdit}
           currentProject={data}
         /> : <LoadingScreen />}

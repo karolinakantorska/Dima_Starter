@@ -8,7 +8,7 @@ import { firstLettersBig } from '../../utils/Text/textUtils';
 import { Box } from '@mui/system';
 import { Grid, CardActions, CardContent, Card } from '@mui/material';
 
-import { PATH_PROJEKTE, PATH_REV } from '../../routes/paths';
+import { PATH_PROJEKTE } from '../../routes/paths';
 import useAuth from 'src/utils/firebaseAuth/useAuth';
 import { deleteProjectFromFirestore } from '../../utils/apis/deleteFromFirestore';
 import { deleteImage } from 'src/utils/apis/uploadPhoto';

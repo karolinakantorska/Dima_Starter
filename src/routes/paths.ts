@@ -1,18 +1,3 @@
-// ----------------------------------------------------------------------
-/*
-function path(root: string, sublink: string) {
-  return `${root}${sublink}`;
-}
-*/
-//const ROOTS_AUTH = '/auth';
-
-// ----------------------------------------------------------------------
-/*
-export const PATH_AUTH = {
-  root: ROOTS_AUTH,
-  login: path(ROOTS_AUTH, '/login'),
-};
-*/
 export const PATH_LOGIN = {
   login: '/anmelden',
   resetPass: '/reset_password',
@@ -33,10 +18,14 @@ export const PATH_PROJEKTE = {
 };
 export const PATH_NEWS = {
   news: '/news',
+  editNews: '/news/bearbeiten',
+  neuesNews: '/news/neues_news',
 };
 export const PATH_JOBS = {
   jobs: '/jobs',
   job: '/job',
+  neuesJob: '/job/neues_job',
+  editJob: '/job/bearbeiten',
 };
 export const PATH_KONTAKT = {
   kontakt: '/kontakt',

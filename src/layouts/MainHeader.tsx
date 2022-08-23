@@ -6,18 +6,14 @@ import { Box, AppBar, Toolbar, Container, } from '@mui/material';
 // hooks
 import useOffSetTop from 'src/hooks/useOffSetTop';
 import useResponsive from 'src/hooks/useResponsive';
-
+import useAuth from 'src/utils/firebaseAuth/useAuth';
 // config
 import { HEADER } from 'src/config';
-// components
-
-import MenuMobile from './MenuMobile';
 import { menuConfigUser, menuConfigAdmin } from './MenuConfig';
+// components
+import MenuMobile from './MenuMobile';
 import PhoneNrCom from './PhoneNrCom';
-
 import DimaLogoCom from 'src/components/DimaLogoCom';
-import useAuth from 'src/utils/firebaseAuth/useAuth';
-
 
 // ----------------------------------------------------------------------
 

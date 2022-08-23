@@ -9,11 +9,12 @@ import { TitleTextCom } from "../_Reusable/TitleTextCom";
 import useResponsive from 'src/hooks/useResponsive';
 
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
+import { useRouter } from 'next/router';
 
 // TODO use location instead use route
 export function OneJobCom({ job }: { job: Job }) {
   const [copied, setCopied] = useState(false);
-
+  const { push } = useRouter();
   useEffect(() => {
     if (copied) {
       setTimeout(() => {
@@ -24,7 +25,6 @@ export function OneJobCom({ job }: { job: Job }) {
   }, [copied]);
 
   const {
-    id,
     announcment,
     location,
     title,
@@ -33,11 +33,12 @@ export function OneJobCom({ job }: { job: Job }) {
     descriptionJob,
     descWe,
     tasks,
-    skils,
+    skills,
     kontaktperson,
-    tel,
+    //phone,
     email, } = job;
   const handleClick = () => {
+    push(`mailto:${email}`)
     navigator.clipboard.writeText(email);
     setCopied(true);
   };
@@ -59,11 +60,14 @@ export function OneJobCom({ job }: { job: Job }) {
     width: '100%',
     border: '4px solid rgb(239, 123, 16)',
     transition: '0.3s',
+
     '&:hover': {
       boxShadow: `inset 0px -150px rgba(239, 123, 16,.1)`,
+      textDecoration: 'none'
     },
     '&:focus': {
       boxShadow: `inset 0px -150px rgba(239, 123, 16, .1)`,
+      textDecoration: 'none'
     },
     '&:visited': {
       boxShadow: `inset 0px 0px rgba(239, 123, 16, .5)`,
@@ -74,8 +78,8 @@ export function OneJobCom({ job }: { job: Job }) {
   }
   const Listed = ({ textArray }: { textArray: string[] }) => (
     <List sx={{ pt: '4px' }}>
-      {textArray.map((text) => (
-        <ListItem key={text} sx={{ pl: 0, py: '6px' }}>
+      {textArray.map((text, i) => (
+        <ListItem key={i} sx={{ pl: 0, py: '6px' }}>
           <FiberManualRecordIcon sx={{ fontSize: 18, color: 'dima', mr: 1.4 }} />
           <BodyTextCom text={text} />
         </ListItem>
@@ -89,13 +93,13 @@ export function OneJobCom({ job }: { job: Job }) {
           <Grid container direction="row" columnSpacing={1.5} rowSpacing={1.25}>
             <Grid item xs={12} sm={6} md={6}>
               <TitleTextCom
-                text={`${title.toUpperCase()} ${procentMin ? procentMin.toString().toUpperCase() : ''} - ${procent.toString().toUpperCase()}%`}
+                text={`${title.toUpperCase()} ${(procentMin !== 'keins') ? procentMin.toString().toUpperCase() : ''} - ${procent.toString().toUpperCase()}%`}
               />
               <BodyTextCom text={location} sx={{ pt: 1.25 }} />
             </Grid>
             <Grid item xs={12} sm={6} md={6}>
-              <BodyTextCom text={descriptionJob} sx={{ ...propsDesc }} />
-              <BodyTextCom text={`Veröffentlicht am: ${announcment.toLocaleString('de-DE', { dateStyle: "long" })}`} sx={{ ...propsDesc }} />
+              {descriptionJob.map((text, i) => <BodyTextCom key={i} text={text} sx={{ ...propsDesc }} />)}
+              <BodyTextCom text={`Veröffentlicht am: ${new Date(announcment).toLocaleString('de-DE', { dateStyle: "long" })}`} sx={{ ...propsDesc }} />
             </Grid>
           </Grid>
         </Card>
@@ -103,7 +107,7 @@ export function OneJobCom({ job }: { job: Job }) {
       <Grid item xs={12} sm={6} md={4}  >
         <Card sx={{ ...propsCard }}>
           <TitleTextCom text="WAS SIE MITBRINGEN" />
-          <Listed textArray={skils} />
+          <Listed textArray={skills} />
         </Card>
       </Grid>
       <Grid item xs={12} sm={6} md={4}  >
@@ -115,23 +119,20 @@ export function OneJobCom({ job }: { job: Job }) {
       <Grid item xs={12} sm={6} md={4}  >
         <Card sx={{ ...propsCard }}>
           <TitleTextCom text="WAS WIR BIETEN" />
-          <BodyTextCom text={descWe} sx={{ pt: 1.25 }} />
+          {descWe.map((text, i) => <BodyTextCom key={i} text={text} sx={{ pt: 1.25 }} />)}
         </Card>
       </Grid>
       <Grid item xs={12} sm={6} md={4}  >
         <Card sx={{ height: 'calc(100% - 128px)', ...padding }}>
           <TitleTextCom text="HABEN SIE FRAGEN" />
           <BodyTextCom text={`${kontaktperson} - unsere Kontaktperson gibt Ihnen gerne Auskunft.`} sx={{ pt: 1.25 }} />
-          <BodyTextCom text={` T: ${tel}`} />
+          {/*<BodyTextCom text={` T: ${tel}`} />*/}
         </Card>
-        <Link
-          href={`mailto:${email}`}
-          color={'text.secondary'}
-        >
-          <ButtonBase disableRipple sx={{ ...propsButton }} onClick={handleClick}>
-            <BodyTextCom text={copied ? 'E-MAIL KOPIED' : 'JEZT BEWERBEN'} />
-          </ButtonBase>
-        </Link>
+
+        <ButtonBase disableRipple sx={{ ...propsButton }} onClick={handleClick}>
+          <BodyTextCom text={copied ? 'E-MAIL KOPIED' : 'JEZT BEWERBEN'} sx={{ textDecoration: 'none', }} />
+        </ButtonBase>
+
       </Grid>
     </Grid>
   )

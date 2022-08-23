@@ -1,7 +1,7 @@
-import { useState, useEffect, ReactNode } from 'react';
 // next
-
 import { useRouter } from 'next/router';
+import Link from 'next/link';
+import { useState, useEffect, ReactNode } from 'react';
 // Hamburger
 import { Squash as Hamburger } from 'hamburger-react'
 // @mui
@@ -10,7 +10,6 @@ import {
   Box,
   List,
   Drawer,
-
   LinkProps,
   ListItemText,
   ListItemButton,
@@ -18,16 +17,12 @@ import {
   Stack,
 } from '@mui/material';
 // config
-import { NAVBAR } from 'src/config';
+import useAuth from 'src/utils/firebaseAuth/useAuth';
+import { NAVBAR, HEADER } from 'src/config';
+import { PATH_LOGIN } from 'src/routes/paths';
+import { MenuProps, } from './type';
 // components
 import Scrollbar from 'src/components/Scrollbar';
-
-import { HEADER } from 'src/config';
-//
-import { MenuProps, } from './type';
-import useAuth from 'src/utils/firebaseAuth/useAuth';
-import { PATH_LOGIN } from 'src/routes/paths';
-import Link from 'next/link';
 import { MenuMobileItem } from './MenuMobileItem';
 
 // ----------------------------------------------------------------------
@@ -66,11 +61,9 @@ const ListItemStyle = styled(ListItemButton)<ListItemStyleProps>(({ theme }) => 
 export default function MenuMobile({ navConfig, size }: MenuProps) {
   const { pathname } = useRouter();
 
-  //const [open, setOpen] = useState(false);
   const [drawerOpen, setDrawerOpen] = useState(false);
   const { logout, isAuthenticated } = useAuth();
 
-  // TODO not closing in PC view
   useEffect(() => {
     if (drawerOpen) {
       handleDrawerClose();
@@ -126,7 +119,6 @@ export default function MenuMobile({ navConfig, size }: MenuProps) {
                       key={link.title}
                       item={link}
                     />
-
                   ))}
                   {!isAuthenticated &&
                     <Link href={PATH_LOGIN.login} passHref>
@@ -158,11 +150,6 @@ export default function MenuMobile({ navConfig, size }: MenuProps) {
           </Scrollbar>
         </Drawer>
       </Box>
-
-
     </>
   );
 }
-
-// ----------------------------------------------------------------------
-

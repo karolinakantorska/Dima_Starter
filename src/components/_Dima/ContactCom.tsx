@@ -2,7 +2,7 @@ import useResponsive from '../../hooks/useResponsive';
 import { m } from 'framer-motion';
 import Glarus from '/public/location/Glarus.jpg';
 import Zurich from '/public/location/Zurich.jpg';
-import { Card, CardMedia, Stack, Typography, Box, Skeleton } from '@mui/material';
+import { Card, Stack, Typography, Box, } from '@mui/material';
 import { dimaContact, layoutHeader } from 'src/utils/dima';
 import { firstLettersBig } from '../../utils/Text/textUtils';
 

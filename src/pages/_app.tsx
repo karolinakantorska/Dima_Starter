@@ -29,7 +29,6 @@ import ThemeSettings from '../components/settings';
 import ProgressBar from '../components/ProgressBar';
 import MotionLazyContainer from '../components/animate/MotionLazyContainer';
 import { defaultSettings } from '../config';
-import { ReloadProvider } from 'src/contexts/RevalidateContext';
 
 // ----------------------------------------------------------------------
 

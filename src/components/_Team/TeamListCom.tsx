@@ -7,8 +7,7 @@ import { useRouter } from 'next/router';
 import { SiteTitle } from '../_Reusable/SiteTitle';
 import { CardPersonCom } from './CardPersonCom';
 import { AlertCom } from '../_Reusable/AlertCom';
-import { useContext } from 'react';
-import { ReloadContext } from 'src/contexts/RevalidateContext';
+
 
 export function TeamListCom(
   { teamList }: {
@@ -29,6 +28,7 @@ export function TeamListCom(
       localStorage.removeItem('teams');
       router.reload();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
