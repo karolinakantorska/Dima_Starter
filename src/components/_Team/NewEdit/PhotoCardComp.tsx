@@ -27,7 +27,7 @@ export function PhotoCardCom({ setLoading, setError }: { setLoading: any, setErr
         (acceptedFiles) => {
             const file = acceptedFiles[0];
             setLoading(true);
-            uploadOnePhoto(file, "projects")
+            uploadOnePhoto(file, "teams")
                 .then((result: any) => {
                     setValue('photo', { ...result });
                     setLoading(false);

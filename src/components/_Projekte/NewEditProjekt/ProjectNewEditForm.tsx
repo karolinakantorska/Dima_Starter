@@ -184,5 +184,4 @@ export default function ProjectNewEditForm({ isEdit, currentProject }: Props) {
     </>
   );
 }
-/*
-Fehler:Function setDoc() called with invalid data.Unsupported field value: undefined(found in field description1 in document projects / wJWLNUJ25KoLwHQkiqZ6)*/
+

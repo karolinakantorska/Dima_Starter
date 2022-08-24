@@ -115,7 +115,8 @@ export function OneProjectCom({ project }: { project: ProjectType }) {
   )
 
   if (project) {
-    const photosCarusel = [project.photo, ...project.photos]
+    const photos = project.photos ? project.photos : []
+    const photosCarusel = [project.photo, ...photos]
     return (
       <>
         <Stack

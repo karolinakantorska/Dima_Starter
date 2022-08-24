@@ -149,14 +149,15 @@ export const minProcentArray = [
 ] as const;
 export type MinProcent = typeof minProcentArray[number];
 export type Procent = typeof procentArray[number];
+
 export interface News {
   id: string,
-  photos: string[],
+  title: string,
+  description: string[] | [],
+  photos: ImageType[] | [];
   video: string,
   date: Date,
-  title: string,
-  description: string,
-  link: string
+  link: { desc: string, href: string }[] | []
 }
 
 export const Cadosch = `Cadosch & Zimmermann GmbH, Zürich`;

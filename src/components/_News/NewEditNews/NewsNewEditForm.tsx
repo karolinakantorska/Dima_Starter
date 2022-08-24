@@ -1,72 +1,52 @@
 import { useEffect, useMemo, useState } from 'react';
 // next
 import { useRouter } from 'next/router';
-//import { useRouter } from 'next/router';
 // form
 import { useForm, } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { NewProjectSchema } from 'src/utils/myUtils/formSchema';
+import { FormProvider, RHFTextField } from '../../hook-form';
+import { NewNewsSchema } from 'src/utils/myUtils/formSchema';
 // @mui
 import { LoadingButton } from '@mui/lab';
-import {
-  Grid,
-  Stack,
-} from '@mui/material';
+import { Grid, Stack, } from '@mui/material';
 // @types
-import { FormProvider } from '../../hook-form';
-import { ProjectType, } from 'src/utils/TS/interface';
+import { News } from 'src/utils/TS/interface';
 // utils
 import { addProjestToFirestore, editProjectInFirestore } from 'src/utils/apis/addToFirestore';
-import { createProject } from 'src/utils/myUtils/createProject';
-import { PATH_PROJEKTE, PATH_REV } from 'src/routes/paths';
-import { AlertCom } from '../../_Reusable/AlertCom';
-import { TitleCardCom } from './TitleCardCom';
-import { DescriptionCardCom } from './DescriptionCardCom';
-import { PhotoCardCom } from './PhotoCardComp';
-import { AuthorsCardCom } from './AuthorsCardCom';
-import { YearCardCom } from './YearCardCom';
-import { CategoryVolumenCardCom } from './CategoryVolumenCardCom';
+import { PATH_NEWS, } from 'src/routes/paths';
 import { revalidateURL } from 'src/utils/myUtils/revalidateURL';
-
+import { createNews } from 'src/utils/myUtils/createNews';
 // components
+import { AlertCom } from 'src/components/_Reusable/AlertCom';
+import { DescCardCom } from 'src/components/_Reusable/DescCardCom';
+import { LinkInputCom, } from 'src/components/_News/NewEditNews/LinkInputCom';
+import { TitleTextCom } from 'src/components/_Reusable/TitleTextCom';
+import { DateInputCom } from 'src/components/_Reusable/DateInputCom';
+import { PhotosImputCom } from 'src/components/_Reusable/PhotosImputCom';
 
-// ----------------------------------------------------------------------
-
-//const services = ServicesArray.slice();
-//const objektTypes = objektTypeArray.slice();
-
-// ----------------------------------------------------------------------
-
-export interface FormValuesProps extends Partial<ProjectType> {
-  year_form: Date;
-  year_start_form: Date;
-  cooperation_company: string;
-  cooperation_service: string;
-  description1: string;
-  description2: string;
-  description3: string;
-  description4: string;
-  description5: string;
+export interface FormValuesProps extends Partial<News> {
+  date_form: Date;
+  linkText: string;
+  linkUrl: string;
 }
 type Props = {
   isEdit?: boolean;
-  currentProject?: ProjectType
+  currentNews?: News
 };
 
-export default function NewsNewEditForm({ isEdit, currentProject }: Props) {
+export default function NewsNewEditForm({ isEdit, currentNews }: Props) {
   const { push } = useRouter();
-  //console.log('currentProject', currentProject);
+  //console.log('currentNews', currentNews);
   const [error, setError] = useState<null | { code: string, message: string }>(null)
   const [succes, setSucces] = useState<boolean | string>(false);
   const [loading, setLoading] = useState(false);
-
 
   useEffect(() => {
     if (succes) {
       setTimeout(() => {
         setSucces(false);
-        if (currentProject?.id) {
-          push(PATH_PROJEKTE.projekte);
+        if (currentNews?.id) {
+          push(PATH_NEWS.news);
         }
       }, 2500);
     }
@@ -82,85 +62,70 @@ export default function NewsNewEditForm({ isEdit, currentProject }: Props) {
 
   const defaultValues = useMemo(
     () => ({
-      photo: currentProject?.photo || { url: '', alt: '' },
-      photos: currentProject?.photos || [],
-      photoAuthor: currentProject?.photoAuthor || '',
-      title: currentProject?.title || '',
-      //description: currentProject?.description || [],
-      description1: currentProject?.description[0] || '',
-      description2: currentProject?.description[1] || '',
-      description3: currentProject?.description[2] || '',
-      description4: currentProject?.description[3] || '',
-      description5: currentProject?.description[4] || '',
-      year_form: currentProject && currentProject.year && new Date(currentProject.year) || new Date(2010, 1, 1),
-      year_start_form: currentProject && currentProject.startYear && new Date(currentProject.startYear) || new Date(2010, 1, 1),
-      objektAlter: currentProject?.objektAlter || 'Neubau',
-      //objektType: currentProject?.objektType || [],
-      //services: currentProject?.services || [],
-      region: currentProject?.region || 'Andere Regionen',
-      phase: currentProject?.phase || 'in Ausführung',
-      client: currentProject?.client || '',
-      size: currentProject?.size || 0,
-      architect: currentProject?.architect || '',
-      realisation: currentProject?.realisation || '',
-      location: currentProject?.location || '',
-      //constructionVideo: currentProject?.constructionVideo || '',
-      //video: currentProject?.video || '',
-      //finished: currentProject?.finished || false,
-      big: currentProject?.big || false,
+      title: currentNews?.title || '',
+      description: currentNews?.description || [],
+      photos: currentNews?.photos || [],
+      video: currentNews?.video || '',
+      date_form: currentNews && currentNews.date && new Date(currentNews.date) || new Date(),
+      link: currentNews?.link || [],
     }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [currentProject]
+    [currentNews]
   );
   const methods = useForm<FormValuesProps>({
-    resolver: yupResolver(NewProjectSchema),
+    resolver: yupResolver(NewNewsSchema),
     defaultValues,
   });
 
   const {
     reset,
     handleSubmit,
+    watch,
     formState: { isSubmitting },
   } = methods;
-  // const values = watch();
+  const values = watch();
+  console.log('values', values)
+
   useEffect(() => {
-    if (isEdit && currentProject) {
+    if (isEdit && currentNews) {
       reset(defaultValues);
     }
     if (!isEdit) {
       reset(defaultValues);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isEdit, currentProject]);
+  }, [isEdit, currentNews]);
 
   const onSubmit = async (data: FormValuesProps) => {
     setLoading(true);
-    const projectToDB = createProject(data);
-    if (currentProject?.id) {
-      //const Id = currentProject ? currentProject.id : ;
-      editProjectInFirestore('projects', currentProject.id, projectToDB)
+
+    const newsToDB = createNews(data);
+    //console.log('newsToDB', newsToDB)
+
+    if (currentNews?.id) {
+      //const Id = currentNews ? currentNews.id : ;
+      editProjectInFirestore('news', currentNews.id, newsToDB)
         .then(() => {
-          fetch(revalidateURL(PATH_PROJEKTE.projekte)).then(() => {
-            localStorage.setItem('projects', 'projects');
-            localStorage.setItem('projectsId', currentProject.id);
+          fetch(revalidateURL(PATH_NEWS.news)).then(() => {
+            localStorage.setItem('news', 'news');
+            localStorage.setItem('newsId', currentNews.id);
             setLoading(false);
             setSucces(true);
           })
         })
         .catch((error) => {
-          //console.log('error', error);
+          console.log('error', error);
           setError(error)
           setLoading(false);
         })
     } else {
-      addProjestToFirestore('projects', projectToDB)
+      addProjestToFirestore('news', newsToDB)
         .then((response: string) => {
-          fetch(revalidateURL(PATH_PROJEKTE.projekte)).then(() => {
-            localStorage.setItem('projects', 'projects');
-            localStorage.setItem('projectsId', response);
+          fetch(revalidateURL(PATH_NEWS.news)).then(() => {
+            localStorage.setItem('news', 'news');
+            localStorage.setItem('newsId', response);
             setLoading(false);
             setSucces(true);
-
             reset();
           })
         })
@@ -179,19 +144,33 @@ export default function NewsNewEditForm({ isEdit, currentProject }: Props) {
         <Grid container direction='row' spacing={6} sx={{ pt: 3 }}>
           <Grid item xs={12} md={7}  >
             <Stack spacing={8}>
-              <TitleCardCom />
-              <PhotoCardCom setLoading={setLoading} setError={setError} />
-              <DescriptionCardCom />
+              <Stack spacing={3}>
+                <TitleTextCom text={`News Titel:`} />
+                <RHFTextField variant="filled" name="title" label="Titel" />
+              </Stack>
+              <Stack spacing={3}>
+                <TitleTextCom text={`Video von You Tube:`} />
+                <RHFTextField variant="filled" name="video" label="<iframe> ... </iframe>" />
+              </Stack>
+              <DescCardCom name="description" text="Bezeichnung:" />
             </Stack>
           </Grid>
           <Grid item xs={12} md={5}>
             <Stack spacing={8}>
-              <AuthorsCardCom />
-              <CategoryVolumenCardCom />
-              <YearCardCom />
+              <Stack spacing={3}>
+                <TitleTextCom text="Datum: " />
+                <DateInputCom name="date_form" views={['year', 'month', 'day']} label="Datum" />
+              </Stack>
+              <Stack spacing={3}>
+                <TitleTextCom text="Fotos: " />
+                <PhotosImputCom setLoading={setLoading} setError={setError} folderName="news" />
+              </Stack>
+              <Stack spacing={3}>
+                <TitleTextCom text="Links: " />
+                <LinkInputCom />
+              </Stack>
             </Stack>
           </Grid>
-
           <Grid item xs={12} md={12}>
             <LoadingButton
               sx={{ width: '100%', mt: 2, mb: 5 }}

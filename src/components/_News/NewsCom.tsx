@@ -1,13 +1,13 @@
 //import AnimatedStartLayout from '../../layouts/animated/AnimatedStartLayout';
 import React, { useState } from "react";
 import { m, } from 'framer-motion';
-import { Card, ImageList, ImageListItem, Link, Stack, Typography } from "@mui/material";
-import parse from 'html-react-parser';
+import { Card, Grid, Link, Stack, Typography } from "@mui/material";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import { News } from "src/utils/TS/interface";
 import { BodyTextCom } from "../_Reusable/BodyTextCom";
 import { TitleTextCom } from "../_Reusable/TitleTextCom";
+import parse from 'html-react-parser';
 
 // TODO use location instead use route
 export function NewsCom({
@@ -18,10 +18,6 @@ export function NewsCom({
   dark: boolean,
 
 }) {
-  const [expand, setExpand] = useState(false);
-  function togleExpand() {
-    setExpand((expand) => !expand);
-  }
   const {
     //id,
     photos,
@@ -31,12 +27,18 @@ export function NewsCom({
     description,
     link,
   } = news;
-
+  const [expand, setExpand] = useState(false);
+  const isContent = Boolean(video) || (description.length > 0) || (photos.length > 0) || (link.length > 0);
+  function togleExpand() {
+    if (isContent) {
+      setExpand((expand) => !expand);
+    }
+  };
   const transition = {
     ease: 'linear',
     duration: 1,
     delay: 0.5,
-  }
+  };
   const variant = {
     initial: { opacity: 0 },
     animate: { opacity: 1 },
@@ -45,7 +47,7 @@ export function NewsCom({
   const hoverProps = {
     boxShadow: 'inset 0px -1px #EF7B10',
     cursor: 'pointer',
-  }
+  };
   const propsCard = {
     backgroundColor: dark ? 'background.between' : 'background.paper',
     height: expand ? '444px' : '212px',
@@ -64,6 +66,36 @@ export function NewsCom({
     px: 4,
     pb: 3.8,
   };
+  const VideoCom = () => (
+    <>{parse(video)}
+    </>
+
+
+  )
+  const ImageCom = () => (
+    <img
+      src={`${photos[0].url}`}
+      alt={title}
+      height="260"
+      width='auto'
+      loading="lazy"
+    />
+  )
+  const DescCom = () => (
+    <>
+      {description.map((desc, i) => <BodyTextCom key={i} text={desc} />)}
+    </>
+  )
+  const LinkCom = () => (
+    <Stack spacing={2}>
+      <BodyTextCom text="Links:" />
+      {link.map((link, i) => (
+        <Link key={i} href={link.href} >
+          {link.desc}
+        </Link>
+      ))}
+    </Stack>
+  )
   return (
     <Card
       onClick={togleExpand}
@@ -78,7 +110,7 @@ export function NewsCom({
           <BodyTextCom text={`${date.toLocaleString('de-DE', { dateStyle: "long" })}`} />
           <TitleTextCom text={`${title.toUpperCase()}`} sx={{ pt: 3.8 }} />
         </div>
-        <Typography
+        {isContent && !expand && <Typography
           variant="body2"
           component="p"
         >
@@ -87,7 +119,7 @@ export function NewsCom({
             ? <ExpandLessIcon fontSize="large" sx={{ pt: 1.5 }} />
             : <ExpandMoreIcon fontSize="large" sx={{ pt: 1.5 }} />
           }
-        </Typography>
+        </Typography>}
       </Stack>
       {expand && (
         <Stack
@@ -97,38 +129,26 @@ export function NewsCom({
           sx={{
             ...propsStack
           }} >
-          {description && <Typography
-            variant="body2"
-            component="p"
-          >
-            {parse(description)}
-          </Typography>}
-          {link && (<Link href={link}>
-            <BodyTextCom text={`link`} />
-          </Link>)}
-          {video && (
-            <video width="260" height="150" controls muted>
-              <source src={video} type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
-          )}
-          {(photos.length > 0) && (
-            <ImageList sx={{ width: 500, height: 150 }} cols={3} rowHeight={150}>
-              {photos.map((photo) => (
-                <ImageListItem key={photo}>
-                  <img
-                    src={`${photo}`}
-                    srcSet={`${photo}`}
-                    alt={photo}
-                    loading="lazy"
-                  />
-                </ImageListItem>
-              ))}
-            </ImageList>
-          )}
+          <Grid
+            container
+            sx={{
+              position: 'relative',
+              top: '-80px',
+            }}>
+            {video
+              ? <VideoCom />
+              : (photos.length > 0)
+                ? <ImageCom />
+                : (description.length > 0)
+                  ? <DescCom />
+                  : <LinkCom />
+            }
+          </Grid>
         </Stack>
       )}
-
     </Card >
   )
 }
+/*
+<iframe width="462" height="260" src={video} title={title} frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+*/

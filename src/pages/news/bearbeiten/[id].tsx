@@ -22,7 +22,7 @@ export default function NewsBearbeiten() {
   const { id } = router.query;
   const ID = (typeof id === 'string') ? id : '';
   useEffect(() => {
-    getCollectionDocument("projects", ID).then((result) => setData(result));
+    getCollectionDocument("news", ID).then((result) => setData(result));
   }, [])
 
   return (
@@ -30,7 +30,7 @@ export default function NewsBearbeiten() {
       <Page title={`Edit News`}>
         {data ? <NewsNewEditForm
           isEdit={isEdit}
-          currentProject={data}
+          currentNews={data}
         /> : <LoadingScreen />}
       </Page>
     </AuthGuard>

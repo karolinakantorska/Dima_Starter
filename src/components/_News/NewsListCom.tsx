@@ -24,6 +24,7 @@ export function NewsListCom() {
       <SiteTitle text={layoutHeader.news} />
       <Box
         display="grid"
+        //gridAutoFlow='row dense'
         gridTemplateColumns={isMiddle ? '1fr' : 'repeat(2, 1fr)'}
         gridTemplateRows='1fr'
         //justifyItems='stretch'

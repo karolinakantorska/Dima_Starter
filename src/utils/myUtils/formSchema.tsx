@@ -52,7 +52,15 @@ const phoneRegExp = /(\b(0041|0)|\B\+41)(\s?\(0\))?(\s)?[1-9]{2}(\s)?[0-9]{3}(\s
 
 export const NewJobSchema = Yup.object().shape({
     title: Yup.string()
-        .max(29, 'Berufname darf maximal 29 Zeichen lang sein'),
+        .required('Jobtitle ist erforderlich')
+        .max(29, 'Jobname darf maximal 29 Zeichen lang sein'),
     phone: Yup.string().matches(phoneRegExp, 'Das ist kein gultiges Telefonnummer'),
     email: Yup.string().email('Must be a valid email').max(35, 'E-Mailadresse darf maximal 35 Zeichen lang sein')
+});
+export const NewNewsSchema = Yup.object().shape({
+
+    title: Yup.string()
+        .required('Newstitle ist erforderlich')
+        .max(60, 'Berufname darf maximal 29 Zeichen lang sein'),
+
 });

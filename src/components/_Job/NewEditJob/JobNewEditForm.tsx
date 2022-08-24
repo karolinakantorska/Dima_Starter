@@ -100,6 +100,7 @@ export default function JobNewEditForm({ isEdit, currentJob }: Props) {
   } = methods;
   const values = watch();
   console.log('values', values)
+
   useEffect(() => {
     if (isEdit && currentJob) {
       reset(defaultValues);
@@ -147,6 +148,7 @@ export default function JobNewEditForm({ isEdit, currentJob }: Props) {
           setLoading(false);
         })
     }
+
   };
 
   return (
