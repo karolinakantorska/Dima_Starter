@@ -1,31 +1,31 @@
 import React from 'react';
 // @mui
-import { Typography, } from '@mui/material';
-
-import Chip from '@mui/material/Chip';
-
+import { Grid, Typography, } from '@mui/material';
 
 export function ChipDisplayOrderCom({
     displayOrder
 }: {
     displayOrder: number
 }) {
-    const propsChip = {
-        mt: '10px',
-        mr: '10px',
-        backgroundColor: 'rgba(255,255,255,0.2)',
+    const propsTypo = {
         color: 'background.default',
-        height: '40px',
-        width: '40px',
+    }
+    const propsBox = {
+        mt: '10px',
+        mr: '15px',
+        backgroundColor: 'rgba(255,255,255,0.2)',
+        borderRadius: '50%',
+        height: '32px',
+        width: '32px',
+        direction: "row",
+        justifyContent: "center",
+        alignItems: "center",
 
     }
     return (
-        <>
-            <Chip
-                label={<Typography variant="body2">{displayOrder}</Typography>}
-                color="secondary"
-                sx={{ ...propsChip }}
-            />
-        </>
+        <Grid sx={propsBox} container>
+            <Typography variant="body2" sx={propsTypo}>{displayOrder}</Typography>
+        </Grid>
+
     )
 }

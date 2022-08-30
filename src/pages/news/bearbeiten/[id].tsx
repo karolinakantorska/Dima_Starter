@@ -23,6 +23,7 @@ export default function NewsBearbeiten() {
   const ID = (typeof id === 'string') ? id : '';
   useEffect(() => {
     getCollectionDocument("news", ID).then((result) => setData(result));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (

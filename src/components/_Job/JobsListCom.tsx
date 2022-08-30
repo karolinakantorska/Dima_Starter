@@ -28,13 +28,12 @@ export function JobsListCom(
   const router = useRouter();
 
   useEffect(() => {
-    const changed = localStorage.getItem('projects');
+    const changed = localStorage.getItem('jobs');
     if (changed === 'jobs') {
       localStorage.removeItem('jobs');
       router.reload();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-
   }, []);
 
   useEffect(() => {

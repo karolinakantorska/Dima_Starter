@@ -55,11 +55,8 @@ export default function CarouselBasic3({ photos }: { photos: ImagesType }) {
     ml: '-30px',
     color: 'dima',
     fontSize: 60,
-
     [theme.breakpoints.down('mobile')]: {
       display: 'none'
-      //fontSize: 30,
-      //ml: '-15px',
     },
     [theme.breakpoints.between('mobile', 'lg')]: {
       fontSize: 40,
@@ -68,7 +65,6 @@ export default function CarouselBasic3({ photos }: { photos: ImagesType }) {
   }
   const propsArrow = {
     position: 'relative',
-    //bottom: 0,
     left: '50%',
     ml: '-40px',
     mt: '-10px',
@@ -97,7 +93,6 @@ export default function CarouselBasic3({ photos }: { photos: ImagesType }) {
           </Link>
         </Box>
       </>
-
     )
   }
   else {
@@ -113,14 +108,10 @@ export default function CarouselBasic3({ photos }: { photos: ImagesType }) {
             ))
             }
           </Slider>
-
           <Link href="#Project_Table" underline="none">
             < KeyboardArrowDownIcon sx={{ ...propsArrowSlider }} />
           </Link>
-
-
         </CarouselArrows>
-
       </RootStyle>
     );
   }
@@ -136,11 +127,8 @@ type CarouselItemProps = {
 
 function CarouselItem({ item }: { item: CarouselItemProps }) {
   const { image, title } = item;
-
   return (
     <Image alt={title} src={image} ratio="16/9" />
   );
 }
-/*
-<Image alt={title} src={image} ratio="16/9"  />
-*/
+

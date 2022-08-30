@@ -26,6 +26,7 @@ export default function ProjektBearbeiten() {
     const { id } = router.query;
     const ID = (typeof id === 'string') ? id : '';
     getCollectionDocument("projects", ID).then((result) => setData(result));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (

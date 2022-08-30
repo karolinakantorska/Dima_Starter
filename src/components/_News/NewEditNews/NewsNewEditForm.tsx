@@ -22,7 +22,7 @@ import { DescCardCom } from 'src/components/_Reusable/DescCardCom';
 import { LinkInputCom, } from 'src/components/_News/NewEditNews/LinkInputCom';
 import { TitleTextCom } from 'src/components/_Reusable/TitleTextCom';
 import { DateInputCom } from 'src/components/_Reusable/DateInputCom';
-import { PhotosImputCom } from 'src/components/_Reusable/PhotosImputCom';
+
 
 export interface FormValuesProps extends Partial<News> {
   date_form: Date;
@@ -64,8 +64,6 @@ export default function NewsNewEditForm({ isEdit, currentNews }: Props) {
     () => ({
       title: currentNews?.title || '',
       description: currentNews?.description || [],
-      photos: currentNews?.photos || [],
-      video: currentNews?.video || '',
       date_form: currentNews && currentNews.date && new Date(currentNews.date) || new Date(),
       link: currentNews?.link || [],
     }),
@@ -148,10 +146,7 @@ export default function NewsNewEditForm({ isEdit, currentNews }: Props) {
                 <TitleTextCom text={`News Titel:`} />
                 <RHFTextField variant="filled" name="title" label="Titel" />
               </Stack>
-              <Stack spacing={3}>
-                <TitleTextCom text={`Video von You Tube:`} />
-                <RHFTextField variant="filled" name="video" label="<iframe> ... </iframe>" />
-              </Stack>
+
               <DescCardCom name="description" text="Bezeichnung:" />
             </Stack>
           </Grid>
@@ -160,10 +155,6 @@ export default function NewsNewEditForm({ isEdit, currentNews }: Props) {
               <Stack spacing={3}>
                 <TitleTextCom text="Datum: " />
                 <DateInputCom name="date_form" views={['year', 'month', 'day']} label="Datum" />
-              </Stack>
-              <Stack spacing={3}>
-                <TitleTextCom text="Fotos: " />
-                <PhotosImputCom setLoading={setLoading} setError={setError} folderName="news" />
               </Stack>
               <Stack spacing={3}>
                 <TitleTextCom text="Links: " />

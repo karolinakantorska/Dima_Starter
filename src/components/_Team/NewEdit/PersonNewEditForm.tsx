@@ -8,12 +8,8 @@ import {
   Grid,
   Stack,
 } from '@mui/material';
-import { FormProvider } from '../../hook-form';
+import { FormProvider, RHFTextField } from '../../hook-form';
 import { addProjestToFirestore, editProjectInFirestore } from '../../../utils/apis/addToFirestore';
-import { NameCardCom } from './NameCardCom';
-import { TitleCardCom } from './TitleCardCom';
-import { JobCardCom } from './JobCardCom';
-import { EmailCardCom } from './EmailCardCom';
 import { PhotoCardCom } from './PhotoCardComp';
 import { Person } from '../../../utils/TS/interface';
 import { NewPersonSchema } from '../../../utils/myUtils/formSchema';
@@ -21,6 +17,7 @@ import { AlertCom } from '../../_Reusable/AlertCom';
 import { PATH_DIMA, } from '../../../routes/paths';
 import { CategoryCardCom } from './CategoryCardCom';
 import { revalidateURL } from 'src/utils/myUtils/revalidateURL';
+import { TitleTextCom } from 'src/components/_Reusable/TitleTextCom';
 /*
 export interface FormValuesProps extends Partial<Person> {
 }
@@ -138,10 +135,58 @@ export default function PersonNewEditForm({ isEdit, currentPerson }: Props) {
         <Grid container direction='row' spacing={6} sx={{ pt: 3 }}>
           <Grid item xs={12} md={7}  >
             <Stack spacing={8}>
-              <NameCardCom />
-              <TitleCardCom />
-              <JobCardCom />
-              <EmailCardCom />
+              <Stack spacing={3}>
+                <TitleTextCom text="Mitarbeiter: " />
+                <RHFTextField
+                  variant="filled"
+                  name="name"
+                  label="Vorname"
+                />
+                <RHFTextField
+                  variant="filled"
+                  name="surname"
+                  label="Nahname" />
+              </Stack>
+              <Stack spacing={3}>
+                <TitleTextCom text="Beruf: " />
+                <RHFTextField
+                  variant="filled"
+                  name="title1"
+                  label="Beruf"
+                />
+                <RHFTextField
+                  variant="filled"
+                  name="title2"
+                  label="Beruf - nach Bedarf" />
+              </Stack>
+              <Stack spacing={3}>
+                <TitleTextCom text="Anzeigen Reihenfolge: " />
+                <RHFTextField
+                  variant="filled"
+                  name="displayOrder"
+                  label="Anzeigen Reihenfolge 1-100"
+                />
+              </Stack>
+              <Stack spacing={3}>
+                <TitleTextCom text="Job: " />
+                <RHFTextField
+                  variant="filled"
+                  name="job1"
+                  label="Aufgabe"
+                />
+                <RHFTextField
+                  variant="filled"
+                  name="job2"
+                  label="Aufgabe - nach Bedarf" />
+              </Stack>
+              <Stack spacing={3}>
+                <TitleTextCom text="Email: " />
+                <RHFTextField
+                  variant="filled"
+                  name="email"
+                  label="E-Mail"
+                />
+              </Stack>
               <CategoryCardCom />
             </Stack>
           </Grid>

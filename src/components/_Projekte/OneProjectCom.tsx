@@ -149,7 +149,6 @@ export function OneProjectCom({ project }: { project: ProjectType }) {
             </Box>
           </Box>
         </Stack>
-
       </>
     )
 

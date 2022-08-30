@@ -27,9 +27,6 @@ export function ProcentCardCom() {
                     '& .MuiFormControlLabel-root': { mr: 2 },
                 }}
             />
-
-
-
         </Stack>
 
 

@@ -4,15 +4,11 @@ import { useRouter } from 'next/router';
 // form
 import { useForm, } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { FormProvider } from '../../hook-form';
+import { FormProvider, RHFTextField } from '../../hook-form';
 // @mui
 import { LoadingButton } from '@mui/lab';
-import {
-  Grid,
-  Stack,
-} from '@mui/material';
+import { Grid, Stack, } from '@mui/material';
 // @types
-
 import { Job, } from 'src/utils/TS/interface';
 // utils
 import { addProjestToFirestore, editProjectInFirestore } from 'src/utils/apis/addToFirestore';
@@ -26,12 +22,10 @@ import { createJob } from 'src/utils/myUtils/createJob';
 import { AlertCom } from '../../_Reusable/AlertCom';
 import { OneLineDescCardCom } from '../../_Reusable/OneLineDescCardCom';
 import { DescCardCom } from '../../_Reusable/DescCardCom';
-import { TitleCardCom } from './TitleCardCom';
-import { YearCardCom } from './YearCardCom';
-import { ProcentCardCom } from './ProcentCardCom';
-import { ContactCardCom } from './ContactCardCom';
 
-import { LocationCardCom } from './LocationCardCom';
+import { ProcentCardCom } from './ProcentCardCom';
+import { TitleTextCom } from 'src/components/_Reusable/TitleTextCom';
+import { DateInputCom } from 'src/components/_Reusable/DateInputCom';
 
 export interface FormValuesProps extends Partial<Job> {
   announcment_form: Date;
@@ -158,20 +152,33 @@ export default function JobNewEditForm({ isEdit, currentJob }: Props) {
         <Grid container direction='row' spacing={6} sx={{ pt: 3 }}>
           <Grid item xs={12} md={7}  >
             <Stack spacing={8}>
-              <TitleCardCom />
+              <Stack spacing={3}>
+                <TitleTextCom text={`Job Titel:`} />
+                <RHFTextField variant="filled" name="title" label="Titel" />
+              </Stack>
               <OneLineDescCardCom name="tasks" text="Aufgaben:" />
               <OneLineDescCardCom name="skills" text="Was sie mitbringen:" />
               <DescCardCom name="descriptionJob" text="Stellenbeschrieb:" />
               <DescCardCom name="descWe" text="Was wir bieten:" />
-
             </Stack>
           </Grid>
           <Grid item xs={12} md={5}>
             <Stack spacing={8}>
-              <LocationCardCom />
+              <Stack spacing={3}>
+                <TitleTextCom text="Lokation:" />
+                <RHFTextField variant="filled" name="location" label="Lokation" />
+              </Stack>
               <ProcentCardCom />
-              <YearCardCom />
-              <ContactCardCom />
+              <Stack spacing={3}>
+                <TitleTextCom text="Veröffentlicht am: " />
+                <DateInputCom name="announcment_form" views={['year', 'month', 'day']} label="Datum" />
+              </Stack>
+              <Stack spacing={3}>
+                <TitleTextCom text="Kontaktperson:" />
+                <RHFTextField variant="filled" name="kontaktperson" label="Name" value={values.kontaktperson} />
+                <RHFTextField variant="filled" name="phone" label="Telefonnummer" value={values.phone} />
+                <RHFTextField variant="filled" name="email" label="E-Mail" value={values.email} />
+              </Stack>
             </Stack>
           </Grid>
 

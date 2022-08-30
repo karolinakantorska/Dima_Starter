@@ -1,13 +1,12 @@
 //import AnimatedStartLayout from '../../layouts/animated/AnimatedStartLayout';
 import React, { useState } from "react";
 import { m, } from 'framer-motion';
-import { Card, Grid, Link, Stack, Typography } from "@mui/material";
+import { Card, Stack, Typography } from "@mui/material";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import { News } from "src/utils/TS/interface";
 import { BodyTextCom } from "../_Reusable/BodyTextCom";
-import { TitleTextCom } from "../_Reusable/TitleTextCom";
-import parse from 'html-react-parser';
+
 
 // TODO use location instead use route
 export function NewsCom({
@@ -20,20 +19,20 @@ export function NewsCom({
 }) {
   const {
     //id,
-    photos,
-    video,
     date,
     title,
     description,
     link,
   } = news;
   const [expand, setExpand] = useState(false);
-  const isContent = Boolean(video) || (description.length > 0) || (photos.length > 0) || (link.length > 0);
+
+  const isContent = (description.length > 0) || (link.length > 0);
+
   function togleExpand() {
-    if (isContent) {
-      setExpand((expand) => !expand);
-    }
+    setExpand((expand) => !expand);
+
   };
+
   const transition = {
     ease: 'linear',
     duration: 1,
@@ -44,20 +43,27 @@ export function NewsCom({
     animate: { opacity: 1 },
     transition: transition,
   };
-  const hoverProps = {
-    boxShadow: 'inset 0px -1px #EF7B10',
-    cursor: 'pointer',
-  };
-  const propsCard = {
+  const propsEmptyCard = {
     backgroundColor: dark ? 'background.between' : 'background.paper',
+  }
+  const propsCard = {
+    ...propsEmptyCard,
     height: expand ? '444px' : '212px',
     gridRow: expand ? 'span 2' : 'span 1',
     transition: 'height 1s',
     '&:hover': {
-      ...hoverProps
+      boxShadow: 'inset 0px -5px #EF7B10',
+      cursor: 'pointer',
+      'p.title': {
+        color: 'dima'
+      }
     },
     '&:focus': {
-      ...hoverProps
+      boxShadow: 'inset 0px -5px #EF7B10',
+      cursor: 'pointer',
+      'p.title': {
+        color: 'dima'
+      }
     },
   };
 
@@ -66,89 +72,107 @@ export function NewsCom({
     px: 4,
     pb: 3.8,
   };
-  const VideoCom = () => (
-    <>{parse(video)}
-    </>
 
-
-  )
-  const ImageCom = () => (
-    <img
-      src={`${photos[0].url}`}
-      alt={title}
-      height="260"
-      width='auto'
-      loading="lazy"
-    />
-  )
   const DescCom = () => (
     <>
-      {description.map((desc, i) => <BodyTextCom key={i} text={desc} />)}
+      {description.map((desc, i) => <Typography
+        key={i}
+        sx={{ color: 'dima' }}
+        variant="body2"
+        component="p"
+      >
+        {desc}
+      </Typography>)}
     </>
   )
+
   const LinkCom = () => (
-    <Stack spacing={2}>
+    <Stack spacing={1} sx={{ pt: 3.4 }}>
       <BodyTextCom text="Links:" />
-      {link.map((link, i) => (
-        <Link key={i} href={link.href} >
-          {link.desc}
-        </Link>
-      ))}
+      {link.map((l, i) => (
+        <a key={i} target="_blank" rel="noreferrer" href={l.url}>{l.text}</a>
+      )
+      )}
     </Stack>
   )
-  return (
-    <Card
-      onClick={togleExpand}
-      sx={{ ...propsCard }}>
-      <Stack
-        direction="column"
-        //spacing={3.8}
-        justifyContent="space-between"
-        sx={{ ...propsStack, height: '212px' }}
+  const CardInhalt = () => (
+    <div>
+      <BodyTextCom text={`${new Date(date).toLocaleString('de-DE', { dateStyle: "long" })}`} />
+      <Typography
+        sx={{ pt: 3.8 }}
+        variant="body2"
+        component="p"
+        className="title"
       >
-        <div>
-          <BodyTextCom text={`${date.toLocaleString('de-DE', { dateStyle: "long" })}`} />
-          <TitleTextCom text={`${title.toUpperCase()}`} sx={{ pt: 3.8 }} />
-        </div>
-        {isContent && !expand && <Typography
-          variant="body2"
-          component="p"
-        >
-          MEHR LESEN
-          {expand
-            ? <ExpandLessIcon fontSize="large" sx={{ pt: 1.5 }} />
-            : <ExpandMoreIcon fontSize="large" sx={{ pt: 1.5 }} />
-          }
-        </Typography>}
-      </Stack>
-      {expand && (
+        {`${title.toUpperCase()}`}
+      </Typography>
+    </div>
+
+  )
+  if (isContent) {
+    return (
+      <Card
+        onClick={togleExpand}
+        sx={{ ...propsCard }}>
+
         <Stack
-          component={m.div}
-          {...variant}
-          spacing={2}
-          sx={{
-            ...propsStack
-          }} >
-          <Grid
-            container
+          direction="column"
+          justifyContent="space-between"
+          sx={{ ...propsStack, height: '212px' }}
+        >
+          <CardInhalt />
+          {isContent && !expand && <Typography
+            variant="body2"
+            component="p"
+          >
+            MEHR LESEN
+            {expand
+              ? <ExpandLessIcon fontSize="large" sx={{ pt: 1.5 }} />
+              : <ExpandMoreIcon fontSize="large" sx={{ pt: 1.5 }} />
+            }
+          </Typography>}
+        </Stack>
+        {expand && (
+          <Stack
+            component={m.div}
+            {...variant}
+            spacing={2}
             sx={{
+              ...propsStack
+            }} >
+
+            <Stack sx={{
               position: 'relative',
               top: '-80px',
             }}>
-            {video
-              ? <VideoCom />
-              : (photos.length > 0)
-                ? <ImageCom />
-                : (description.length > 0)
-                  ? <DescCom />
-                  : <LinkCom />
-            }
-          </Grid>
+              {(description.length > 0) && <DescCom />}
+              {(link.length > 0) && <LinkCom />}
+            </Stack>
+
+          </Stack>
+        )}
+      </Card >
+    )
+  } else {
+    return (
+      <Card
+        sx={{ ...propsEmptyCard }}>
+        <Stack
+          direction="column"
+          justifyContent="space-between"
+          sx={{ ...propsStack, height: '212px' }}
+        >
+          <CardInhalt />
         </Stack>
-      )}
-    </Card >
-  )
+      </Card >
+
+
+    )
+  }
 }
 /*
-<iframe width="462" height="260" src={video} title={title} frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
-*/
+ <Button key={i} variant="text" onClick={(e) => handleClick(e, l.href)}>
+            {l.text}
+          </Button>
+          https://www.google.com
+          */

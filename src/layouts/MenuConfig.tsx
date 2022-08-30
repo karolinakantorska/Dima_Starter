@@ -75,10 +75,12 @@ export const menuConfigAdmin = [
       {
         subheader: '',
         items: [
+          /*
           {
             title: 'Unternehmung',
             path: PATH_DIMA.unternehmung
           },
+          */
           {
             title: 'Philosophie',
             path: PATH_DIMA.philosophie
@@ -106,10 +108,12 @@ export const menuConfigAdmin = [
             title: 'Projekte',
             path: PATH_PROJEKTE.projekte
           },
+          /*
           {
             title: 'Werkliste',
             path: PATH_PROJEKTE.werkliste
           },
+          */
           {
             title: 'Webcam',
             path: PATH_WEBCAMS.webcams

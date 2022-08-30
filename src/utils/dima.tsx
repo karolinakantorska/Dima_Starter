@@ -58,3 +58,6 @@ export const layoutHeader = {
         description: 'Projekte, Mitarbeiter, Wettbewerbe, Wissenswertes, Presse. Alles was gerade bei uns passiert.'
     },
 }
+export const philospohie = {
+    title: ''
+}

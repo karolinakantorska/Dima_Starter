@@ -39,6 +39,7 @@ export default function CarouselArrows({
     top: 0,
     zIndex: 9,
   } as const;
+
   const buttonStyle = {
     height: 'calc(100% - 42px)',
     width: '100%',

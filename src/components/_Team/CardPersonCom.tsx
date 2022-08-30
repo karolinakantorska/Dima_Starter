@@ -63,29 +63,32 @@ export function CardPersonCom({
             });
         setOpen(false);
     };
-
+    const gridProps = {
+        px: isSmall ? 1.75 : 3.25,
+        pt: isSmall ? 1.75 : 4.15,
+        pb: isAuthenticated ? 8 : isSmall ? 1.75 : 4,
+        height: isSmall ? '130px' : '195px'
+    }
     return (
         <>
             <Card >
                 {isAuthenticated && <Grid container justifyContent="flex-end" sx={{ position: 'absolute' }} >
                     <ChipDisplayOrderCom displayOrder={person.displayOrder} />
                 </Grid>}
-                <CardMedia
+                {(photo.url.length > 0) && <CardMedia
                     component="img"
                     height={isDesktop ? 545 : 'auto'}
                     image={photo.url ? photo.url : '/assets/bg_gradient.jpeg'}
                     alt={`${name} ${surname} ${job1}`}
                     sx={{ height: '574px' }}
-                />
-                {isAuthenticated && <Grid container justifyContent="flex-end" sx={{ mt: '-40px', }} >
-                    <EditDeleteIconCom handleOpen={handleOpen} editURL={`${PATH_DIMA.editMitarbeiter}/${id}`} />
-                </Grid>}
+                />}
+
                 <Grid
                     container
                     direction="column"
                     justifyContent="space-between"
                     alignItems="flex-start"
-                    sx={isSmall ? { p: 1.75, height: '130px' } : { px: 3.25, pt: 4.15, pb: 4, height: '195px' }}
+                    sx={gridProps}
                 >
                     <Grid item>
                         <TitleTextCom text={`${name.toUpperCase()} ${surname.toUpperCase()}`} />
@@ -105,7 +108,10 @@ export function CardPersonCom({
                         </Stack>
                     </Grid>
                 </Grid>
-
+                {isAuthenticated &&
+                    <Grid container justifyContent="flex-end" sx={{ mt: '-40px', }} >
+                        <EditDeleteIconCom handleOpen={handleOpen} editURL={`${PATH_DIMA.editMitarbeiter}/${id}`} />
+                    </Grid>}
             </Card >
             {isAuthenticated && <DeleteDialogCom
                 open={open}

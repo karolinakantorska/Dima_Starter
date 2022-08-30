@@ -22,6 +22,7 @@ export default function PersonBearbeiten() {
     const { id } = router.query;
     const ID = (typeof id === 'string') ? id : '';
     getCollectionDocument("team", ID).then((result) => { console.log(result); setData(result) });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   return (
     <AuthGuard>

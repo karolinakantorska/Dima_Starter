@@ -154,10 +154,8 @@ export interface News {
   id: string,
   title: string,
   description: string[] | [],
-  photos: ImageType[] | [];
-  video: string,
   date: Date,
-  link: { desc: string, href: string }[] | []
+  link: { text: string, url: string }[] | []
 }
 
 export const Cadosch = `Cadosch & Zimmermann GmbH, Zürich`;

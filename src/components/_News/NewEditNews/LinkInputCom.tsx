@@ -17,10 +17,10 @@ export function LinkInputCom() {
     return (
         <Stack spacing={3}>
             {fields.map((field, i) => (
-                <div key={i}>
-                    <RHFTextField variant="filled" name={`link[${i}].url`} label='label' />
-                    <RHFTextField variant="filled" name={`link[${i}].text`} label='label' />
-                </div>
+                <Stack spacing={1} key={i}>
+                    <RHFTextField variant="filled" name={`link[${i}].text`} label='text' />
+                    <RHFTextField variant="filled" name={`link[${i}].url`} label='url' />
+                </Stack>
 
             ))}
             <Button variant="contained" color="secondary" onClick={(e) => { e.preventDefault(); append({ url: values.link.url, text: values.link.text }) }} >
