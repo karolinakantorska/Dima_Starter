@@ -1,7 +1,7 @@
 
 //import AnimatedStartLayout from '../../layouts/animated/AnimatedStartLayout';
 import React, { useEffect, useState } from 'react';
-import { Card, List, ListItem, Link, Grid, ButtonBase } from "@mui/material";
+import { Card, List, ListItem, Grid, ButtonBase } from "@mui/material";
 
 import { Job } from "src/utils/TS/interface";
 import { BodyTextCom } from "../_Reusable/BodyTextCom";
