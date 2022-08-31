@@ -10,11 +10,11 @@ neueMitarbeiter: '/dima/neue_mitarbeiter',
 editMitarbeiter: '/dima/bearbeiten',
 };
 export const PATH_PROJEKTE = {
-  projekte: '/projekte',
+  projekte: '/projekt/list',
   projekt: '/projekt',
   addProject: '/projekt/neues_projekt',
   editProject: '/projekt/bearbeiten',
-  werkliste: '/werkliste',
+  werkliste: 'projekt/werkliste',
 };
 export const PATH_NEWS = {
   news: '/news',
@@ -31,7 +31,7 @@ export const PATH_KONTAKT = {
   kontakt: '/kontakt',
 };
 export const PATH_WEBCAMS = {
-  webcams: '/webcams',
+  webcams: 'projekt/webcams',
 };
 export const PATH_REV = {
   revalidate: '/api/revalidate',

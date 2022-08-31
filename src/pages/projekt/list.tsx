@@ -9,12 +9,12 @@ import { getOrderedCollection } from "src/utils/apis/apis";
 
 // ----------------------------------------------------------------------
 
-Projekte.getLayout = function getLayout(page: React.ReactElement) {
+List.getLayout = function getLayout(page: React.ReactElement) {
   return <Layout >{page}</Layout>;
 };
 
 // ----------------------------------------------------------------------
-export default function Projekte(props: any) {
+export default function List(props: any) {
   const { data } = props;
   return (
     <Page title="Projekte">

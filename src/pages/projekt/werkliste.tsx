@@ -1,7 +1,7 @@
 // layouts
-import Layout from '../layouts';
+import Layout from '../../layouts';
 // components
-import Page from '../components/Page';
+import Page from '../../components/Page';
 
 
 // ----------------------------------------------------------------------
