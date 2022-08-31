@@ -13,9 +13,8 @@ export const news: News[] = [
         id: '1',
         title: 'Aktueller Standt der Überbaung in Maseltragen aus der Vogelperspektive',
         description: [],
-
         date: new Date('August 01, 2021'),
-        link: []
+        link: { text: '', url: '' }
     },
 
     {
@@ -25,7 +24,7 @@ export const news: News[] = [
             'Totalunternehmer: dima & partner ag',
             'Bauleitung: Anjuscha Sutter, dima & partner ag'],
         date: new Date('Marz 01, 2022'),
-        link: [{ text: 'string', url: 'https://www.bau-cam.ch/dima/' }]
+        link: { text: 'string', url: 'https://www.bau-cam.ch/dima/' }
     },
     {
         id: '3',
@@ -35,7 +34,7 @@ export const news: News[] = [
             'Bauleitung: Anjuscha Sutter, dima & partner ag'],
 
         date: new Date('Marz 27, 2022'),
-        link: [{ text: 'Unsere Baucams', url: 'https://www.bau-cam.ch/dima/' }]
+        link: { text: 'Unsere Baucams', url: 'https://www.bau-cam.ch/dima/' }
     },
     {
         id: '4',
@@ -48,7 +47,7 @@ export const news: News[] = [
 
         date: new Date('September 16, 2022'),
 
-        link: [{ text: 'string', url: 'https://lnkd.in/ePFRZ2CF' }],
+        link: { text: 'string', url: 'https://lnkd.in/ePFRZ2CF' }
     },
     {
         id: '5',
@@ -56,7 +55,7 @@ export const news: News[] = [
         description: [],
 
         date: new Date('Juni 25, 2022'),
-        link: []
+        link: { text: '', url: '' }
     },
     {
         id: '6',
@@ -64,7 +63,7 @@ export const news: News[] = [
         date: new Date('May 01, 2022'),
         title: 'Beteiligung am Architektürbiüro Cadosch & Zimmermann GMBH Zürich',
         description: [],
-        link: []
+        link: { text: '', url: '' }
     },
 
 ]

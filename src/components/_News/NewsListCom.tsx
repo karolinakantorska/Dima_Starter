@@ -67,7 +67,16 @@ export function NewsListCom({ news }: Props) {
           if ((i + 1) % 2 == 0) {
             dark = !dark;
           }
-          return (<NewsCom key={news.id} news={news} dark={dark} />)
+          return (
+            <NewsCom
+              key={news.id}
+              news={news}
+              dark={dark}
+              setSucces={setSucces}
+              setLoading={setLoading}
+              setError={setError}
+            />
+          )
         })}
       </Box>}
       {!news && <TitleTextCom text="Leider haben wir momentan, keine News zu teilen" />}

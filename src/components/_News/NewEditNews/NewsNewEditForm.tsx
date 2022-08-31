@@ -19,15 +19,12 @@ import { createNews } from 'src/utils/myUtils/createNews';
 // components
 import { AlertCom } from 'src/components/_Reusable/AlertCom';
 import { DescCardCom } from 'src/components/_Reusable/DescCardCom';
-import { LinkInputCom, } from 'src/components/_News/NewEditNews/LinkInputCom';
 import { TitleTextCom } from 'src/components/_Reusable/TitleTextCom';
 import { DateInputCom } from 'src/components/_Reusable/DateInputCom';
-
+import { BodyTextCom } from 'src/components/_Reusable/BodyTextCom';
 
 export interface FormValuesProps extends Partial<News> {
   date_form: Date;
-  linkText: string;
-  linkUrl: string;
 }
 type Props = {
   isEdit?: boolean;
@@ -65,11 +62,12 @@ export default function NewsNewEditForm({ isEdit, currentNews }: Props) {
       title: currentNews?.title || '',
       description: currentNews?.description || [],
       date_form: currentNews && currentNews.date && new Date(currentNews.date) || new Date(),
-      link: currentNews?.link || [],
+      link: currentNews?.link || { text: '', url: '' },
     }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [currentNews]
   );
+
   const methods = useForm<FormValuesProps>({
     resolver: yupResolver(NewNewsSchema),
     defaultValues,
@@ -98,7 +96,7 @@ export default function NewsNewEditForm({ isEdit, currentNews }: Props) {
     setLoading(true);
 
     const newsToDB = createNews(data);
-    //console.log('newsToDB', newsToDB)
+    console.log('newsToDB', newsToDB)
 
     if (currentNews?.id) {
       //const Id = currentNews ? currentNews.id : ;
@@ -128,7 +126,7 @@ export default function NewsNewEditForm({ isEdit, currentNews }: Props) {
           })
         })
         .catch((error) => {
-          //console.log('error', error);
+          console.log('error', error);
           setError(error)
           setLoading(false);
         })
@@ -146,7 +144,6 @@ export default function NewsNewEditForm({ isEdit, currentNews }: Props) {
                 <TitleTextCom text={`News Titel:`} />
                 <RHFTextField variant="filled" name="title" label="Titel" />
               </Stack>
-
               <DescCardCom name="description" text="Bezeichnung:" />
             </Stack>
           </Grid>
@@ -158,7 +155,9 @@ export default function NewsNewEditForm({ isEdit, currentNews }: Props) {
               </Stack>
               <Stack spacing={3}>
                 <TitleTextCom text="Links: " />
-                <LinkInputCom />
+                <BodyTextCom text="* Link mit anfang: https:// zum Beispiel: https://www.dima-partner.ch/" />
+                <RHFTextField variant="filled" name="link.text" label="Text" />
+                <RHFTextField variant="filled" name="link.url" label="https://..." />
               </Stack>
             </Stack>
           </Grid>

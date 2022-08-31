@@ -1,36 +1,74 @@
 //import AnimatedStartLayout from '../../layouts/animated/AnimatedStartLayout';
-import React, { useState } from "react";
+import React, { Dispatch, SetStateAction, useState } from "react";
 import { m, } from 'framer-motion';
-import { Card, Stack, Typography } from "@mui/material";
+import { Card, CardActions, Stack, Typography } from "@mui/material";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import { News } from "src/utils/TS/interface";
 import { BodyTextCom } from "../_Reusable/BodyTextCom";
+import { EditDeleteIconCom } from "../_Reusable/EditDeleteIconCom";
+import useAuth from 'src/utils/firebaseAuth/useAuth';
+import { deleteProjectFromFirestore } from "src/utils/apis/deleteFromFirestore";
+import { PATH_NEWS } from '../../routes/paths';
+import { revalidateURL } from "src/utils/myUtils/revalidateURL";
+import { DeleteDialogCom } from "../_Reusable/DeleteDialogCom";
 
-
+type Props = {
+  news: News,
+  dark: boolean,
+  setSucces: Dispatch<SetStateAction<string | boolean>>;
+  setLoading: Dispatch<SetStateAction<boolean>>;
+  setError: Dispatch<SetStateAction<{
+    code: string;
+    message: string;
+  } | null>>;
+}
 // TODO use location instead use route
 export function NewsCom({
   news,
   dark,
-}: {
-  news: News,
-  dark: boolean,
-
-}) {
+  setSucces,
+  setLoading,
+  setError,
+}: Props) {
   const {
-    //id,
+    id,
     date,
     title,
     description,
     link,
   } = news;
+  const { isAuthenticated } = useAuth();
   const [expand, setExpand] = useState(false);
+  const [open, setOpen] = useState(false);
 
-  const isContent = (description.length > 0) || (link.length > 0);
+  const isContent = (description.length > 0) || ((link.url !== ''));
 
   function togleExpand() {
     setExpand((expand) => !expand);
+  };
+  function handleOpen() {
+    setOpen(true);
+  };
+  function handleClose() {
+    setOpen(false);
+  };
+  function handleDelete() {
+    setLoading(true);
+    deleteProjectFromFirestore('news', id)
+      .then(() => {
+        fetch(revalidateURL(PATH_NEWS.news)).then(() => {
+          setLoading(false);
+          setSucces(true);
+        })
+      })
+      .catch((error) => {
+        //console.log('error', error);
+        setError(error);
+        setLoading(false);
+      });
 
+    setOpen(false);
   };
 
   const transition = {
@@ -89,15 +127,23 @@ export function NewsCom({
   const LinkCom = () => (
     <Stack spacing={1} sx={{ pt: 3.4 }}>
       <BodyTextCom text="Links:" />
-      {link.map((l, i) => (
-        <a key={i} target="_blank" rel="noreferrer" href={l.url}>{l.text}</a>
-      )
-      )}
+      <a target="_blank" rel="noreferrer" href={link.url}>{link.text}</a>
     </Stack>
   )
   const CardInhalt = () => (
     <div>
-      <BodyTextCom text={`${new Date(date).toLocaleString('de-DE', { dateStyle: "long" })}`} />
+      <Stack
+        direction="row"
+        justifyContent="space-between"
+      >
+        <BodyTextCom text={`${new Date(date).toLocaleString('de-DE', { dateStyle: "long" })}`} />
+        {isAuthenticated &&
+          <CardActions sx={{ p: 0 }}>
+            <EditDeleteIconCom handleOpen={handleOpen} editURL={`${PATH_NEWS.editNews}/${id}`} />
+          </CardActions>}
+      </Stack>
+
+
       <Typography
         sx={{ pt: 3.8 }}
         variant="body2"
@@ -106,6 +152,15 @@ export function NewsCom({
       >
         {`${title.toUpperCase()}`}
       </Typography>
+
+      {isAuthenticated && <DeleteDialogCom
+        open={open}
+        handleClose={handleClose}
+        handleDelete={handleDelete}
+        objectToBeDeled="News"
+        titleOfObjectToBeDeled={`${title.toUpperCase()}}`}
+      />
+      }
     </div>
 
   )
@@ -141,16 +196,18 @@ export function NewsCom({
               ...propsStack
             }} >
 
-            <Stack sx={{
-              position: 'relative',
-              top: '-80px',
-            }}>
+            <Stack
+              spacing={2}
+              sx={{
+                position: 'relative',
+                top: '-120px',
+              }}>
+              {link.url && <LinkCom />}
               {(description.length > 0) && <DescCom />}
-              {(link.length > 0) && <LinkCom />}
             </Stack>
-
           </Stack>
         )}
+
       </Card >
     )
   } else {
@@ -170,9 +227,3 @@ export function NewsCom({
     )
   }
 }
-/*
- <Button key={i} variant="text" onClick={(e) => handleClick(e, l.href)}>
-            {l.text}
-          </Button>
-          https://www.google.com
-          */

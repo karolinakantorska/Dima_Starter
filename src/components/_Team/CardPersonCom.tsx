@@ -67,7 +67,7 @@ export function CardPersonCom({
         px: isSmall ? 1.75 : 3.25,
         pt: isSmall ? 1.75 : 4.15,
         pb: isAuthenticated ? 8 : isSmall ? 1.75 : 4,
-        height: isSmall ? '130px' : '195px'
+        height: isAuthenticated ? '230px' : isSmall ? '130px' : '195px'
     }
     return (
         <>

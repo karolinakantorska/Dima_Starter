@@ -6,7 +6,7 @@ import { ImageType, ProjectType } from '../../utils/TS/interface';
 import useResponsive from '../../hooks/useResponsive';
 import { firstLettersBig } from '../../utils/Text/textUtils';
 import { Box } from '@mui/system';
-import { Grid, CardActions, CardContent, Card } from '@mui/material';
+import { Grid, CardActions, CardContent, Card, Stack } from '@mui/material';
 
 import { PATH_PROJEKTE } from '../../routes/paths';
 import useAuth from 'src/utils/firebaseAuth/useAuth';
@@ -18,14 +18,7 @@ import { TitleTextCom } from '../_Reusable/TitleTextCom';
 import { BodyTextCom } from '../_Reusable/BodyTextCom';
 import { revalidateURL } from 'src/utils/myUtils/revalidateURL';
 
-export function TextCardCom({
-  project,
-  big,
-  rewerseBig,
-  setSucces,
-  setLoading,
-  setError,
-}: {
+type Props = {
   project: ProjectType,
   big: boolean,
   rewerseBig: boolean,
@@ -35,8 +28,17 @@ export function TextCardCom({
     code: string;
     message: string;
   } | null>>;
+}
 
-}) {
+export function TextCardCom({
+  project,
+  big,
+  rewerseBig,
+  setSucces,
+  setLoading,
+  setError,
+}: Props
+) {
   const { title, location, id, objektAlter, photo, photos } = project;
   const [open, setOpen] = useState(false);
   const isDesktop = useResponsive('up', 'lm');
@@ -112,9 +114,14 @@ export function TextCardCom({
         </CardContent>
       </Link>
       {isAuthenticated && (
-        <CardActions sx={{ p: 0 }}>
-          <EditDeleteIconCom handleOpen={handleOpen} editURL={`${PATH_PROJEKTE.editProject}/${id}`} />
-        </CardActions>
+        <Stack
+          direction="row"
+          justifyContent="flex-end"
+        >
+          <CardActions sx={{ p: 0 }}>
+            <EditDeleteIconCom handleOpen={handleOpen} editURL={`${PATH_PROJEKTE.editProject}/${id}`} />
+          </CardActions>
+        </Stack>
       )}
     </Grid>
   )

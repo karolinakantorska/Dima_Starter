@@ -126,7 +126,7 @@ export interface Job {
   announcment: Date,
   location: string,
   title: string,
-  procentMin: MinProcent,
+  procentMin: Procent,
   procent: Procent,
   descriptionJob: string[],
   descWe: string[],
@@ -142,12 +142,9 @@ export const procentArray = [
   '60',
   '80',
   '100',
+  'keins'
 ] as const;
-export const minProcentArray = [
-  'keins',
-  ...procentArray
-] as const;
-export type MinProcent = typeof minProcentArray[number];
+
 export type Procent = typeof procentArray[number];
 
 export interface News {
@@ -155,7 +152,7 @@ export interface News {
   title: string,
   description: string[] | [],
   date: Date,
-  link: { text: string, url: string }[] | []
+  link: { text: string, url: string }
 }
 
 export const Cadosch = `Cadosch & Zimmermann GmbH, Zürich`;

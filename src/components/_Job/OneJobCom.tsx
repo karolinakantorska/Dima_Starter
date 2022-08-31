@@ -10,6 +10,7 @@ import useResponsive from 'src/hooks/useResponsive';
 
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
 import { useRouter } from 'next/router';
+import { workProcent } from 'src/utils/myUtils/workProcent';
 
 // TODO use location instead use route
 export function OneJobCom({ job }: { job: Job }) {
@@ -76,6 +77,8 @@ export function OneJobCom({ job }: { job: Job }) {
   const propsDesc = {
     pl: isSmall ? 0 : 4
   }
+
+
   const Listed = ({ textArray }: { textArray: string[] }) => (
     <List sx={{ pt: '4px' }}>
       {textArray.map((text, i) => (
@@ -93,7 +96,7 @@ export function OneJobCom({ job }: { job: Job }) {
           <Grid container direction="row" columnSpacing={1.5} rowSpacing={1.25}>
             <Grid item xs={12} sm={6} md={6}>
               <TitleTextCom
-                text={`${title.toUpperCase()} ${(procentMin !== 'keins') ? procentMin.toString().toUpperCase() : ''} - ${procent.toString().toUpperCase()}%`}
+                text={`${title.toUpperCase()} ${workProcent(procentMin, procent)}`}
               />
               <BodyTextCom text={location} sx={{ pt: 1.25 }} />
             </Grid>

@@ -98,7 +98,7 @@ export default function MainHeader() {
 
             {!isMiddle && <PhoneNrCom />}
             <MenuMobile
-              navConfig={isAuthenticated ? [...menuConfigAdmin] : [...menuConfigUser]} size={isDesktop ? 40 : isSmall ? 30 : 34}
+              navConfig={isAuthenticated ? [...menuConfigUser, ...menuConfigAdmin] : [...menuConfigUser]} size={isDesktop ? 40 : isSmall ? 30 : 34}
             />
           </Box>
         </Container>

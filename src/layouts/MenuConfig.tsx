@@ -14,10 +14,12 @@ export const menuConfigUser = [
       {
         subheader: '',
         items: [
+          /*
           {
             title: 'Unternehmung',
             path: PATH_DIMA.unternehmung
           },
+          */
           {
             title: 'Philosophie',
             path: PATH_DIMA.philosophie
@@ -26,6 +28,7 @@ export const menuConfigUser = [
             title: 'Teams',
             path: PATH_DIMA.teams
           },
+
         ],
       },
     ],
@@ -41,14 +44,17 @@ export const menuConfigUser = [
             title: 'Projekte',
             path: PATH_PROJEKTE.projekte
           },
+          /*
           {
             title: 'Werkliste',
             path: PATH_PROJEKTE.werkliste
           },
+          */
           {
             title: 'Webcam',
             path: PATH_WEBCAMS.webcams
           },
+
         ],
       },
     ],
@@ -69,83 +75,32 @@ export const menuConfigUser = [
 
 export const menuConfigAdmin = [
   {
-    title: 'Dima',
+    title: 'Admin',
     path: '/',
     children: [
       {
         subheader: '',
         items: [
-          /*
           {
-            title: 'Unternehmung',
-            path: PATH_DIMA.unternehmung
-          },
-          */
-          {
-            title: 'Philosophie',
-            path: PATH_DIMA.philosophie
-          },
-          {
-            title: 'Teams',
-            path: PATH_DIMA.teams
+            title: '+ Projekt',
+            path: PATH_PROJEKTE.addProject,
           },
           {
             title: '+ Mitarbeiter',
             path: PATH_DIMA.neueMitarbeiter
-          }
-        ],
-      },
-    ],
-  },
-  {
-    title: 'Referenzen',
-    path: '/',
-    children: [
-      {
-        subheader: '',
-        items: [
-          {
-            title: 'Projekte',
-            path: PATH_PROJEKTE.projekte
-          },
-          /*
-          {
-            title: 'Werkliste',
-            path: PATH_PROJEKTE.werkliste
-          },
-          */
-          {
-            title: 'Webcam',
-            path: PATH_WEBCAMS.webcams
           },
           {
+            title: '+ News',
+            path: PATH_NEWS.neuesNews
+          },
+          {
+            title: '+ Job',
+            path: PATH_JOBS.neuesJob,
+          },
 
-            title: '+ Projekt',
-            path: PATH_PROJEKTE.addProject,
-          }
         ],
       },
-    ],
-  },
-  {
-    title: 'News',
-    path: PATH_NEWS.news,
-  },
-  {
-    title: 'Jobs',
-    path: PATH_JOBS.jobs,
-  },
-  {
-    title: 'Kontakt',
-    path: PATH_KONTAKT.kontakt,
-  },
-  {
-    title: '+ Job',
-    path: PATH_JOBS.neuesJob,
-  },
-  {
-    title: '+ News',
-    path: PATH_NEWS.neuesNews
+    ]
   },
 ];
 

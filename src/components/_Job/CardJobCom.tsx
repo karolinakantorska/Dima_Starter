@@ -17,6 +17,7 @@ import { EditDeleteIconCom } from "../_Reusable/EditDeleteIconCom";
 import { DeleteDialogCom } from "../_Reusable/DeleteDialogCom";
 import { deleteProjectFromFirestore } from "src/utils/apis/deleteFromFirestore";
 import { revalidateURL } from "src/utils/myUtils/revalidateURL";
+import { workProcent } from "src/utils/myUtils/workProcent";
 
 export function CardJobCom({
     job,
@@ -97,7 +98,7 @@ export function CardJobCom({
                                     <BodyTextCom text={`Unsere Team in ${location} sucht:`} />
                                 </Grid>
                                 <Grid item>
-                                    <TitleTextCom text={`${title.toUpperCase()} ${(procentMin !== 'keins') ? procentMin.toString().toUpperCase() : ''} - ${procent.toString().toUpperCase()}%`} sx={{ pt: 0.75 }} />
+                                    <TitleTextCom text={`${title.toUpperCase()} ${workProcent(procentMin, procent)}`} sx={{ pt: 0.75 }} />
                                 </Grid>
                                 <Grid item>
                                     <BodyTextCom text={`ZUM STELLENBESCHRIEB`} />
@@ -112,14 +113,13 @@ export function CardJobCom({
                     <EditDeleteIconCom handleOpen={handleOpen} editURL={`${PATH_JOBS.editJob}/${id}`} />
                 </Grid>}
             </Card>
-            {
-                isAuthenticated && <DeleteDialogCom
-                    open={open}
-                    handleClose={handleClose}
-                    handleDelete={handleDelete}
-                    objectToBeDeled="Mitarbeiter"
-                    titleOfObjectToBeDeled={`${title.toUpperCase()}}`}
-                />
+            {isAuthenticated && <DeleteDialogCom
+                open={open}
+                handleClose={handleClose}
+                handleDelete={handleDelete}
+                objectToBeDeled="Mitarbeiter"
+                titleOfObjectToBeDeled={`${title.toUpperCase()}}`}
+            />
             }
         </>
     )
