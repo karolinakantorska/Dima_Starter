@@ -99,7 +99,7 @@ export function PhotoCardCom({ setLoading, setError }: { setLoading: any, setErr
                 onRemoveAll={handleRemoveAll}
                 onUpload={() => console.log('ON UPLOAD')}
             />
-            <RHFTextField variant="filled" name="photoAuthor" label="Autor von Fotos" />
+            <RHFTextField variant="filled" name="photoAuthor" label="Photograph" />
         </Stack>
 
     )

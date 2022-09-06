@@ -40,7 +40,6 @@ export default function RHFRadioGroup({ name, options, ...other }: Props) {
               />
             ))}
           </RadioGroup>
-
           {!!error && (
             <FormHelperText error sx={{ px: 2 }}>
               {error.message}

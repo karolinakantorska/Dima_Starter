@@ -72,3 +72,11 @@ export const NewNewsSchema = Yup.object().shape({
     }),
     description: Yup.array(Yup.string().max(400, 'Die Beschreibung darf maximal 400 Zeichen und 5 Akapiten lang sein')).max(5)
 });
+export const NewListEntrySchema = Yup.object().shape({
+    title: Yup.string()
+        .required('Newstitle ist erforderlich')
+        .max(30, 'Newstitle darf maximal 29 Zeichen lang sein'),
+    location: Yup.string()
+        .required('Joblocation ist erforderlich')
+        .max(29, 'Joblocation darf maximal 29 Zeichen lang sein'),
+});

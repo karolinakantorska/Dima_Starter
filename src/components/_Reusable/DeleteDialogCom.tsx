@@ -20,10 +20,10 @@ export function DeleteDialogCom({
 }) {
     return (
         <Dialog open={open} onClose={() => handleClose()}>
-            <DialogTitle >{`Bist du siecher, dass du das ${objectToBeDeled} löschen willst?`} </DialogTitle>
+            <DialogTitle >{`Bist du sicher, dass du das ${objectToBeDeled} löschen willst?`} </DialogTitle>
             <DialogContent>
                 <DialogContentText id="alert-dialog-description">
-                    {`Das ${titleOfObjectToBeDeled.toUpperCase()} Projekt wird unwiederbringlich gelösched.`}
+                    {`Das ${titleOfObjectToBeDeled.toUpperCase()} Projekt wird unwiederbringlich gelöscht.`}
                 </DialogContentText>
             </DialogContent>
             <DialogActions>

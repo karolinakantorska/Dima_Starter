@@ -9,7 +9,7 @@ import {
 export function AuthorsCardCom() {
     return (
         <Stack spacing={3} sx={{ pt: 8 }}>
-            <TitleTextCom text="Betailigte Unternehmern:" />
+            <TitleTextCom text="Beteiligte Unternehmen:" />
             <RHFTextField variant="filled" name="client" label="Bauherr" />
             <RHFTextField variant="filled" name="architect" label="Architekt" />
             <RHFTextField variant="filled" name="realisation" label="GU, TU Bauleitung" />

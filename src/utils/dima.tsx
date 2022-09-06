@@ -49,8 +49,8 @@ export const layoutHeader = {
     },
     contact: {
         title: 'kontakt',
-        untertitle: 'Wo Sie uns finden könen.',
-        description: 'Neue text brauchen wir, und die besten Möglichkeiten, sich weiter zu entwickeln.'
+        untertitle: 'Wo Sie uns finden.',
+        description: 'CHANGE ME !!! Neue text brauchen wir, und die besten Möglichkeiten, sich weiter zu entwickeln.'
     },
     news: {
         title: 'news',

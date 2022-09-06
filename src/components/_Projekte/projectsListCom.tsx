@@ -20,6 +20,7 @@ export function ProjectsListCom(
   const [succes, setSucces] = useState<boolean | string>(false);
   const [loading, setLoading] = useState(false);
 
+  const router = useRouter();
   useEffect(() => {
     const changed = localStorage.getItem('projects');
     if (changed === 'projects') {
@@ -27,8 +28,7 @@ export function ProjectsListCom(
       router.reload();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-
-  }, []);
+  });
 
   useEffect(() => {
     if (succes) {
@@ -63,7 +63,7 @@ export function ProjectsListCom(
     }
   });
 
-  const router = useRouter();
+
   const isDesktop = useResponsive('up', 'lm');
   const isSmall = useResponsive('down', 'sm');
   const gtc = isDesktop ? 'repeat(3, 1fr)' : isSmall ? '1fr' : 'repeat(2, 1fr)';

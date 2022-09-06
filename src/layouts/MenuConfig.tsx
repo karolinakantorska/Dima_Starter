@@ -25,7 +25,7 @@ export const menuConfigUser = [
             path: PATH_DIMA.philosophie
           },
           {
-            title: 'Teams',
+            title: 'Team',
             path: PATH_DIMA.teams
           },
 
@@ -44,12 +44,12 @@ export const menuConfigUser = [
             title: 'Projekte',
             path: PATH_PROJEKTE.projekte
           },
-          /*
+
           {
             title: 'Werkliste',
             path: PATH_PROJEKTE.werkliste
           },
-          */
+
           {
             title: 'Webcam',
             path: PATH_WEBCAMS.webcams

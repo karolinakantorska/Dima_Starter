@@ -3,7 +3,7 @@ import { ProjectsListType, ProjectType, FilterParams, Phase, Regionen } from "..
 export function filter(allProjects: ProjectsListType, { param }: { param: Phase | Regionen }) {
 
     switch (param) {
-        case "in Plannung":
+        case "in Planung":
         case "in Ausführung":
         case "Gebaut":
             console.log('param ', param, 'bin in phase')

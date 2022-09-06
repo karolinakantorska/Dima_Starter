@@ -44,7 +44,7 @@ export const objektAlterArray = ['Neubau', 'Umbau', 'Wettbewerb'] as const;
 export type ObjektAlter = typeof objektAlterArray[number];
 
 export const phaseArray = [
-  'in Plannung',
+  'in Planung',
   'in Ausführung',
   'Gebaut',
 ] as const;
@@ -153,6 +153,14 @@ export interface News {
   description: string[] | [],
   date: Date,
   link: { text: string, url: string }
+}
+export interface ListElement {
+  id: string,
+  title: string,
+  date: Date,
+  location: string,
+  objektAlter: ObjektAlter,
+  link: string,
 }
 
 export const Cadosch = `Cadosch & Zimmermann GmbH, Zürich`;

@@ -18,8 +18,8 @@ export default function LandingButtonsCom() {
         <Container sx={{ ...containerProps }}>
             <Stack >
                 <ButtonGroup variant="text" >
-                    <LandingButtonCom colorRGB="239, 123, 16" color="background.default" text="Philosophie" href={PATH_DIMA.philosophie} />
-                    <LandingButtonCom colorRGB="43,37,31" color='dima' text="Projekte" href={PATH_PROJEKTE.projekte} />
+                    <LandingButtonCom colorRGB="239, 123, 16" color="background.default" text="Projekte" href={PATH_PROJEKTE.projekte} />
+                    <LandingButtonCom colorRGB="43,37,31" color='dima' text="Philosophie" href={PATH_DIMA.philosophie} />
                 </ButtonGroup>
             </Stack>
         </Container>

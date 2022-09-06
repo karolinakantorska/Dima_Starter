@@ -93,7 +93,6 @@ export function TextCardCom({
         setError(error);
         setLoading(false);
       });
-
     setOpen(false);
   };
   const TextBox = () => (

@@ -15,7 +15,7 @@ import { News } from 'src/utils/TS/interface';
 import { addProjestToFirestore, editProjectInFirestore } from 'src/utils/apis/addToFirestore';
 import { PATH_NEWS, } from 'src/routes/paths';
 import { revalidateURL } from 'src/utils/myUtils/revalidateURL';
-import { createNews } from 'src/utils/myUtils/createNews';
+import { changeDataFormat } from 'src/utils/myUtils/createNews';
 // components
 import { AlertCom } from 'src/components/_Reusable/AlertCom';
 import { DescCardCom } from 'src/components/_Reusable/DescCardCom';
@@ -23,9 +23,11 @@ import { TitleTextCom } from 'src/components/_Reusable/TitleTextCom';
 import { DateInputCom } from 'src/components/_Reusable/DateInputCom';
 import { BodyTextCom } from 'src/components/_Reusable/BodyTextCom';
 
-export interface FormValuesProps extends Partial<News> {
+interface FormValuesProps extends Partial<News> {
   date_form: Date;
 }
+export type { FormValuesProps as NewsProps };
+
 type Props = {
   isEdit?: boolean;
   currentNews?: News
@@ -95,7 +97,7 @@ export default function NewsNewEditForm({ isEdit, currentNews }: Props) {
   const onSubmit = async (data: FormValuesProps) => {
     setLoading(true);
 
-    const newsToDB = createNews(data);
+    const newsToDB = changeDataFormat(data);
     console.log('newsToDB', newsToDB)
 
     if (currentNews?.id) {
