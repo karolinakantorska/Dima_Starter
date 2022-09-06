@@ -116,7 +116,7 @@ export function OneProjectCom({ project }: { project: ProjectType }) {
 
   if (project) {
     const photos = project.photos ? project.photos : []
-    const photosCarusel = [project.photo, ...photos]
+
     return (
       <>
         <Stack
@@ -125,7 +125,7 @@ export function OneProjectCom({ project }: { project: ProjectType }) {
           spacing={isDesktop ? 18.5 : 10}
           sx={{ ...propsContent }}
         >
-          <CarouselBasic3 photos={photosCarusel} />
+          <CarouselBasic3 photos={photos} />
           <Box
             sx={{ ...propsContainerBox }}
           >
@@ -158,3 +158,9 @@ export function OneProjectCom({ project }: { project: ProjectType }) {
     )
   }
 }
+/*
+https://firebasestorage.googleapis.com/v0/b/archweb-c117f.appspot.com/o/photos%2FFabrik-Swisspor-Romandie-SA-2-DIMA-%26-Partner-AG%20_1662459329005?alt=media&token=fb3f00b4-4e71-45b8-8385-cc025b139577
+*/
+/*
+https://firebasestorage.googleapis.com/v0/b/archweb-c117f.appspot.com/o/projects%2FFabrik-Swisspor-Romandie-SA-cov-%26-Partner-AG%20_1662457529563?alt=media&token=676f3e8e-5c3a-4395-a355-5a2dba4591c7
+*/
