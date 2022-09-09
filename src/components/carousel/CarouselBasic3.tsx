@@ -12,6 +12,7 @@ import { DimaName } from "src/utils/dima";
 import * as logo from "/public/assets/bg_gradient.jpeg"
 //import Image from "next/image";
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import { replaceMinusToSpace } from "src/utils/Text/textUtils";
 
 // ----------------------------------------------------------------------
 
@@ -104,7 +105,7 @@ export default function CarouselBasic3({ photos }: { photos: ImagesType }) {
         >
           <Slider ref={carouselRef} {...settings}>
             {photos.map((photo, i) => (
-              <CarouselItem key={photo.alt + i} item={{ image: photo.url, title: photo.alt, description: photo.alt }} />
+              <CarouselItem key={i} item={{ image: photo.url, title: photo.alt, description: photo.alt }} />
             ))
             }
           </Slider>
@@ -128,7 +129,7 @@ type CarouselItemProps = {
 function CarouselItem({ item }: { item: CarouselItemProps }) {
   const { image, title } = item;
   return (
-    <Image alt={title} src={image} ratio="16/9" />
+    <Image alt={replaceMinusToSpace(title)} src={image} ratio="16/9" />
   );
 }
 

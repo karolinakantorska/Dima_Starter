@@ -10,25 +10,25 @@ import 'react-lazy-load-image-component/src/effects/black-and-white.css';
 //Auth
 import { AuthProvider } from '../contexts/FirebaseContext';
 import { ReactElement, ReactNode } from 'react';
-import { AnimatePresence } from 'framer-motion';
+import { AnimatePresence, m } from 'framer-motion';
 // next
 import { NextPage } from 'next';
 import Head from 'next/head';
-import App, { AppProps, AppContext } from 'next/app';
+import App, { AppProps, } from 'next/app';
 // @mui
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 // utils
 // contexts
-import { SettingsProvider } from '../contexts/SettingsContext';
+
 import { CollapseDrawerProvider } from '../contexts/CollapseDrawerContext';
 // theme
 import ThemeProvider from '../theme';
 // components
-import ThemeSettings from '../components/settings';
+
 import ProgressBar from '../components/ProgressBar';
 import MotionLazyContainer from '../components/animate/MotionLazyContainer';
-import { defaultSettings } from '../config';
+
 
 // ----------------------------------------------------------------------
 
@@ -37,7 +37,6 @@ type NextPageWithLayout = NextPage & {
 };
 
 interface MyAppProps extends AppProps {
-  //settings: SettingsValueProps;
   Component: NextPageWithLayout;
 }
 
@@ -56,24 +55,25 @@ export default function MyApp(
       <AuthProvider>
         <LocalizationProvider dateAdapter={AdapterDateFns}>
           <CollapseDrawerProvider>
-            <SettingsProvider defaultSettings={defaultSettings}>
-              <MotionLazyContainer>
-                <ThemeProvider>
-                  <ThemeSettings>
-                    <ProgressBar />
-                    <AnimatePresence
-                      exitBeforeEnter={false}
-                    >
-                      {getLayout(<Component
-                        {...pageProps}
-                        key={router.route}
-                      />)}
-                    </AnimatePresence>
 
-                  </ThemeSettings>
-                </ThemeProvider>
-              </MotionLazyContainer>
-            </SettingsProvider>
+            <MotionLazyContainer>
+              <ThemeProvider>
+
+                <m.div>
+                  <ProgressBar />
+                  <AnimatePresence
+                    exitBeforeEnter={false}
+                  >
+                    {getLayout(<Component
+                      {...pageProps}
+                      key={router.route}
+                    />)}
+                  </AnimatePresence>
+                </m.div>
+
+              </ThemeProvider>
+            </MotionLazyContainer>
+
           </CollapseDrawerProvider>
         </LocalizationProvider>
       </AuthProvider>
@@ -81,18 +81,3 @@ export default function MyApp(
   );
 }
 
-// ----------------------------------------------------------------------
-
-MyApp.getInitialProps = async (context: AppContext) => {
-  const appProps = await App.getInitialProps(context);
-  /*
-  const cookies = cookie.parse(
-    context.ctx.req ? context.ctx.req.headers.cookie || '' : document.cookie
-  );
-*/
-  //const settings = getSettings(cookies);
-  return {
-    ...appProps,
-    //settings,
-  };
-};

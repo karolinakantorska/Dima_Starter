@@ -13,7 +13,7 @@ import { CarouselDots, CarouselArrows } from 'src/components/carousel';
 import PhilosophieFilmCom from "../_Dima/PhilosophieFilmCom";
 
 const url1 = 'https://firebasestorage.googleapis.com/v0/b/archweb-c117f.appspot.com/o/philosophie%2FDIMA_Video_Test.mp4?alt=media&token=703c2214-c2d7-4b33-8b64-012f0b6a3e81';
-const url2 = 'https://firebasestorage.googleapis.com/v0/b/archweb-c117f.appspot.com/o/philosophie%2FDIMA_Video_Test%20-%20Kopie.mp4?alt=media&token=f5eca701-c740-4d03-bc70-32f6aeae9c93';
+
 
 // ----------------------------------------------------------------------
 
@@ -61,7 +61,7 @@ export default function CarouselAnimationCom() {
       >
         <Slider ref={carouselRef} {...settings}>
           <PhilosophieFilmCom url={url1} />
-          <PhilosophieFilmCom url={url2} />
+
         </Slider>
       </CarouselArrows>
     </RootStyle>

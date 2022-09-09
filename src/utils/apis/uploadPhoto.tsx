@@ -6,9 +6,8 @@ import { createMetadata, fileNameWithoutFileExtension } from './photoUploadUtils
 export function uploadOnePhoto(photo: any, folderName: string) {
   const storage = getStorage();
   const timestamp = Date.now();
-  const title = fileNameWithoutFileExtension(photo.name);
-  const metadata = createMetadata(title);
-  const storageRef = ref(storage, `${folderName}/${title}_${timestamp}`);
+  const title = photo.name.replaceAll(/-/g, ' ').replace(/_/g, ' ');
+  const storageRef = ref(storage, `${folderName}/${title}`);
 
   const uploadTask = uploadBytesResumable(storageRef, photo);
   return new Promise((resolve, reject) => {
@@ -23,7 +22,7 @@ export function uploadOnePhoto(photo: any, folderName: string) {
       async () => {
         await getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
           //console.log('downloadURL', downloadURL)
-          const img = { url: downloadURL, alt: photo.name }
+          const img = { url: downloadURL, alt: title }
           resolve(img);
         });
       }

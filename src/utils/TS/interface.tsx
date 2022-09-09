@@ -14,7 +14,7 @@ export interface ProjectType {
   phase: Phase;
   client: string;
   size: number;
-  architect: Company;
+  architect: string;
   realisation: string,
   bauleitung: string,
   location: string;
@@ -31,7 +31,7 @@ export interface ImageType {
   alt: string;
 }
 export type ImagesType = ImageType[];
-export type Company = string | typeof dima | typeof Cadosch | typeof Kgp_Immobilien | typeof privat;
+
 export const regionenArray = [
   'Glarus',
   'Zürich',
@@ -162,12 +162,10 @@ export interface ListElement {
   objektAlter: ObjektAlter,
   link: string,
 }
-
-export const Cadosch = `Cadosch & Zimmermann GmbH, Zürich`;
-export const Kgp_Immobilien = `KPG Immobilien AG, Wollerau`;
-export const Hanimann_Naef = `Hanimann - Flückiger AG, Egg | Naef Partner AG, Zürich`;
-export const Viste = `VISTE Bautrocknung GmbH, Glarus`;
-export const BSS_M = `BSS&M Real Estate AG, Zurich`
-export const privat = `privat`;
-
+export interface Webcam {
+  id: string,
+  title: string,
+  end: string,
+  link: string,
+}
 

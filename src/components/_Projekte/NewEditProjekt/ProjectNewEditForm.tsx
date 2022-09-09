@@ -89,7 +89,10 @@ export default function ProjectNewEditForm({ isEdit, currentProject }: Props) {
     resolver: yupResolver(NewProjectSchema),
     defaultValues,
   });
-
+  /*
+    const testStr: string = 'Swissbau-2018-cov-DIMA-&-Partner-AG _1662458454981'
+    console.log(testStr.replace(/-/g, ' ').replace(/_/g, ' '))
+  */
   const {
     reset,
     handleSubmit,
