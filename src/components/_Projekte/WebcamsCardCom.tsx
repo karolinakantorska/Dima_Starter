@@ -142,10 +142,6 @@ export function WebcamsCardCom({ wcam, setSucces, setLoading, setError, loading 
 
       {isAuthenticated &&
         <Dialog open={open} onClose={() => handleClose()}>
-          <DialogTitle >{`Bearbeiten:`} </DialogTitle>
-          <DialogContent>
-            {/*<WerklisteNewEditForm isEdit={true} currentListElement={item} setSucces={setSucces} setLoading={setLoading} setError={setError} loading={loading} />*/}
-          </DialogContent>
           <DialogTitle >{`Löschen:`} </DialogTitle>
           <DialogContent>
             <Box sx={{ mt: 4 }}>
