@@ -22,32 +22,47 @@ type Props = {
   } | null>>;
   loading: boolean;
 }
-export function WebcamsCardCom({ wcam, setSucces, setLoading, setError, loading }: Props) {
+export function WebcamsCardCom({ wcam, setSucces, setLoading, setError }: Props) {
   const { title, date, link, id } = wcam;
 
+  const isDonatsch = link.includes("https://webcamdonatsch.ch/");
   const [open, setOpen] = useState(false);
   const isSmall = useResponsive('down', 'sm');
   const isMiddle = useResponsive('down', 'md');
   const { isAuthenticated } = useAuth();
   const propsContainer = {
     boxSizing: 'border-box',
-    //border: '5px solid red',
+    outline: '5px solid #2B251F',
     display: 'grid',
     gridAutoRows: 'auto 70px'
   };
   const propsIFrameContainer = {
     height: isMiddle ? isSmall ? '250px' : '380px' : '280px',
+
   };
-  const propsIFrame = {
-    pointerEvents: 'none',
-    height: '180%',
-    width: '180%',
-    overflow: 'hidden',
-    mt: '-30%',
-    ml: '-25%'
-  };
+  const propsIFrame = isDonatsch
+    ?
+    {
+      pointerEvents: 'none',
+      height: '360%',
+      width: '360%',
+      overflow: 'hidden',
+      mt: isMiddle ? isSmall ? '-60%' : '-160px' : '-40%',
+      ml: '-3%'
+    }
+    : {
+      pointerEvents: 'none',
+      height: '180%',
+      width: '200%',
+      overflow: 'hidden',
+      mt: '-15%',
+      ml: '-50%'
+    };
   const propsCard = {
-    pl: 2.25, pt: 1.60, pb: 1.1
+    pl: 2.25,
+    pt: 1.60,
+    pb: 1.1,
+
   };
 
   function handleOpen(e: Event) {
