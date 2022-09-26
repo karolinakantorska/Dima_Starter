@@ -14,8 +14,7 @@ export interface List extends ListElement {
     changed: boolean;
     newYear: string
 }
-export function WerklisteListCom(
-    { data }: Props) {
+export function WerklisteListCom({ data }: Props) {
 
     const [error, setError] = useState<null | { code: string, message: string }>(null)
     const [succes, setSucces] = useState<boolean | string>(false);

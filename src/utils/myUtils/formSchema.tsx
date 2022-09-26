@@ -80,3 +80,12 @@ export const NewListEntrySchema = Yup.object().shape({
         .required('Joblocation ist erforderlich')
         .max(29, 'Joblocation darf maximal 29 Zeichen lang sein'),
 });
+export const NewWebcamsSchema = Yup.object().shape({
+    title: Yup.string()
+        .required('Webcamtitle ist erforderlich')
+        .max(30, 'Webcamtitle darf maximal 29 Zeichen lang sein'),
+    link: Yup.string()
+        .required('Link ist erforderlich')
+        .min(10, 'Link muss mindestens 10 Zeichen lang sein'),
+
+});

@@ -1,24 +1,34 @@
-
 // @mui
-
-import { Box, Card, Link } from '@mui/material';
-
+import { Box, Button, Card, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Link, Stack } from '@mui/material';
+import { Dispatch, SetStateAction, useState } from 'react';
+import { PATH_WEBCAMS } from 'src/routes/paths';
+import { deleteProjectFromFirestore } from 'src/utils/apis/deleteFromFirestore';
+import useAuth from 'src/utils/firebaseAuth/useAuth';
+import { revalidateURL } from 'src/utils/myUtils/revalidateURL';
+import { Webcam } from 'src/utils/TS/interface';
 // hooks 
 import useResponsive from '../../hooks/useResponsive';
 import { BodyTextCom } from '../_Reusable/BodyTextCom';
+import { EditDeleteIconCom } from '../_Reusable/EditDeleteIconCom';
 import { TitleTextCom } from '../_Reusable/TitleTextCom';
+import WebcamsNewEditForm from './NewEditWebcam/WebcamsNewEditForm';
+type Props = {
+  wcam: Webcam,
+  setSucces: Dispatch<SetStateAction<string | boolean>>;
+  setLoading: Dispatch<SetStateAction<boolean>>;
+  setError: Dispatch<SetStateAction<{
+    code: string;
+    message: string;
+  } | null>>;
+  loading: boolean;
+}
+export function WebcamsCardCom({ wcam, setSucces, setLoading, setError, loading }: Props) {
+  const { title, date, link, id } = wcam;
 
-// TODO use location instead use route
-export function WebcamsCardCom({ wcam }: { wcam: any }) {
-  //const initialInputs = { param: "Alle" }
-  const { title, end, url, } = wcam;
-  //const isDesktop = useResponsive('up', 'lm');
-
+  const [open, setOpen] = useState(false);
   const isSmall = useResponsive('down', 'sm');
   const isMiddle = useResponsive('down', 'md');
-  //const router = useRouter()
-  //const gtc = isDesktop ? 'repeat(3, 1fr)' : isSmall ? '1fr' : 'repeat(2, 1fr)';
-  //const { query } = useRouter();
+  const { isAuthenticated } = useAuth();
   const propsContainer = {
     boxSizing: 'border-box',
     //border: '5px solid red',
@@ -39,9 +49,35 @@ export function WebcamsCardCom({ wcam }: { wcam: any }) {
   const propsCard = {
     pl: 2.25, pt: 1.60, pb: 1.1
   };
+
+  function handleOpen(e: Event) {
+    e.stopPropagation();
+    setOpen(true);
+  };
+  function handleClose() {
+    setOpen(false);
+  };
+  function handleDelete() {
+    if (isAuthenticated) {
+      setLoading(true);
+      deleteProjectFromFirestore('webcams', id)
+        .then(() => {
+          fetch(revalidateURL(PATH_WEBCAMS.webcams)).then(() => {
+            setLoading(false);
+            setSucces(true);
+          })
+        })
+        .catch((error) => {
+          //console.log('error', error);
+          setError(error);
+          setLoading(false);
+        });
+      setOpen(false);
+    }
+  };
   const LinkEvent = () =>
   (<Link
-    href={url}
+    href={link}
     //target="_blank"
     rel="noopener"
     underline="none"
@@ -66,9 +102,25 @@ export function WebcamsCardCom({ wcam }: { wcam: any }) {
     <>
       <Card sx={{ ...propsContainer }}>
         <Box sx={{ ...propsIFrameContainer }}>
+          {isAuthenticated &&
+            <Stack sx={{
+              position: 'absolute',
+              zIndex: 2,
+              width: '100%',
+              flexDirection: "row",
+              justifyContent: "flex-end"
+            }}>
+              <Box sx={{
+                pt: 2
+              }}>
+                <EditDeleteIconCom
+                  handleOpen={handleOpen} editURL={`${PATH_WEBCAMS.editWebcam}/${id}`}
+                />
+              </Box>
+            </Stack>}
           <Box
             component='iframe'
-            src={url}
+            src={link}
             title={title}
             loading='lazy'
             scrolling="no"
@@ -79,14 +131,42 @@ export function WebcamsCardCom({ wcam }: { wcam: any }) {
             <p>Ihr Browser unterstützt keine iframes.</p>
           </Box>
         </Box>
-
         <Card sx={{ ...propsCard }}>
           <TitleTextCom text={`${title.toUpperCase()}`} />
-          <BodyTextCom text={`Im Bau - Realisierung Geplant Auf ${end.toString()}`} />
+          <BodyTextCom text={`Im Bau - Realisierung Geplant Auf ${new Date(date).toLocaleString('de-DE', { year: 'numeric' })} `} />
         </Card>
         <LinkEvent />
       </Card >
-    </>
 
+
+
+      {isAuthenticated &&
+        <Dialog open={open} onClose={() => handleClose()}>
+          <DialogTitle >{`Bearbeiten:`} </DialogTitle>
+          <DialogContent>
+            {/*<WerklisteNewEditForm isEdit={true} currentListElement={item} setSucces={setSucces} setLoading={setLoading} setError={setError} loading={loading} />*/}
+          </DialogContent>
+          <DialogTitle >{`Löschen:`} </DialogTitle>
+          <DialogContent>
+            <Box sx={{ mt: 4 }}>
+              <DialogContentText id="alert-dialog-description" component="span" >
+                {`Wolen Sie das Eingabe: ${title.toUpperCase()}`}
+              </DialogContentText>
+              <DialogContentText id="alert-dialog-description" component="span" sx={{ color: 'error.main' }} variant="h6">
+                {` löschen?`}
+              </DialogContentText>
+            </Box>
+
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={() => {
+              handleDelete()
+            }}>Löschen</Button>
+            <Button onClick={handleClose} autoFocus variant="outlined">
+              Nein!
+            </Button>
+          </DialogActions>
+        </Dialog>}
+    </>
   )
 }

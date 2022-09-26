@@ -32,6 +32,8 @@ export const PATH_KONTAKT = {
 };
 export const PATH_WEBCAMS = {
   webcams: '/webcams',
+  neuesWebcam: '/webcam/neues_webcam',
+  editWebcam: '/webcam/bearbeiten',
 };
 export const PATH_REV = {
   revalidate: '/api/revalidate',

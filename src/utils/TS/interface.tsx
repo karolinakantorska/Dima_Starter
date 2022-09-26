@@ -165,7 +165,7 @@ export interface ListElement {
 export interface Webcam {
   id: string,
   title: string,
-  end: string,
+  date: Date,
   link: string,
 }
 

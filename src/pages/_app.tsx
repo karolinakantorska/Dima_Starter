@@ -55,10 +55,8 @@ export default function MyApp(
       <AuthProvider>
         <LocalizationProvider dateAdapter={AdapterDateFns}>
           <CollapseDrawerProvider>
-
             <MotionLazyContainer>
               <ThemeProvider>
-
                 <m.div>
                   <ProgressBar />
                   <AnimatePresence
@@ -70,10 +68,8 @@ export default function MyApp(
                     />)}
                   </AnimatePresence>
                 </m.div>
-
               </ThemeProvider>
             </MotionLazyContainer>
-
           </CollapseDrawerProvider>
         </LocalizationProvider>
       </AuthProvider>

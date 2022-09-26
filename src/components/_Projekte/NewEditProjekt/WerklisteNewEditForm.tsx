@@ -72,10 +72,10 @@ export default function WerklisteNewEditForm({
   const {
     reset,
     handleSubmit,
-    watch,
+
     formState: { isSubmitting },
   } = methods;
-  const values = watch();
+
 
   useEffect(() => {
     if (isEdit && currentListElement) {
@@ -90,13 +90,10 @@ export default function WerklisteNewEditForm({
   const onSubmit = async (data: FormValuesProps) => {
     if (isAuthenticated) {
       setLoading(true);
-
-      const newsToDB = changeDataFormat(data);
-      console.log('newsToDB', newsToDB);
-
+      const werkToDB = changeDataFormat(data);
       if (currentListElement?.id) {
         //const Id = currentListElement ? currentListElement.id : ;
-        editProjectInFirestore('listElement', currentListElement.id, newsToDB)
+        editProjectInFirestore('listElement', currentListElement.id, werkToDB)
           .then(() => {
             fetch(revalidateURL(PATH_PROJEKTE.werkliste)).then(() => {
               localStorage.setItem('listElement', 'listElement');
@@ -111,7 +108,7 @@ export default function WerklisteNewEditForm({
             setLoading(false);
           })
       } else {
-        addProjestToFirestore('listElement', newsToDB)
+        addProjestToFirestore('listElement', werkToDB)
           .then((response: string) => {
             fetch(revalidateURL(PATH_PROJEKTE.werkliste)).then(() => {
               localStorage.setItem('listElement', 'listElement');
@@ -187,7 +184,3 @@ export default function WerklisteNewEditForm({
     </>
   );
 }
-/*
-Fehler:Function addDoc() called with invalid data. Unsupported field value: undefined (found in field link.url in document listElement/7R63UKRJfTAxkaCxzKhY)
-<TitleTextCom text={`listElement Titel:`} />
-*/

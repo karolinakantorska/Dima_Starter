@@ -13,8 +13,8 @@ export function EditDeleteIconCom({
     handleOpen,
     editURL
 }: {
-    handleOpen: any
-    editURL: string
+    handleOpen: (e: any) => void,
+    editURL: string | ((e: any) => void)
 }) {
 
     const isMiddle = useResponsive('down', 'md');
@@ -36,15 +36,20 @@ export function EditDeleteIconCom({
     }
     return (
         <>
-            <Link href={editURL} passHref >
-                <IconButton size='small' aria-label={'edit'} sx={{ ...propsIconButton }}>
+            {(typeof editURL === 'string')
+                ? <Link href={editURL} passHref >
+                    <IconButton size='small' aria-label={'edit'} sx={{ ...propsIconButton }}>
+                        <EditRoundedIcon sx={{ ...propsIcon }} />
+                    </IconButton>
+                </Link>
+                : <IconButton size='small' onClick={(e) => editURL(e)} aria-label={'edit'} sx={{ ...propsIconButton }}>
                     <EditRoundedIcon sx={{ ...propsIcon }} />
                 </IconButton>
-            </Link>
+            }
             <IconButton
                 size='small'
                 aria-label={'delete'}
-                onClick={handleOpen}
+                onClick={(e) => handleOpen(e)}
                 sx={{ ...propsIconButton }}
             >
                 <DeleteIcon sx={{ ...propsIcon }} />

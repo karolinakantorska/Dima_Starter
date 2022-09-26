@@ -1,7 +1,7 @@
 
 import Page from "src/components/Page"
+import WebcamsNewEditForm from "src/components/_Projekte/NewEditWebcam/WebcamsNewEditForm";
 
-import ProjectNewEditForm from "src/components/_Projekte/NewEditProjekt/ProjectNewEditForm";
 import AuthGuard from "src/guards/AuthGuard";
 import Layout from "src/layouts"
 
@@ -18,7 +18,7 @@ export default function NeuesWebcam() {
   return (
     <AuthGuard>
       <Page title={`Neues Webcam`}>
-        <p>Add Webcam Form</p>
+        <WebcamsNewEditForm />
       </Page>
     </AuthGuard>
   );

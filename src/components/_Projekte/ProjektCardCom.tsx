@@ -90,23 +90,3 @@ export function ProjektCardCom({
     </Box>
   );
 }
-
-/*
- <Box
-              component={m.div}
-              key="animated children"
-              sx={{
-                height: '100%',
-                width: '100%',
-                position: 'absolute',
-                background: 'red',
-                zIndex: 2000,
-                transition: '.15s',
-                boxShadow: 'inset 0px 0px rgba(255,255,255,0.5)',
-
-              }}
-              whileTap={{
-                boxShadow: 'inset 0px -600px rgba(255,255,255,0.5)',
-              }}
-            />
-            */

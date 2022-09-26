@@ -97,7 +97,10 @@ export const menuConfigAdmin = [
             title: '+ Job',
             path: PATH_JOBS.neuesJob,
           },
-
+          {
+            title: '+ Webcam',
+            path: PATH_WEBCAMS.neuesWebcam,
+          },
         ],
       },
     ]
