@@ -4,12 +4,13 @@ import Page from '../../components/Page';
 import Layout from '../../layouts';
 import { OneJobCom } from "src/components/_Job/OneJobCom";
 import { getCollectionId, getCollectionDocument } from "src/utils/apis/apis";
+import LoadingScreen from "src/components/LoadingScreen";
 // ----------------------------------------------------------------------
-
+/*
 Job.getLayout = function getLayout(page: React.ReactElement) {
   return <Layout >{page}</Layout>;
 };
-
+*/
 // ----------------------------------------------------------------------
 export default function Job({ data }: any) {
   const router = useRouter();
@@ -17,13 +18,16 @@ export default function Job({ data }: any) {
 
   if (id) {
     return (
-      <Page title={`Job`}>
-        <OneJobCom job={data} />
-      </Page>
+      <Layout >
+        <Page title={`Job`}>
+          <OneJobCom job={data} />
+        </Page>
+      </Layout>
+
     );
   } else {
     return (
-      <p>wait...</p>
+      <LoadingScreen />
     )
   }
 }

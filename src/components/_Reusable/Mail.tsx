@@ -55,6 +55,7 @@ export const Mail = ({ email }: { email: string }) => {
                         width: '36px',
                         cursor: 'pointer'
                     }}
+                    aria-label={`Schreiben sie bitte ein E-Mail zum ${email}`}
                     aria-owns={email}
                 />
             </Link>

@@ -5,20 +5,23 @@ import AuthGuard from "src/guards/AuthGuard";
 import Layout from "src/layouts"
 
 // ----------------------------------------------------------------------
-
+/*
 NeuesJob.getLayout = function getLayout(page: React.ReactElement) {
   return <Layout >{page}</Layout>;
 };
-
+*/
 // ----------------------------------------------------------------------
 
 export default function NeuesJob() {
   const isEdit = false;
   return (
     <AuthGuard>
-      <Page title={`Neues Jobinserat`}>
-        <JobNewEditForm isEdit={isEdit} />
-      </Page>
+      <Layout >
+        <Page title={`Neues Jobinserat`}>
+          <JobNewEditForm isEdit={isEdit} />
+        </Page>
+      </Layout>
+
     </AuthGuard>
   );
 }

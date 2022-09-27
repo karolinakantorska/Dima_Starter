@@ -9,11 +9,11 @@ import JobNewEditForm from "src/components/_Job/NewEditJob/JobNewEditForm";
 
 // components
 // ----------------------------------------------------------------------
-
+/*
 JobBearbeiten.getLayout = function getLayout(page: React.ReactElement) {
   return <Layout >{page}</Layout>;
 };
-
+*/
 // ----------------------------------------------------------------------
 export default function JobBearbeiten() {
   const isEdit = true;
@@ -29,12 +29,15 @@ export default function JobBearbeiten() {
 
   return (
     <AuthGuard>
-      <Page title={`Edit Job`}>
-        {data ? <JobNewEditForm
-          isEdit={isEdit}
-          currentJob={data}
-        /> : <LoadingScreen />}
-      </Page>
+      <Layout >
+        <Page title={`Edit Job`}>
+          {data ? <JobNewEditForm
+            isEdit={isEdit}
+            currentJob={data}
+          /> : <LoadingScreen />}
+        </Page>
+      </Layout>
+
     </AuthGuard>
 
   );

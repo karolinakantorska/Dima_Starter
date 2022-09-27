@@ -89,7 +89,7 @@ export default function CarouselBasic3({ photos }: { photos: ImagesType }) {
       <>
         <Box>
           <CarouselItem key={photo.alt} item={{ image: photo.url, title: photo.alt, description: photo.alt }} />
-          <Link href="#Project_Table" underline="none">
+          <Link href="#Project_Table" underline="none" aria-label={`Lesen sie bitte mehr über dem Projekt`} >
             < KeyboardArrowDownIcon sx={{ ...propsArrow }} />
           </Link>
         </Box>

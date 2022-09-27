@@ -9,11 +9,11 @@ import WebcamsNewEditForm from "src/components/_Projekte/NewEditWebcam/WebcamsNe
 
 // components
 // ----------------------------------------------------------------------
-
+/*
 WebcamBearbeiten.getLayout = function getLayout(page: React.ReactElement) {
   return <Layout >{page}</Layout>;
 };
-
+*/
 // ----------------------------------------------------------------------
 export default function WebcamBearbeiten() {
   const isEdit = true;
@@ -30,12 +30,15 @@ export default function WebcamBearbeiten() {
 
   return (
     <AuthGuard>
-      <Page title={`Edit Webcam`}>
-        {data ? <WebcamsNewEditForm
-          isEdit={isEdit}
-          currentWebcam={data}
-        /> : <LoadingScreen />}
-      </Page>
+      <Layout >
+        <Page title={`Edit Webcam`}>
+          {data ? <WebcamsNewEditForm
+            isEdit={isEdit}
+            currentWebcam={data}
+          /> : <LoadingScreen />}
+        </Page>
+      </Layout>
+
     </AuthGuard>
 
   );

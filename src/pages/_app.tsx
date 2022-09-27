@@ -21,7 +21,6 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 // utils
 // contexts
 
-import { CollapseDrawerProvider } from '../contexts/CollapseDrawerContext';
 // theme
 import ThemeProvider from '../theme';
 // components
@@ -45,7 +44,7 @@ export default function MyApp(
 ) {
   const { Component, pageProps, router } = props;
 
-  const getLayout = Component.getLayout ?? ((page) => page);
+  //const getLayout = Component.getLayout ?? ((page) => page);
 
   return (
     <>
@@ -54,23 +53,25 @@ export default function MyApp(
       </Head>
       <AuthProvider>
         <LocalizationProvider dateAdapter={AdapterDateFns}>
-          <CollapseDrawerProvider>
-            <MotionLazyContainer>
-              <ThemeProvider>
-                <m.div>
-                  <ProgressBar />
-                  <AnimatePresence
-                    exitBeforeEnter={false}
-                  >
-                    {getLayout(<Component
-                      {...pageProps}
-                      key={router.route}
-                    />)}
-                  </AnimatePresence>
-                </m.div>
-              </ThemeProvider>
-            </MotionLazyContainer>
-          </CollapseDrawerProvider>
+          <MotionLazyContainer>
+            <ThemeProvider>
+              <m.div>
+                <ProgressBar />
+                <AnimatePresence
+                  exitBeforeEnter={false}
+                >
+                  <Component
+                    {...pageProps}
+                    key={router.route}
+                  />
+                  {/*getLayout(<Component
+                    {...pageProps}
+                    key={router.route}
+                  />)*/}
+                </AnimatePresence>
+              </m.div>
+            </ThemeProvider>
+          </MotionLazyContainer>
         </LocalizationProvider>
       </AuthProvider>
     </>

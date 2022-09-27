@@ -11,18 +11,21 @@ import Layout from '../../layouts';
 import { getCollectionId, getCollectionDocument } from "src/utils/apis/apis";
 
 // ----------------------------------------------------------------------
-
+/*
 Referenz.getLayout = function getLayout(page: React.ReactElement) {
   return <Layout >{page}</Layout>;
 };
-
+*/
 // ----------------------------------------------------------------------
 
 export default function Referenz({ data, params }: any) {
   return (
-    <Page title={`Projekt`}>
-      <OneProjectCom project={data} />
-    </Page>
+    <Layout >
+      <Page title={`Projekt`}>
+        <OneProjectCom project={data} />
+      </Page>
+    </Layout>
+
   );
 }
 export const getStaticPaths: GetStaticPaths = async () => {

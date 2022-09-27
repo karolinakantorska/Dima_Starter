@@ -9,19 +9,22 @@ import { GetStaticProps } from 'next';
 import { getOrderedCollection } from 'src/utils/apis/apis';
 
 // ----------------------------------------------------------------------
-
+/*
 Webcams.getLayout = function getLayout(page: React.ReactElement) {
   return <Layout >{page}</Layout>;
 };
-
+*/
 // ----------------------------------------------------------------------
 
 export default function Webcams(props: any) {
   const { data } = props;
   return (
-    <Page title="Webcams">
-      <WebcamsListCom data={data} />
-    </Page>
+    <Layout >
+      <Page title="Webcams">
+        <WebcamsListCom data={data} />
+      </Page>
+    </Layout>
+
 
   );
 }

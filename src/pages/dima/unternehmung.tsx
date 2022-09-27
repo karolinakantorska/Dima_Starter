@@ -4,20 +4,20 @@ import Layout from 'src/layouts';
 import Page from 'src/components/Page';
 
 // ----------------------------------------------------------------------
-
+/*
 Unternehmung.getLayout = function getLayout(page: React.ReactElement) {
   return <Layout >{page}</Layout>;
 };
-
+*/
 // ----------------------------------------------------------------------
 export default function Unternehmung() {
   return (
+    <Layout >
+      <Page title="Unternehmung">
 
-    <Page title="Unternehmung">
+        <p>Unternehmung</p>
 
-      <p>Unternehmung</p>
-
-    </Page>
-
+      </Page>
+    </Layout>
   );
 }

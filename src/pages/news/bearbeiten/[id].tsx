@@ -9,11 +9,11 @@ import NewsNewEditForm from "src/components/_News/NewEditNews/NewsNewEditForm";
 
 // components
 // ----------------------------------------------------------------------
-
+/*
 NewsBearbeiten.getLayout = function getLayout(page: React.ReactElement) {
   return <Layout >{page}</Layout>;
 };
-
+*/
 // ----------------------------------------------------------------------
 export default function NewsBearbeiten() {
   const isEdit = true;
@@ -28,12 +28,15 @@ export default function NewsBearbeiten() {
 
   return (
     <AuthGuard>
-      <Page title={`Edit News`}>
-        {data ? <NewsNewEditForm
-          isEdit={isEdit}
-          currentNews={data}
-        /> : <LoadingScreen />}
-      </Page>
+      <Layout >
+        <Page title={`Edit News`}>
+          {data ? <NewsNewEditForm
+            isEdit={isEdit}
+            currentNews={data}
+          /> : <LoadingScreen />}
+        </Page>
+      </Layout>
+
     </AuthGuard>
 
   );

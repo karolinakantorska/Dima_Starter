@@ -61,6 +61,7 @@ export default function MainHeader() {
       sx={{
         boxShadow: 0,
         bgcolor: isHome ? 'transparent' : 'background.default',
+        position: 'absolute'
       }}>
       <ToolbarStyle
         disableGutters

@@ -6,6 +6,8 @@ import { ProjectsListType, ProjectType } from '../../utils/TS/interface';
 import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
 import { AlertCom } from '../_Reusable/AlertCom';
+import Link from 'next/link';
+import { PATH_PROJEKTE } from 'src/routes/paths';
 
 export function ProjectsListCom(
   { projectsList }: {
@@ -63,14 +65,14 @@ export function ProjectsListCom(
     }
   });
 
-
   const isDesktop = useResponsive('up', 'lm');
   const isSmall = useResponsive('down', 'sm');
   const gtc = isDesktop ? 'repeat(3, 1fr)' : isSmall ? '1fr' : 'repeat(2, 1fr)';
+
   const transition = {
     type: 'tween',
     ease: 'linear',
-    duration: router.query.id && 1,
+    duration: router.query.id && 3,
     when: "afterChildren"
   };
   const variant = {
@@ -80,33 +82,31 @@ export function ProjectsListCom(
   };
 
   return (
-    <>
-      <AlertCom succes={succes} error={error} loading={loading} setError={setError} />
-      <Box
-        component={m.div}
-        {...variant}
-        display="grid"
-        gridTemplateColumns={gtc}
-        gridAutoFlow='dense'
-        columnGap="15px"
-        rowGap="15px"
-      >
-        {projectsTODisplay && projectsTODisplay.map((project, i) => {
-          return (
-            <ProjektCardCom
-              key={project.project.id}
-              project={project.project}
-              gridRow={project.mirrored ? '1' : '2'}
-              big={project.project.big}
-              rewerseBig={project.bigReversed}
-              setSucces={setSucces}
-              setLoading={setLoading}
-              setError={setError}
-            />
-          );
-        })}
-        {!projectsTODisplay && <p>Es gibt momentan keine Projekte</p>}
-      </Box>
-    </>
+    <Box
+      component={m.div}
+      {...variant}
+      display="grid"
+      gridTemplateColumns={gtc}
+      gridAutoFlow='dense'
+      columnGap="15px"
+      rowGap="15px"
+    //sx={{ position: 'absolute' }}
+    >
+      {projectsTODisplay && projectsTODisplay.map((project, i) => {
+        return (
+          <ProjektCardCom
+            key={project.project.id}
+            project={project.project}
+            gridRow={project.mirrored ? '1' : '2'}
+            big={project.project.big}
+            rewerseBig={project.bigReversed}
+            setSucces={setSucces}
+            setLoading={setLoading}
+            setError={setError}
+          />
+        );
+      })}
+      {!projectsTODisplay && <p>Es gibt momentan keine Projekte</p>}
+    </Box>
   );
 }

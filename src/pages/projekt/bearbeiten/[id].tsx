@@ -11,11 +11,11 @@ import LoadingScreen from "src/components/LoadingScreen";
 
 // components
 // ----------------------------------------------------------------------
-
+/*
 ProjektBearbeiten.getLayout = function getLayout(page: React.ReactElement) {
   return <Layout >{page}</Layout>;
 };
-
+*/
 // ----------------------------------------------------------------------
 export default function ProjektBearbeiten() {
   const isEdit = true;
@@ -31,12 +31,15 @@ export default function ProjektBearbeiten() {
 
   return (
     <AuthGuard>
-      <Page title={`Edit Projekt`}>
-        {data ? <ProjectNewEditForm
-          isEdit={isEdit}
-          currentProject={data}
-        /> : <LoadingScreen />}
-      </Page>
+      <Layout >
+        <Page title={`Edit Projekt`}>
+          {data ? <ProjectNewEditForm
+            isEdit={isEdit}
+            currentProject={data}
+          /> : <LoadingScreen />}
+        </Page>
+      </Layout>
+
     </AuthGuard>
 
   );

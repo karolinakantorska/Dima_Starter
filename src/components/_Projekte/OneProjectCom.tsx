@@ -33,7 +33,7 @@ export function OneProjectCom({ project }: { project: ProjectType }) {
   const transition = {
     type: 'tween',
     ease: 'linear',
-    duration: 1,
+    duration: 3,
   }
   const variant = {
     initial: { opacity: 0 },
@@ -62,6 +62,8 @@ export function OneProjectCom({ project }: { project: ProjectType }) {
   }
   const propsContent = {
     mt: isSmall ? 6 : 0,
+
+
   };
   const propsContainerBox = {
     display: 'grid',

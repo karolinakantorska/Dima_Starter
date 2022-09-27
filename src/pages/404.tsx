@@ -25,42 +25,40 @@ const ContentStyle = styled('div')(({ theme }) => ({
 }));
 
 // ----------------------------------------------------------------------
-
+/*
 Page404.getLayout = function getLayout(page: React.ReactElement) {
   return <Layout variant="fullScreen">{page}</Layout>;
 };
-
+*/
 // ----------------------------------------------------------------------
 
 export default function Page404() {
   return (
-    <Page title="404 Page Not Found">
-      <Container component={MotionContainer}>
-        <ContentStyle sx={{ textAlign: 'center', alignItems: 'center' }}>
-          <m.div variants={varBounce().in}>
-            <Typography variant="h3" paragraph>
-              Sorry, page not found!
-            </Typography>
-          </m.div>
+    <Layout variant="fullScreen">
+      <Page title="404 Page Not Found">
+        <Container component={MotionContainer}>
+          <ContentStyle sx={{ textAlign: 'center', alignItems: 'center' }}>
+            <m.div variants={varBounce().in}>
+              <Typography variant="h3" paragraph>
+                Entschuldigung, Seite nicht gefunden!
+              </Typography>
+            </m.div>
 
-          <m.div variants={varBounce().in}>
-            <Typography sx={{ color: 'text.secondary' }}>
-              Sorry, we couldn’t find the page you’re looking for. Perhaps you’ve mistyped the URL?
-              Be sure to check your spelling.
-            </Typography>
-          </m.div>
+            <m.div variants={varBounce().in}>
+              <Typography sx={{ color: 'text.secondary' }}>
+                Entschuldigung, wir konnten die gesuchte Seite nicht finden. Vielleicht haben Sie sich bei der URL vertippt?
+                Überprüfen Sie unbedingt Ihre Rechtschreibung.
+              </Typography>
+            </m.div>
 
-          <m.div variants={varBounce().in}>
-            <PageNotFoundIllustration sx={{ height: 260, my: { xs: 5, sm: 10 } }} />
-          </m.div>
-
-          <NextLink href="/" passHref>
-            <Button size="large" variant="contained">
-              Go to Home
-            </Button>
-          </NextLink>
-        </ContentStyle>
-      </Container>
-    </Page>
+            <NextLink href="/" passHref>
+              <Button size="large" variant="contained" sx={{ mt: 6 }}>
+                Zur Startseite
+              </Button>
+            </NextLink>
+          </ContentStyle>
+        </Container>
+      </Page>
+    </Layout>
   );
 }

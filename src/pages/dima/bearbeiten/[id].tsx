@@ -9,10 +9,11 @@ import { useEffect, useState } from "react";
 import LoadingScreen from "src/components/LoadingScreen";
 // components
 // ----------------------------------------------------------------------
-
+/*
 PersonBearbeiten.getLayout = function getLayout(page: React.ReactElement) {
   return <Layout >{page}</Layout>;
 };
+*/
 // ----------------------------------------------------------------------
 export default function PersonBearbeiten() {
   const isEdit = true;
@@ -26,9 +27,12 @@ export default function PersonBearbeiten() {
   }, [])
   return (
     <AuthGuard>
-      <Page title={`${isEdit ? 'Edit' : 'Neues'} Mitarbeiter`}>
-        {data ? <PersonNewEditForm isEdit={isEdit} currentPerson={data} /> : <LoadingScreen />}
-      </Page>
+      <Layout >
+        <Page title={`${isEdit ? 'Edit' : 'Neues'} Mitarbeiter`}>
+          {data ? <PersonNewEditForm isEdit={isEdit} currentPerson={data} /> : <LoadingScreen />}
+        </Page>
+      </Layout>
+
     </AuthGuard>
   );
 }

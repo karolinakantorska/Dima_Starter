@@ -8,7 +8,7 @@ export default function FooterCom() {
 
     return (
         <Container>
-            <Stack spacing={6} sx={{ minHeight: '350px', pt: 18 }}  >
+            <Stack spacing={6} sx={{ minHeight: '350px', pt: 18, pb: 16 }}  >
                 <BodyTextCom text="Impressum" />
                 <div >
                     <Stack spacing={2}>
@@ -30,7 +30,14 @@ export default function FooterCom() {
                         </Stack>
                     </Stack>
                 </div>
-
+                {/*<div >
+                    <Stack spacing={2}>
+                        <TitleTextCom text="Website" />
+                        <Stack spacing={1} >
+                            <BodyTextCom text="https://karolinakantorska.ch/" />
+                        </Stack>
+                    </Stack>
+    </div>*/}
 
             </Stack>
         </Container>

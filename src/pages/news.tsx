@@ -8,20 +8,23 @@ import { getOrderedCollection } from 'src/utils/apis/apis';
 import Page from '../components/Page';
 
 // ----------------------------------------------------------------------
-
+/*
 News.getLayout = function getLayout(page: ReactElement) {
   return <Layout variant="main">{page}</Layout>;
 };
-
+*/
 // ----------------------------------------------------------------------
 
 
 export default function News(props: any) {
   const { data } = props;
   return (
-    <Page title="News">
-      <NewsListCom news={data} />
-    </Page>
+    <Layout >
+      <Page title="News">
+        <NewsListCom news={data} />
+      </Page>
+    </Layout>
+
   );
 }
 

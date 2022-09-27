@@ -8,11 +8,11 @@ import { getOrderedCollection } from "src/utils/apis/apis";
 import { TeamListCom } from 'src/components/_Team/TeamListCom';
 
 // ----------------------------------------------------------------------
-
+/*
 Teams.getLayout = function getLayout(page: React.ReactElement) {
   return <Layout >{page}</Layout>;
 };
-
+*/
 // ----------------------------------------------------------------------
 
 export default function Teams(props: any) {
@@ -20,9 +20,12 @@ export default function Teams(props: any) {
   //console.log('data: ', data)
 
   return (
-    <Page title="Teams">
-      <TeamListCom teamList={data} />
-    </Page>
+    <Layout >
+      <Page title="Teams">
+        <TeamListCom teamList={data} />
+      </Page>
+    </Layout>
+
   );
 }
 

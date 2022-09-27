@@ -11,7 +11,7 @@ import useResponsive from '../../hooks/useResponsive';
 import { BodyTextCom } from '../_Reusable/BodyTextCom';
 import { EditDeleteIconCom } from '../_Reusable/EditDeleteIconCom';
 import { TitleTextCom } from '../_Reusable/TitleTextCom';
-import WebcamsNewEditForm from './NewEditWebcam/WebcamsNewEditForm';
+
 type Props = {
   wcam: Webcam,
   setSucces: Dispatch<SetStateAction<string | boolean>>;
@@ -44,19 +44,19 @@ export function WebcamsCardCom({ wcam, setSucces, setLoading, setError }: Props)
     ?
     {
       pointerEvents: 'none',
-      height: '360%',
-      width: '360%',
+      height: '900px',
+      width: '900px',
       overflow: 'hidden',
-      mt: isMiddle ? isSmall ? '-60%' : '-160px' : '-40%',
-      ml: '-3%'
+      mt: isMiddle ? '-320px' : '-320px',
+      ml: isMiddle ? '-18px' : '-24px',
     }
     : {
       pointerEvents: 'none',
-      height: '180%',
-      width: '200%',
+      height: isMiddle ? '600px' : '400px',
+      width: isMiddle ? '1050px' : '600px',
       overflow: 'hidden',
-      mt: '-15%',
-      ml: '-50%'
+      mt: isMiddle ? '-100px' : '-110px',
+      ml: isMiddle ? '-140px' : '-2px'
     };
   const propsCard = {
     pl: 2.25,
