@@ -56,7 +56,7 @@ export function WebcamsCardCom({ wcam, setSucces, setLoading, setError }: Props)
       width: isMiddle ? '1050px' : '600px',
       overflow: 'hidden',
       mt: isMiddle ? '-100px' : '-110px',
-      ml: isMiddle ? '-140px' : '-2px'
+      ml: isMiddle ? '-40%' : '-2px'
     };
   const propsCard = {
     pl: 2.25,
@@ -96,6 +96,7 @@ export function WebcamsCardCom({ wcam, setSucces, setLoading, setError }: Props)
     //target="_blank"
     rel="noopener"
     underline="none"
+    aria-label={`Link zum ${title} Baucam`}
   >
     <Box
       sx={{

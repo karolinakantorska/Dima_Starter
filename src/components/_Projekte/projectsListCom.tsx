@@ -64,8 +64,10 @@ export function ProjectsListCom(
   });
 
   const isDesktop = useResponsive('up', 'lm');
+  const isMiddle = useResponsive('up', 'sm');
   const isSmall = useResponsive('down', 'sm');
-  const gtc = isDesktop ? 'repeat(3, 1fr)' : isSmall ? '1fr' : 'repeat(2, 1fr)';
+  const gtc = isDesktop ? 'repeat(3, 1fr)' : isMiddle ? 'repeat(2, 1fr)' : '1fr'
+  //const gtc = isDesktop ? 'repeat(3, 1fr)' : isSmall ? '1fr' : 'repeat(2, 1fr)';
 
   const transition = {
     type: 'tween',

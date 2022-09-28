@@ -50,6 +50,7 @@ export default function MainHeader() {
   const isHome = pathname === '/';
   const isDesktop = useResponsive('up', 'lm');
   const isSmall = useResponsive('down', 'sm');
+  const showPhone = useResponsive('up', 'md');
   const isMiddle = useResponsive('down', 'md');
   const { isAuthenticated } = useAuth();
   const gtc = isDesktop ? 'repeat(3, 1fr)' : isMiddle ? '1fr' : 'repeat(2, 1fr)';
@@ -97,7 +98,7 @@ export default function MainHeader() {
             alignItems: 'center',
           }}>
 
-            {!isMiddle && <PhoneNrCom />}
+            {showPhone && <PhoneNrCom />}
             <MenuMobile
               navConfig={isAuthenticated ? [...menuConfigUser, ...menuConfigAdmin] : [...menuConfigUser]} size={isDesktop ? 40 : isSmall ? 30 : 34}
             />

@@ -1,7 +1,6 @@
 import { Grid, Stack, Typography } from "@mui/material";
 import { dimaContact } from "src/utils/dima";
 
-import useResponsive from 'src/hooks/useResponsive';
 // ----------------------------------------------------------------------
 
 const Adress = ({ text }: any) => {

@@ -17,7 +17,7 @@ interface Props extends IProps {
 
 export default function Image({
   ratio,
-  disabledEffect = false,
+  disabledEffect = true,
   effect = 'blur',
   sx,
   ...other

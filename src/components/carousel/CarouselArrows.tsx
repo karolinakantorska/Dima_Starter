@@ -69,7 +69,7 @@ export default function CarouselArrows({
       <Box sx={{ ...style, }}>
         <Button
           disableRipple
-          aria-label="previous photo"
+          aria-label="vorheriges Foto"
           size="large"
           onClick={onPrevious}
           sx={{
@@ -77,7 +77,7 @@ export default function CarouselArrows({
             ...buttonStyle
           }}
         >
-          <ArrowBackIosNewIcon sx={{ ...arrowStyle }} />
+          <ArrowBackIosNewIcon sx={{ ...arrowStyle }} aria-label="vorheriges Foto" />
         </Button>
       </Box>
 
@@ -86,7 +86,7 @@ export default function CarouselArrows({
       <Box sx={{ ...style, right: 8 }}>
         <Button
           disableRipple
-          aria-label="next photo"
+          aria-label="nächstes Foto"
           size="large"
           onClick={onNext}
           sx={{
@@ -94,7 +94,7 @@ export default function CarouselArrows({
             ...buttonStyle
           }}
         >
-          <ArrowForwardIosIcon sx={{ ...arrowStyle }} />
+          <ArrowForwardIosIcon sx={{ ...arrowStyle }} aria-label="nächstes Foto" />
         </Button>
       </Box>
     </Box>

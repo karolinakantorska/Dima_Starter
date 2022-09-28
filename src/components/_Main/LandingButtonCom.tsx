@@ -5,6 +5,7 @@ import useResponsive from '../../hooks/useResponsive';
 
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
 type Props = {
     colorRGB: string,
     color: string,
@@ -37,21 +38,23 @@ export default function LandingButtonCom({ colorRGB, color, text, href }: Props)
         },
     }
     return (
-
-        <ButtonBase
-            onClick={handleClick}
-            sx={{
-                ...buttonProps,
-            }}
-        >
-            <Typography
-                variant="body2" component="a"
+        <Link href={href}>
+            <ButtonBase
+                onClick={handleClick}
                 sx={{
-                    color: "inherit",
-                }} >
-                {isSmall ? `${text}` : `Unsere ${text}`}
-            </Typography> <ArrowForwardIosIcon sx={{ ml: '16px', color: "inherit" }} />
-        </ButtonBase>
+                    ...buttonProps,
+                }}
+            >
+                <Typography
+                    variant="body2" component="a"
+                    sx={{
+                        color: "inherit",
+                    }} >
+                    {isSmall ? `${text}` : `Unsere ${text}`}
+                </Typography> <ArrowForwardIosIcon sx={{ ml: '16px', color: "inherit" }} />
+            </ButtonBase>
+        </Link>
+
 
 
 
