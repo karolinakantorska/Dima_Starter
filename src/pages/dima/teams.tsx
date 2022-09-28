@@ -6,14 +6,7 @@ import { GetStaticProps } from "next";
 import Page from 'src/components/Page';
 import { getOrderedCollection } from "src/utils/apis/apis";
 import { TeamListCom } from 'src/components/_Team/TeamListCom';
-
-// ----------------------------------------------------------------------
-/*
-Teams.getLayout = function getLayout(page: React.ReactElement) {
-  return <Layout >{page}</Layout>;
-};
-*/
-// ----------------------------------------------------------------------
+import FooterCom from 'src/components/_Reusable/FooterCom';
 
 export default function Teams(props: any) {
   const { data } = props;
@@ -23,6 +16,7 @@ export default function Teams(props: any) {
     <Layout >
       <Page title="Teams">
         <TeamListCom teamList={data} />
+        <FooterCom />
       </Page>
     </Layout>
 
@@ -33,6 +27,5 @@ export const getStaticProps: GetStaticProps = async () => {
   const data = await getOrderedCollection("team", "displayOrder", "asc");
   return {
     props: { data },
-    //revalidate: 60,
   };
 };

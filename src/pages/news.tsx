@@ -1,20 +1,11 @@
 import { GetStaticProps } from 'next';
-import { ReactElement } from 'react';
 import { NewsListCom } from 'src/components/_News/NewsListCom';
+import FooterCom from 'src/components/_Reusable/FooterCom';
 // layouts
 import Layout from 'src/layouts';
 import { getOrderedCollection } from 'src/utils/apis/apis';
 // components
 import Page from '../components/Page';
-
-// ----------------------------------------------------------------------
-/*
-News.getLayout = function getLayout(page: ReactElement) {
-  return <Layout variant="main">{page}</Layout>;
-};
-*/
-// ----------------------------------------------------------------------
-
 
 export default function News(props: any) {
   const { data } = props;
@@ -22,6 +13,7 @@ export default function News(props: any) {
     <Layout >
       <Page title="News">
         <NewsListCom news={data} />
+        <FooterCom />
       </Page>
     </Layout>
 

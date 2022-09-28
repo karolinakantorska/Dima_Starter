@@ -1,3 +1,5 @@
+import { NextPage } from 'next';
+import { ReactElement, ReactNode } from 'react';
 // scroll bar
 import 'simplebar/src/simplebar.css';
 // slick-carousel
@@ -9,22 +11,16 @@ import 'react-lazy-load-image-component/src/effects/opacity.css';
 import 'react-lazy-load-image-component/src/effects/black-and-white.css';
 //Auth
 import { AuthProvider } from '../contexts/FirebaseContext';
-import { ReactElement, ReactNode } from 'react';
 import { AnimatePresence, m } from 'framer-motion';
 // next
-import { NextPage } from 'next';
 import Head from 'next/head';
 import App, { AppProps, } from 'next/app';
 // @mui
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-// utils
-// contexts
-
 // theme
 import ThemeProvider from '../theme';
 // components
-
 import ProgressBar from '../components/ProgressBar';
 import MotionLazyContainer from '../components/animate/MotionLazyContainer';
 
@@ -44,8 +40,6 @@ export default function MyApp(
 ) {
   const { Component, pageProps, router } = props;
 
-  //const getLayout = Component.getLayout ?? ((page) => page);
-
   return (
     <>
       <Head>
@@ -64,10 +58,6 @@ export default function MyApp(
                     {...pageProps}
                     key={router.route}
                   />
-                  {/*getLayout(<Component
-                    {...pageProps}
-                    key={router.route}
-                  />)*/}
                 </AnimatePresence>
               </m.div>
             </ThemeProvider>

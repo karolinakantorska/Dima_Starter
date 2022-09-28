@@ -1,17 +1,11 @@
 
 import Page from "src/components/Page"
 import WebcamsNewEditForm from "src/components/_Projekte/NewEditWebcam/WebcamsNewEditForm";
+import FooterCom from "src/components/_Reusable/FooterCom";
 
 import AuthGuard from "src/guards/AuthGuard";
 import Layout from "src/layouts"
 
-// ----------------------------------------------------------------------
-/*
-NeuesWebcam.getLayout = function getLayout(page: React.ReactElement) {
-  return <Layout >{page}</Layout>;
-};
-*/
-// ----------------------------------------------------------------------
 
 export default function NeuesWebcam() {
   const isEdit = false;
@@ -20,6 +14,7 @@ export default function NeuesWebcam() {
       <Layout >
         <Page title={`Neues Webcam`}>
           <WebcamsNewEditForm />
+          <FooterCom />
         </Page>
       </Layout>
 

@@ -1,20 +1,17 @@
-import Page from "src/components/Page"
+import { useEffect, useState } from "react";
 import { useRouter } from 'next/router';
 // layouts
 import Layout from "src/layouts"
-import { getCollectionDocument } from "src/utils/apis/apis";
 import AuthGuard from "src/guards/AuthGuard";
+import { getCollectionDocument } from "src/utils/apis/apis";
+
+import Page from "src/components/Page"
 import PersonNewEditForm from "src/components/_Team/NewEdit/PersonNewEditForm";
-import { useEffect, useState } from "react";
+
 import LoadingScreen from "src/components/LoadingScreen";
+import FooterCom from "src/components/_Reusable/FooterCom";
 // components
-// ----------------------------------------------------------------------
-/*
-PersonBearbeiten.getLayout = function getLayout(page: React.ReactElement) {
-  return <Layout >{page}</Layout>;
-};
-*/
-// ----------------------------------------------------------------------
+
 export default function PersonBearbeiten() {
   const isEdit = true;
   const router = useRouter();
@@ -30,6 +27,7 @@ export default function PersonBearbeiten() {
       <Layout >
         <Page title={`${isEdit ? 'Edit' : 'Neues'} Mitarbeiter`}>
           {data ? <PersonNewEditForm isEdit={isEdit} currentPerson={data} /> : <LoadingScreen />}
+          <FooterCom />s
         </Page>
       </Layout>
 

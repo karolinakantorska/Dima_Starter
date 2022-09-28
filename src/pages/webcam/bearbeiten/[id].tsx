@@ -1,20 +1,17 @@
+import { useRouter } from 'next/router';
 import { useState, useEffect } from "react";
 import Page from "src/components/Page"
-import { useRouter } from 'next/router';
-import Layout from "src/layouts"
 import AuthGuard from "src/guards/AuthGuard";
+
+import Layout from "src/layouts"
+
 import { getCollectionDocument } from "src/utils/apis/apis";
 import LoadingScreen from "src/components/LoadingScreen";
 import WebcamsNewEditForm from "src/components/_Projekte/NewEditWebcam/WebcamsNewEditForm";
+import FooterCom from "src/components/_Reusable/FooterCom";
 
 // components
-// ----------------------------------------------------------------------
-/*
-WebcamBearbeiten.getLayout = function getLayout(page: React.ReactElement) {
-  return <Layout >{page}</Layout>;
-};
-*/
-// ----------------------------------------------------------------------
+
 export default function WebcamBearbeiten() {
   const isEdit = true;
   const [data, setData] = useState<any>(false);
@@ -36,6 +33,7 @@ export default function WebcamBearbeiten() {
             isEdit={isEdit}
             currentWebcam={data}
           /> : <LoadingScreen />}
+          <FooterCom />
         </Page>
       </Layout>
 

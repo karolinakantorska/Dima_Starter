@@ -1,22 +1,18 @@
-import Page from "src/components/Page"
-import { useRouter } from 'next/router';
 
-import ProjectNewEditForm from "src/components/_Projekte/NewEditProjekt/ProjectNewEditForm";
+import { useState, useEffect } from "react";
+import { useRouter } from 'next/router';
 // layouts
 import Layout from "src/layouts"
-import { getCollectionDocument } from "src/utils/apis/apis";
 import AuthGuard from "src/guards/AuthGuard";
-import { useState, useEffect } from "react";
-import LoadingScreen from "src/components/LoadingScreen";
+
+import { getCollectionDocument } from "src/utils/apis/apis";
 
 // components
-// ----------------------------------------------------------------------
-/*
-ProjektBearbeiten.getLayout = function getLayout(page: React.ReactElement) {
-  return <Layout >{page}</Layout>;
-};
-*/
-// ----------------------------------------------------------------------
+import ProjectNewEditForm from "src/components/_Projekte/NewEditProjekt/ProjectNewEditForm";
+import Page from "src/components/Page"
+import LoadingScreen from "src/components/LoadingScreen";
+import FooterCom from "src/components/_Reusable/FooterCom";
+
 export default function ProjektBearbeiten() {
   const isEdit = true;
   const [data, setData] = useState<any>(false);
@@ -37,6 +33,7 @@ export default function ProjektBearbeiten() {
             isEdit={isEdit}
             currentProject={data}
           /> : <LoadingScreen />}
+          <FooterCom />
         </Page>
       </Layout>
 

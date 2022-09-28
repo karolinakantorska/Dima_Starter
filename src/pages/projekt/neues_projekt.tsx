@@ -1,17 +1,10 @@
-
+import AuthGuard from "src/guards/AuthGuard";
+import Layout from "src/layouts"
 import Page from "src/components/Page"
 
 import ProjectNewEditForm from "src/components/_Projekte/NewEditProjekt/ProjectNewEditForm";
-import AuthGuard from "src/guards/AuthGuard";
-import Layout from "src/layouts"
+import FooterCom from "src/components/_Reusable/FooterCom";
 
-// ----------------------------------------------------------------------
-/*
-NeuesProjekt.getLayout = function getLayout(page: React.ReactElement) {
-  return <Layout >{page}</Layout>;
-};
-*/
-// ----------------------------------------------------------------------
 
 export default function NeuesProjekt() {
   const isEdit = false;
@@ -20,6 +13,7 @@ export default function NeuesProjekt() {
       <Layout >
         <Page title={`Neues Projekt`}>
           <ProjectNewEditForm isEdit={isEdit} />
+          <FooterCom />
         </Page>
       </Layout>
 

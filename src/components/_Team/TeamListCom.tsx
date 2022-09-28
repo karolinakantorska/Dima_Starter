@@ -48,8 +48,8 @@ export function TeamListCom(
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [error]);
 
-  const isDesktop = useResponsive('up', 'lg');
-  const isMiddle = useResponsive('up', 'lm');
+  const isDesktop = useResponsive('up', 'xl');
+  const isMiddle = useResponsive('up', 'lg');
   const isSmall = useResponsive('up', 'md');
   const gtc = isDesktop ? 'repeat(4, 1fr)' : isMiddle ? 'repeat(3, 1fr)' : isSmall ? 'repeat(2, 1fr)' : 'repeat(1, 1fr)'
 

@@ -4,23 +4,16 @@ import Layout from '../layouts';
 import Page from '../components/Page';
 
 import PassResetFormCom from 'src/components/_signin/PassResetFormCom';
-
-// ----------------------------------------------------------------------
-/*
-ResetPass.getLayout = function getLayout(page: React.ReactElement) {
-  return <Layout >{page}</Layout>;
-};
-*/
-// ----------------------------------------------------------------------
+import FooterCom from 'src/components/_Reusable/FooterCom';
 
 export default function ResetPass() {
   return (
     <Layout >
       <Page title="Reset Password">
         <PassResetFormCom />
+        <FooterCom />
       </Page>
     </Layout>
-
   );
 }
 

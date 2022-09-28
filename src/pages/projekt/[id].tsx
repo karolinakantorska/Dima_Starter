@@ -9,20 +9,16 @@ import Page from '../../components/Page';
 import { OneProjectCom } from '../../components/_Projekte/OneProjectCom';
 import Layout from '../../layouts';
 import { getCollectionId, getCollectionDocument } from "src/utils/apis/apis";
+import FooterCom from "src/components/_Reusable/FooterCom";
 
-// ----------------------------------------------------------------------
-/*
-Referenz.getLayout = function getLayout(page: React.ReactElement) {
-  return <Layout >{page}</Layout>;
-};
-*/
-// ----------------------------------------------------------------------
+
 
 export default function Referenz({ data, params }: any) {
   return (
     <Layout >
       <Page title={`Projekt`}>
         <OneProjectCom project={data} />
+        <FooterCom />
       </Page>
     </Layout>
 

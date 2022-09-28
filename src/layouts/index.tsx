@@ -16,6 +16,5 @@ export default function Layout({ variant = 'main', children, }: Props) {
   if (variant === 'fullScreen') {
     return <FullScreenLayout> {children} </FullScreenLayout>;
   }
-
   return <MainLayout> {children} </MainLayout>;
 }

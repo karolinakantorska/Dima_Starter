@@ -1,14 +1,9 @@
 import Page from "src/components/Page"
+import FooterCom from "src/components/_Reusable/FooterCom";
 import PersonNewEditForm from "src/components/_Team/NewEdit/PersonNewEditForm";
 import AuthGuard from "src/guards/AuthGuard";
 import Layout from "src/layouts"
-// ----------------------------------------------------------------------
-/*
-NeueMitarbeiter.getLayout = function getLayout(page: React.ReactElement) {
-  return <Layout >{page}</Layout>;
-};
-*/
-// ----------------------------------------------------------------------
+
 export default function NeueMitarbeiter() {
   const isEdit = false;
   return (
@@ -16,6 +11,7 @@ export default function NeueMitarbeiter() {
       <Layout >
         <Page title={`${isEdit ? 'Edit' : 'Neues'} Mitarbeiter`}>
           <PersonNewEditForm />
+          <FooterCom />
         </Page>
       </Layout>
 

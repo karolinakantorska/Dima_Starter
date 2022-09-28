@@ -5,6 +5,7 @@ import Page from '../components/Page';
 import { GetStaticProps } from 'next';
 import { getOrderedCollection } from 'src/utils/apis/apis';
 import { WerklisteListCom } from 'src/components/_Projekte/WerklisteListCom';
+import FooterCom from 'src/components/_Reusable/FooterCom';
 
 
 // ----------------------------------------------------------------------
@@ -20,6 +21,7 @@ export default function Werkliste(props: any) {
     <Layout >
       <Page title="Werkliste">
         <WerklisteListCom data={data} />
+        <FooterCom />
       </Page>
     </Layout>
   );

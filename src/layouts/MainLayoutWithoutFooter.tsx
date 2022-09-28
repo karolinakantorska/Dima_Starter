@@ -1,5 +1,6 @@
 import { ReactNode } from 'react';
 import { Container, Stack } from '@mui/material';
+// components
 import { HEADER } from 'src/config';
 import MainHeader from './MainHeader';
 import { styled } from '@mui/material/styles';
@@ -26,7 +27,7 @@ const ContainerStyle = styled(Container)(({ theme }) => ({
     paddingTop: HEADER.MOBILE_HEIGHT,
   },
 }));
-export default function MainLayout({ children }: Props) {
+export default function MainLayoutWithoutFooter({ children }: Props) {
   return (
     <Stack sx={{ minHeight: 1, }}>
       <MainHeader />

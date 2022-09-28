@@ -5,13 +5,8 @@ import Layout from '../../layouts';
 import { OneJobCom } from "src/components/_Job/OneJobCom";
 import { getCollectionId, getCollectionDocument } from "src/utils/apis/apis";
 import LoadingScreen from "src/components/LoadingScreen";
-// ----------------------------------------------------------------------
-/*
-Job.getLayout = function getLayout(page: React.ReactElement) {
-  return <Layout >{page}</Layout>;
-};
-*/
-// ----------------------------------------------------------------------
+import FooterCom from "src/components/_Reusable/FooterCom";
+
 export default function Job({ data }: any) {
   const router = useRouter();
   const { id } = router.query;
@@ -21,6 +16,7 @@ export default function Job({ data }: any) {
       <Layout >
         <Page title={`Job`}>
           <OneJobCom job={data} />
+          <FooterCom />
         </Page>
       </Layout>
 

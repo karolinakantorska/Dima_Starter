@@ -2,21 +2,16 @@
 import Layout from 'src/layouts';
 // components
 import Page from 'src/components/Page';
+import FooterCom from 'src/components/_Reusable/FooterCom';
+import { CompanyCom } from 'src/components/_Dima/CompanyCom';
 
-// ----------------------------------------------------------------------
-/*
-Unternehmung.getLayout = function getLayout(page: React.ReactElement) {
-  return <Layout >{page}</Layout>;
-};
-*/
-// ----------------------------------------------------------------------
+
 export default function Unternehmung() {
   return (
     <Layout >
       <Page title="Unternehmung">
-
-        <p>Unternehmung</p>
-
+        <CompanyCom />
+        <FooterCom />
       </Page>
     </Layout>
   );

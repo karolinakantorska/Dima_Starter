@@ -2,19 +2,11 @@
 import Layout from 'src/layouts';
 // components
 import Page from 'src/components/Page';
-
-
 import { WebcamsListCom } from 'src/components/_Projekte/WebcamsListCom';
 import { GetStaticProps } from 'next';
 import { getOrderedCollection } from 'src/utils/apis/apis';
+import FooterCom from 'src/components/_Reusable/FooterCom';
 
-// ----------------------------------------------------------------------
-/*
-Webcams.getLayout = function getLayout(page: React.ReactElement) {
-  return <Layout >{page}</Layout>;
-};
-*/
-// ----------------------------------------------------------------------
 
 export default function Webcams(props: any) {
   const { data } = props;
@@ -22,6 +14,7 @@ export default function Webcams(props: any) {
     <Layout >
       <Page title="Webcams">
         <WebcamsListCom data={data} />
+        <FooterCom />
       </Page>
     </Layout>
 

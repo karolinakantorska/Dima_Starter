@@ -6,20 +6,15 @@ import Page from 'src/components/Page';
 
 import { ProjectsListCom } from 'src/components/_Projekte/projectsListCom';
 import { getOrderedCollection } from "src/utils/apis/apis";
+import FooterCom from "src/components/_Reusable/FooterCom";
 
-// ----------------------------------------------------------------------
-/*
-List.getLayout = function getLayout(page: React.ReactElement) {
-  return <Layout >{page}</Layout>;
-};
-*/
-// ----------------------------------------------------------------------
 export default function List(props: any) {
   const { data } = props;
   return (
     <Layout >
       <Page title="Projekte">
         <ProjectsListCom projectsList={data} />
+        <FooterCom />
       </Page>
     </Layout>
 

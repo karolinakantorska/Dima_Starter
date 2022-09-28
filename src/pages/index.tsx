@@ -6,14 +6,6 @@ import LandingVideo from 'src/components/_Main/LandingVideo';
 import LandingButtonsCom from 'src/components/_Main/LandingButtonsCom';
 import Layout from 'src/layouts';
 
-// ----------------------------------------------------------------------
-/*
-Index.getLayout = function getLayout(page: React.ReactElement) {
-  return <Layout variant="fullScreen" >{page}</Layout>;
-};
-*/
-// ----------------------------------------------------------------------
-
 export default function Index() {
 
   return (

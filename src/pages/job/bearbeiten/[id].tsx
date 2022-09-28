@@ -6,15 +6,9 @@ import AuthGuard from "src/guards/AuthGuard";
 import { getCollectionDocument } from "src/utils/apis/apis";
 import LoadingScreen from "src/components/LoadingScreen";
 import JobNewEditForm from "src/components/_Job/NewEditJob/JobNewEditForm";
+import FooterCom from "src/components/_Reusable/FooterCom";
 
-// components
-// ----------------------------------------------------------------------
-/*
-JobBearbeiten.getLayout = function getLayout(page: React.ReactElement) {
-  return <Layout >{page}</Layout>;
-};
-*/
-// ----------------------------------------------------------------------
+
 export default function JobBearbeiten() {
   const isEdit = true;
   const [data, setData] = useState<any>(false);
@@ -35,6 +29,7 @@ export default function JobBearbeiten() {
             isEdit={isEdit}
             currentJob={data}
           /> : <LoadingScreen />}
+          <FooterCom />
         </Page>
       </Layout>
 

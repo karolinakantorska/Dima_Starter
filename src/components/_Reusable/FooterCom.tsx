@@ -1,4 +1,5 @@
-import { Container, Stack } from "@mui/material";
+import { Container, Stack, Typography } from "@mui/material";
+
 import { BodyTextCom } from "./BodyTextCom";
 import { TitleTextCom } from "./TitleTextCom";
 
@@ -30,14 +31,27 @@ export default function FooterCom() {
                         </Stack>
                     </Stack>
                 </div>
-                {/*<div >
+                <div >
                     <Stack spacing={2}>
                         <TitleTextCom text="Website" />
                         <Stack spacing={1} >
-                            <BodyTextCom text="https://karolinakantorska.ch/" />
+                            <Typography
+                                component="a"
+                                variant="body2"
+                                href="https://karolinakantorska.ch/"
+                                sx={{
+                                    color: 'text.primary',
+                                    cursor: 'pointer',
+                                    textDecoration: 'underline'
+                                }}
+                            >
+                                https://karolinakantorska.ch
+                            </Typography>
+
+
                         </Stack>
                     </Stack>
-    </div>*/}
+                </div>
 
             </Stack>
         </Container>

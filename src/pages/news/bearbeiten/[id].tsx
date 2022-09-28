@@ -1,20 +1,18 @@
-import { useState, useEffect } from "react";
-import Page from "src/components/Page"
 import { useRouter } from 'next/router';
+import { useState, useEffect } from "react";
+
 import Layout from "src/layouts"
 import AuthGuard from "src/guards/AuthGuard";
+
 import { getCollectionDocument } from "src/utils/apis/apis";
+
+import Page from "src/components/Page"
 import LoadingScreen from "src/components/LoadingScreen";
 import NewsNewEditForm from "src/components/_News/NewEditNews/NewsNewEditForm";
+import FooterCom from "src/components/_Reusable/FooterCom";
 
 // components
-// ----------------------------------------------------------------------
-/*
-NewsBearbeiten.getLayout = function getLayout(page: React.ReactElement) {
-  return <Layout >{page}</Layout>;
-};
-*/
-// ----------------------------------------------------------------------
+
 export default function NewsBearbeiten() {
   const isEdit = true;
   const [data, setData] = useState<any>(false);
@@ -34,6 +32,7 @@ export default function NewsBearbeiten() {
             isEdit={isEdit}
             currentNews={data}
           /> : <LoadingScreen />}
+          <FooterCom />
         </Page>
       </Layout>
 

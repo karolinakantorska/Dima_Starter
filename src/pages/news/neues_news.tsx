@@ -1,16 +1,9 @@
+import Layout from "src/layouts"
+import AuthGuard from "src/guards/AuthGuard";
 
 import Page from "src/components/Page"
 import NewsNewEditForm from "src/components/_News/NewEditNews/NewsNewEditForm";
-import AuthGuard from "src/guards/AuthGuard";
-import Layout from "src/layouts"
-
-// ----------------------------------------------------------------------
-/*
-NeuesNews.getLayout = function getLayout(page: React.ReactElement) {
-  return <Layout >{page}</Layout>;
-};
-*/
-// ----------------------------------------------------------------------
+import FooterCom from "src/components/_Reusable/FooterCom";
 
 export default function NeuesNews() {
   const isEdit = false;
@@ -19,9 +12,9 @@ export default function NeuesNews() {
       <Layout >
         <Page title={`Neues News`}>
           <NewsNewEditForm isEdit={isEdit} />
+          <FooterCom />
         </Page>
       </Layout>
-
     </AuthGuard>
   );
 }

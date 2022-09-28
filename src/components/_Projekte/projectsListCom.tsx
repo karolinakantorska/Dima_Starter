@@ -5,9 +5,7 @@ import { ProjektCardCom } from './ProjektCardCom';
 import { ProjectsListType, ProjectType } from '../../utils/TS/interface';
 import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
-import { AlertCom } from '../_Reusable/AlertCom';
-import Link from 'next/link';
-import { PATH_PROJEKTE } from 'src/routes/paths';
+
 
 export function ProjectsListCom(
   { projectsList }: {
@@ -82,31 +80,34 @@ export function ProjectsListCom(
   };
 
   return (
-    <Box
-      component={m.div}
-      {...variant}
-      display="grid"
-      gridTemplateColumns={gtc}
-      gridAutoFlow='dense'
-      columnGap="15px"
-      rowGap="15px"
-    //sx={{ position: 'absolute' }}
-    >
-      {projectsTODisplay && projectsTODisplay.map((project, i) => {
-        return (
-          <ProjektCardCom
-            key={project.project.id}
-            project={project.project}
-            gridRow={project.mirrored ? '1' : '2'}
-            big={project.project.big}
-            rewerseBig={project.bigReversed}
-            setSucces={setSucces}
-            setLoading={setLoading}
-            setError={setError}
-          />
-        );
-      })}
-      {!projectsTODisplay && <p>Es gibt momentan keine Projekte</p>}
-    </Box>
+    <>
+      <Box
+        component={m.div}
+        {...variant}
+        display="grid"
+        gridTemplateColumns={gtc}
+        gridAutoFlow='dense'
+        columnGap="15px"
+        rowGap="15px"
+      //sx={{ position: 'absolute' }}
+      >
+        {projectsTODisplay && projectsTODisplay.map((project, i) => {
+          return (
+            <ProjektCardCom
+              key={project.project.id}
+              project={project.project}
+              gridRow={project.mirrored ? '1' : '2'}
+              big={project.project.big}
+              rewerseBig={project.bigReversed}
+              setSucces={setSucces}
+              setLoading={setLoading}
+              setError={setError}
+            />
+          );
+        })}
+        {!projectsTODisplay && <p>Es gibt momentan keine Projekte</p>}
+      </Box>
+    </>
+
   );
 }

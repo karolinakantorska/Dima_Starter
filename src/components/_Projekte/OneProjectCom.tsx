@@ -12,6 +12,7 @@ import { BodyTextCom } from '../_Reusable/BodyTextCom';
 import { useEffect } from 'react';
 
 import { useRouter } from 'next/router';
+import LoadingScreen from '../LoadingScreen';
 
 export function OneProjectCom({ project }: { project: ProjectType }) {
   const isDesktop = useResponsive('up', 'lg');
@@ -62,8 +63,6 @@ export function OneProjectCom({ project }: { project: ProjectType }) {
   }
   const propsContent = {
     mt: isSmall ? 6 : 0,
-
-
   };
   const propsContainerBox = {
     display: 'grid',
@@ -88,7 +87,6 @@ export function OneProjectCom({ project }: { project: ProjectType }) {
     py: isSmall ? 1.2 : isDesktop ? 3.9 : '3%',
     pl: 0
   }
-
   const TableRowMobile = ({ row }: any) => (
     <TableRow
       key={row.name}
@@ -108,7 +106,6 @@ export function OneProjectCom({ project }: { project: ProjectType }) {
     >
       <TableCell component="td" sx={{ ...propsTableCell }}>
         <TitleTextCom text={row.name.toUpperCase()} />
-
       </TableCell>
       <TableCell align="left" sx={{ ...propsTableCell2 }} >
         <BodyTextCom text={row.data} />
@@ -118,7 +115,6 @@ export function OneProjectCom({ project }: { project: ProjectType }) {
 
   if (project) {
     const photos = project.photos ? project.photos : []
-
     return (
       <>
         <Stack
@@ -156,7 +152,7 @@ export function OneProjectCom({ project }: { project: ProjectType }) {
 
   } else {
     return (
-      <p>loading...</p>
+      <LoadingScreen />
     )
   }
 }
