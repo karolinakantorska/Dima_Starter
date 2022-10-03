@@ -64,7 +64,10 @@ export function WerklisteListCom({ data }: Props) {
             </>
         );
     } else {
-        <p>Hallo</p>
+        return (
+            <p>Werkliste is momentan leer</p>
+        )
+
     }
 
 }

@@ -64,7 +64,7 @@ export function OneProjectCom({ project }: { project: ProjectType }) {
     return arr
   }
   const propsContent = {
-    mt: isSmall ? 6 : 0,
+    //mt: isSmall ? 6 : 0,
   };
   const propsContainerBox = {
     display: 'grid',

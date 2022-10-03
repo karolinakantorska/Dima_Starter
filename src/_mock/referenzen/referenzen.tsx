@@ -12,7 +12,7 @@ export const _mockProjekts: ProjectType[] = [
     title: `4 mehrfamilienhäuser ettersbüe`,
     description: ['', ''],
     startYear: new Date('Marz 27, 2022'),
-    year: new Date('Marz 27, 2022');
+    year: new Date('Marz 27, 2022'),
     objektAlter: 'Neubau',
     region: 'Zürich',
     phase: "in Ausführung",
