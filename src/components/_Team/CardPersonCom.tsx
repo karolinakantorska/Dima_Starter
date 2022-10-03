@@ -15,6 +15,7 @@ import { TitleTextCom } from '../_Reusable/TitleTextCom';
 import { BodyTextCom } from '../_Reusable/BodyTextCom';
 import useAuth from 'src/utils/firebaseAuth/useAuth';
 import { revalidateURL } from 'src/utils/myUtils/revalidateURL';
+import ImageNextImage from '../ImageNextImage';
 
 
 export function CardPersonCom({
@@ -43,7 +44,6 @@ export function CardPersonCom({
     function handleClose() {
         setOpen(false);
     };
-
     function handleDelete() {
         setLoading(true);
         deleteProjectFromFirestore('team', id)
@@ -63,6 +63,7 @@ export function CardPersonCom({
             });
         setOpen(false);
     };
+
     const gridProps = {
         px: isSmall ? 1.75 : 3.25,
         pt: isSmall ? 1.75 : 4.15,
@@ -74,14 +75,15 @@ export function CardPersonCom({
             <Card >
                 {isAuthenticated && <Grid container justifyContent="flex-end" sx={{ position: 'absolute' }} >
                     <ChipDisplayOrderCom displayOrder={person.displayOrder} />
-                </Grid>}
-                {(photo.url.length > 0) && <CardMedia
-                    component="img"
-                    height={isDesktop ? 545 : 'auto'}
-                    image={photo.url ? photo.url : '/assets/bg_gradient.jpeg'}
-                    alt={`${name} ${surname} ${job1}`}
-                    sx={{ height: '574px' }}
-                />}
+                </Grid>
+                }
+                {(photo.url.length > 0) &&
+                    < ImageNextImage
+                        src={photo.url}
+                        alt={`${name} ${surname} ${job1}`}
+                        ratio="4/6"
+                    />
+                }
 
                 <Grid
                     container
@@ -111,7 +113,8 @@ export function CardPersonCom({
                 {isAuthenticated &&
                     <Grid container justifyContent="flex-end" sx={{ mt: '-40px', }} >
                         <EditDeleteIconCom handleOpen={handleOpen} editURL={`${PATH_DIMA.editMitarbeiter}/${id}`} />
-                    </Grid>}
+                    </Grid>
+                }
             </Card >
             {isAuthenticated && <DeleteDialogCom
                 open={open}
@@ -121,6 +124,5 @@ export function CardPersonCom({
                 titleOfObjectToBeDeled={`${name.toUpperCase()} ${surname.toUpperCase()}`}
             />}
         </>
-
     )
 }

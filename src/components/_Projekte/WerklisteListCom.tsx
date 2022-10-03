@@ -53,13 +53,18 @@ export function WerklisteListCom({ data }: Props) {
         changedList.push({ ...item, newYear, changed })
     })
 
-    return (
-        <>
-            <AlertCom succes={succes} error={error} loading={loading} setError={setError} />
-            {changedList.map((item: List, i: number) => (
-                <WerkCom key={i} item={item} setSucces={setSucces} setLoading={setLoading} setError={setError} loading={loading} />
-            ))}
-            {isAuthenticated && <WerklisteNewEditForm isEdit={false} setSucces={setSucces} setLoading={setLoading} setError={setError} loading={loading} />}
-        </>
-    );
+    if (data.length > 0) {
+        return (
+            <>
+                <AlertCom succes={succes} error={error} loading={loading} setError={setError} />
+                {changedList.map((item: List, i: number) => (
+                    <WerkCom key={i} item={item} setSucces={setSucces} setLoading={setLoading} setError={setError} loading={loading} />
+                ))}
+                {isAuthenticated && <WerklisteNewEditForm isEdit={false} setSucces={setSucces} setLoading={setLoading} setError={setError} loading={loading} />}
+            </>
+        );
+    } else {
+        <p>Hallo</p>
+    }
+
 }

@@ -80,36 +80,42 @@ export function ProjectsListCom(
     exit: router.query.id && { opacity: 0 },
     transition: transition,
   };
+  if (projectsList.length > 0) {
+    return (
+      <>
+        <Box
+          component={m.div}
+          {...variant}
+          display="grid"
+          gridTemplateColumns={gtc}
+          gridAutoFlow='dense'
+          columnGap="15px"
+          rowGap="15px"
+        //sx={{ position: 'absolute' }}
+        >
+          {projectsTODisplay && projectsTODisplay.map((project, i) => {
+            return (
+              <ProjektCardCom
+                key={project.project.id}
+                project={project.project}
+                gridRow={project.mirrored ? '1' : '2'}
+                big={project.project.big}
+                rewerseBig={project.bigReversed}
+                setSucces={setSucces}
+                setLoading={setLoading}
+                setError={setError}
+              />
+            );
+          })}
+          {!projectsTODisplay && <p>Es gibt momentan keine Projekte</p>}
+        </Box>
+      </>
 
-  return (
-    <>
-      <Box
-        component={m.div}
-        {...variant}
-        display="grid"
-        gridTemplateColumns={gtc}
-        gridAutoFlow='dense'
-        columnGap="15px"
-        rowGap="15px"
-      //sx={{ position: 'absolute' }}
-      >
-        {projectsTODisplay && projectsTODisplay.map((project, i) => {
-          return (
-            <ProjektCardCom
-              key={project.project.id}
-              project={project.project}
-              gridRow={project.mirrored ? '1' : '2'}
-              big={project.project.big}
-              rewerseBig={project.bigReversed}
-              setSucces={setSucces}
-              setLoading={setLoading}
-              setError={setError}
-            />
-          );
-        })}
-        {!projectsTODisplay && <p>Es gibt momentan keine Projekte</p>}
-      </Box>
-    </>
+    );
+  } else {
+    return (
+      <p>Hallo</p>
+    )
+  }
 
-  );
 }

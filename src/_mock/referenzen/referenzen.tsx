@@ -1,35 +1,29 @@
-export const _mockProjekts: any = [
-  //
-  // 4 mehrfamilienhäuser ettersbüe
-  //
+import { ProjectType } from "src/utils/TS/interface";
+
+export const _mockProjekts: ProjectType[] = [
   {
+    id: '1',
     photo: {
-      url: `/cover_1.jpg`,
+      url: ``,
       alt: `4 mehrfamilienhäuser ettersbüe`,
     },
     photos: [],
     photoAuthor: '',
-    id: '1',
     title: `4 mehrfamilienhäuser ettersbüe`,
-    description: ['', []],
-    //year: 2016,
-    objektAlter: 'Newbau',
-    //objektType: ['MFH'],
-    //services: ['TU', 'Bauleitung', 'GP', 'Ausführungsplanung'],
-    //timeStamp: 1,
+    description: ['', ''],
+    startYear: new Date('Marz 27, 2022'),
+    year: new Date('Marz 27, 2022');
+    objektAlter: 'Neubau',
     region: 'Zürich',
-    phase: ['Realisierung'],
+    phase: "in Ausführung",
     client: '',
     size: 9999,
     architect: `ZFP Architektur AG, Bülach`,
-    generalConstr: '',
-    cooperation: {
-      service: '',
-      company: '',
-    },
+    realisation: '',
+    bauleitung: 'string',
     location: 'Bülach',
     video: '',
-    finished: false,
+    big: false,
   },
 ];
 

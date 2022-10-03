@@ -15,6 +15,7 @@ import { ProjectType } from 'src/utils/TS/interface';
 import { CardActionArea } from '@mui/material';
 import { PATH_PROJEKTE } from 'src/routes/paths';
 import { TextCardCom } from './textCardCom';
+import ImageNextImage from '../ImageNextImage';
 
 export function ProjektCardCom({
   project,
@@ -76,7 +77,12 @@ export function ProjektCardCom({
             disableRipple
             aria-label={title}
           >
-            <Image
+            {/*<Image
+              src={photo.url}
+              alt={photo.alt}
+              ratio="16/9"
+  />*/}
+            <ImageNextImage
               src={photo.url}
               alt={photo.alt}
               ratio="16/9"

@@ -1,5 +1,5 @@
-import { LazyLoadImage, LazyLoadImageProps } from 'react-lazy-load-image-component';
 // @mui
+import Image, { ImageProps } from 'next/image'
 import { Theme } from '@mui/material/styles';
 import { Box, BoxProps, SxProps } from '@mui/material';
 
@@ -7,7 +7,7 @@ import { Box, BoxProps, SxProps } from '@mui/material';
 
 export type ImageRato = '4/3' | '3/4' | '6/4' | '4/6' | '16/9' | '9/16' | '21/9' | '9/21' | '1/1';
 
-type IProps = BoxProps & any;
+type IProps = BoxProps & ImageProps;
 
 interface Props extends IProps {
   sx?: SxProps<Theme>;
@@ -15,14 +15,14 @@ interface Props extends IProps {
   disabledEffect?: boolean;
 }
 
-export default function Image({
+export default function ImageNextImage({
   ratio,
   disabledEffect = true,
-  effect = 'blur',
   sx,
   ...other
 }: Props) {
-
+  console.log('other.alt', other.alt)
+  console.log('other.src', other.src)
   if (ratio) {
     return (
       <Box
@@ -47,12 +47,11 @@ export default function Image({
         }}
       >
         <Box
-          component={LazyLoadImage}
-          wrapperClassName="wrapper"
-          effect={disabledEffect ? undefined : effect}
-          placeholderSrc="/assets/placeholder.svg"
+          component={Image}
+          layout='fill'
+          src={other.src}
+          alt={other.alt}
           sx={{ width: 1, height: 1, objectFit: 'cover' }}
-          {...other}
         />
       </Box>
     );
@@ -70,14 +69,13 @@ export default function Image({
       }}
     >
       <Box
-        //component={Image}
-        component={LazyLoadImage}
-        wrapperClassName="wrapper"
-        effect={disabledEffect ? undefined : effect}
-        placeholderSrc="/assets/placeholder.svg"
+        component={Image}
+        layout='fill'
+        src={other.src}
+        alt={other.alt}
         sx={{ width: 1, height: 1, objectFit: 'cover' }}
-        {...other}
       />
+
     </Box>
   );
 }

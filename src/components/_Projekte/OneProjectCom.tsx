@@ -46,7 +46,9 @@ export function OneProjectCom({ project }: { project: ProjectType }) {
     const time = (project.phase === 'Gebaut')
       ? `${new Date(project.startYear).toLocaleString('de-DE', { year: 'numeric' })} -
          ${new Date(project.year).toLocaleString('de-DE', { year: 'numeric' })}`
-      : project.phase;
+      : (project.phase === 'in Ausführung')
+        ? `${new Date(project.startYear).toLocaleString('de-DE', { year: 'numeric' })} - bis jetzt`
+        : project.phase;
     const arr = [
       { name: 'bauherr', data: project.client },
       { name: 'architekt', data: project.architect },

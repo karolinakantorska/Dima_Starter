@@ -31,6 +31,29 @@ export function YearCardCom() {
                     '& .MuiFormControlLabel-root': { mr: 4 },
                 }}
             />
+            {(values.phase === 'in Ausführung') &&
+                <>
+                    <TitleTextCom text="Bauzeit: " />
+                    <Controller
+                        name="year_start_form"
+                        control={control}
+                        render={({ field, fieldState: { error } }) => (
+                            <DatePicker
+                                views={['year']}
+                                label="Baubeginn"
+                                value={field.value}
+                                onChange={(newValue) => {
+                                    field.onChange(newValue);
+                                }}
+                                renderInput={(params) => (
+                                    <TextField {...params} variant="filled" fullWidth error={!!error} helperText={error?.message} />
+                                )}
+                            />
+                        )}
+                    />
+
+                </>
+            }
             {(values.phase === 'Gebaut') &&
                 <>
                     <TitleTextCom text="Bauzeit: " />
@@ -40,7 +63,7 @@ export function YearCardCom() {
                         render={({ field, fieldState: { error } }) => (
                             <DatePicker
                                 views={['year']}
-                                label="Baubegin"
+                                label="Baubeginn"
                                 value={field.value}
                                 onChange={(newValue) => {
                                     field.onChange(newValue);

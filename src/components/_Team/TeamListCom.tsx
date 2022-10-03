@@ -7,6 +7,7 @@ import { useRouter } from 'next/router';
 import { SiteTitle } from '../_Reusable/SiteTitle';
 import { CardPersonCom } from './CardPersonCom';
 import { AlertCom } from '../_Reusable/AlertCom';
+import { team } from 'src/_mock/team/team';
 
 
 export function TeamListCom(
@@ -19,7 +20,7 @@ export function TeamListCom(
   const [loading, setLoading] = useState(false);
 
   const router = useRouter();
-
+  const mockedTeam = team;
 
 
   useEffect(() => {
@@ -77,7 +78,25 @@ export function TeamListCom(
       </>
     )
   } else {
-    return <p>Am moment gibt keine Mittarbeiter.</p>
+    return <>
+      <SiteTitle text={layoutHeader.teams} />
+      <AlertCom succes={succes} error={error} loading={loading} setError={setError} />
+      <Box
+        display="grid"
+        gridTemplateColumns={gtc}
+        columnGap="11px"
+        rowGap="20px"
+        sx={{ mt: 6 }}
+      >
+        {mockedTeam.map((person) => <CardPersonCom
+          key={person.id}
+          person={person}
+          setSucces={setSucces}
+          setLoading={setLoading}
+          setError={setError}
+        />)}
+      </Box>
+    </>
   }
 
 }

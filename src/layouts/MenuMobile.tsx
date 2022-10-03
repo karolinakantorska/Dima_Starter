@@ -140,7 +140,7 @@ export default function MenuMobile({ navConfig, size }: MenuProps) {
                           color: 'text.disabled',
                           variant: 'h5',
                         }}
-                        primary={'Ausnmelden'.toUpperCase()}
+                        primary={'Abnmelden'.toUpperCase()}
                       />
                     </ListItemStyle>}
                 </Stack>
