@@ -31,13 +31,10 @@ export const getStaticPaths: GetStaticPaths = async () => {
   }));
   return { paths, fallback: true };
 };
-export const getStaticProps: GetStaticProps = async ({ params, req, res }: any) => {
+export const getStaticProps: GetStaticProps = async ({ params }: any) => {
   const { id } = params;
   const data = await getCollectionDocument("projects", id);
-  res.setHeader(
-    'Cache-Control',
-    'public, s-maxage=10, stale-while-revalidate=59'
-  )
+
   return {
     props: { data },
   };
