@@ -2,9 +2,9 @@
 
 // components
 import Page from '../components/Page';
-import LandingVideo from 'src/components/_Main/LandingVideo';
-import LandingButtonsCom from 'src/components/_Main/LandingButtonsCom';
 import Layout from 'src/layouts';
+import LandingPage from 'src/components/_Main/LandingPage';
+import { GetStaticProps } from 'next';
 
 export default function Index() {
 
@@ -15,8 +15,7 @@ export default function Index() {
         height: "100vh",
         overflow: "hidden",
       }}>
-        <LandingVideo />
-        <LandingButtonsCom />
+        <LandingPage />
       </Page>
     </Layout>
 
