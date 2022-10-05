@@ -133,7 +133,7 @@ export function OneProjectCom({ project }: { project: ProjectType }) {
               <Table id="Project_Table">
                 <TableBody>
                   {!isMobile && row2().map((row, i) => (<TableRowDesktop key={i} row={row} />))}
-                  {isMobile && row2().map((row, i) => (<TableRowMobile key={i + i} row={row} />))}
+                  {isMobile && row2().map((row, i) => (<TableRowMobile key={i} row={row} />))}
                 </TableBody>
               </Table>
             </Box>
@@ -141,10 +141,7 @@ export function OneProjectCom({ project }: { project: ProjectType }) {
               <TitleTextCom text={project.title.toUpperCase()} sx={{ mb: 2.75 }} />
 
               {project.description.map((desc, i) => (
-                <>
-                  {(desc !== '') && <BodyTextCom key={i} text={desc} sx={{ mb: 1.5 }} />}
-                </>
-              ))}
+                <BodyTextCom key={i} text={desc} sx={{ mb: 1.5 }} />))}
               {project.photoAuthor && <BodyTextCom text={`© Photography: ${project.photoAuthor}`} />}
             </Box>
           </Box>

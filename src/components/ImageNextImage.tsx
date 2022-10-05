@@ -49,8 +49,6 @@ export default function ImageNextImage({
           layout='fill'
           src={other.src}
           alt={other.alt}
-          width={1}
-          height={1}
           sx={{ width: 1, height: 1, objectFit: 'cover' }}
         />
       </Box>

@@ -13,6 +13,7 @@ import * as logo from "/public/assets/bg_gradient.jpeg"
 //import Image from "next/image";
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import { replaceMinusToSpace } from "src/utils/Text/textUtils";
+import ImageNextImage from "../ImageNextImage";
 
 // ----------------------------------------------------------------------
 
@@ -89,7 +90,7 @@ export default function CarouselBasic3({ photos }: { photos: ImagesType }) {
       <>
         <Box>
           <CarouselItem key={photo.alt} item={{ image: photo.url, title: photo.alt, description: photo.alt }} />
-          <Link href="#Project_Table" underline="none" aria-label={`Lesen sie bitte mehr über dem Projekt`} >
+          <Link href="#Project_Table" underline="none" aria-label="Lesen sie bitte mehr über dem Projekt" >
             < KeyboardArrowDownIcon sx={{ ...propsArrow }} />
           </Link>
         </Box>
@@ -109,7 +110,7 @@ export default function CarouselBasic3({ photos }: { photos: ImagesType }) {
             ))
             }
           </Slider>
-          <Link href="#Project_Table" underline="none">
+          <Link href="#Project_Table" underline="none" aria-label="Lesen sie bitte mehr über dem Projekt">
             < KeyboardArrowDownIcon sx={{ ...propsArrowSlider }} />
           </Link>
         </CarouselArrows>
@@ -129,7 +130,7 @@ type CarouselItemProps = {
 function CarouselItem({ item }: { item: CarouselItemProps }) {
   const { image, title } = item;
   return (
-    <Image alt={replaceMinusToSpace(title)} src={image} ratio="16/9" />
+    <ImageNextImage alt={replaceMinusToSpace(title)} src={image} ratio="16/9" />
   );
 }
 
