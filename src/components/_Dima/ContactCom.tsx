@@ -12,12 +12,8 @@ import { TitleTextCom } from '../_Reusable/TitleTextCom';
 import { BodyTextCom } from '../_Reusable/BodyTextCom';
 import Image from 'next/image';
 
-//console.log('Glarus:', Glarus)
-// TODO use location instead use route
-export function ContactCom() {
-  //const initialInputs = { param: "Alle" }
 
-  //const isDesktop = useResponsive('up', 'lm');
+export function ContactCom() {
   const isMiddle = useResponsive('down', 'md');
   const isSmall = useResponsive('down', 'sm');
 
@@ -41,7 +37,7 @@ export function ContactCom() {
         <BodyTextCom text={`CH-${post} ${firstLettersBig(town)}`} />
         <BodyTextCom text={`T ${phone}`} />
         <Typography variant="body1" component="p" sx={{ color: 'text.secondary' }}>
-          {email.substring(0, 3)}<span style={{ display: "none" }}>sth@num</span>{email.substring(3, 9)}<span style={{ display: "none" }}>num.ch</span>{email.substring(9)}
+          {email.substring(0, 3)}<span style={{ display: "none" }}>sth@num.ch</span>{email.substring(3, 9)}<span style={{ display: "none" }}>lola@num.ch</span>{email.substring(9)}
         </Typography>
       </Box>
     )
@@ -49,7 +45,7 @@ export function ContactCom() {
     ;
   const ImageCard = ({ href, link }: { href: string, link: string }) => (
     <Link href={href} passHref>
-      <Card sx={{ maxHeight: '279px' }} >
+      <Card sx={{ maxHeight: '279px', backgroundColor: "transparent" }} >
         <Box
           component={m.div}
           key="animated children"
@@ -60,7 +56,7 @@ export function ContactCom() {
             background: 'transparent',
             zIndex: 2000,
             transition: '.5s',
-            boxShadow: 'inset 0px 0px rgba(255,255,255,0.2)',
+            boxShadow: 'inset 0px 0px rgba(255,255,255,0. )',
 
           }}
           whileHover={{

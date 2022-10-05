@@ -3,8 +3,7 @@ import { pxToRem, responsiveFontSizes } from '../utils/getFontValue';
 // ----------------------------------------------------------------------
 const FONT_PRIMARY = 'Univers BQ, Open Sans, Arial, sans-serif'; 
 
-// const FONT_SECONDARY ='universbq-55regularregula, Open Sans, Arial, sans-serif'; // Local Font
-        
+     
 
 const typography = {
  fontFamily: FONT_PRIMARY,

@@ -21,8 +21,6 @@ export default function ImageNextImage({
   sx,
   ...other
 }: Props) {
-  console.log('other.alt', other.alt)
-  console.log('other.src', other.src)
   if (ratio) {
     return (
       <Box

@@ -1,6 +1,6 @@
 import React, { Dispatch, SetStateAction, useState } from 'react';
 // @mui
-import { Grid, Stack, Card, CardMedia } from '@mui/material';
+import { Grid, Stack, Card } from '@mui/material';
 import { Person } from 'src/utils/TS/interface';
 // hooks
 import useResponsive from '../../hooks/useResponsive';
@@ -33,7 +33,6 @@ export function CardPersonCom({
     } | null>>;
 
 }) {
-    const isDesktop = useResponsive('up', 'lg');
     const isSmall = useResponsive('down', 'sm');
     const { isAuthenticated } = useAuth();
     const { id, photo, name, surname, title1, title2, job1, job2, email } = person;
@@ -84,7 +83,6 @@ export function CardPersonCom({
                         ratio="4/6"
                     />
                 }
-
                 <Grid
                     container
                     direction="column"

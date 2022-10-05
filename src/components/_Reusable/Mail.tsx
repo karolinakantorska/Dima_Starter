@@ -2,11 +2,13 @@ import React, { useEffect, useState } from "react";
 // @mui
 import { SvgIcon, Link } from '@mui/material';
 import DoneIcon from '@mui/icons-material/Done';
+import { useRouter } from "next/router";
 
-// hooks
+
 
 export const Mail = ({ email }: { email: string }) => {
     const [copied, setCopied] = useState(false);
+    const router = useRouter();
     const handleClick = () => {
         navigator.clipboard.writeText(email);
         setCopied(true);
@@ -45,7 +47,8 @@ export const Mail = ({ email }: { email: string }) => {
     return (
         <>
             <Link
-                href={`mailto:${email}`}
+                onClick={() => router.push(`mailto:${email}`)}
+                //href={`mailto:${email}`}
                 color={'text.secondary'}
             >
                 <MailIcon
@@ -55,10 +58,14 @@ export const Mail = ({ email }: { email: string }) => {
                         width: '36px',
                         cursor: 'pointer'
                     }}
-                    aria-label={`Schreiben sie bitte ein E-Mail zum ${email}`}
-                    aria-owns={email}
+                    aria-label={`Schreiben sie bitte ein E-Mail`}
+
                 />
             </Link>
         </>
     )
 }
+/*
+<a href="mailto: Mike Myers"
+onclick="this.href=this.href.replace(' Mike ','MikeMy'); this.href=this.href.replace('Myers','ers@vwx.yz')">&#9993; Send Email</a>
+*/
